@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — ZayPOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: #FDFAF6; color: #1A1208; overflow-x: hidden; line-height: 1.6; }
+:root {
+  --cream: #FDFAF6; --cream2: #F5F0E8; --cream3: #EDE6D8;
+  --violet: #5B3EF5; --violet-light: #7C62F7; --violet-pale: #EEE9FE; --violet-mid: #C9BDFB;
+  --green: #1B8A5A; --green-pale: #E3F5EE;
+  --text: #1A1208; --text-mid: #4A3D2A; --text-muted: #8A7A65; --text-dim: #B0A090;
+  --border: #E5DDD0; --border-dark: #C9BBA8;
+}
+.container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(253,250,246,0.93); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 24px; }
+.nav-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 66px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-mark { width: 38px; height: 38px; border-radius: 11px; background: var(--violet); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: #fff; }
+.logo-text { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; color: var(--text); }
+.logo-text span { color: var(--violet); }
+.nav-links { display: flex; align-items: center; gap: 30px; }
+.nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-links a.active { color: var(--violet); font-weight: 500; }
+.nav-cta { display: flex; align-items: center; gap: 10px; }
+.btn-ghost { padding: 9px 20px; font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--text-mid); background: transparent; border: 1px solid var(--border-dark); border-radius: 8px; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+.btn-ghost:hover { background: var(--cream2); }
+.btn-primary { padding: 9px 20px; font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 500; color: #fff; background: var(--violet); border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+.btn-primary:hover { background: var(--violet-light); }
+
+/* PAGE HERO */
+.page-hero { padding: 130px 0 80px; background: var(--cream2); border-bottom: 1px solid var(--border); }
+.page-hero-inner { max-width: 660px; }
+.page-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--violet); background: var(--violet-pale); padding: 6px 14px; border-radius: 100px; margin-bottom: 24px; }
+.page-hero h1 { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(36px, 5vw, 56px); line-height: 1.08; letter-spacing: -1.5px; color: var(--text); margin-bottom: 20px; }
+.page-hero h1 em { font-style: italic; color: var(--violet); }
+.page-hero p { font-size: 17px; color: var(--text-muted); line-height: 1.75; font-weight: 300; max-width: 520px; }
+
+/* CONTACT SECTION */
+.contact-section { padding: 80px 0 100px; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; }
+
+/* CONTACT INFO */
+.contact-info {}
+.info-block { margin-bottom: 36px; padding-bottom: 36px; border-bottom: 1px solid var(--border); }
+.info-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.info-icon { width: 46px; height: 46px; border-radius: 12px; background: var(--violet-pale); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 14px; }
+.info-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 18px; color: var(--text); margin-bottom: 6px; }
+.info-desc { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-bottom: 10px; }
+.info-value { font-size: 15px; font-weight: 500; color: var(--text-mid); }
+.info-value a { color: var(--violet); text-decoration: none; }
+.info-value a:hover { text-decoration: underline; }
+
+/* RESPONSE TIMES */
+.response-times { background: var(--cream2); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-top: 36px; }
+.rt-title { font-size: 13px; font-weight: 600; color: var(--text-mid); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+.rt-row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.rt-row:last-child { border-bottom: none; }
+.rt-type { color: var(--text-muted); }
+.rt-time { font-weight: 500; color: var(--text); }
+.rt-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 6px; }
+.rt-green { background: #10B981; }
+.rt-amber { background: #F59E0B; }
+
+/* FORM */
+.contact-form-wrap { background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 48px; }
+.form-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: 26px; color: var(--text); margin-bottom: 6px; }
+.form-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 36px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 20px; }
+.form-group.full { grid-column: 1 / -1; }
+label { display: block; font-size: 13px; font-weight: 500; color: var(--text-mid); margin-bottom: 8px; }
+label span { color: var(--violet); }
+input[type=text], input[type=email], input[type=tel], select, textarea {
+  width: 100%; padding: 12px 16px;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
+  background: var(--cream); border: 1.5px solid var(--border-dark);
+  border-radius: 10px; transition: all 0.2s; outline: none;
+  -webkit-appearance: none; appearance: none;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--violet); background: #fff; box-shadow: 0 0 0 3px rgba(91,62,245,0.1); }
+input::placeholder, textarea::placeholder { color: var(--text-dim); }
+select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A7A65' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer; }
+textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
+.form-check { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 28px; }
+.form-check input[type=checkbox] { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; accent-color: var(--violet); cursor: pointer; }
+.form-check label { font-size: 13px; color: var(--text-muted); margin-bottom: 0; font-weight: 400; }
+.form-check label a { color: var(--violet); text-decoration: none; }
+.submit-btn {
+  width: 100%; padding: 15px; font-size: 15px; font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  color: #fff; background: var(--violet); border: none; border-radius: 10px;
+  cursor: pointer; transition: all 0.2s;
+  box-shadow: 0 4px 20px rgba(91,62,245,0.3);
+}
+.submit-btn:hover { background: var(--violet-light); transform: translateY(-1px); }
+.form-success { display: none; text-align: center; padding: 40px 20px; }
+.form-success-icon { font-size: 48px; margin-bottom: 16px; }
+.form-success h3 { font-family: 'Fraunces', serif; font-size: 24px; color: var(--text); margin-bottom: 8px; }
+.form-success p { font-size: 15px; color: var(--text-muted); }
+
+/* FAQ */
+.faq-section { background: var(--cream2); border-top: 1px solid var(--border); padding: 100px 0; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 880px; margin: 56px auto 0; }
+.faq-item { background: #fff; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.faq-q { padding: 20px 24px; font-size: 15px; font-weight: 500; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.faq-arrow { font-size: 18px; color: var(--text-dim); transition: transform 0.25s; flex-shrink: 0; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+.faq-a { padding: 0 24px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease, padding 0.3s ease; font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+.faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
+
+/* MAP / OFFICE */
+.office-section { padding: 80px 0; }
+.office-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.office-map { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 8px 40px rgba(0,0,0,0.08); }
+.office-map iframe { width: 100%; height: 340px; border: none; display: block; }
+.office-label { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--violet); margin-bottom: 14px; }
+.office-label::before { content: ''; width: 18px; height: 2px; background: var(--violet); border-radius: 1px; }
+.office-h2 { font-family: 'Fraunces', serif; font-weight: 700; font-size: 32px; color: var(--text); letter-spacing: -0.8px; margin-bottom: 20px; }
+.office-detail { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+.od-icon { font-size: 18px; margin-top: 2px; }
+.od-label { font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; margin-bottom: 2px; }
+.od-value { font-size: 15px; color: var(--text-mid); line-height: 1.5; }
+.od-value a { color: var(--violet); text-decoration: none; }
+.od-value a:hover { text-decoration: underline; }
+
+/* FOOTER */
+footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 52px; }
+.footer-logo-mark { width: 38px; height: 38px; border-radius: 11px; background: var(--violet); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: #fff; }
+.footer-logo-text { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; color: #fff; }
+.footer-logo-text span { color: #A78BFA; }
+.footer-brand p { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 14px; line-height: 1.7; max-width: 240px; }
+.footer-brand small { display: block; font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 12px; }
+.footer-col-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+.footer-link { display: block; font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+.footer-link:hover { color: rgba(255,255,255,0.9); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.28); flex-wrap: wrap; gap: 12px; }
+.footer-bottom a { color: rgba(255,255,255,0.28); text-decoration: none; }
+.footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+
+@media(max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-form-wrap { padding: 32px 24px; }
+  .form-row { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .office-inner { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+}
+@media(max-width: 600px) {
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* MOBILE MENU */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 38px; height: 38px;
+  background: transparent;
+  border: 1.5px solid var(--border-dark);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 7px 8px;
+  transition: all 0.2s;
+}
+.hamburger:hover { background: var(--cream2); }
+.hamburger span {
+  display: block; height: 1.5px;
+  background: var(--text-mid);
+  border-radius: 2px;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 66px; left: 0; right: 0;
+  background: rgba(253,250,246,0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px 24px;
+  z-index: 99;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block;
+  padding: 14px 0;
+  font-size: 16px;
+  color: var(--text-mid);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+  font-weight: 400;
+}
+.mobile-menu a:last-of-type { border-bottom: none; }
+.mobile-menu a:hover { color: var(--violet); }
+.mobile-menu a.active { color: var(--violet); font-weight: 500; }
+.mobile-menu-cta {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-top: 20px; padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.mobile-menu-cta a {
+  display: block; text-align: center; padding: 13px;
+  border-radius: 10px; font-size: 15px; font-weight: 500;
+  text-decoration: none; border: none; transition: all 0.2s;
+}
+.m-btn-ghost { color: var(--text-mid); background: transparent; border: 1.5px solid var(--border-dark) !important; }
+.m-btn-ghost:hover { background: var(--cream2) !important; }
+.m-btn-primary { color: #fff !important; background: var(--violet) !important; border-bottom: 1px solid var(--border) !important; }
+.m-btn-primary:hover { background: var(--violet-light) !important; }
+
+@media(max-width: 900px) {
+  .hamburger { display: flex; }
+  .nav-links { display: none !important; }
+  .nav-cta { display: none; }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="zaypos-homepage.html" class="logo">
+      <div class="logo-mark">Z</div>
+      <span class="logo-text">Zay<span>POS</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="zaypos-homepage.html#features">Features</a>
+      <a href="zaypos-homepage.html#pricing">Pricing</a>
+      <a href="zaypos-about.html">About</a>
+      <a href="zaypos-contact.html" class="active">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="btn-ghost">Sign in</a>
+      <a href="#" class="btn-primary">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="page-eyebrow">Get in touch</div>
+      <h1>We're here to<br><em>help you</em></h1>
+      <p>Whether you have a question about ZayPOS, want to talk through your setup, or just want to see if it's the right fit — drop us a message and we'll get back to you fast.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- LEFT: INFO -->
+      <div class="contact-info">
+        <div class="info-block">
+          <div class="info-icon">💬</div>
+          <div class="info-title">Sales & general enquiries</div>
+          <div class="info-desc">Want to know more about ZayPOS or talk through whether it's right for your business? We love these conversations.</div>
+          <div class="info-value"><a href="/cdn-cgi/l/email-protection#b2dad7dededdf2c8d3cbc2ddc19cd1dd9cc7d9"><span class="__cf_email__" data-cfemail="7018151c1c1f300a1109001f035e131f5e051b">[email&#160;protected]</span></a></div>
+        </div>
+        <div class="info-block">
+          <div class="info-icon">🛠️</div>
+          <div class="info-title">Technical support</div>
+          <div class="info-desc">Existing customer with a question or issue? Our support team is ready to help — real people, no bots.</div>
+          <div class="info-value"><a href="/cdn-cgi/l/email-protection#a9dadcd9d9c6dbdde9d3c8d0d9c6da87cac687dcc2"><span class="__cf_email__" data-cfemail="f5868085859a8781b58f948c859a86db969adb809e">[email&#160;protected]</span></a></div>
+        </div>
+        <div class="info-block">
+          <div class="info-icon">📞</div>
+          <div class="info-title">Phone</div>
+          <div class="info-desc">Prefer to talk? Give us a call during business hours — Mon to Fri, 9am–5:30pm.</div>
+          <div class="info-value"><a href="tel:+441452000000">+44 (0)1452 000 000</a></div>
+        </div>
+        <div class="info-block">
+          <div class="info-icon">📍</div>
+          <div class="info-title">Registered office</div>
+          <div class="info-desc">Zayn Productions Ltd, registered in England & Wales.</div>
+          <div class="info-value">1 Alvin Street, Gloucester<br>England, GL1 3EJ<br>Company No. 16892199</div>
+        </div>
+
+        <div class="response-times">
+          <div class="rt-title">Typical response times</div>
+          <div class="rt-row"><span class="rt-type"><span class="rt-dot rt-green"></span>Sales enquiries</span><span class="rt-time">Within a few hours</span></div>
+          <div class="rt-row"><span class="rt-type"><span class="rt-dot rt-green"></span>Technical support</span><span class="rt-time">Same business day</span></div>
+          <div class="rt-row"><span class="rt-type"><span class="rt-dot rt-amber"></span>Billing questions</span><span class="rt-time">1–2 business days</span></div>
+          <div class="rt-row"><span class="rt-type"><span class="rt-dot rt-amber"></span>Partnerships</span><span class="rt-time">3–5 business days</span></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: FORM -->
+      <div>
+        <div class="contact-form-wrap">
+          <div id="formContent">
+            <div class="form-title">Send us a message</div>
+            <div class="form-sub">Fill in the form and we'll get back to you as soon as possible.</div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>First name <span>*</span></label>
+                <input type="text" placeholder="Jane" id="fname">
+              </div>
+              <div class="form-group">
+                <label>Last name <span>*</span></label>
+                <input type="text" placeholder="Smith" id="lname">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Email address <span>*</span></label>
+              <input type="email" placeholder="jane@yourcafe.co.uk" id="email">
+            </div>
+
+            <div class="form-group">
+              <label>Phone number</label>
+              <input type="tel" placeholder="+44 7700 000000" id="phone">
+            </div>
+
+            <div class="form-group">
+              <label>Business name</label>
+              <input type="text" placeholder="The Corner Cafe" id="biz">
+            </div>
+
+            <div class="form-group">
+              <label>Business type</label>
+              <select id="biztype">
+                <option value="" disabled selected>Select your business type...</option>
+                <option>Coffee shop / Cafe</option>
+                <option>Restaurant / Bistro</option>
+                <option>Bakery / Patisserie</option>
+                <option>Fast food / Takeaway</option>
+                <option>Food truck / Pop-up</option>
+                <option>Juice bar / Smoothie shop</option>
+                <option>Dessert parlour</option>
+                <option>Other food business</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>What can we help you with? <span>*</span></label>
+              <select id="subject">
+                <option value="" disabled selected>Choose a topic...</option>
+                <option>General enquiry about ZayPOS</option>
+                <option>Pricing & plans</option>
+                <option>Technical support</option>
+                <option>Billing question</option>
+                <option>Integration / partnership</option>
+                <option>Feature request</option>
+                <option>Something else</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Your message <span>*</span></label>
+              <textarea placeholder="Tell us a bit about your business and what you'd like to know..." id="message"></textarea>
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" id="consent">
+              <label for="consent">I'm happy for ZayPOS to use this information to respond to my enquiry. See our <a href="#">Privacy Policy</a> for details.</label>
+            </div>
+
+            <button class="submit-btn" onclick="handleSubmit()">Send message →</button>
+          </div>
+
+          <div class="form-success" id="formSuccess">
+            <div class="form-success-icon">✅</div>
+            <h3>Message received!</h3>
+            <p>Thanks for reaching out. We'll get back to you at the email address you provided — usually within a few hours during business hours.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div style="text-align:center;">
+      <div style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--violet);margin-bottom:14px;">
+        <span style="width:18px;height:2px;background:var(--violet);border-radius:1px;display:inline-block;"></span>
+        Common questions
+      </div>
+      <h2 style="font-family:'Fraunces',serif;font-weight:700;font-size:clamp(26px,4vw,44px);letter-spacing:-1.2px;color:var(--text);margin-bottom:14px;">Frequently asked questions</h2>
+      <p style="font-size:16px;color:var(--text-muted);font-weight:300;">Can't find what you're looking for? <a href="/cdn-cgi/l/email-protection#d9b1bcb5b5b699a3b8a0a9b6aaf7bab6f7acb2" style="color:var(--violet);text-decoration:none;">Drop us an email</a> and we'll answer personally.</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do I need a credit card to start the free trial? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">No. You can start your 14-day free trial with just an email address. No payment details required until you're ready to subscribe.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I use ZayPOS on my existing tablet? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Yes. ZayPOS works on any tablet (10"+), phone, or desktop with a modern browser. You don't need to buy new hardware to get started.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Which payment terminals does ZayPOS support? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">ZayPOS integrates with Clover, Dojo, SumUp, and Square. You can configure different payment merchants per location and set up smart routing between terminals.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How long does setup take? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Most businesses are up and running within 30–60 minutes. Our onboarding team will guide you through importing your products, adding staff, and connecting your payment terminal.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Is ZayPOS GDPR compliant? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Absolutely. ZayPOS is built and hosted in the UK, and we're fully GDPR compliant. Your data — and your customers' data — stays secure and is never sold or shared with third parties.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Can I cancel at any time? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Yes. There are no long-term contracts. You can cancel your subscription at any time from your account settings — no questions asked, no cancellation fees.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Do you offer onboarding support? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Yes. All trial users get access to dedicated onboarding support. Complete plan customers get priority onboarding with a named contact who'll walk you through setup step by step.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What's included in the food safety tools? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">The Complete plan includes digital temperature logging, daily checklists, SMS reminders to on-shift staff, delivery logging, staff food safety e-learning, and a one-click EHO-ready compliance report.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICE -->
+<section class="office-section">
+  <div class="container">
+    <div class="office-inner">
+      <div>
+        <div class="office-label">Find us</div>
+        <div class="office-h2">Zayn Productions Ltd</div>
+        <div class="office-detail">
+          <div class="od-icon">📍</div>
+          <div>
+            <div class="od-label">Address</div>
+            <div class="od-value">1 Alvin Street<br>Gloucester, England<br>GL1 3EJ</div>
+          </div>
+        </div>
+        <div class="office-detail">
+          <div class="od-icon">🏢</div>
+          <div>
+            <div class="od-label">Registered in England & Wales</div>
+            <div class="od-value">Company No. 16892199</div>
+          </div>
+        </div>
+        <div class="office-detail">
+          <div class="od-icon">✉️</div>
+          <div>
+            <div class="od-label">General enquiries</div>
+            <div class="od-value"><a href="/cdn-cgi/l/email-protection#e189848d8d8ea19b8098918e92cf828ecf948a"><span class="__cf_email__" data-cfemail="432b262f2f2c0339223a332c306d202c6d3628">[email&#160;protected]</span></a></div>
+          </div>
+        </div>
+        <div class="office-detail">
+          <div class="od-icon">⏰</div>
+          <div>
+            <div class="od-label">Business hours</div>
+            <div class="od-value">Monday – Friday, 9:00am – 5:30pm<br><span style="font-size:12px;color:var(--text-dim);">Closed bank holidays</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="office-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2471.6!2d-2.2481!3d51.8642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487099f5d12a4f0b%3A0x0!2sAlvin%20St%2C%20Gloucester%20GL1%203EJ!5e0!3m2!1sen!2suk!4v1"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Zayn Productions Ltd, Gloucester">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="footer-logo-mark">Z</div>
+          <span class="footer-logo-text">Zay<span>POS</span></span>
+        </div>
+        <p>The modern cloud POS for cafes, restaurants, and food businesses across the UK.</p>
+        <small>Zayn Productions Ltd · Company No. 16892199<br>1 Alvin Street, Gloucester, GL1 3EJ</small>
+      </div>
+            <div>
+        <div class="footer-col-title">Product</div>
+        <a href="zaypos-features.html" class="footer-link">Features</a>
+        <a href="zaypos-homepage.html#pricing" class="footer-link">Pricing</a>
+        <a href="zaypos-integrations.html" class="footer-link">Integrations</a>
+        <a href="zaypos-changelog.html" class="footer-link">Changelog</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <a href="zaypos-docs.html" class="footer-link">Documentation</a>
+        <a href="zaypos-getting-started.html" class="footer-link">Getting Started</a>
+        <a href="zaypos-contact.html" class="footer-link">Contact Us</a>
+        <a href="zaypos-status.html" class="footer-link">System Status</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <a href="zaypos-privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="zaypos-terms.html" class="footer-link">Terms of Service</a>
+        <a href="zaypos-cookies.html" class="footer-link">Cookie Policy</a>
+        <a href="zaypos-gdpr.html" class="footer-link">GDPR</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 Zayn Productions Ltd. All rights reserved.</div>
+      <div style="display:flex;gap:20px;"><a href="zaypos-privacy.html">Privacy</a><a href="zaypos-terms.html">Terms</a><a href="zaypos-cookies.html">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+// Mobile menu
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const burger = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  burger.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.mobile-menu a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+});
+</script><script>
+function handleSubmit() {
+  const fname = document.getElementById('fname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const subject = document.getElementById('subject').value;
+  const message = document.getElementById('me

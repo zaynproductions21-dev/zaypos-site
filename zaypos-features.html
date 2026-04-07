@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZayPOS — Features</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: #FDFAF6; color: #1A1208; overflow-x: hidden; line-height: 1.6; }
+:root {
+  --cream: #FDFAF6; --cream2: #F5F0E8; --cream3: #EDE6D8;
+  --violet: #5B3EF5; --violet-light: #7C62F7; --violet-pale: #EEE9FE; --violet-mid: #C9BDFB;
+  --green: #1B8A5A; --green-pale: #E3F5EE;
+  --amber: #C47D0E; --amber-pale: #FEF3DC;
+  --rose: #C0303C; --rose-pale: #FEECEE;
+  --teal: #0E7A7A; --teal-pale: #E3F5F5;
+  --text: #1A1208; --text-mid: #4A3D2A; --text-muted: #8A7A65; --text-dim: #B0A090;
+  --border: #E5DDD0; --border-dark: #C9BBA8;
+}
+.container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(253,250,246,0.93); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 24px; }
+.nav-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 66px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-mark { width: 38px; height: 38px; border-radius: 11px; background: var(--violet); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: #fff; }
+.logo-text { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; color: var(--text); }
+.logo-text span { color: var(--violet); }
+.nav-links { display: flex; align-items: center; gap: 30px; }
+.nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-links a.active { color: var(--violet); font-weight: 500; }
+.nav-cta { display: flex; align-items: center; gap: 10px; }
+.btn-ghost { padding: 9px 20px; font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--text-mid); background: transparent; border: 1px solid var(--border-dark); border-radius: 8px; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+.btn-ghost:hover { background: var(--cream2); }
+.btn-primary { padding: 9px 20px; font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 500; color: #fff; background: var(--violet); border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+.btn-primary:hover { background: var(--violet-light); }
+
+/* PAGE HERO */
+.page-hero {
+  padding: 120px 0 80px;
+  background: var(--cream2);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+.page-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+  color: var(--violet); background: var(--violet-pale);
+  padding: 6px 14px; border-radius: 100px; margin-bottom: 24px;
+}
+.page-h1 {
+  font-family: 'Fraunces', serif; font-weight: 700;
+  font-size: clamp(36px, 5vw, 62px);
+  line-height: 1.08; letter-spacing: -1.5px;
+  color: var(--text); margin-bottom: 20px;
+}
+.page-h1 em { font-style: italic; color: var(--violet); }
+.page-sub { font-size: 18px; color: var(--text-muted); max-width: 580px; margin: 0 auto 40px; font-weight: 300; line-height: 1.7; }
+.hero-stat-row {
+  display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap;
+}
+.hero-stat { text-align: center; }
+.hero-stat-num { font-family: 'Fraunces', serif; font-weight: 700; font-size: 32px; letter-spacing: -1px; color: var(--text); }
+.hero-stat-label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+.hero-stat-divider { width: 1px; height: 40px; background: var(--border); }
+
+/* STICKY FEATURE NAV */
+.feat-nav {
+  position: sticky; top: 66px; z-index: 90;
+  background: var(--cream); border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+}
+.feat-nav-inner {
+  max-width: 1160px; margin: 0 auto;
+  display: flex; align-items: center; gap: 0;
+  overflow-x: auto; scrollbar-width: none;
+}
+.feat-nav-inner::-webkit-scrollbar { display: none; }
+.feat-nav-item {
+  display: flex; align-items: center; gap: 8px;
+  padding: 16px 20px;
+  font-size: 14px; font-weight: 500; color: var(--text-muted);
+  text-decoration: none; white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s; cursor: pointer;
+}
+.feat-nav-item:hover { color: var(--text); }
+.feat-nav-item.active { color: var(--violet); border-bottom-color: var(--violet); }
+.feat-nav-icon { font-size: 16px; }
+
+/* FEATURE SECTIONS */
+.feat-section { padding: 90px 0; border-bottom: 1px solid var(--border); }
+.feat-section:last-of-type { border-bottom: none; }
+.feat-section.alt { background: var(--cream2); }
+
+/* Section header */
+.sect-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-bottom: 64px; }
+.sect-label { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
+.sect-label::before { content: ''; width: 18px; height: 2px; border-radius: 1px; }
+.label-violet { color: var(--violet); }
+.label-violet::before { background: var(--violet); }
+.label-green { color: var(--green); }
+.label-green::before { background: var(--green); }
+.label-amber { color: var(--amber); }
+.label-amber::before { background: var(--amber); }
+.label-rose { color: var(--rose); }
+.label-rose::before { background: var(--rose); }
+.label-teal { color: var(--teal); }
+.label-teal::before { background: var(--teal); }
+
+.sect-h2 { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(26px, 3.5vw, 42px); line-height: 1.1; letter-spacing: -1px; color: var(--text); margin-bottom: 14px; }
+.sect-h2 em { font-style: italic; }
+.sect-p { font-size: 16px; color: var(--text-muted); line-height: 1.75; font-weight: 300; }
+.sect-right { padding-top: 8px; }
+
+/* Feature item list */
+.feat-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.feat-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px 18px;
+  transition: all 0.2s;
+}
+.feat-item:hover { border-color: var(--violet-mid); box-shadow: 0 4px 16px rgba(91,62,245,0.06); }
+.feat-item-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.feat-item-text {}
+.feat-item-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.feat-item-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+/* Visual panels */
+.visual-panel {
+  border-radius: 20px; overflow: hidden;
+  box-shadow: 0 12px 60px rgba(0,0,0,0.09);
+  position: relative;
+}
+.visual-panel img { width: 100%; height: 420px; object-fit: cover; display: block; }
+.panel-tag {
+  position: absolute; bottom: 20px; left: 20px; right: 20px;
+  background: #fff; border-radius: 12px; padding: 14px 18px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  display: flex; align-items: center; gap: 12px;
+}
+.panel-tag-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+/* Mock UI panels */
+.mock-panel {
+  background: var(--cream2); border: 1px solid var(--border);
+  border-radius: 20px; padding: 28px; overflow: hidden;
+}
+.mock-bar { display: flex; gap: 6px; margin-bottom: 20px; }
+.mock-dot { width: 10px; height: 10px; border-radius: 50%; }
+.md-r { background: #FF5F57; } .md-a { background: #FEBC2E; } .md-g { background: #28C840; }
+
+/* KDS Mock */
+.kds-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.kds-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+.kds-num { font-family: 'Fraunces', serif; font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+.kds-badge { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; margin-bottom: 10px; }
+.badge-new { background: #FEF3DC; color: #C47D0E; }
+.badge-prep { background: var(--violet-pale); color: var(--violet); }
+.badge-ready { background: var(--green-pale); color: var(--green); }
+.kds-line { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+.kds-note { font-size: 11px; color: var(--violet); margin-top: 6px; }
+.kds-time { font-size: 11px; color: var(--text-dim); margin-top: 8px; }
+
+/* Rota mock */
+.rota-row { display: grid; grid-template-columns: 90px repeat(5, 1fr); gap: 6px; margin-bottom: 6px; align-items: center; }
+.rota-name { font-size: 12px; font-weight: 600; color: var(--text-mid); display: flex; align-items: center; gap: 8px; }
+.rota-avatar { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; }
+.rota-cell { height: 32px; border-radius: 6px; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; }
+.rota-shift { background: var(--violet-pale); color: var(--violet); }
+.rota-off { background: var(--cream2); color: var(--text-dim); }
+.rota-header { font-size: 11px; font-weight: 600; color: var(--text-dim); text-align: center; }
+.rota-day { text-align: center; }
+
+/* Loyalty mock */
+.loyalty-card {
+  background: linear-gradient(135deg, var(--violet), var(--violet-light));
+  border-radius: 14px; padding: 20px; color: #fff; margin-bottom: 16px;
+}
+.lc-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.lc-pts { font-family: 'Fraunces', serif; font-weight: 700; font-size: 32px; letter-spacing: -1px; }
+.lc-label { font-size: 11px; opacity: 0.7; margin-bottom: 14px; }
+.lc-bar-bg { height: 6px; background: rgba(255,255,255,0.25); border-radius: 3px; }
+.lc-bar { height: 6px; background: #fff; border-radius: 3px; width: 68%; }
+.lc-next { font-size: 11px; opacity: 0.8; margin-top: 6px; }
+.loyalty-hist { }
+.lh-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.lh-item:last-child { border-bottom: none; }
+.lh-name { font-weight: 500; color: var(--text); }
+.lh-pts-pos { color: var(--green); font-weight: 600; }
+.lh-pts-neg { color: var(--rose); font-weight: 600; }
+
+/* Safety mock */
+.safety-check-list {}
+.sc-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.sc-item:last-child { border-bottom: none; }
+.sc-box { width: 20px; height: 20px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+.sc-done { background: var(--green-pale); color: var(--green); }
+.sc-miss { background: var(--rose-pale); color: var(--rose); }
+.sc-pend { background: var(--amber-pale); color: var(--amber); border: 1.5px solid #E8C56E; }
+.sc-label { color: var(--text-mid); flex: 1; }
+.sc-staff { font-size: 11px; color: var(--text-dim); }
+.temp-row { display: flex; gap: 10px; margin-bottom: 16px; }
+.temp-box { flex: 1; background: var(--green-pale); border: 1px solid #A7D9C1; border-radius: 10px; padding: 12px; text-align: center; }
+.temp-box.warn { background: var(--amber-pale); border-color: #E8C56E; }
+.temp-val { font-family: 'Fraunces', serif; font-weight: 700; font-size: 22px; letter-spacing: -0.5px; color: var(--green); }
+.temp-box.warn .temp-val { color: var(--amber); }
+.temp-lbl { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+/* Analytics mock */
+.chart-bars { display: flex; align-items: flex-end; gap: 8px; height: 120px; margin-bottom: 16px; }
+.chart-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; }
+.chart-bar { width: 100%; border-radius: 6px 6px 0 0; background: var(--violet-pale); transition: background 0.2s; margin-top: auto; }
+.chart-bar.highlight { background: var(--violet); }
+.chart-label { font-size: 10px; color: var(--text-dim); }
+.metric-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.metric-box { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
+.metric-val { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; letter-spacing: -0.5px; color: var(--text); }
+.metric-lbl { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+.metric-delta { font-size: 11px; color: var(--green); font-weight: 600; }
+
+/* Stock mock */
+.stock-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+.stock-item:last-child { border-bottom: none; }
+.stock-name { font-weight: 500; color: var(--text); flex: 1; }
+.stock-bar-wrap { width: 100px; height: 6px; background: var(--cream3); border-radius: 3px; margin: 0 16px; }
+.stock-fill { height: 6px; border-radius: 3px; }
+.sf-ok { background: var(--green); }
+.sf-low { background: var(--amber); }
+.sf-crit { background: var(--rose); }
+.stock-qty { font-size: 12px; color: var(--text-muted); min-width: 60px; text-align: right; }
+.stock-tag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; }
+.st-ok { background: var(--green-pale); color: var(--green); }
+.st-low { background: var(--amber-pale); color: var(--amber); }
+.st-crit { background: var(--rose-pale); color: var(--rose); }
+
+/* QR mock */
+.qr-phone {
+  background: var(--cream3); border: 2px solid var(--border-dark);
+  border-radius: 24px; padding: 16px; max-width: 220px; margin: 0 auto;
+}
+.qr-screen { background: #fff; border-radius: 14px; overflow: hidden; }
+.qr-header { background: var(--violet); padding: 12px 16px; }
+.qr-header-title { font-size: 13px; font-weight: 600; color: #fff; }
+.qr-header-sub { font-size: 11px; color: rgba(255,255,255,0.7); }
+.qr-body { padding: 12px; }
+.qr-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+.qr-item:last-child { border-bottom: none; }
+.qr-item-name { color: var(--text); font-weight: 500; }
+.qr-item-price { color: var(--violet); font-weight: 600; }
+.qr-add { font-size: 16px; color: var(--violet-mid); }
+.qr-total-row { margin-top: 12px; display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; color: var(--text); }
+.qr-btn { margin-top: 12px; background: var(--violet); color: #fff; border: none; border-radius: 8px; padding: 10px; font-size: 12px; font-weight: 600; width: 100%; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+
+/* Staff perf mock */
+.leaderboard {}
+.lb-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.lb-item:last-child { border-bottom: none; }
+.lb-rank { font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: var(--text-dim); min-width: 28px; }
+.lb-rank.gold { color: #F59E0B; }
+.lb-rank.silver { color: #9CA3AF; }
+.lb-rank.bronze { color: #CD7F32; }
+.lb-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.lb-name { font-size: 14px; font-weight: 600; color: var(--text); flex: 1; }
+.lb-role { font-size: 12px; color: var(--text-muted); }
+.lb-sales { font-family: 'Fraunces', serif; font-weight: 700; font-size: 15px; color: var(--text); }
+.lb-delta { font-size: 11px; color: var(--green); font-weight: 600; }
+
+/* CTA STRIP */
+.cta-strip { padding: 100px 0; }
+.cta-inner {
+  background: var(--violet); border-radius: 28px; padding: 80px 60px;
+  display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 60px;
+  position: relative; overflow: hidden;
+}
+.cta-inner::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; border-radius: 50%; background: rgba(255,255,255,0.05); }
+.cta-h2 { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(28px, 3.5vw, 44px); color: #fff; letter-spacing: -1px; margin-bottom: 12px; }
+.cta-sub { font-size: 16px; color: rgba(255,255,255,0.7); font-weight: 300; line-height: 1.6; }
+.cta-checks { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+.cta-check { display: flex; align-items: center; gap: 8px; font-size: 14px; color: rgba(255,255,255,0.8); }
+.cta-check-icon { color: #A7F3D0; }
+.cta-photo { width: 280px; height: 320px; border-radius: 20px; overflow: hidden; border: 3px solid rgba(255,255,255,0.2); box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+.cta-photo img { width: 100%; height: 100%; object-fit: cover; }
+.btn-cta { display: inline-block; margin-top: 32px; padding: 14px 30px; font-size: 15px; font-weight: 600; font-family: 'DM Sans', sans-serif; color: var(--violet); background: #fff; border: none; border-radius: 10px; cursor: pointer; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+.btn-cta:hover { transform: translateY(-1px); }
+
+/* FOOTER */
+footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 52px; }
+.footer-logo-mark { width: 38px; height: 38px; border-radius: 11px; background: var(--violet); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: #fff; }
+.footer-logo-text { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; color: #fff; }
+.footer-logo-text span { color: #A78BFA; }
+.footer-brand p { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 14px; line-height: 1.7; max-width: 240px; }
+.footer-brand small { display: block; font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 12px; }
+.footer-col-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+.footer-link { display: block; font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+.footer-link:hover { color: rgba(255,255,255,0.9); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.28); flex-wrap: wrap; gap: 12px; }
+.footer-bottom a { color: rgba(255,255,255,0.28); text-decoration: none; }
+.footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+
+/* ANIMATION */
+.fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+@media(max-width:900px) {
+  .sect-header { grid-template-columns: 1fr; gap: 32px; }
+  .feat-list { grid-template-columns: 1fr; }
+  .kds-wrap { grid-template-columns: 1fr 1fr; }
+  .metric-row { grid-template-columns: 1fr 1fr; }
+  .cta-inner { grid-template-columns: 1fr; }
+  .cta-photo { width: 100%; height: 220px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+  .hero-stat-divider { display: none; }
+}
+@media(max-width:600px) {
+  .feat-list { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .cta-inner { padding: 48px 28px; }
+  .rota-row { grid-template-columns: 70px repeat(5, 1fr); gap: 4px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="zaypos-homepage.html" class="logo">
+      <div class="logo-mark">Z</div>
+      <span class="logo-text">Zay<span>POS</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="zaypos-homepage.html">Home</a>
+      <a href="zaypos-features.html" class="active">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#">Support</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="btn-ghost">Sign in</a>
+      <a href="#" class="btn-primary">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-eyebrow">🛠 Everything you need, nothing you don't</div>
+    <h1 class="page-h1">Built for the <em>real world</em><br>of food & drink</h1>
+    <p class="page-sub">Every feature in ZayPOS was designed with one question in mind: does this actually help a cafe or restaurant run better? Here's what that looks like.</p>
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <div class="hero-stat-num">50+</div>
+        <div class="hero-stat-label">Features included</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">14 days</div>
+        <div class="hero-stat-label">Free trial, full access</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">99.9%</div>
+        <div class="hero-stat-label">Uptime guaranteed</div>
+      </div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">GDPR</div>
+        <div class="hero-stat-label">UK compliant, always</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY NAV -->
+<nav class="feat-nav">
+  <div class="feat-nav-inner">
+    <a class="feat-nav-item active" href="#pos"><span class="feat-nav-icon">🛒</span> Point of Sale</a>
+    <a class="feat-nav-item" href="#kitchen"><span class="feat-nav-icon">📺</span> Kitchen Display</a>
+    <a class="feat-nav-item" href="#staff"><span class="feat-nav-icon">👥</span> Staff & Rota</a>
+    <a class="feat-nav-item" href="#qr"><span class="feat-nav-icon">📱</span> QR Ordering</a>
+    <a class="feat-nav-item" href="#stock"><span class="feat-nav-icon">📦</span> Stock & Suppliers</a>
+    <a class="feat-nav-item" href="#loyalty"><span class="feat-nav-icon">⭐</span> Loyalty</a>
+    <a class="feat-nav-item" href="#safety"><span class="feat-nav-icon">🛡️</span> Food Safety</a>
+    <a class="feat-nav-item" href="#analytics"><span class="feat-nav-icon">📊</span> Analytics</a>
+  </div>
+</nav>
+
+<!-- ── 1. POINT OF SALE ── -->
+<section class="feat-section" id="pos">
+  <div class="container">
+    <div class="sect-header fade-up">
+      <div>
+        <div class="sect-label label-violet">Point of Sale</div>
+        <h2 class="sect-h2">Fast, intuitive ordering — <em>built for the rush</em></h2>
+        <p class="sect-p">From a quiet Tuesday morning to a packed Saturday lunch, ZayPOS keeps up. Works on any tablet, phone, or desktop — no specialist hardware required.</p>
+      </div>
+      <div class="sect-right">
+        <div class="visual-panel">
+          <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=800&q=80&auto=format&fit=crop" alt="Barista using tablet POS">
+          <div class="panel-tag">
+            <div class="panel-tag-dot" style="background:#10B981;box-shadow:0 0 6px #10B981;"></div>
+            <div>
+              <div style="font-size:13px;font-weight:600;color:#1A1208;">Order #084 placed</div>
+              <div style="font-size:11px;color:#8A7A65;">Sent to kitchen · 0.3s</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feat-list fade-up">
+      <div class="feat-item"><span class="feat-item-icon">⚡</span><div class="feat-item-text"><div class="feat-item-title">Touch-optimised interface</div><div class="feat-item-desc">Large tap targets, fast navigation, and a layout designed for speed — ideal under pressure.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">🏷️</span><div class="feat-item-text"><div class="feat-item-title">Dine-in, Takeaway & Delivery</div><div class="feat-item-desc">Switch order types in a tap. Each mode sends correctly to your kitchen display and receipts.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">✏️</span><div class="feat-item-text"><div class="feat-item-title">Modifiers & special instructions</div><div class="feat-item-desc">Add extras, swap options, note allergies. Required and optional modifier groups per product.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">🚫</span><div class="feat-item-text"><div class="feat-item-title">Real-time out-of-stock detection</div><div class="feat-item-desc">When a product runs out, it's greyed out instantly — no more awkward conversations mid-order.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">💳</span><div class="feat-item-text"><div class="feat-item-title">Cash, card, bank transfer & split</div><div class="feat-item-desc">Works with Clover, Dojo, SumUp & Square. Split payments across any mix of methods.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">🔄</span><div class="feat-item-text"><div class="feat-item-title">Quick reorder & order history</div><div class="feat-item-desc">Reorder a previous order in seconds — perfect for your regulars with the same usual.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">🖨️</span><div class="feat-item-text"><div class="feat-item-title">Receipt printing & digital receipts</div><div class="feat-item-desc">Network ESC/POS receipt printing, configurable per location, with digital receipt option too.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">🎁</span><div class="feat-item-text"><div class="feat-item-title">Bundles, meal deals & promotions</div><div class="feat-item-desc">Build combo deals with automatic pricing. Schedule time-based offers with start and end times.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 2. KITCHEN DISPLAY ── -->
+<section class="feat-section alt" id="kitchen">
+  <div class="container">
+    <div class="sect-header fade-up">
+      <div>
+        <div class="sect-label label-amber">Kitchen Display System</div>
+        <h2 class="sect-h2">Orders to the kitchen, <em>the moment they're placed</em></h2>
+        <p class="sect-p">No more paper tickets. No more shouting across the pass. Every order lands on the kitchen screen instantly, with timers, notes, and status tracking built in.</p>
+        <div style="margin-top: 28px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-mid);"><div style="width:20px;height:20px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--green);flex-shrink:0;">✓</div> Works on any screen — a spare tablet is all you need</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-mid);"><div style="width:20px;height:20px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--green);flex-shrink:0;">✓</div> Separate KDS per kitchen station if needed</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-mid);"><div style="width:20px;height:20px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--green);flex-shrink:0;">✓</div> Identifies order source — counter, QR table, or delivery</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-mid);"><div style="width:20px;height:20px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--green);flex-shrink:0;">✓</div> Kitchen analytics — average ticket time, throughput</div>
+        </div>
+      </div>
+      <div class="sect-right">
+        <div class="mock-panel">
+          <div class="mock-bar"><div class="mock-dot md-r"></div><div class="mock-dot md-a"></div><div class="mock-dot md-g"></div><span style="font-size:12px;color:var(--text-muted);margin-left:6px;font-weight:600;">Kitchen Display — Live</span><span style="margin-left:auto;font-size:11px;color:var(--green);font-weight:600;">● 3 active orders</span></div>
+          <div class="kds-wrap">
+            <div class="kds-card">
+              <div class="kds-num">#082</div>
+              <div><span class="kds-badge badge-new">NEW</span></div>
+              <div class="kds-line">☕ Flat White × 2</div>
+              <div class="kds-line">🍰 Carrot Cake</div>
+              <div class="kds-line">🥐 Croissant</div>
+              <div class="kds-note">⚠ Oat milk please</div>
+              <div class="kds-time">⏱ 0:42 · Counter</div>
+            </div>
+            <div class="kds-card">
+              <div class="kds-num">#083</div>
+              <div><span class="kds-badge badge-prep">PREPARING</span></div>
+              <div class="kds-line">🥗 Caesar Salad</div>
+              <div class="kds-line">🍔 Club Sandwich</div>
+              <div class="kds-line">🧃 Fresh OJ</div>
+              <div class="kds-time">⏱ 3:15 · Table 7 QR</div>
+            </div>
+            <div class="kds-card">
+              <div class="kds-num">#081</div>
+              <div><span class="kds-badge badge-ready">READY ✓</span></div>
+              <div class="kds-line">🫖 English Breakfast</div>
+              <div class="kds-line">🥐 Croissant × 2</div>
+              <div class="kds-time">⏱ 7:02 · Takeaway</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 3. STAFF & ROTA ── -->
+<section class="feat-section" id="staff">
+  <div class="container">
+    <div class="sect-header fade-up">
+      <div>
+        <div class="sect-label label-violet">Staff & Rota</div>
+        <h2 class="sect-h2">Your whole team, <em>one system</em></h2>
+        <p class="sect-p">From first clock-in to the end-of-month payslip, ZayPOS handles your people. No spreadsheets, no paper timesheets, no guesswork.</p>
+      </div>
+      <div class="sect-right">
+        <div class="visual-panel">
+          <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80&auto=format&fit=crop" alt="Cafe team working together">
+          <div class="panel-tag">
+            <span style="font-size:16px;">📅</span>
+            <div>
+              <div style="font-size:13px;font-weight:600;color:#1A1208;">Rota published for next week</div>
+              <div style="font-size:11px;color:#8A7A65;">5 staff · auto-generated & approved</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROTA MOCK -->
+    <div class="mock-panel fade-up" style="margin-bottom:32px;">
+      <div class="mock-bar"><div class="mock-dot md-r"></div><div class="mock-dot md-a"></div><div class="mock-dot md-g"></div><span style="font-size:12px;color:var(--text-muted);margin-left:6px;font-weight:600;">Weekly Rota — w/c 5 Jan</span></div>
+      <div class="rota-row" style="margin-bottom:8px;">
+        <div></div>
+        <div class="rota-header">Mon</div>
+        <div class="rota-header">Tue</div>
+        <div class="rota-header">Wed</div>
+        <div class="rota-header">Thu</div>
+        <div class="rota-header">Fri</div>
+      </div>
+      <div class="rota-row">
+        <div class="rota-name"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&q=80&auto=format&fit=crop&face" class="rota-avatar" alt="Sarah"><span>Sarah</span></div>
+        <div class="rota-cell rota-shift">8–4</div>
+        <div class="rota-cell rota-shift">8–4</div>
+        <div class="rota-cell rota-off">Off</div>
+        <div class="rota-cell rota-shift">9–5</div>
+        <div class="rota-cell rota-shift">8–4</div>
+      </div>
+      <div class="rota-row">
+        <div class="rota-name"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&q=80&auto=format&fit=crop&face" class="rota-avatar" alt="James"><span>James</span></div>
+        <div class="rota-cell rota-off">Off</div>
+        <div class="rota-cell rota-shift">10–6</div>
+        <div class="rota-cell rota-shift">10–6</div>
+        <div class="rota-cell rota-shift">10–6</div>
+        <div class="rota-cell rota-off">Off</div>
+      </div>
+      <div class="rota-row">
+        <div class="rota-name"><img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=60&q=80&auto=format&fit=crop&face" class="rota-avatar" alt="Priya"><span>Priya</span></div>
+        <div class="rota-cell rota-shift">9–5</div>
+        <div class="rota-cell rota-off">Off</div>
+        <div class="rota-cell rota-shift">8–4</div>
+        <div class="rota-cell rota-off">Off</div>
+        <div class="rota-cell rota-shift">9–5</div>
+      </div>
+    </div>
+
+    <div class="feat-list fade-up">
+      <div class="feat-item"><span class="feat-item-icon">🔑</span><div class="feat-item-text"><div class="feat-item-title">Individual staff PIN login</div><div class="feat-item-desc">Each team member has their own secure PIN, bcrypt-hashed. Role-based access so staff only see what they need.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">🕐</span><div class="feat-item-text"><div class="feat-item-title">Clock in / clock out</div><div class="feat-item-desc">Digital time tracking with PIN verification, linked to rota shifts. Automatic alerts for missed clock-ins.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">📅</span><div class="feat-item-text"><div class="feat-item-title">Drag-and-drop rota planner</div><div class="feat-item-desc">Build weekly rotas visually with shift templates. Staff can submit availability and swap requests.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">🤖</span><div class="feat-item-text"><div class="feat-item-title">Auto-generated rotas</div><div class="feat-item-desc">ZayPOS can auto-build a fair rota based on availability, hours, and performance — in seconds.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">💷</span><div class="feat-item-text"><div class="feat-item-title">Automatic payroll calculation</div><div class="feat-item-desc">Hours from clock-in data flow into payroll automatically. Overtime, bonuses, and deductions all tracked.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">📈</span><div class="feat-item-text"><div class="feat-item-title">Performance leaderboard</div><div class="feat-item-desc">See who's driving sales with individual transaction counts, revenue totals, and average order values.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 4. QR ORDERING ── -->
+<section class="feat-section alt" id="qr">
+  <div class="container">
+    <div class="sect-header fade-up">
+      <div>
+        <div class="sect-label label-teal">QR Code Table Ordering</div>
+        <h2 class="sect-h2">Let customers order <em>themselves</em> — from their phone</h2>
+        <p class="sect-p">Each table has its own QR code. Customers scan, browse your menu, and place an order directly — no app to download, no staff required. Orders land straight in the KDS.</p>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-mid);"><div style="width:20px;height:20px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--green);flex-shrink:0;">✓</div> No app download required for customers</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-mid);"><div style="width:20px;height:20px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--green);flex-shrink:0;">✓</div> Unique QR code per table — easy to manage</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-mid);"><div style="width:20px;height:20px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--green);flex-shrink:0;">✓</div> Orders go directly to KDS and POS</div>
+          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-mid);"><div style="width:20px;height:20px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--green);flex-shrink:0;">✓</div> Table management and status tracking included</div>
+        </div>
+      </div>
+      <div class="sect-right" style="display:flex;justify-content:center;">
+        <div class="qr-phone">
+          <div class="qr-screen">
+            <div class="qr-header">
+              <div class="qr-header-title">The Morning Cup ☕</div>
+              <div class="qr-header-sub">Table 4 · Order from your phone</div>
+            </div>
+            <div class="qr-body">
+              <div style="font-size:11px;font-weight:600;color:var(--text-dim);letter-spacing:1px;margin-bottom:8px;">HOT DRINKS</div>
+              <div class="qr-item"><div><div class="qr-item-name">Flat White</div><div style="font-size:10px;color:var(--text-muted);">Oat / Soy / Almond</div></div><div style="display:flex;align-items:center;gap:10px;"><span class="qr-item-price">£3.20</span><span class="qr-add">+</span></div></div>
+              <div class="qr-item"><div><div class="qr-item-name">Latte</div><div style="font-size:10px;color:var(--text-muted);">Regular or Large</div></div><div style="display:flex;align-items:center;gap:10px;"><span class="qr-item-price">£3.50</span><span class="qr-add">+</span></div></div>
+              <div class="qr-item" style="background:var(--violet-pale);margin:0 -12px;padding:8px 12px;border-radius:8px;border:none;"><div><div class="qr-item-name" style="color:var(--violet);">Matcha Latte ✓</div><div style="font-size:10px;color:var(--violet-light);">Added to order</div></div><div style="display:flex;align-items:center;gap:10px;"><span style="color:var(--violet);font-weight:600;">£4.20</span></div></div>
+              <div class="qr-total-row"><span>Your order (1 item)</span><span>£4.20</span></div>
+              <button class="qr-btn">Place order →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 5. STOCK & SUPPLIERS ── -->
+<section class="feat-section" id="stock">
+  <div class="container">
+    <div class="sect-header fade-up">
+      <div>
+        <div class="sect-label label-green">Stock & Inventory</div>
+        <h2 class="sect-h2">Always know what you've got — <em>and what you need</em></h2>
+        <p class="sect-p">Real-time stock levels, supplier management, and AI-powered invoice scanning that updates your stock the moment you photograph a delivery note.</p>
+      </div>
+      <div class="sect-right">
+        <div class="mock-panel">
+          <div class="mock-bar"><div class="mock-dot md-r"></div><div class="mock-dot md-a"></div><div class="mock-dot md-g"></div><span style="font-size:12px;color:var(--text-muted);margin-left:6px;font-weight:600;">Stock Levels — Current</span></div>
+          <div class="stock-item">
+            <div class="stock-name">Whole Milk (4L)</div>
+            <div class="stock-bar-wrap"><div class="stock-fill sf-ok" style="width:80%"></div></div>
+            <div class="stock-qty">16 units</div>
+            <span class="stock-tag st-ok">OK</span>
+          </div>
+          <div class="stock-item">
+            <div class="stock-name">Oat Milk (1L)</div>
+            <div class="stock-bar-wrap"><div class="stock-fill sf-low" style="width:28%"></div></div>
+            <div class="stock-qty">4 units</div>
+            <span class="stock-tag st-low">Low</span>
+          </div>
+          <div class="stock-item">
+            <div class="stock-name">Espresso Beans (1kg)</div>
+            <div class="stock-bar-wrap"><div class="stock-fill sf-crit" style="width:10%"></div></div>
+            <div class="stock-qty">1 unit</div>
+            <span class="stock-tag st-crit">Critical</span>
+          </div>
+          <div class="stock-item">
+            <div class="stock-name">Croissants (each)</div>
+            <div class="stock-bar-wrap"><div class="stock-fill sf-ok" style="width:65%"></div></div>
+            <div class="stock-qty">13 units</div>
+            <span class="stock-tag st-ok">OK</span>
+          </div>
+          <div class="stock-item">
+            <div class="stock-name">Takeaway Cups (S)</div>
+            <div class="stock-bar-wrap"><div class="stock-fill sf-low" style="width:22%"></div></div>
+            <div class="stock-qty">44 units</div>
+            <span class="stock-tag st-low">Low</span>
+          </div>
+          <div style="margin-top:16px;padding:12px;background:var(--amber-pale);border:1px solid #E8C56E;border-radius:10px;font-size:13px;">
+            <div style="font-weight:600;color:var(--amber);margin-bottom:4px;">⚠ 2 items need reordering</div>
+            <div style="color:var(--text-muted);">Supplier delivery from Bean & Brew expected tomorrow.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feat-list fade-up">
+      <div class="feat-item"><span class="feat-item-icon">📊</span><div class="feat-item-text"><div class="feat-item-title">Real-time stock levels</div><div class="feat-item-desc">Stock updates automatically with every sale. See what you have across all locations at a glance.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">🔔</span><div class="feat-item-text"><div class="feat-item-title">Low-stock alerts</div><div class="feat-item-desc">Set par levels per item. Get notified before you run out — not after. Email and in-app alerts.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">🤖</span><div class="feat-item-text"><div class="feat-item-title">AI invoice processing</div><div class="feat-item-desc">Take a photo of any supplier invoice. AI extracts the items and quantities and updates stock automatically.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">🚚</span><div class="feat-item-text"><div class="feat-item-title">Supplier management</div><div class="feat-item-desc">A full supplier directory with contacts, per-supplier item catalogues, delivery tracking, and scheduling.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">📁</span><div class="feat-item-text"><div class="feat-item-title">Bulk product import</div><div class="feat-item-desc">Import your entire menu via Excel or CSV — no manual data entry needed to get started.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">🔗</span><div class="feat-item-text"><div class="feat-item-title">Clover product sync</div><div class="feat-item-desc">Already on Clover? Sync your product catalogue directly into ZayPOS without re-entering everything.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 6. LOYALTY ── -->
+<section class="feat-section alt" id="loyalty">
+  <div class="container">
+    <div class="sect-header fade-up">
+      <div>
+        <div class="sect-label label-amber">Loyalty & Customer Management</div>
+        <h2 class="sect-h2">Turn first-timers into <em>regulars</em></h2>
+        <p class="sect-p">A built-in loyalty programme, customer profiles, and automated review requests help you build a base of people who keep coming back.</p>
+      </div>
+      <div class="sect-right">
+        <div class="mock-panel">
+          <div class="mock-bar"><div class="mock-dot md-r"></div><div class="mock-dot md-a"></div><div class="mock-dot md-g"></div><span style="font-size:12px;color:var(--text-muted);margin-left:6px;font-weight:600;">Loyalty Card — Emma R.</span></div>
+          <div class="loyalty-card">
+            <div class="lc-name">Emma Richardson</div>
+            <div class="lc-pts">340 <span style="font-size:16px;font-weight:400;opacity:0.8;">pts</span></div>
+            <div class="lc-label">Member since March 2024 · Gold tier</div>
+            <div class="lc-bar-bg"><div class="lc-bar"></div></div>
+            <div class="lc-next">160 pts until next reward</div>
+          </div>
+          <div class="loyalty-hist">
+            <div style="font-size:11px;font-weight:600;color:var(--text-dim);letter-spacing:1px;margin-bottom:8px;">RECENT ACTIVITY</div>
+            <div class="lh-item"><div><div class="lh-name">Flat White + Muffin</div><div style="font-size:11px;color:var(--text-dim);">Today, 9:14am</div></div><span class="lh-pts-pos">+18 pts</span></div>
+            <div class="lh-item"><div><div class="lh-name">Loyalty Reward Redeemed</div><div style="font-size:11px;color:var(--text-dim);">Tue, 7 Jan</div></div><span class="lh-pts-neg">−100 pts</span></div>
+            <div class="lh-item"><div><div class="lh-name">Lunch — Club Sandwich</div><div style="font-size:11px;color:var(--text-dim);">Mon, 6 Jan</div></div><span class="lh-pts-pos">+42 pts</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="feat-list fade-up">
+      <div class="feat-item"><span class="feat-item-icon">🌟</span><div class="feat-item-text"><div class="feat-item-title">Points-based loyalty</div><div class="feat-item-desc">Customers earn points on every purchase and redeem them for rewards. Configurable rates per product or order.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">👤</span><div class="feat-item-text"><div class="feat-item-title">Customer profiles</div><div class="feat-item-desc">Full purchase history, points balance, discount rates, and contact details — all in one place.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">⭐</span><div class="feat-item-text"><div class="feat-item-title">Automated review requests</div><div class="feat-item-desc">QR codes at tables collect dine-in feedback instantly. Takeaway customers get SMS or email review prompts.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">📧</span><div class="feat-item-text"><div class="feat-item-title">Email marketing opt-in</div><div class="feat-item-desc">Collect marketing consent at point of sale. Build your list organically, compliantly.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 7. FOOD SAFETY ── -->
+<section class="feat-section" id="safety">
+  <div class="container">
+    <div class="sect-header fade-up">
+      <div>
+        <div class="sect-label label-rose">Food Safety & SFBB Compliance</div>
+        <h2 class="sect-h2">EHO-ready, <em>every day</em></h2>
+        <p class="sect-p">Digital temperature logs, daily checklists, SMS reminders, and a one-click inspector report. Replacing paper-based food safety records for good.</p>
+      </div>
+      <div class="sect-right">
+        <div class="visual-panel">
+          <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=800&q=80&auto=format&fit=crop" alt="Kitchen food safety compliance">
+          <div class="panel-tag">
+            <div class="panel-tag-dot" style="background:#10B981;"></div>
+            <div>
+              <div style="font-size:13px;font-weight:600;color:#1A1208;">All checks completed today</div>
+              <div style="font-size:11px;color:#8A7A65;">EHO report ready · Last updated 2:30pm</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mock-panel fade-up" style="margin-bottom:32px;">
+      <div class="mock-bar"><div class="mock-dot md-r"></div><div class="mock-dot md-a"></div><div class="mock-dot md-g"></div><span style="font-size:12px;color:var(--text-muted);margin-left:6px;font-weight:600;">Opening Checklist — 6 Jan · 8:00am</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-dim);letter-spacing:1px;margin-bottom:10px;">CHECKLIST ITEMS</div>
+          <div class="safety-check-list">
+            <div class="sc-item"><div class="sc-box sc-done">✓</div><div class="sc-label">Check all fridge temperatures</div><div class="sc-staff">Sarah</div></div>
+            <div class="sc-item"><div class="sc-box sc-done">✓</div><div class="sc-label">Date label all fresh produce</div><div class="sc-staff">Sarah</div></div>
+            <div class="sc-item"><div class="sc-box sc-done">✓</div><div class="sc-label">Sanitise food prep surfaces</div><div class="sc-staff">James</div></div>
+            <div class="sc-item"><div class="sc-box sc-pend">○</div><div class="sc-label">Check allergen information</div><div class="sc-staff">Pending</div></div>
+            <div class="sc-item"><div class="sc-box sc-miss">!</div><div class="sc-label">Temperature log — hot holding</div><div class="sc-staff">Overdue</div></div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:600;color:var(--text-dim);letter-spacing:1px;margin-bottom:10px;">TEMPERATURE LOG</div>
+          <div class="temp-row">
+            <div class="temp-box"><div class="temp-val">3.2°C</div><div class="temp-lbl">Fridge 1 · AM</div></div>
+            <div class="temp-box"><div class="temp-val">3.8°C</div><div class="temp-lbl">Fridge 2 · AM</div></div>
+            <div class="temp-box warn"><div class="temp-val">6.4°C</div><div class="temp-lbl">Fridge 3 · AM</div></div>
+          </div>
+          <div style="background:var(--rose-pale);border:1px solid #F5B0B5;border-radius:10px;padding:12px;font-size:12px;">
+            <div style="font-weight:600;color:var(--rose);margin-bottom:4px;">⚠ Fridge 3 above safe range</div>
+            <div style="color:var(--text-muted);">Alert sent to Sarah. Corrective action required.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feat-list fade-up">
+      <div class="feat-item"><span class="feat-item-icon">🌡️</span><div class="feat-item-text"><div class="feat-item-title">Digital temperature logging</div><div class="feat-item-desc">Record fridge, freezer, and hot-holding temperatures digitally. Alerts for out-of-range readings with full audit trail.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">📋</span><div class="feat-item-text"><div class="feat-item-title">Opening, cleaning & closing checklists</div><div class="feat-item-desc">Customisable checklists for every time of day. Staff are accountable — every completion is logged with their name.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">📱</span><div class="feat-item-text"><div class="feat-item-title">SMS safety reminders</div><div class="feat-item-desc">Automatic SMS alerts to on-shift staff for overdue checklists and temperature probes. Configurable times per task.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">📄</span><div class="feat-item-text"><div class="feat-item-title">One-click EHO compliance report</div><div class="feat-item-desc">All your safety records — checklists, temperatures, deliveries, corrective actions — compiled into one printable document.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">🚛</span><div class="feat-item-text"><div class="feat-item-title">Delivery logging</div><div class="feat-item-desc">Record delivery temperatures, supplier details, and product conditions. Corrective actions documented automatically.</div></div></div>
+      <div class="feat-item"><span class="feat-item-icon">🎓</span><div class="feat-item-text"><div class="feat-item-title">Staff food safety training</div><div class="feat-item-desc">Built-in learning modules with quiz assessments. Track completion and onboard new starters with digital checklists.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 8. ANALYTICS ── -->
+<section class="feat-section alt" id="analytics">
+  <div class="container">
+    <div class="sect-header fade-up">
+      <div>
+        <div class="sect-label label-violet">Reports & Analytics</div>
+        <h2 class="sect-h2">Know your business — <em>numbers that actually matter</em></h2>
+        <p class="sect-p">Daily summaries, year-on-year charts, top products, peak hours, VAT reports, and staff performance — all in one dashboard. No spreadsheets required.</p>
+      </div>
+      <div class="sect-right">
+        <div class="mock-panel">
+          <div class="mock-bar"><div class="mock-dot md-r"></div><div class="mock-dot md-a"></div><div class="mock-dot md-g"></div><span style="font-size:12px;color:var(--text-muted);margin-left:6px;font-weight:600;">Sales — This Week</span></div>
+          <div class="chart-bars">
+            <div class="chart-bar-wrap"><div class="chart-bar" style="height:55%"></div><div class="chart-label">Mon</div></div>
+            <div class="chart-bar-wrap"><div class="chart-bar" style="height:70%"></div><div class="chart-label">Tue</div></div>
+            <div class="chart-bar-wrap"><div class="chart-bar" style="height:62%"></div><div class="chart-label">Wed</div></div>
+            <div class="chart-bar-wrap"><div class="chart-bar highlight" style="height:88%"></div><div class="chart-label">Thu</div></div>
+            <div class="chart-bar-wrap"><div class="chart-bar" style="height:95%"></div><div class="chart-label">Fri</div></div>
+            <div class="chart-bar-wrap"><div class="chart-bar" style="height:100%"></div><div class="chart-label">Sat</div></div>
+            <div class="chart-bar-wrap"><div class="chart-bar" style="height:72%"></div><div class="chart-label">Sun</div></div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-box"><div class="metric-val">£8,340</div><div class="metric-lbl">Revenue</div><div class="metric-delta">↑ 14% vs last week</div></div>
+            <div class="metric-box"><div class="metric-val">532</div><div class="metric-lbl">Orders</div><div class="metric-delta">↑ 9%</div></div>
+            <div class="metric-box"><div class="metric-val">£15.68</div><div class="metric-lbl">Avg. order</div><div class="metric-delta">↑ 4%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAFF LEADERBOARD -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:0;" class="fade-up">
+      <div class="mock-panel">
+        <div class="mock-bar"><div class="mock-dot md-r"></div><div class="mock-dot md-a"></div><div class="mock-dot md-g"></div><span style="font-size:12px;color:var(--text-muted);margin-left:6px;font-weight:600;">Staff Performance — This Month</span></div>
+        <div class="leaderboard">
+          <div class="lb-item">
+            <div class="lb-rank gold">1</div>
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&q=80&auto=format&fit=crop&face" class="lb-avatar" alt="Sarah">
+            <div style="flex:1;"><div class="lb-name">Sarah M.</div><div class="lb-role">Senior Barista</div></div>
+            <div style="text-align:right;"><div class="lb-sales">£3,420</div><div class="lb-delta">214 orders</div></div>
+          </div>
+          <div class="lb-item">
+            <div class="lb-rank silver">2</div>
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&q=80&auto=format&fit=crop&face" class="lb-avatar" alt="James">
+            <div style="flex:1;"><div class="lb-name">James T.</div><div class="lb-role">Barista</div></div>
+            <div style="text-align:right;"><div class="lb-sales">£2,890</div><div class="lb-delta">181 orders</div></div>
+          </div>
+          <div class="lb-item">
+            <div class="lb-rank bronze">3</div>
+            <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?w=60&q=80&auto=format&fit=crop&face" class="lb-avatar" alt="Priya">
+            <div style="flex:1;"><div class="lb-name">Priya K.</div><div class="lb-role">Barista</div></div>
+            <div style="text-align:right;"><div class="lb-sales">£2,140</div><div class="lb-delta">159 orders</div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="feat-list" style="grid-template-columns:1fr;">
+          <div class="feat-item"><span class="feat-item-icon">📅</span><div class="feat-item-text"><div class="feat-item-title">Daily, weekly, monthly & yearly views</div><div class="feat-item-desc">Quick views for yesterday and last month. Year-on-year comparison charts to spot trends over time.</div></div></div>
+          <div class="feat-item"><span class="feat-item-icon">🏆</span><div class="feat-item-text"><div class="feat-item-title">Top & slowest-selling products</div><div class="feat-item-desc">Full product breakdown with revenue per item, sales averages per day, and sortable tables.</div></div></div>
+          <div class="feat-item"><span class="feat-item-icon">🕐</span><div class="feat-item-text"><div class="feat-item-title">Peak trading hours</div><div class="feat-item-desc">See exactly when your busiest periods are. Helps with staffing, prep, and stock planning.</div></div></div>
+          <div class="feat-item"><span class="feat-item-icon">🏦</span><div class="feat-item-text"><div class="feat-item-title">VAT reporting</div><div class="feat-item-desc">Weekly and monthly VAT summaries with gross-to-net calculations. VAT period reporting built in.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-inner">
+      <div style="position:relative;z-index:1;">
+        <h2 class="cta-h2">See every feature<br>free for 14 days</h2>
+        <p class="cta-sub">No credit card. Full access. Dedicated onboarding support included. Setup takes less than 10 minutes.</p>
+        <div class="cta-checks">
+          <div class="cta-check"><span class="cta-check-icon">✓</span> Every feature unlocked from day one</div>
+          <div class="cta-check"><span class="cta-check-icon">✓</span> Works on any tablet, phone or desktop</div>
+          <div class="cta-check"><span class="cta-check-icon">✓</span> Cancel anytime — no long-term contract</div>
+        </div>
+        <a href="#" class="btn-cta">Start your free trial →</a>
+      </div>
+      <div style="position:relative;z-index:1;">
+        <div class="cta-photo">
+          <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?w=600&q=80&auto=format&fit=crop" alt="Barista at work" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="footer-logo-mark">Z</div>
+          <span class="footer-logo-text">Zay<span>POS</span></span>
+        </div>
+        <p>The modern cloud POS for cafes, restaurants, and food businesses across the UK. Simpler, smarter, built for the real world.</p>
+        <small>Zayn Productions Ltd · Company No. 16892199<br>1 Alvin Street, Gloucester, GL1 3EJ</small>
+      </div>
+            <div>
+        <div class="footer-col-title">Product</div>
+        <a href="zaypos-features.html" class="footer-link">Features</a>
+        <a href="zaypos-homepage.html#pricing" class="footer-link">Pricing</a>
+        <a href="zaypos-integrations.html" class="footer-link">Integrations</a>
+        <a href="zaypos-changelog.html" class="footer-link">Changelog</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <a href="zaypos-docs.html" class="footer-link">Documentation</a>
+        <a href="zaypos-getting-started.html" class="footer-link">Getting Started</a>
+        <a href="zaypos-contact.html" class="footer-link">Contact Us</a>
+        <a href="zaypos-status.html" class="footer-link">System Status</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <a href="zaypos-privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="zaypos-terms.html" class="footer-link">Terms of Service</a>
+        <a href="zaypos-cookies.html" class="footer-link">Cookie Policy</a>
+        <a href="zaypos-gdpr.html" class="footer-link">GDPR</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 Zayn Productions Ltd. All rights reserved.</div>
+      <div style="display:flex;gap:20px;"><a href="zaypos-privacy.html">Privacy</a><a href="zaypos-terms.html">Terms</a><a href="zaypos-cookies.html">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Scroll-based fade-in */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.07 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+/* Active sticky nav highlight on scroll */
+const sections = document.querySelectorAll('.feat-section[id]');
+const navItems = document.querySelectorAll('.feat-nav-item');
+const onScroll = () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 160) current = s.id; });
+  navItems.forEach(n => {
+    n.classList.toggle('active', n.getAttribute('href') === '#' + current);
+  });
+};
+window.addEventListener('scroll', onScroll, { passive: true });
+</script>
+</body>
+</html>

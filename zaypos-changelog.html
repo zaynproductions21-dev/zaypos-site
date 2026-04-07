@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Changelog — ZayPOS</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#FDFAF6;color:#1A1208;overflow-x:hidden;line-height:1.6;}
+:root{
+  --cream:#FDFAF6;--cream2:#F5F0E8;--cream3:#EDE6D8;
+  --violet:#5B3EF5;--violet-light:#7C62F7;--violet-pale:#EEE9FE;--violet-mid:#C9BDFB;
+  --green:#1B8A5A;--green-pale:#E3F5EE;--amber:#C47D0E;--amber-pale:#FEF3DC;
+  --text:#1A1208;--text-mid:#4A3D2A;--text-muted:#8A7A65;--text-dim:#B0A090;
+  --border:#E5DDD0;--border-dark:#C9BBA8;
+}
+.container{max-width:1160px;margin:0 auto;padding:0 24px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--text);}
+.logo-text span{color:var(--violet);}
+.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-links a{font-size:14px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--text);}
+.nav-links a.active{color:var(--violet);font-weight:500;}
+.nav-cta{display:flex;align-items:center;gap:10px;}
+.btn-ghost{padding:9px 20px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text-mid);background:transparent;border:1px solid var(--border-dark);border-radius:8px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.btn-ghost:hover{background:var(--cream2);}
+.btn-primary{padding:9px 20px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;color:#fff;background:var(--violet);border:none;border-radius:8px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.btn-primary:hover{background:var(--violet-light);}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:transparent;border:1.5px solid var(--border-dark);border-radius:8px;cursor:pointer;padding:7px 8px;}
+.hamburger span{display:block;height:1.5px;background:var(--text-mid);border-radius:2px;transition:all 0.25s;transform-origin:center;}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:66px;left:0;right:0;background:rgba(253,250,246,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 24px 24px;z-index:99;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,0.08);}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{display:block;padding:14px 0;font-size:16px;color:var(--text-mid);text-decoration:none;border-bottom:1px solid var(--border);}
+.mobile-menu a:last-of-type{border-bottom:none;}
+.mobile-menu a:hover{color:var(--violet);}
+.mobile-menu-cta{display:flex;flex-direction:column;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);}
+.mobile-menu-cta a{display:block;text-align:center;padding:13px;border-radius:10px;font-size:15px;font-weight:500;text-decoration:none;}
+.m-btn-ghost{color:var(--text-mid);background:transparent;border:1.5px solid var(--border-dark);}
+.m-btn-primary{color:#fff;background:var(--violet);}
+.page-hero{padding:120px 0 60px;background:var(--cream2);border-bottom:1px solid var(--border);}
+.page-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--violet);background:var(--violet-pale);padding:6px 14px;border-radius:100px;margin-bottom:20px;}
+.page-hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(32px,5vw,56px);line-height:1.08;letter-spacing:-1.5px;color:var(--text);margin-bottom:16px;}
+.page-hero h1 em{font-style:italic;color:var(--violet);}
+.page-hero p{font-size:17px;color:var(--text-muted);line-height:1.75;font-weight:300;max-width:580px;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--violet);margin-bottom:14px;}
+.section-label::before{content:'';width:18px;height:2px;background:var(--violet);border-radius:1px;}
+.section-h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(24px,4vw,42px);line-height:1.1;letter-spacing:-1.2px;color:var(--text);margin-bottom:14px;}
+.section-sub{font-size:16px;color:var(--text-muted);line-height:1.7;font-weight:300;}
+footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:52px;}
+.footer-logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.footer-logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:#fff;}
+.footer-logo-text span{color:#A78BFA;}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.45);margin-top:14px;line-height:1.7;max-width:240px;}
+.footer-brand small{display:block;font-size:11px;color:rgba(255,255,255,0.28);margin-top:12px;}
+.footer-col-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.9);margin-bottom:16px;}
+.footer-link{display:block;font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:10px;transition:color 0.2s;}
+.footer-link:hover{color:rgba(255,255,255,0.9);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:32px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.28);flex-wrap:wrap;gap:12px;}
+.footer-bottom a{color:rgba(255,255,255,0.28);text-decoration:none;}
+.footer-bottom a:hover{color:rgba(255,255,255,0.6);}
+@media(max-width:900px){.hamburger{display:flex;}.nav-links{display:none!important;}.nav-cta{display:none;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr;}}
+
+.changelog-section{padding:80px 0 100px;}
+.changelog-grid{display:grid;grid-template-columns:200px 1fr;gap:60px;align-items:start;}
+.cl-sticky{position:sticky;top:90px;}
+.cl-year-nav a{display:block;font-size:14px;font-weight:500;color:var(--text-muted);text-decoration:none;padding:8px 12px;border-left:2px solid var(--border);margin-bottom:4px;transition:all 0.2s;}
+.cl-year-nav a:hover,.cl-year-nav a.active{color:var(--violet);border-left-color:var(--violet);background:var(--violet-pale);border-radius:0 6px 6px 0;}
+.cl-feed{}
+.cl-entry{margin-bottom:56px;padding-bottom:56px;border-bottom:1px solid var(--border);}
+.cl-entry:last-child{border-bottom:none;margin-bottom:0;}
+.cl-meta{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
+.cl-date{font-size:13px;font-weight:600;color:var(--text-mid);}
+.cl-version{font-size:12px;font-weight:700;padding:3px 10px;background:var(--violet-pale);color:var(--violet);border-radius:100px;border:1px solid var(--violet-mid);}
+.cl-tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:0.5px;}
+.tag-new{background:var(--green-pale);color:var(--green);}
+.tag-improved{background:var(--violet-pale);color:var(--violet);}
+.tag-fix{background:var(--amber-pale);color:var(--amber);}
+.cl-title{font-family:'Fraunces',serif;font-weight:700;font-size:22px;color:var(--text);margin-bottom:10px;letter-spacing:-0.5px;}
+.cl-desc{font-size:15px;color:var(--text-muted);line-height:1.75;font-weight:300;margin-bottom:16px;}
+.cl-items{list-style:none;}
+.cl-items li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text-muted);padding:8px 0;border-bottom:1px solid var(--border);line-height:1.5;}
+.cl-items li:last-child{border-bottom:none;}
+.cl-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.dot-new{background:var(--green);}
+.dot-imp{background:var(--violet);}
+.dot-fix{background:var(--amber);}
+@media(max-width:900px){.changelog-grid{grid-template-columns:1fr;}.cl-sticky{display:none;}}
+</style>
+</head><body>
+<nav>
+  <div class="nav-inner">
+    <a href="zaypos-homepage.html" class="logo"><div class="logo-mark">Z</div><span class="logo-text">Zay<span>POS</span></span></a>
+    <div class="nav-links">
+      <a href="zaypos-features.html">Features</a>
+      <a href="zaypos-homepage.html#pricing">Pricing</a>
+      <a href="zaypos-about.html">About</a>
+      <a href="zaypos-blog.html">Blog</a>
+      <a href="zaypos-contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="btn-ghost">Sign in</a>
+      <a href="#" class="btn-primary">Start free trial</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="zaypos-homepage.html">Home</a>
+  <a href="zaypos-features.html">Features</a>
+  <a href="zaypos-homepage.html#pricing">Pricing</a>
+  <a href="zaypos-about.html">About</a>
+  <a href="zaypos-blog.html">Blog</a>
+  <a href="zaypos-contact.html">Contact</a>
+  <div class="mobile-menu-cta">
+    <a href="#" class="m-btn-ghost">Sign in</a>
+    <a href="#" class="m-btn-primary">Start free trial →</a>
+  </div>
+</div>
+<section class="page-hero"><div class="container">
+  <div class="page-eyebrow">What's new</div>
+  <h1>Product <em>changelog</em></h1>
+  <p>Every update, improvement, and fix — documented. We ship regularly and we're transparent about what changes and when.</p>
+</div></section>
+
+<section class="changelog-section">
+  <div class="container">
+    <div class="changelog-grid">
+      <div class="cl-sticky">
+        <div class="section-label">Jump to</div>
+        <div class="cl-year-nav">
+          <a href="#jan-2025" class="active">January 2025</a>
+          <a href="#dec-2024">December 2024</a>
+          <a href="#nov-2024">November 2024</a>
+          <a href="#oct-2024">October 2024</a>
+          <a href="#sep-2024">September 2024</a>
+        </div>
+      </div>
+      <div class="cl-feed">
+
+        <div class="cl-entry" id="jan-2025">
+          <div class="cl-meta">
+            <span class="cl-date">15 January 2025</span>
+            <span class="cl-version">v2.4.0</span>
+            <span class="cl-tag tag-new">New features</span>
+          </div>
+          <div class="cl-title">AI Meal Deal Builder & iOS Live Widget</div>
+          <div class="cl-desc">Two major additions this month — an AI-powered meal deal suggestion engine and a live sales widget for your iPhone home screen.</div>
+          <ul class="cl-items">
+            <li><div class="cl-dot dot-new"></div>AI meal deal suggestions based on your best-selling product combinations</li>
+            <li><div class="cl-dot dot-new"></div>iOS home screen widget showing live revenue, order count, and trending items</li>
+            <li><div class="cl-dot dot-new"></div>Bundle analytics dashboard — track meal deal revenue and attach rates</li>
+            <li><div class="cl-dot dot-imp"></div>KDS order cards now show elapsed time with colour-coded urgency indicators</li>
+            <li><div class="cl-dot dot-fix"></div>Fixed split payment rounding issue on orders with VAT</li>
+            <li><div class="cl-dot dot-fix"></div>Staff PIN login now works correctly after screen lock on iPad</li>
+          </ul>
+        </div>
+
+        <div class="cl-entry" id="dec-2024">
+          <div class="cl-meta">
+            <span class="cl-date">3 December 2024</span>
+            <span class="cl-version">v2.3.0</span>
+            <span class="cl-tag tag-new">New features</span>
+          </div>
+          <div class="cl-title">Food Safety Module & EHO Inspector Pack</div>
+          <div class="cl-desc">A complete food safety system is now available on the Complete plan — from digital temperature logs to a one-click EHO compliance report.</div>
+          <ul class="cl-items">
+            <li><div class="cl-dot dot-new"></div>Digital temperature logging for fridges, freezers, and hot holding equipment</li>
+            <li><div class="cl-dot dot-new"></div>Customisable daily checklists (opening, cleaning, closing)</li>
+            <li><div class="cl-dot dot-new"></div>SMS reminders to on-shift staff for overdue checklists</li>
+            <li><div class="cl-dot dot-new"></div>One-click EHO-ready compliance report with date range filtering</li>
+            <li><div class="cl-dot dot-new"></div>Staff food safety e-learning modules with quiz assessments</li>
+            <li><div class="cl-dot dot-imp"></div>Delivery logging now supports corrective action documentation</li>
+          </ul>
+        </div>
+
+        <div class="cl-entry" id="nov-2024">
+          <div class="cl-meta">
+            <span class="cl-date">11 November 2024</span>
+            <span class="cl-version">v2.2.0</span>
+            <span class="cl-tag tag-improved">Improvements</span>
+          </div>
+          <div class="cl-title">Payroll Overhaul & Smart Rota Generation</div>
+          <div class="cl-desc">Staff management gets a major upgrade — automatic payroll calculations and an AI-assisted rota generator that considers performance and fairness.</div>
+          <ul class="cl-items">
+            <li><div class="cl-dot dot-new"></div>Automatic payroll calculation from clock-in/out data</li>
+            <li><div class="cl-dot dot-new"></div>Smart rota auto-generation — considers availability, performance, and fairness</li>
+            <li><div class="cl-dot dot-new"></div>Monthly payroll email reports sent to configurable recipients</li>
+            <li><div class="cl-dot dot-imp"></div>Clock-in now validates against rota shifts automatically</li>
+            <li><div class="cl-dot dot-imp"></div>Overtime alerts now configurable per staff member</li>
+            <li><div class="cl-dot dot-fix"></div>Fixed shift swap notifications not sending in some time zones</li>
+          </ul>
+        </div>
+
+        <div class="cl-entry" id="oct-2024">
+          <div class="cl-meta">
+            <span class="cl-date">7 October 2024</span>
+            <span class="cl-version">v2.1.0</span>
+            <span class="cl-tag tag-new">New features</span>
+          </div>
+          <div class="cl-title">QR Table Ordering & Customer Loyalty</div>
+          <div class="cl-desc">Customers can now order directly from their phones via QR codes — no app required. Plus a full loyalty programme with points tracking.</div>
+          <ul class="cl-items">
+            <li><div class="cl-dot dot-new"></div>Unique QR codes generated per table — customers order from their phone</li>
+            <li><div class="cl-dot dot-new"></div>Orders from QR tables appear instantly on the KDS and POS</li>
+            <li><div class="cl-dot dot-new"></div>Points-based loyalty programme with customer profiles</li>
+            <li><div class="cl-dot dot-new"></div>Automated SMS and email review requests for takeaway orders</li>
+            <li><div class="cl-dot dot-imp"></div>Table management dashboard with live occupancy status</li>
+          </ul>
+        </div>
+
+        <div class="cl-entry" id="sep-2024">
+          <div class="cl-meta">
+            <span class="cl-date">2 September 2024</span>
+            <span class="cl-version">v2.0.0</span>
+            <span class="cl-tag tag-new">Major release</span>
+          </div>
+          <div class="cl-title">ZayPOS 2.0 — Complete Platform Rebuild</div>
+          <div class="cl-desc">A ground-up rebuild of the ZayPOS platform with a redesigned interface, real-time sync across all devices, and a new API for external integrations.</div>
+          <ul class="cl-items">
+            <li><div class="cl-dot dot-new"></div>Completely redesigned UI — faster, cleaner, built for touch</li>
+            <li><div class="cl-dot dot-new"></div>Real-time data sync across all devices in your location</li>
+            <li><div class="cl-dot dot-new"></div>Multi-organisation support — manage multiple businesses from one account</li>
+            <li><div class="cl-dot dot-new"></div>Kitchen Display System (KDS) — live order view for kitchen staff</li>
+            <li><div class="cl-dot dot-new"></div>AI invoice processing — upload a photo, stock updates automatically</li>
+            <li><div class="cl-dot dot-new"></div>Secure API endpoint for external integrations</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="footer-logo-mark">Z</div>
+          <span class="footer-logo-text">Zay<span>POS</span></span>
+        </div>
+        <p>The modern cloud POS for cafes, restaurants, and food businesses across the UK.</p>
+        <small>Zayn Productions Ltd · Company No. 16892199<br>1 Alvin Street, Gloucester, GL1 3EJ</small>
+      </div>
+            <div>
+        <div class="footer-col-title">Product</div>
+        <a href="zaypos-features.html" class="footer-link">Features</a>
+        <a href="zaypos-homepage.html#pricing" class="footer-link">Pricing</a>
+        <a href="zaypos-integrations.html" class="footer-link">Integrations</a>
+        <a href="zaypos-changelog.html" class="footer-link">Changelog</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <a href="zaypos-docs.html" class="footer-link">Documentation</a>
+        <a href="zaypos-getting-started.html" class="footer-link">Getting Started</a>
+        <a href="zaypos-contact.html" class="footer-link">Contact Us</a>
+        <a href="zaypos-status.html" class="footer-link">System Status</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <a href="zaypos-privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="zaypos-terms.html" class="footer-link">Terms of Service</a>
+        <a href="zaypos-cookies.html" class="footer-link">Cookie Policy</a>
+        <a href="zaypos-gdpr.html" class="footer-link">GDPR</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 Zayn Productions Ltd. All rights reserved.</div>
+      <div style="display:flex;gap:20px;"><a href="zaypos-privacy.html">Privacy</a><a href="zaypos-terms.html">Terms</a><a href="zaypos-cookies.html">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+<script>
+function toggleMenu(){const m=document.getElementById('mobileMenu');const b=document.getElementById('hamburger');m.classList.toggle('open');b.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
+document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.mobile-menu a').forEach(a=>{a.addEventListener('click',()=>{document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';});});});
+</script></body></html>

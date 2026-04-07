@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — ZayPOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: #FDFAF6; color: #1A1208; overflow-x: hidden; line-height: 1.6; }
+:root {
+  --cream: #FDFAF6; --cream2: #F5F0E8; --cream3: #EDE6D8;
+  --violet: #5B3EF5; --violet-light: #7C62F7; --violet-pale: #EEE9FE; --violet-mid: #C9BDFB;
+  --green: #1B8A5A; --green-pale: #E3F5EE;
+  --text: #1A1208; --text-mid: #4A3D2A; --text-muted: #8A7A65; --text-dim: #B0A090;
+  --border: #E5DDD0; --border-dark: #C9BBA8;
+}
+.container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(253,250,246,0.93); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 24px; }
+.nav-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 66px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-mark { width: 38px; height: 38px; border-radius: 11px; background: var(--violet); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: #fff; }
+.logo-text { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; color: var(--text); }
+.logo-text span { color: var(--violet); }
+.nav-links { display: flex; align-items: center; gap: 30px; }
+.nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-links a.active { color: var(--violet); font-weight: 500; }
+.nav-cta { display: flex; align-items: center; gap: 10px; }
+.btn-ghost { padding: 9px 20px; font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--text-mid); background: transparent; border: 1px solid var(--border-dark); border-radius: 8px; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+.btn-ghost:hover { background: var(--cream2); }
+.btn-primary { padding: 9px 20px; font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 500; color: #fff; background: var(--violet); border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+.btn-primary:hover { background: var(--violet-light); }
+
+/* PAGE HERO */
+.page-hero { padding: 130px 0 80px; background: var(--cream2); border-bottom: 1px solid var(--border); }
+.page-hero-inner { max-width: 700px; }
+.page-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--violet); background: var(--violet-pale); padding: 6px 14px; border-radius: 100px; margin-bottom: 24px; }
+.page-hero h1 { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(36px, 5vw, 58px); line-height: 1.08; letter-spacing: -1.5px; color: var(--text); margin-bottom: 20px; }
+.page-hero h1 em { font-style: italic; color: var(--violet); }
+.page-hero p { font-size: 18px; color: var(--text-muted); line-height: 1.75; font-weight: 300; max-width: 580px; }
+
+/* STORY SECTION */
+.story { padding: 100px 0; }
+.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.story-img { border-radius: 20px; overflow: hidden; box-shadow: 0 12px 60px rgba(0,0,0,0.1); }
+.story-img img { width: 100%; height: 440px; object-fit: cover; display: block; }
+.story-label { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--violet); margin-bottom: 14px; }
+.story-label::before { content: ''; width: 18px; height: 2px; background: var(--violet); border-radius: 1px; }
+.story h2 { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(26px, 3.5vw, 40px); line-height: 1.12; letter-spacing: -1px; color: var(--text); margin-bottom: 20px; }
+.story h2 em { font-style: italic; color: var(--violet); }
+.story p { font-size: 16px; color: var(--text-muted); line-height: 1.8; font-weight: 300; margin-bottom: 20px; }
+.story p:last-child { margin-bottom: 0; }
+
+/* VALUES */
+.values { background: var(--cream2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 100px 0; }
+.values-intro { text-align: center; max-width: 560px; margin: 0 auto 64px; }
+.section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--violet); margin-bottom: 14px; }
+.section-label::before { content: ''; width: 18px; height: 2px; background: var(--violet); border-radius: 1px; }
+.section-h2 { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(26px, 4vw, 44px); line-height: 1.1; letter-spacing: -1.2px; color: var(--text); margin-bottom: 14px; }
+.section-sub { font-size: 16px; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.value-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+.value-icon { font-size: 32px; margin-bottom: 16px; }
+.value-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 19px; color: var(--text); margin-bottom: 10px; }
+.value-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+/* TEAM */
+.team { padding: 100px 0; }
+.team-intro { text-align: center; max-width: 560px; margin: 0 auto 64px; }
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.team-card { text-align: center; }
+.team-photo { width: 120px; height: 120px; border-radius: 50%; overflow: hidden; margin: 0 auto 16px; border: 3px solid #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.team-photo img { width: 100%; height: 100%; object-fit: cover; }
+.team-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 17px; color: var(--text); margin-bottom: 4px; }
+.team-role { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+.team-bio { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+
+/* STATS */
+.about-stats { background: var(--violet); padding: 80px 0; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; }
+.stat-item { text-align: center; padding: 20px; }
+.stat-num { font-family: 'Fraunces', serif; font-weight: 700; font-size: 46px; letter-spacing: -2px; color: #fff; margin-bottom: 6px; }
+.stat-label { font-size: 14px; color: rgba(255,255,255,0.7); }
+
+/* MISSION STRIP */
+.mission { padding: 100px 0; }
+.mission-inner { background: var(--cream2); border: 1px solid var(--border); border-radius: 24px; padding: 80px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.mission-quote { font-family: 'Fraunces', serif; font-style: italic; font-size: clamp(22px, 3vw, 34px); line-height: 1.3; color: var(--text); letter-spacing: -0.5px; }
+.mission-quote::before { content: '"'; font-size: 80px; color: var(--violet-mid); line-height: 0.5; display: block; margin-bottom: 24px; font-style: normal; }
+.mission-detail p { font-size: 16px; color: var(--text-muted); line-height: 1.8; font-weight: 300; margin-bottom: 20px; }
+.mission-detail p:last-child { margin-bottom: 0; }
+.mission-sig { font-family: 'Fraunces', serif; font-weight: 600; font-size: 18px; color: var(--text); margin-top: 28px; }
+.mission-sig span { display: block; font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+
+/* CTA */
+.cta-bar { background: var(--cream2); border-top: 1px solid var(--border); padding: 80px 0; text-align: center; }
+.cta-bar h2 { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(26px, 3.5vw, 42px); letter-spacing: -1px; margin-bottom: 14px; }
+.cta-bar p { font-size: 16px; color: var(--text-muted); margin-bottom: 36px; font-weight: 300; }
+.btn-hero { padding: 14px 32px; font-size: 15px; font-weight: 600; font-family: 'DM Sans', sans-serif; color: #fff; background: var(--violet); border: none; border-radius: 10px; cursor: pointer; text-decoration: none; transition: all 0.2s; box-shadow: 0 4px 20px rgba(91,62,245,0.3); }
+.btn-hero:hover { background: var(--violet-light); transform: translateY(-1px); }
+
+/* FOOTER */
+footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 52px; }
+.footer-logo-mark { width: 38px; height: 38px; border-radius: 11px; background: var(--violet); display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; color: #fff; }
+.footer-logo-text { font-family: 'Fraunces', serif; font-weight: 700; font-size: 20px; color: #fff; }
+.footer-logo-text span { color: #A78BFA; }
+.footer-brand p { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 14px; line-height: 1.7; max-width: 240px; }
+.footer-brand small { display: block; font-size: 11px; color: rgba(255,255,255,0.28); margin-top: 12px; }
+.footer-col-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.9); margin-bottom: 16px; }
+.footer-link { display: block; font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+.footer-link:hover { color: rgba(255,255,255,0.9); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 32px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.28); flex-wrap: wrap; gap: 12px; }
+.footer-bottom a { color: rgba(255,255,255,0.28); text-decoration: none; }
+.footer-bottom a:hover { color: rgba(255,255,255,0.6); }
+
+@media(max-width: 900px) {
+  .story-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .mission-inner { grid-template-columns: 1fr; padding: 48px 32px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links { display: none; }
+}
+@media(max-width: 600px) {
+  .values-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+/* MOBILE MENU */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 38px; height: 38px;
+  background: transparent;
+  border: 1.5px solid var(--border-dark);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 7px 8px;
+  transition: all 0.2s;
+}
+.hamburger:hover { background: var(--cream2); }
+.hamburger span {
+  display: block; height: 1.5px;
+  background: var(--text-mid);
+  border-radius: 2px;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 66px; left: 0; right: 0;
+  background: rgba(253,250,246,0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 24px 24px;
+  z-index: 99;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block;
+  padding: 14px 0;
+  font-size: 16px;
+  color: var(--text-mid);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+  font-weight: 400;
+}
+.mobile-menu a:last-of-type { border-bottom: none; }
+.mobile-menu a:hover { color: var(--violet); }
+.mobile-menu a.active { color: var(--violet); font-weight: 500; }
+.mobile-menu-cta {
+  display: flex; flex-direction: column; gap: 10px;
+  margin-top: 20px; padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.mobile-menu-cta a {
+  display: block; text-align: center; padding: 13px;
+  border-radius: 10px; font-size: 15px; font-weight: 500;
+  text-decoration: none; border: none; transition: all 0.2s;
+}
+.m-btn-ghost { color: var(--text-mid); background: transparent; border: 1.5px solid var(--border-dark) !important; }
+.m-btn-ghost:hover { background: var(--cream2) !important; }
+.m-btn-primary { color: #fff !important; background: var(--violet) !important; border-bottom: 1px solid var(--border) !important; }
+.m-btn-primary:hover { background: var(--violet-light) !important; }
+
+@media(max-width: 900px) {
+  .hamburger { display: flex; }
+  .nav-links { display: none !important; }
+  .nav-cta { display: none; }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="zaypos-homepage.html" class="logo">
+      <div class="logo-mark">Z</div>
+      <span class="logo-text">Zay<span>POS</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="zaypos-homepage.html#features">Features</a>
+      <a href="zaypos-homepage.html#pricing">Pricing</a>
+      <a href="zaypos-about.html" class="active">About</a>
+      <a href="zaypos-blog.html">Blog</a>
+      <a href="zaypos-contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="btn-ghost">Sign in</a>
+      <a href="#" class="btn-primary">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-inner">
+      <div class="page-eyebrow">Our story</div>
+      <h1>Built by people who<br>know <em>food businesses</em></h1>
+      <p>ZayPOS was created because every other POS felt like it was designed by people who'd never worked a Saturday morning rush. We set out to build something different — something your team would actually enjoy using.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-img">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80&auto=format&fit=crop" alt="Coffee shop owner working">
+      </div>
+      <div>
+        <div class="story-label">How it started</div>
+        <h2>We were frustrated by<br>the same things <em>you are</em></h2>
+        <p>ZayPOS started with a simple problem: the POS systems available to small food businesses were either too basic, too expensive, or so complicated that staff needed days of training just to take an order.</p>
+        <p>We saw cafes drowning in paper temperature logs. We watched restaurant managers spending their Sundays manually calculating wages. We saw bakery owners losing stock because their system couldn't keep up.</p>
+        <p>So we built ZayPOS — a system that handles the hard stuff automatically, so you can focus on what you actually love: making great food and creating great experiences for your customers.</p>
+        <p>Today, ZayPOS is used by independent cafes, family-run restaurants, bakeries, and food trucks across the UK. Every feature exists because a real business owner told us they needed it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="about-stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Features built from real feedback</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">9</div>
+        <div class="stat-label">Industries served across the UK</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">99.9%</div>
+        <div class="stat-label">Uptime — always on when you are</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">14</div>
+        <div class="stat-label">Day free trial, no card needed</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="container">
+    <div class="values-intro">
+      <div class="section-label" style="justify-content:center;">What we believe</div>
+      <h2 class="section-h2">Our values</h2>
+      <p class="section-sub">Everything we build is guided by a simple principle: technology should make your working day easier, not harder.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <div class="value-title">Built for real people</div>
+        <div class="value-desc">Every feature is designed for the person on the shop floor, not a tech expert. If your staff can't learn it in five minutes, we haven't done our job.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌱</div>
+        <div class="value-title">Always improving</div>
+        <div class="value-desc">We release updates regularly based on what our customers actually need. You tell us what's missing — we build it. No roadmap locked behind enterprise contracts.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔒</div>
+        <div class="value-title">Privacy & trust</div>
+        <div class="value-desc">Your data is yours. We're UK-based, GDPR compliant, and we will never sell your data. Your customers trust you — you can trust us.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💬</div>
+        <div class="value-title">Real support</div>
+        <div class="value-desc">When you have a problem, you speak to a real person — not a chatbot. Our support team understands food businesses because that's all we work with.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">⚡</div>
+        <div class="value-title">Speed matters</div>
+        <div class="value-desc">In a busy cafe, every second counts. ZayPOS is engineered to be fast, reliable, and responsive — even during your biggest rushes.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🇬🇧</div>
+        <div class="value-title">Proudly UK-built</div>
+        <div class="value-desc">We're a UK company, built for UK businesses. VAT, food safety regulations, and local payment providers — we understand the landscape you operate in.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team">
+  <div class="container">
+    <div class="team-intro">
+      <div class="section-label" style="justify-content:center;">The team</div>
+      <h2 class="section-h2">The people behind ZayPOS</h2>
+      <p class="section-sub">A small team with a big passion for making food businesses run better.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80&auto=format&fit=crop&face" alt="Zain">
+        </div>
+        <div class="team-name">Zain Ahmed</div>
+        <div class="team-role">Founder & CEO</div>
+        <div class="team-bio">Former hospitality manager turned software builder. Zain spent 8 years running cafes before deciding to fix the tools that frustrated him most.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80&auto=format&fit=crop&face" alt="Sophie">
+        </div>
+        <div class="team-name">Sophie Clarke</div>
+        <div class="team-role">Head of Product</div>
+        <div class="team-bio">Sophie works directly with our customers to understand what they need next. Every major feature release has her fingerprints on it.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&q=80&auto=format&fit=crop&face" alt="Marcus">
+        </div>
+        <div class="team-name">Marcus Webb</div>
+        <div class="team-role">Lead Engineer</div>
+        <div class="team-bio">Marcus keeps ZayPOS fast, reliable, and secure. He's obsessed with performance — our 99.9% uptime is largely thanks to his work.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=200&q=80&auto=format&fit=crop&face" alt="Aisha">
+        </div>
+        <div class="team-name">Aisha Patel</div>
+        <div class="team-role">Customer Success</div>
+        <div class="team-bio">Aisha is usually the first person new customers meet. She runs onboarding, handles support, and makes sure every business hits the ground running.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="mission">
+  <div class="container">
+    <div class="mission-inner">
+      <div>
+        <div class="mission-quote">We built ZayPOS for the people who get up at 5am to open their cafe, and stay late to make sure everything's right.</div>
+        <div class="mission-sig">Zain Ahmed<span>Founder, ZayPOS · Zayn Productions Ltd</span></div>
+      </div>
+      <div class="mission-detail">
+        <p>Running a food business is one of the hardest jobs there is. The margins are tight, the hours are long, and the standards are high. We built ZayPOS because we believe that the technology side of things shouldn't add to that difficulty — it should reduce it.</p>
+        <p>We're a small team, based in the UK, and we care deeply about every business that trusts us with their operations. When you're using ZayPOS, you're not just a customer — you're helping us shape what this product becomes.</p>
+        <p>If you ever want to share feedback, suggest a feature, or just tell us what's working (or not), we genuinely want to hear from you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-bar">
+  <div class="container">
+    <h2>Ready to try ZayPOS for free?</h2>
+    <p>14 days, full access, no credit card required. Set up takes less than 10 minutes.</p>
+    <a href="#" class="btn-hero">Start your free trial →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="footer-logo-mark">Z</div>
+          <span class="footer-logo-text">Zay<span>POS</span></span>
+        </div>
+        <p>The modern cloud POS for cafes, restaurants, and food businesses across the UK.</p>
+        <small>Zayn Productions Ltd · Company No. 16892199<br>1 Alvin Street, Gloucester, GL1 3EJ</small>
+      </div>
+            <div>
+        <div class="footer-col-title">Product</div>
+        <a href="zaypos-features.html" class="footer-link">Features</a>
+        <a href="zaypos-homepage.html#pricing" class="footer-link">Pricing</a>
+        <a href="zaypos-integrations.html" class="footer-link">Integrations</a>
+        <a href="zaypos-changelog.html" class="footer-link">Changelog</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <a href="zaypos-docs.html" class="footer-link">Documentation</a>
+        <a href="zaypos-getting-started.html" class="footer-link">Getting Started</a>
+        <a href="zaypos-contact.html" class="footer-link">Contact Us</a>
+        <a href="zaypos-status.html" class="footer-link">System Status</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <a href="zaypos-privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="zaypos-terms.html" class="footer-link">Terms of Service</a>
+        <a href="zaypos-cookies.html" class="footer-link">Cookie Policy</a>
+        <a href="zaypos-gdpr.html" class="footer-link">GDPR</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 Zayn Productions Ltd. All rights reserved.</div>
+      <div style="display:flex;gap:20px;"><a href="zaypos-privacy.html">Privacy</a><a href="zaypos-terms.html">Terms</a><a href="zaypos-cookies.html">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.value-card,.team-card').forEach(el => {
+  el.style.opacity = '0'; el.style.transform = 'translateY(18px)';
+  el.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+  obs.observe(el);
+});
+
+// Mobile menu
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const burger = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  burger.classList.toggle('open');
+  document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+}
+// Close on link click
+document.querySelectorAll('.mobile-menu a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+</script>
+</body>
+</html>

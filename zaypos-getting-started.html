@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Started — ZayPOS</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#FDFAF6;color:#1A1208;overflow-x:hidden;line-height:1.6;}
+:root{
+  --cream:#FDFAF6;--cream2:#F5F0E8;--cream3:#EDE6D8;
+  --violet:#5B3EF5;--violet-light:#7C62F7;--violet-pale:#EEE9FE;--violet-mid:#C9BDFB;
+  --green:#1B8A5A;--green-pale:#E3F5EE;--amber:#C47D0E;--amber-pale:#FEF3DC;
+  --text:#1A1208;--text-mid:#4A3D2A;--text-muted:#8A7A65;--text-dim:#B0A090;
+  --border:#E5DDD0;--border-dark:#C9BBA8;
+}
+.container{max-width:1160px;margin:0 auto;padding:0 24px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--text);}
+.logo-text span{color:var(--violet);}
+.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-links a{font-size:14px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--text);}
+.nav-links a.active{color:var(--violet);font-weight:500;}
+.nav-cta{display:flex;align-items:center;gap:10px;}
+.btn-ghost{padding:9px 20px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text-mid);background:transparent;border:1px solid var(--border-dark);border-radius:8px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.btn-ghost:hover{background:var(--cream2);}
+.btn-primary{padding:9px 20px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;color:#fff;background:var(--violet);border:none;border-radius:8px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.btn-primary:hover{background:var(--violet-light);}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:transparent;border:1.5px solid var(--border-dark);border-radius:8px;cursor:pointer;padding:7px 8px;}
+.hamburger span{display:block;height:1.5px;background:var(--text-mid);border-radius:2px;transition:all 0.25s;transform-origin:center;}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:66px;left:0;right:0;background:rgba(253,250,246,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 24px 24px;z-index:99;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,0.08);}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{display:block;padding:14px 0;font-size:16px;color:var(--text-mid);text-decoration:none;border-bottom:1px solid var(--border);}
+.mobile-menu a:last-of-type{border-bottom:none;}
+.mobile-menu a:hover{color:var(--violet);}
+.mobile-menu-cta{display:flex;flex-direction:column;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);}
+.mobile-menu-cta a{display:block;text-align:center;padding:13px;border-radius:10px;font-size:15px;font-weight:500;text-decoration:none;}
+.m-btn-ghost{color:var(--text-mid);background:transparent;border:1.5px solid var(--border-dark);}
+.m-btn-primary{color:#fff;background:var(--violet);}
+.page-hero{padding:120px 0 60px;background:var(--cream2);border-bottom:1px solid var(--border);}
+.page-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--violet);background:var(--violet-pale);padding:6px 14px;border-radius:100px;margin-bottom:20px;}
+.page-hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(32px,5vw,56px);line-height:1.08;letter-spacing:-1.5px;color:var(--text);margin-bottom:16px;}
+.page-hero h1 em{font-style:italic;color:var(--violet);}
+.page-hero p{font-size:17px;color:var(--text-muted);line-height:1.75;font-weight:300;max-width:580px;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--violet);margin-bottom:14px;}
+.section-label::before{content:'';width:18px;height:2px;background:var(--violet);border-radius:1px;}
+.section-h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(24px,4vw,42px);line-height:1.1;letter-spacing:-1.2px;color:var(--text);margin-bottom:14px;}
+.section-sub{font-size:16px;color:var(--text-muted);line-height:1.7;font-weight:300;}
+footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:52px;}
+.footer-logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.footer-logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:#fff;}
+.footer-logo-text span{color:#A78BFA;}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.45);margin-top:14px;line-height:1.7;max-width:240px;}
+.footer-brand small{display:block;font-size:11px;color:rgba(255,255,255,0.28);margin-top:12px;}
+.footer-col-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.9);margin-bottom:16px;}
+.footer-link{display:block;font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:10px;transition:color 0.2s;}
+.footer-link:hover{color:rgba(255,255,255,0.9);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:32px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.28);flex-wrap:wrap;gap:12px;}
+.footer-bottom a{color:rgba(255,255,255,0.28);text-decoration:none;}
+.footer-bottom a:hover{color:rgba(255,255,255,0.6);}
+@media(max-width:900px){.hamburger{display:flex;}.nav-links{display:none!important;}.nav-cta{display:none;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr;}}
+
+/* GETTING STARTED */
+.gs-hero-strip{background:var(--violet);padding:0;}
+.gs-progress{display:flex;max-width:1160px;margin:0 auto;padding:0 24px;}
+.gs-progress-step{flex:1;padding:18px 16px;text-align:center;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);border-bottom:3px solid transparent;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.gs-progress-step.done{color:rgba(255,255,255,0.8);border-bottom-color:rgba(255,255,255,0.4);}
+.gs-progress-step.active{color:#fff;border-bottom-color:#fff;}
+@media(max-width:700px){.gs-progress-step{font-size:10px;padding:14px 8px;}}
+
+.gs-section{padding:80px 0;}
+.gs-intro{text-align:center;max-width:640px;margin:0 auto 64px;}
+
+/* STEP CARDS */
+.steps-timeline{position:relative;}
+.steps-timeline::before{content:'';position:absolute;left:36px;top:0;bottom:0;width:2px;background:var(--border);}
+.gs-step{display:flex;gap:28px;margin-bottom:52px;position:relative;}
+.gs-step:last-child{margin-bottom:0;}
+.gs-step-left{flex-shrink:0;width:72px;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.gs-step-num{width:44px;height:44px;border-radius:50%;background:#fff;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:var(--text-dim);transition:all 0.3s;flex-shrink:0;z-index:1;}
+.gs-step.complete .gs-step-num{background:var(--green);border-color:var(--green);color:#fff;}
+.gs-step.active .gs-step-num{background:var(--violet);border-color:var(--violet);color:#fff;box-shadow:0 0 0 4px var(--violet-pale);}
+.gs-step-time{font-size:11px;color:var(--text-dim);font-weight:500;white-space:nowrap;}
+.gs-step-body{flex:1;padding-top:8px;}
+.gs-step-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;padding:28px;cursor:pointer;transition:all 0.2s;}
+.gs-step-card:hover{border-color:var(--violet-mid);box-shadow:0 4px 24px rgba(91,62,245,0.08);}
+.gs-step.active .gs-step-card{border-color:var(--violet);box-shadow:0 6px 32px rgba(91,62,245,0.12);}
+.gs-step.complete .gs-step-card{border-color:#A7D9C1;background:#FDFFFE;}
+.gs-step-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px;}
+.gs-step-tag{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--violet);background:var(--violet-pale);padding:3px 10px;border-radius:100px;white-space:nowrap;flex-shrink:0;}
+.gs-step.complete .gs-step-tag{color:var(--green);background:var(--green-pale);}
+.gs-step-title{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--text);margin-bottom:8px;letter-spacing:-0.3px;}
+.gs-step-desc{font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:18px;}
+.gs-step-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.gs-btn-primary{padding:10px 20px;background:var(--violet);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.gs-btn-primary:hover{background:var(--violet-light);}
+.gs-btn-ghost{padding:10px 18px;background:transparent;color:var(--text-muted);border:1.5px solid var(--border-dark);border-radius:8px;font-size:13px;font-weight:500;font-family:'DM Sans',sans-serif;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.gs-btn-ghost:hover{background:var(--cream2);}
+.gs-tip{display:flex;gap:10px;background:var(--violet-pale);border:1px solid var(--violet-mid);border-radius:10px;padding:12px 14px;margin-top:16px;}
+.gs-tip-icon{font-size:16px;flex-shrink:0;margin-top:1px;}
+.gs-tip-text{font-size:13px;color:var(--text-mid);line-height:1.55;}
+.gs-tip-text a{color:var(--violet);text-decoration:none;}
+.gs-sub-list{list-style:none;margin-top:12px;}
+.gs-sub-list li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-muted);padding:7px 0;border-bottom:1px solid var(--border);line-height:1.5;}
+.gs-sub-list li:last-child{border-bottom:none;}
+.gs-check{color:var(--green);font-size:13px;flex-shrink:0;margin-top:1px;}
+
+/* SIDEBAR */
+.gs-layout{display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:start;}
+.gs-sidebar{position:sticky;top:90px;}
+.gs-sidebar-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;}
+.gs-sc-title{font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:var(--text);margin-bottom:14px;}
+.gs-sc-row{display:flex;align-items:center;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--border);}
+.gs-sc-row:last-child{border-bottom:none;}
+.gs-sc-label{color:var(--text-muted);}
+.gs-sc-val{font-weight:600;color:var(--text-mid);}
+.gs-sc-val.green{color:var(--green);}
+.gs-cta-card{background:var(--violet);border-radius:16px;padding:24px;text-align:center;}
+.gs-cta-title{font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;margin-bottom:8px;}
+.gs-cta-sub{font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:18px;line-height:1.5;}
+.gs-cta-btn{display:block;padding:11px;background:#fff;color:var(--violet);border-radius:8px;font-size:13px;font-weight:700;text-decoration:none;transition:all 0.2s;}
+.gs-cta-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,0.15);}
+
+/* VIDEO PLACEHOLDER */
+.video-thumb{background:var(--cream2);border:1px solid var(--border);border-radius:12px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;cursor:pointer;transition:all 0.2s;margin-top:14px;}
+.video-thumb:hover{border-color:var(--violet-mid);}
+.video-play{width:44px;height:44px;background:var(--violet);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.video-play::after{content:'';border:0 solid transparent;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:14px solid #fff;margin-left:3px;}
+.video-label{font-size:12px;color:var(--text-dim);font-weight:500;}
+
+/* FAQ */
+.gs-faq{padding:80px 0;background:var(--cream2);border-top:1px solid var(--border);}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px;}
+.faq-item{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.faq-q{padding:18px 20px;font-size:14px;font-weight:500;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:10px;}
+.faq-arrow{font-size:16px;color:var(--text-dim);transition:transform 0.25s;flex-shrink:0;}
+.faq-item.open .faq-arrow{transform:rotate(180deg);}
+.faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s;font-size:13px;color:var(--text-muted);line-height:1.7;}
+.faq-item.open .faq-a{max-height:200px;padding:0 20px 18px;}
+
+@media(max-width:1000px){.gs-layout{grid-template-columns:1fr;}.gs-sidebar{position:static;display:grid;grid-template-columns:1fr 1fr;gap:16px;}}
+@media(max-width:700px){.gs-sidebar{grid-template-columns:1fr;}.steps-timeline::before{left:22px;}.gs-step-left{width:44px;}.gs-step-num{width:34px;height:34px;font-size:14px;}.faq-grid{grid-template-columns:1fr;}}
+</style>
+</head><body>
+<nav>
+  <div class="nav-inner">
+    <a href="zaypos-homepage.html" class="logo"><div class="logo-mark">Z</div><span class="logo-text">Zay<span>POS</span></span></a>
+    <div class="nav-links">
+      <a href="zaypos-features.html">Features</a>
+      <a href="zaypos-homepage.html#pricing">Pricing</a>
+      <a href="zaypos-about.html">About</a>
+      <a href="zaypos-blog.html">Blog</a>
+      <a href="zaypos-contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="btn-ghost">Sign in</a>
+      <a href="#" class="btn-primary">Start free trial</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="zaypos-homepage.html">Home</a>
+  <a href="zaypos-features.html">Features</a>
+  <a href="zaypos-homepage.html#pricing">Pricing</a>
+  <a href="zaypos-about.html">About</a>
+  <a href="zaypos-blog.html">Blog</a>
+  <a href="zaypos-contact.html">Contact</a>
+  <div class="mobile-menu-cta">
+    <a href="#" class="m-btn-ghost">Sign in</a>
+    <a href="#" class="m-btn-primary">Start free trial →</a>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="container">
+    <div class="page-eyebrow">⚡ Quick setup</div>
+    <h1>Get set up in<br><em>30 minutes</em></h1>
+    <p>Six simple steps to go from sign-up to taking your first order. No technical knowledge needed — if you can use a smartphone, you can set up ZayPOS.</p>
+  </div>
+</section>
+
+<!-- PROGRESS BAR -->
+<div class="gs-hero-strip">
+  <div class="gs-progress">
+    <div class="gs-progress-step done">1. Sign up</div>
+    <div class="gs-progress-step done">2. Business setup</div>
+    <div class="gs-progress-step active">3. Products</div>
+    <div class="gs-progress-step">4. Staff</div>
+    <div class="gs-progress-step">5. Payments</div>
+    <div class="gs-progress-step">6. First order</div>
+  </div>
+</div>
+
+<section class="gs-section">
+  <div class="container">
+    <div class="gs-intro">
+      <div class="section-label" style="justify-content:center;">Step by step</div>
+      <h2 class="section-h2">You'll be taking orders<br>in under 30 minutes</h2>
+      <p class="section-sub">Follow these six steps in order. Most businesses complete setup in one sitting — with time to make a coffee.</p>
+    </div>
+
+    <div class="gs-layout">
+      <!-- MAIN STEPS -->
+      <div>
+        <div class="steps-timeline">
+
+          <!-- STEP 1 -->
+          <div class="gs-step complete">
+            <div class="gs-step-left">
+              <div class="gs-step-num">✓</div>
+              <div class="gs-step-time">~2 min</div>
+            </div>
+            <div class="gs-step-body">
+              <div class="gs-step-card">
+                <div class="gs-step-header">
+                  <div class="gs-step-title">Create your account</div>
+                  <span class="gs-step-tag">Complete</span>
+                </div>
+                <div class="gs-step-desc">Sign up with your email address to start your 14-day free trial. No credit card required. You'll receive a confirmation email — click the link to activate.</div>
+                <ul class="gs-sub-list">
+                  <li><span class="gs-check">✓</span> Enter your name and email</li>
+                  <li><span class="gs-check">✓</span> Choose a secure password</li>
+                  <li><span class="gs-check">✓</span> Confirm your email address</li>
+                  <li><span class="gs-check">✓</span> Select your plan (you can change this anytime during the trial)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div class="gs-step complete">
+            <div class="gs-step-left">
+              <div class="gs-step-num">✓</div>
+              <div class="gs-step-time">~5 min</div>
+            </div>
+            <div class="gs-step-body">
+              <div class="gs-step-card">
+                <div class="gs-step-header">
+                  <div class="gs-step-title">Set up your business</div>
+                  <span class="gs-step-tag">Complete</span>
+                </div>
+                <div class="gs-step-desc">Go to <strong>Settings → Organisation</strong> and fill in your business details. These appear on customer receipts and compliance reports.</div>
+                <ul class="gs-sub-list">
+                  <li><span class="gs-check">✓</span> Business name, address, and phone number</li>
+                  <li><span class="gs-check">✓</span> VAT registration number (if applicable)</li>
+                  <li><span class="gs-check">✓</span> Receipt footer text (e.g. "Thank you for visiting!")</li>
+                  <li><span class="gs-check">✓</span> Your business logo (appears on receipts and reports)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="gs-step active">
+            <div class="gs-step-left">
+              <div class="gs-step-num">3</div>
+              <div class="gs-step-time">~10 min</div>
+            </div>
+            <div class="gs-step-body">
+              <div class="gs-step-card">
+                <div class="gs-step-header">
+                  <div class="gs-step-title">Build your product catalogue</div>
+                  <span class="gs-step-tag">You are here</span>
+                </div>
+                <div class="gs-step-desc">Add your menu items with prices and categories. Products appear as tappable buttons on the order screen — so good organisation here makes your staff's job easier.</div>
+                <ul class="gs-sub-list">
+                  <li><span class="gs-check">→</span> Go to <strong>Products → Catalogue → Add Product</strong></li>
+                  <li><span class="gs-check">→</span> Create categories first (e.g. Hot Drinks, Food, Cakes)</li>
+                  <li><span class="gs-check">→</span> Add each item with name, price, and category</li>
+                  <li><span class="gs-check">→</span> Set up modifiers for items with options (e.g. milk type, size)</li>
+                </ul>
+                <div class="gs-step-actions">
+                  <a href="zaypos-docs.html#products" class="gs-btn-primary">View product guide →</a>
+                  <a href="#bulk-import" class="gs-btn-ghost">Bulk import via Excel</a>
+                </div>
+                <div class="gs-tip">
+                  <div class="gs-tip-icon">💡</div>
+                  <div class="gs-tip-text"><strong>Tip:</strong> Got more than 20 products? Use our <a href="#">Excel import template</a> to upload your whole menu in one go — download the template, fill it in, and upload under Products → Import.</div>
+                </div>
+                <div class="video-thumb" onclick="void(0)">
+                  <div class="video-play"></div>
+                  <div class="video-label">Watch: Adding products (3 min)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4 -->
+          <div class="gs-step">
+            <div class="gs-step-left">
+              <div class="gs-step-num">4</div>
+              <div class="gs-step-time">~5 min</div>
+            </div>
+            <div class="gs-step-body">
+              <div class="gs-step-card">
+                <div class="gs-step-header">
+                  <div class="gs-step-title">Add your staff</div>
+                  <span class="gs-step-tag">Up next</span>
+                </div>
+                <div class="gs-step-desc">Create accounts for everyone who'll use ZayPOS. Each person gets their own 4-digit PIN for fast, secure login at the till.</div>
+                <ul class="gs-sub-list">
+                  <li><span class="gs-check">→</span> Go to <strong>Staff → Accounts → Add Staff</strong></li>
+                  <li><span class="gs-check">→</span> Set each person's name, role (Staff / Manager / Admin), and PIN</li>
+                  <li><span class="gs-check">→</span> Staff role: can take orders only</li>
+                  <li><span class="gs-check">→</span> Manager role: can view reports and manage stock</li>
+                  <li><span class="gs-check">→</span> Admin role: full access to all settings</li>
+                </ul>
+                <div class="gs-step-actions">
+                  <a href="zaypos-docs.html#staff" class="gs-btn-ghost">Staff management guide</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 5 -->
+          <div class="gs-step">
+            <div class="gs-step-left">
+              <div class="gs-step-num">5</div>
+              <div class="gs-step-time">~5 min</div>
+            </div>
+            <div class="gs-step-body">
+              <div class="gs-step-card">
+                <div class="gs-step-header">
+                  <div class="gs-step-title">Connect your payment terminal</div>
+                  <span class="gs-step-tag">Almost there</span>
+                </div>
+                <div class="gs-step-desc">Link your card payment terminal so ZayPOS can send charges directly to it. ZayPOS supports Clover, SumUp, Dojo, and Square.</div>
+                <ul class="gs-sub-list">
+                  <li><span class="gs-check">→</span> Go to <strong>Settings → Payments</strong></li>
+                  <li><span class="gs-check">→</span> Select your payment provider and enter your API credentials</li>
+                  <li><span class="gs-check">→</span> Run a test transaction to confirm the connection</li>
+                  <li><span class="gs-check">→</span> Configure cash drawer settings if applicable</li>
+                </ul>
+                <div class="gs-step-actions">
+                  <a href="zaypos-integrations.html" class="gs-btn-ghost">View payment integrations</a>
+                </div>
+                <div class="gs-tip">
+                  <div class="gs-tip-icon">💳</div>
+                  <div class="gs-tip-text">Don't have a card terminal yet? You can still use ZayPOS with cash-only mode. Add your terminal later under Settings → Payments.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 6 -->
+          <div class="gs-step">
+            <div class="gs-step-left">
+              <div class="gs-step-num">6</div>
+              <div class="gs-step-time">~2 min</div>
+            </div>
+            <div class="gs-step-body">
+              <div class="gs-step-card">
+                <div class="gs-step-header">
+                  <div class="gs-step-title">Take your first order 🎉</div>
+                  <span class="gs-step-tag">Final step</span>
+                </div>
+                <div class="gs-step-desc">You're ready. Open ZayPOS on your tablet or phone, log in with your staff PIN, select your order type, and start taking orders.</div>
+                <ul class="gs-sub-list">
+                  <li><span class="gs-check">→</span> Open <strong>app.zaypos.co.uk</strong> on your device</li>
+                  <li><span class="gs-check">→</span> Enter your 4-digit staff PIN</li>
+                  <li><span class="gs-check">→</span> Select order type: Dine-in, Takeaway, or Delivery</li>
+                  <li><span class="gs-check">→</span> Tap products to add them to the cart</li>
+                  <li><span class="gs-check">→</span> Hit <strong>Charge</strong> and process the payment</li>
+                </ul>
+                <div class="gs-step-actions">
+                  <a href="#" class="gs-btn-primary" style="background:var(--green);">Open ZayPOS app →</a>
+                </div>
+                <div class="gs-tip">
+                  <div class="gs-tip-icon">🎓</div>
+                  <div class="gs-tip-text">Want a guided walkthrough? <a href="zaypos-contact.html">Book a free onboarding call</a> with our team — we'll walk you through everything live.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end steps-timeline -->
+      </div><!-- end main -->
+
+      <!-- SIDEBAR -->
+      <div class="gs-sidebar">
+        <div class="gs-sidebar-card">
+          <div class="gs-sc-title">Your setup progress</div>
+          <div class="gs-sc-row"><span class="gs-sc-label">Account created</span><span class="gs-sc-val green">✓ Done</span></div>
+          <div class="gs-sc-row"><span class="gs-sc-label">Business details</span><span class="gs-sc-val green">✓ Done</span></div>
+          <div class="gs-sc-row"><span class="gs-sc-label">Products added</span><span class="gs-sc-val" style="color:var(--amber);">In progress</span></div>
+          <div class="gs-sc-row"><span class="gs-sc-label">Staff set up</span><span class="gs-sc-val" style="color:var(--text-dim);">Not started</span></div>
+          <div class="gs-sc-row"><span class="gs-sc-label">Payment terminal</span><span class="gs-sc-val" style="color:var(--text-dim);">Not started</span></div>
+          <div class="gs-sc-row"><span class="gs-sc-label">First order taken</span><span class="gs-sc-val" style="color:var(--text-dim);">Not started</span></div>
+        </div>
+
+        <div class="gs-sidebar-card">
+          <div class="gs-sc-title">📖 Helpful guides</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <a href="zaypos-docs.html#products" style="font-size:13px;color:var(--violet);text-decoration:none;padding:6px 0;border-bottom:1px solid var(--border);">Adding products & categories</a>
+            <a href="zaypos-docs.html#ordering" style="font-size:13px;color:var(--violet);text-decoration:none;padding:6px 0;border-bottom:1px solid var(--border);">Taking your first order</a>
+            <a href="zaypos-docs.html#payments" style="font-size:13px;color:var(--violet);text-decoration:none;padding:6px 0;border-bottom:1px solid var(--border);">Setting up payments</a>
+            <a href="zaypos-docs.html#kds" style="font-size:13px;color:var(--violet);text-decoration:none;padding:6px 0;border-bottom:1px solid var(--border);">Kitchen Display System</a>
+            <a href="zaypos-docs.html#staff" style="font-size:13px;color:var(--violet);text-decoration:none;padding:6px 0;">Staff & PIN management</a>
+          </div>
+        </div>
+
+        <div class="gs-cta-card">
+          <div class="gs-cta-title">Need help getting set up?</div>
+          <div class="gs-cta-sub">Book a free 30-minute onboarding call with our team. We'll walk through setup live with you.</div>
+          <a href="zaypos-contact.html" class="gs-cta-btn">Book a free call →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S NEXT -->
+<section style="padding:80px 0;border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="section-label">After setup</div>
+    <h2 class="section-h2" style="margin-bottom:12px;">Explore more of ZayPOS</h2>
+    <p class="section-sub" style="margin-bottom:48px;">Once you're taking orders, here's what to set up next.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <a href="zaypos-docs.html#qr" style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px;text-decoration:none;display:block;transition:all 0.2s;" onmouseover="this.style.borderColor='#C9BDFB';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#E5DDD0';this.style.transform='none'">
+        <div style="font-size:28px;margin-bottom:14px;">📱</div>
+        <div style="font-family:'Fraunces',serif;font-weight:600;font-size:17px;color:#1A1208;margin-bottom:8px;">QR Table Ordering</div>
+        <div style="font-size:14px;color:#8A7A65;line-height:1.65;">Let customers order from their phones. Generate QR codes per table and orders flow straight to the kitchen.</div>
+      </a>
+      <a href="zaypos-docs.html#kds" style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px;text-decoration:none;display:block;transition:all 0.2s;" onmouseover="this.style.borderColor='#C9BDFB';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#E5DDD0';this.style.transform='none'">
+        <div style="font-size:28px;margin-bottom:14px;">📺</div>
+        <div style="font-family:'Fraunces',serif;font-weight:600;font-size:17px;color:#1A1208;margin-bottom:8px;">Kitchen Display</div>
+        <div style="font-size:14px;color:#8A7A65;line-height:1.65;">Set up your KDS on any screen in the kitchen. Orders appear the second they're placed — no more shouting.</div>
+      </a>
+      <a href="zaypos-docs.html#food-safety" style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px;text-decoration:none;display:block;transition:all 0.2s;" onmouseover="this.style.borderColor='#C9BDFB';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#E5DDD0';this.style.transform='none'">
+        <div style="font-size:28px;margin-bottom:14px;">🛡️</div>
+        <div style="font-family:'Fraunces',serif;font-weight:600;font-size:17px;color:#1A1208;margin-bottom:8px;">Food Safety</div>
+        <div style="font-size:14px;color:#8A7A65;line-height:1.65;">Set up digital temperature logs, daily checklists, and your one-click EHO compliance report.</div>
+      </a>
+      <a href="zaypos-docs.html#rota" style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px;text-decoration:none;display:block;transition:all 0.2s;" onmouseover="this.style.borderColor='#C9BDFB';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#E5DDD0';this.style.transform='none'">
+        <div style="font-size:28px;margin-bottom:14px;">📅</div>
+        <div style="font-family:'Fraunces',serif;font-weight:600;font-size:17px;color:#1A1208;margin-bottom:8px;">Rota & Scheduling</div>
+        <div style="font-size:14px;color:#8A7A65;line-height:1.65;">Build your weekly rota, let staff submit availability, and use auto-generation to save time every week.</div>
+      </a>
+      <a href="zaypos-docs.html#stock" style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px;text-decoration:none;display:block;transition:all 0.2s;" onmouseover="this.style.borderColor='#C9BDFB';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#E5DDD0';this.style.transform='none'">
+        <div style="font-size:28px;margin-bottom:14px;">📦</div>
+        <div style="font-family:'Fraunces',serif;font-weight:600;font-size:17px;color:#1A1208;margin-bottom:8px;">Stock Management</div>
+        <div style="font-size:14px;color:#8A7A65;line-height:1.65;">Track stock levels, set low-stock alerts, and let AI process your supplier invoices automatically.</div>
+      </a>
+      <a href="zaypos-docs.html#payroll" style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px;text-decoration:none;display:block;transition:all 0.2s;" onmouseover="this.style.borderColor='#C9BDFB';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#E5DDD0';this.style.transform='none'">
+        <div style="font-size:28px;margin-bottom:14px;">💰</div>
+        <div style="font-family:'Fraunces',serif;font-weight:600;font-size:17px;color:#1A1208;margin-bottom:8px;">Payroll</div>
+        <div style="font-size:14px;color:#8A7A65;line-height:1.65;">Clock-in data automatically calculates wages. Generate payroll reports and email them to your accountant.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="gs-faq">
+  <div class="container">
+    <div class="section-label" style="justify-content:center;">Common questions</div>
+    <h2 class="section-h2" style="text-align:center;">Getting started FAQ</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How long does setup take? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Most businesses complete the core setup (products, staff, payments) in 30–60 minutes. If you have a large menu, use our Excel bulk import to speed things up significantly.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I change my plan during the trial? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Yes, you can switch between Starter, Pro, and Complete at any point during your 14-day trial. Everything is fully accessible on all plans during the trial period.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to buy any hardware? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">No. ZayPOS works on any tablet, phone, or desktop you already own. A receipt printer is optional — we support network ESC/POS printers if you need one.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I need help during setup? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Every trial user gets access to our onboarding team. You can book a free 30-minute call, email us at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="42313732322d30360238233b322d316c212d6c3729">[email&#160;protected]</a>, or chat with us during business hours.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I import my existing product list? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Yes. Download our Excel template, fill in your products with names, prices, and categories, then upload it under Products → Import. Your whole catalogue will be added instantly.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do my staff log in? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Staff use a personal 4-digit PIN to log into ZayPOS — fast, secure, and no passwords to remember. You set the PINs for each staff member from the Staff → Accounts area.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="footer-logo-mark">Z</div>
+          <span class="footer-logo-text">Zay<span>POS</span></span>
+        </div>
+        <p>The modern cloud POS for cafes, restaurants, and food businesses across the UK. Simpler, smarter, built for the real world.</p>
+        <small>Zayn Productions Ltd · Company No. 16892199<br>1 Alvin Street, Gloucester, GL1 3EJ</small>
+      </div>
+      <div>
+        <div class="footer-col-title">Product</div>
+        <a href="zaypos-features.html" class="footer-link">Features</a>
+        <a href="zaypos-homepage.html#pricing" class="footer-link">Pricing</a>
+        <a href="zaypos-integrations.html" class="footer-link">Integrations</a>
+        <a href="zaypos-changelog.html" class="footer-link">Changelog</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <a href="zaypos-docs.html" class="footer-link">Documentation</a>
+        <a href="zaypos-getting-started.html" class="footer-link">Getting Started</a>
+        <a href="zaypos-contact.html" class="footer-link">Contact Us</a>
+        <a href="zaypos-status.html" class="footer-link">System Status</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <a href="zaypos-privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="zaypos-terms.html" class="footer-link">Terms of Service</a>
+        <a href="zaypos-cookies.html" class="footer-link">Cookie Policy</a>
+        <a href="zaypos-gdpr.html" class="footer-link">GDPR</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 Zayn Productions Ltd. All rights reserved.</div>
+      <div style="display:flex;gap:20px;"><a href="zaypos-privacy.html">Privacy</a><a href="zaypos-terms.html">Terms</a><a href="zaypos-cookies.html">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function toggleMenu(){const m=document.getElementById('mobileMenu');const b=document.getElementById('hamburger');m.classList.toggle('open');b.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.mobile-menu a').forEach(a=>{a.addEventListener('click',()=>{document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';});});
+  // Step progress
+  document.querySelectorAll('.gs-step-card'

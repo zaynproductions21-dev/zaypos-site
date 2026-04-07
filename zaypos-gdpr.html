@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GDPR — ZayPOS</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#FDFAF6;color:#1A1208;overflow-x:hidden;line-height:1.6;}
+:root{
+  --cream:#FDFAF6;--cream2:#F5F0E8;--cream3:#EDE6D8;
+  --violet:#5B3EF5;--violet-light:#7C62F7;--violet-pale:#EEE9FE;--violet-mid:#C9BDFB;
+  --green:#1B8A5A;--green-pale:#E3F5EE;
+  --text:#1A1208;--text-mid:#4A3D2A;--text-muted:#8A7A65;--text-dim:#B0A090;
+  --border:#E5DDD0;--border-dark:#C9BBA8;
+}
+.container{max-width:1160px;margin:0 auto;padding:0 24px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--text);}
+.logo-text span{color:var(--violet);}
+.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-links a{font-size:14px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{display:flex;align-items:center;gap:10px;}
+.btn-ghost{padding:9px 20px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text-mid);background:transparent;border:1px solid var(--border-dark);border-radius:8px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.btn-ghost:hover{background:var(--cream2);}
+.btn-primary{padding:9px 20px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;color:#fff;background:var(--violet);border:none;border-radius:8px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.btn-primary:hover{background:var(--violet-light);}
+
+/* LEGAL PAGE LAYOUT */
+.legal-hero{padding:120px 0 56px;background:var(--cream2);border-bottom:1px solid var(--border);}
+.legal-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--violet);background:var(--violet-pale);padding:5px 12px;border-radius:100px;margin-bottom:18px;}
+.legal-hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(30px,5vw,50px);line-height:1.1;letter-spacing:-1.2px;color:var(--text);margin-bottom:14px;}
+.legal-meta{font-size:13px;color:var(--text-dim);}
+.legal-meta span{color:var(--text-muted);font-weight:500;}
+
+.legal-body{padding:70px 0 100px;}
+.legal-grid{display:grid;grid-template-columns:220px 1fr;gap:60px;align-items:start;}
+
+/* STICKY TOC */
+.legal-toc{position:sticky;top:90px;}
+.toc-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:14px;}
+.toc-link{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;padding:7px 10px;border-left:2px solid var(--border);margin-bottom:2px;transition:all 0.2s;line-height:1.4;}
+.toc-link:hover{color:var(--violet);border-left-color:var(--violet-mid);}
+.toc-link.active{color:var(--violet);border-left-color:var(--violet);font-weight:500;background:var(--violet-pale);border-radius:0 6px 6px 0;}
+
+/* LEGAL CONTENT */
+.legal-content h2{font-family:'Fraunces',serif;font-weight:700;font-size:22px;color:var(--text);letter-spacing:-0.5px;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--border);}
+.legal-content h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+.legal-content h3{font-size:16px;font-weight:600;color:var(--text-mid);margin:24px 0 10px;}
+.legal-content p{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:16px;font-weight:300;}
+.legal-content ul,.legal-content ol{margin:0 0 16px 20px;}
+.legal-content li{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:6px;font-weight:300;}
+.legal-content a{color:var(--violet);text-decoration:none;}
+.legal-content a:hover{text-decoration:underline;}
+.legal-callout{background:var(--violet-pale);border:1px solid var(--violet-mid);border-radius:12px;padding:20px 24px;margin:24px 0;}
+.legal-callout p{margin-bottom:0;color:var(--text-mid);font-weight:400;}
+.legal-callout strong{color:var(--violet);}
+.legal-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;}
+.legal-table th{background:var(--cream2);padding:10px 14px;text-align:left;font-weight:600;color:var(--text-mid);border:1px solid var(--border);font-size:13px;}
+.legal-table td{padding:10px 14px;color:var(--text-muted);border:1px solid var(--border);vertical-align:top;line-height:1.6;}
+.legal-table tr:nth-child(even) td{background:var(--cream);}
+
+/* OTHER LEGAL LINKS */
+.legal-also{background:var(--cream2);border-top:1px solid var(--border);padding:60px 0;}
+.also-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
+.also-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px;text-decoration:none;transition:all 0.2s;display:block;}
+.also-card:hover{border-color:var(--violet-mid);transform:translateY(-2px);box-shadow:0 8px 24px rgba(91,62,245,0.08);}
+.also-card-icon{font-size:24px;margin-bottom:10px;}
+.also-card-title{font-family:'Fraunces',serif;font-weight:600;font-size:16px;color:var(--text);margin-bottom:4px;}
+.also-card-desc{font-size:13px;color:var(--text-muted);}
+
+/* MOBILE MENU */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:transparent;border:1.5px solid var(--border-dark);border-radius:8px;cursor:pointer;padding:7px 8px;transition:all 0.2s;}
+.hamburger:hover{background:var(--cream2);}
+.hamburger span{display:block;height:1.5px;background:var(--text-mid);border-radius:2px;transition:all 0.25s;transform-origin:center;}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:66px;left:0;right:0;background:rgba(253,250,246,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 24px 24px;z-index:99;flex-direction:column;gap:0;box-shadow:0 8px 40px rgba(0,0,0,0.08);}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{display:block;padding:14px 0;font-size:16px;color:var(--text-mid);text-decoration:none;border-bottom:1px solid var(--border);transition:color 0.2s;}
+.mobile-menu a:last-of-type{border-bottom:none;}
+.mobile-menu a:hover{color:var(--violet);}
+.mobile-menu-cta{display:flex;flex-direction:column;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);}
+.mobile-menu-cta a{display:block;text-align:center;padding:13px;border-radius:10px;font-size:15px;font-weight:500;text-decoration:none;}
+.m-btn-ghost{color:var(--text-mid);background:transparent;border:1.5px solid var(--border-dark);}
+.m-btn-primary{color:#fff;background:var(--violet);}
+
+/* FOOTER */
+footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:52px;}
+.footer-logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.footer-logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:#fff;}
+.footer-logo-text span{color:#A78BFA;}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.45);margin-top:14px;line-height:1.7;max-width:240px;}
+.footer-brand small{display:block;font-size:11px;color:rgba(255,255,255,0.28);margin-top:12px;}
+.footer-col-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.9);margin-bottom:16px;}
+.footer-link{display:block;font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:10px;transition:color 0.2s;}
+.footer-link:hover{color:rgba(255,255,255,0.9);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:32px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.28);flex-wrap:wrap;gap:12px;}
+.footer-bottom a{color:rgba(255,255,255,0.28);text-decoration:none;}
+.footer-bottom a:hover{color:rgba(255,255,255,0.6);}
+
+@media(max-width:900px){
+  .hamburger{display:flex;}
+  .nav-links{display:none!important;}
+  .nav-cta{display:none;}
+  .legal-grid{grid-template-columns:1fr;}
+  .legal-toc{display:none;}
+  .also-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body><nav>
+  <div class="nav-inner">
+    <a href="zaypos-homepage.html" class="logo">
+      <div class="logo-mark">Z</div>
+      <span class="logo-text">Zay<span>POS</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="zaypos-homepage.html#features">Features</a>
+      <a href="zaypos-homepage.html#pricing">Pricing</a>
+      <a href="zaypos-about.html">About</a>
+      <a href="zaypos-blog.html">Blog</a>
+      <a href="zaypos-contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="btn-ghost">Sign in</a>
+      <a href="#" class="btn-primary">Start free trial</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="zaypos-homepage.html">Home</a>
+  <a href="zaypos-homepage.html#features">Features</a>
+  <a href="zaypos-homepage.html#pricing">Pricing</a>
+  <a href="zaypos-about.html">About</a>
+  <a href="zaypos-blog.html">Blog</a>
+  <a href="zaypos-contact.html">Contact</a>
+  <div class="mobile-menu-cta">
+    <a href="#" class="m-btn-ghost">Sign in</a>
+    <a href="#" class="m-btn-primary">Start free trial →</a>
+  </div>
+</div>
+<section class="legal-hero">
+  <div class="container">
+    <div class="legal-eyebrow">Legal</div>
+    <h1>GDPR & Data Protection</h1>
+    <div class="legal-meta">Last updated: <span>1 January 2025</span></div>
+  </div>
+</section>
+<section class="legal-body">
+  <div class="container">
+    <div class="legal-grid">
+      <aside class="legal-toc">
+        <div class="toc-title">Contents</div>
+        <a href="#overview" class="toc-link active">1. Overview</a>
+        <a href="#controller" class="toc-link">2. Data controller</a>
+        <a href="#processor" class="toc-link">3. You as controller</a>
+        <a href="#lawful-basis" class="toc-link">4. Lawful basis</a>
+        <a href="#your-rights" class="toc-link">5. Your rights</a>
+        <a href="#dpa" class="toc-link">6. Data processing agreement</a>
+        <a href="#transfers" class="toc-link">7. International transfers</a>
+        <a href="#breach" class="toc-link">8. Breach notification</a>
+        <a href="#dpo" class="toc-link">9. Data protection contact</a>
+        <a href="#ico" class="toc-link">10. ICO & complaints</a>
+      </aside>
+      <div class="legal-content">
+        <div class="legal-callout"><p><strong>ZayPOS is built with UK GDPR compliance in mind.</strong> We are a UK-based company, and data protection is fundamental to how we design and operate our platform — not an afterthought.</p></div>
+
+        <h2 id="overview">1. Overview</h2>
+        <p>The UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018 govern how personal data must be handled in the United Kingdom. As a UK-registered company, Zayn Productions Ltd is fully subject to these laws and takes our obligations seriously.</p>
+        <p>This page explains how GDPR applies to your use of ZayPOS, both as a user of our platform and as a business that may process the personal data of your own customers and staff.</p>
+
+        <h2 id="controller">2. Zayn Productions Ltd as data controller</h2>
+        <p>For personal data relating to ZayPOS account holders, trial users, and website visitors, <strong>Zayn Productions Ltd is the data controller</strong>. This means we determine the purposes and means of processing your personal data.</p>
+        <p>Our full data controller details:</p>
+        <ul>
+          <li><strong>Name:</strong> Zayn Productions Ltd</li>
+          <li><strong>Company number:</strong> 16892199</li>
+          <li><strong>Address:</strong> 1 Alvin Street, Gloucester, England, GL1 3EJ</li>
+          <li><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#4c3c3e253a2d2f350c362d353c233f622f23623927"><span class="__cf_email__" data-cfemail="4030322936212339003a2139302f336e232f6e352b">[email&#160;protected]</span></a></li>
+        </ul>
+
+        <h2 id="processor">3. You as data controller — we as processor</h2>
+        <p>When you use ZayPOS to manage data about your own customers (e.g. loyalty members, review contacts) or your staff (e.g. clock-in records, payroll data), <strong>you are the data controller</strong> for that data, and <strong>Zayn Productions Ltd acts as your data processor</strong>.</p>
+        <p>This means:</p>
+        <ul>
+          <li>You are responsible for having a lawful basis to collect and process your customers' and staff's personal data</li>
+          <li>You must ensure individuals are informed about how their data is used (e.g. via your own privacy notice)</li>
+          <li>We process that data only on your instructions and in accordance with our Data Processing Agreement</li>
+          <li>We implement appropriate technical and organisational measures to protect the data we process on your behalf</li>
+        </ul>
+
+        <h2 id="lawful-basis">4. Lawful basis for processing</h2>
+        <p>We process personal data only where we have a valid lawful basis. The bases we rely on include:</p>
+        <table class="legal-table">
+          <tr><th>Processing activity</th><th>Lawful basis</th></tr>
+          <tr><td>Creating and managing your account</td><td>Contract performance</td></tr>
+          <tr><td>Billing and subscription management</td><td>Contract performance / Legal obligation</td></tr>
+          <tr><td>Platform security and fraud prevention</td><td>Legitimate interests</td></tr>
+          <tr><td>Product improvement and analytics</td><td>Legitimate interests</td></tr>
+          <tr><td>Marketing communications</td><td>Consent</td></tr>
+          <tr><td>Compliance with food safety law</td><td>Legal obligation</td></tr>
+          <tr><td>Responding to legal requests</td><td>Legal obligation</td></tr>
+        </table>
+
+        <h2 id="your-rights">5. Your rights under UK GDPR</h2>
+        <p>As a data subject, you have the following rights:</p>
+        <table class="legal-table">
+          <tr><th>Right</th><th>What it means</th><th>How to exercise</th></tr>
+          <tr><td><strong>Access</strong></td><td>Receive a copy of your personal data</td><td>Email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a6d6d4cfd0c7c5dfe6dcc7dfd6c9d588c5c988d3cd">[email&#160;protected]</a></td></tr>
+          <tr><td><strong>Rectification</strong></td><td>Correct inaccurate or incomplete data</td><td>Email or in-app settings</td></tr>
+          <tr><td><strong>Erasure</strong></td><td>Request deletion of your data</td><td>Email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c9b9bba0bfa8aab089b3a8b0b9a6bae7aaa6e7bca2">[email&#160;protected]</a></td></tr>
+          <tr><td><strong>Restriction</strong></td><td>Limit how we process your data</td><td>Email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2454564d5245475d645e455d544b570a474b0a514f">[email&#160;protected]</a></td></tr>
+          <tr><td><strong>Portability</strong></td><td>Receive data in machine-readable format</td><td>Email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1565677c6374766c556f746c657a663b767a3b607e">[email&#160;protected]</a></td></tr>
+          <tr><td><strong>Object</strong></td><td>Object to processing based on legitimate interests</td><td>Email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e9999b809f888a90a993889099869ac78a86c79c82">[email&#160;protected]</a></td></tr>
+          <tr><td><strong>Withdraw consent</strong></td><td>Stop consent-based processing at any time</td><td>Unsubscribe link or email</td></tr>
+        </table>
+        <p>We will respond to all requests within <strong>30 days</strong>. We may ask you to verify your identity before processing your request. There is no charge for exercising these rights in most circumstances.</p>
+
+        <h2 id="dpa">6. Data Processing Agreement</h2>
+        <p>If you are a business using ZayPOS to process the personal data of your customers or staff, you may require a formal Data Processing Agreement (DPA) with us to comply with your own GDPR obligations.</p>
+        <p>Our standard DPA is available on request. Please email <a href="/cdn-cgi/l/email-protection#5424263d2235372d142e352d243b277a373b7a213f"><span class="__cf_email__" data-cfemail="8afaf8e3fcebe9f3caf0ebf3fae5f9a4e9e5a4ffe1">[email&#160;protected]</span></a> with the subject line "DPA Request" and we will provide it within 5 business days.</p>
+        <p>The DPA covers: the nature and purpose of processing, categories of data, duration, sub-processors, security measures, and data subject rights assistance.</p>
+
+        <h2 id="transfers">7. International data transfers</h2>
+        <p>ZayPOS primarily stores and processes data within the United Kingdom. Where we use third-party sub-processors located outside the UK (such as Amazon Web Services infrastructure in the EU), we ensure that appropriate safeguards are in place, including:</p>
+        <ul>
+          <li>UK adequacy decisions or equivalent safeguards</li>
+          <li>Standard contractual clauses (SCCs) approved for UK transfers</li>
+          <li>Transfer impact assessments where required</li>
+        </ul>
+
+        <h2 id="breach">8. Data breach notification</h2>
+        <p>In the event of a personal data breach that is likely to result in a risk to individuals' rights and freedoms, we will notify the Information Commissioner's Office (ICO) within 72 hours of becoming aware of it, as required by UK GDPR Article 33.</p>
+        <p>Where a breach is likely to result in a high risk to affected individuals, we will also notify those individuals directly without undue delay.</p>
+        <p>If you become aware of any potential security issue relating to your ZayPOS account, please contact us immediately at <a href="/cdn-cgi/l/email-protection#1764727462657e636e576d766e67786439747839627c"><span class="__cf_email__" data-cfemail="3447515741465d404d744e554d445b471a575b1a415f">[email&#160;protected]</span></a>.</p>
+
+        <h2 id="dpo">9. Data protection contact</h2>
+        <p>We do not currently meet the threshold to require a formal Data Protection Officer (DPO) appointment. However, all data protection queries are handled by our privacy team:</p>
+        <p><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#bcccced5cadddfc5fcc6ddc5ccd3cf92dfd392c9d7"><span class="__cf_email__" data-cfemail="4434362d3225273d043e253d342b376a272b6a312f">[email&#160;protected]</span></a><br>
+        <strong>Post:</strong> Data Protection, Zayn Productions Ltd, 1 Alvin Street, Gloucester, GL1 3EJ</p>
+
+        <h2 id="ico">10. ICO registration and complaints</h2>
+        <p>Zayn Productions Ltd is registered with the Information Commissioner's Office (ICO) as required under the Data Protection Act 2018.</p>
+        <p>If you are unhappy with how we have handled your personal data, you have the right to lodge a complaint with the ICO:</p>
+        <ul>
+          <li><strong>Website:</strong> <a href="https://ico.org.uk/make-a-complaint" target="_blank">ico.org.uk/make-a-complaint</a></li>
+          <li><strong>Phone:</strong> 0303 123 1113</li>
+          <li><strong>Post:</strong> Information Commissioner's Office, Wycliffe House, Water Lane, Wilmslow, Cheshire, SK9 5AF</li>
+        </ul>
+        <p>We would always welcome the opportunity to resolve any concerns directly before you contact the ICO — please reach out to us first.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="legal-also"><div class="container">
+<p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:10px;">Related legal documents</p>
+<div class="also-grid">
+  <a href="zaypos-privacy.html" class="also-card"><div class="also-card-icon">🔒</div><div class="also-card-title">Privacy Policy</div><div class="also-card-desc">How we collect, use and protect your data.</div></a>
+  <a href="zaypos-terms.html" class="also-card"><div class="also-card-icon">📋</div><div class="also-card-title">Terms of Service</div><div class="also-card-desc">The rules and conditions for using ZayPOS.</div></a>
+  <a href="zaypos-cookies.html" class="also-card"><div class="also-card-icon">🍪</div><div class="also-card-title">Cookie Policy</div><div class="also-card-desc">How we use cookies and tracking on our website.</div></a>
+</div></div></section><footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="footer-logo-mark">Z</div>
+          <span class="footer-logo-text">Zay<span>POS</span></span>
+        </div>
+        <p>The modern cloud POS for cafes, restaurants, and food businesses across the UK.</p>
+        <small>Zayn Productions Ltd · Company No. 16892199<br>1 Alvin Street, Gloucester, GL1 3EJ</small>
+      </div>
+            <div>
+        <div class="footer-col-title">Product</div>
+        <a href="zaypos-features.html" class="footer-link">Features</a>
+        <a href="zaypos-homepage.html#pricing" class="footer-link">Pricing</a>
+        <a href="zaypos-integrations.html" class="footer-link">Integrations</a>
+        <a href="zaypos-changelog.html" class="footer-link">Changelog</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <a href="zaypos-docs.html" class="footer-link">Documentation</a>
+        <a href="zaypos-getting-started.html" class="footer-link">Getting Started</a>
+        <a href="zaypos-contact.html" class="footer-link">Contact Us</a>
+        <a href="zaypos-status.html" class="footer-link">System Status</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <a href="zaypos-privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="zaypos-terms.html" class="footer-link">Terms of Service</a>
+        <a href="zaypos-cookies.html" class="footer-link">Cookie Policy</a>
+        <a href="zaypos-gdpr.html" class="footer-link">GDPR</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 Zayn Productions Ltd. All rights reserved.</div>
+      <div style="display:flex;gap:20px;">
+        <a href="zaypos-privacy.html">Privacy</a>
+        <a href="zaypos-terms.html">Terms</a>
+        <a href="zaypos-cookies.html">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-s

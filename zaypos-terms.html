@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — ZayPOS</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#FDFAF6;color:#1A1208;overflow-x:hidden;line-height:1.6;}
+:root{
+  --cream:#FDFAF6;--cream2:#F5F0E8;--cream3:#EDE6D8;
+  --violet:#5B3EF5;--violet-light:#7C62F7;--violet-pale:#EEE9FE;--violet-mid:#C9BDFB;
+  --green:#1B8A5A;--green-pale:#E3F5EE;
+  --text:#1A1208;--text-mid:#4A3D2A;--text-muted:#8A7A65;--text-dim:#B0A090;
+  --border:#E5DDD0;--border-dark:#C9BBA8;
+}
+.container{max-width:1160px;margin:0 auto;padding:0 24px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--text);}
+.logo-text span{color:var(--violet);}
+.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-links a{font-size:14px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{display:flex;align-items:center;gap:10px;}
+.btn-ghost{padding:9px 20px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text-mid);background:transparent;border:1px solid var(--border-dark);border-radius:8px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.btn-ghost:hover{background:var(--cream2);}
+.btn-primary{padding:9px 20px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;color:#fff;background:var(--violet);border:none;border-radius:8px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.btn-primary:hover{background:var(--violet-light);}
+
+/* LEGAL PAGE LAYOUT */
+.legal-hero{padding:120px 0 56px;background:var(--cream2);border-bottom:1px solid var(--border);}
+.legal-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--violet);background:var(--violet-pale);padding:5px 12px;border-radius:100px;margin-bottom:18px;}
+.legal-hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(30px,5vw,50px);line-height:1.1;letter-spacing:-1.2px;color:var(--text);margin-bottom:14px;}
+.legal-meta{font-size:13px;color:var(--text-dim);}
+.legal-meta span{color:var(--text-muted);font-weight:500;}
+
+.legal-body{padding:70px 0 100px;}
+.legal-grid{display:grid;grid-template-columns:220px 1fr;gap:60px;align-items:start;}
+
+/* STICKY TOC */
+.legal-toc{position:sticky;top:90px;}
+.toc-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:14px;}
+.toc-link{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;padding:7px 10px;border-left:2px solid var(--border);margin-bottom:2px;transition:all 0.2s;line-height:1.4;}
+.toc-link:hover{color:var(--violet);border-left-color:var(--violet-mid);}
+.toc-link.active{color:var(--violet);border-left-color:var(--violet);font-weight:500;background:var(--violet-pale);border-radius:0 6px 6px 0;}
+
+/* LEGAL CONTENT */
+.legal-content h2{font-family:'Fraunces',serif;font-weight:700;font-size:22px;color:var(--text);letter-spacing:-0.5px;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--border);}
+.legal-content h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+.legal-content h3{font-size:16px;font-weight:600;color:var(--text-mid);margin:24px 0 10px;}
+.legal-content p{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:16px;font-weight:300;}
+.legal-content ul,.legal-content ol{margin:0 0 16px 20px;}
+.legal-content li{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:6px;font-weight:300;}
+.legal-content a{color:var(--violet);text-decoration:none;}
+.legal-content a:hover{text-decoration:underline;}
+.legal-callout{background:var(--violet-pale);border:1px solid var(--violet-mid);border-radius:12px;padding:20px 24px;margin:24px 0;}
+.legal-callout p{margin-bottom:0;color:var(--text-mid);font-weight:400;}
+.legal-callout strong{color:var(--violet);}
+.legal-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;}
+.legal-table th{background:var(--cream2);padding:10px 14px;text-align:left;font-weight:600;color:var(--text-mid);border:1px solid var(--border);font-size:13px;}
+.legal-table td{padding:10px 14px;color:var(--text-muted);border:1px solid var(--border);vertical-align:top;line-height:1.6;}
+.legal-table tr:nth-child(even) td{background:var(--cream);}
+
+/* OTHER LEGAL LINKS */
+.legal-also{background:var(--cream2);border-top:1px solid var(--border);padding:60px 0;}
+.also-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
+.also-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px;text-decoration:none;transition:all 0.2s;display:block;}
+.also-card:hover{border-color:var(--violet-mid);transform:translateY(-2px);box-shadow:0 8px 24px rgba(91,62,245,0.08);}
+.also-card-icon{font-size:24px;margin-bottom:10px;}
+.also-card-title{font-family:'Fraunces',serif;font-weight:600;font-size:16px;color:var(--text);margin-bottom:4px;}
+.also-card-desc{font-size:13px;color:var(--text-muted);}
+
+/* MOBILE MENU */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:transparent;border:1.5px solid var(--border-dark);border-radius:8px;cursor:pointer;padding:7px 8px;transition:all 0.2s;}
+.hamburger:hover{background:var(--cream2);}
+.hamburger span{display:block;height:1.5px;background:var(--text-mid);border-radius:2px;transition:all 0.25s;transform-origin:center;}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:66px;left:0;right:0;background:rgba(253,250,246,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 24px 24px;z-index:99;flex-direction:column;gap:0;box-shadow:0 8px 40px rgba(0,0,0,0.08);}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{display:block;padding:14px 0;font-size:16px;color:var(--text-mid);text-decoration:none;border-bottom:1px solid var(--border);transition:color 0.2s;}
+.mobile-menu a:last-of-type{border-bottom:none;}
+.mobile-menu a:hover{color:var(--violet);}
+.mobile-menu-cta{display:flex;flex-direction:column;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);}
+.mobile-menu-cta a{display:block;text-align:center;padding:13px;border-radius:10px;font-size:15px;font-weight:500;text-decoration:none;}
+.m-btn-ghost{color:var(--text-mid);background:transparent;border:1.5px solid var(--border-dark);}
+.m-btn-primary{color:#fff;background:var(--violet);}
+
+/* FOOTER */
+footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:52px;}
+.footer-logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.footer-logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:#fff;}
+.footer-logo-text span{color:#A78BFA;}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.45);margin-top:14px;line-height:1.7;max-width:240px;}
+.footer-brand small{display:block;font-size:11px;color:rgba(255,255,255,0.28);margin-top:12px;}
+.footer-col-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.9);margin-bottom:16px;}
+.footer-link{display:block;font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:10px;transition:color 0.2s;}
+.footer-link:hover{color:rgba(255,255,255,0.9);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:32px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.28);flex-wrap:wrap;gap:12px;}
+.footer-bottom a{color:rgba(255,255,255,0.28);text-decoration:none;}
+.footer-bottom a:hover{color:rgba(255,255,255,0.6);}
+
+@media(max-width:900px){
+  .hamburger{display:flex;}
+  .nav-links{display:none!important;}
+  .nav-cta{display:none;}
+  .legal-grid{grid-template-columns:1fr;}
+  .legal-toc{display:none;}
+  .also-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body><nav>
+  <div class="nav-inner">
+    <a href="zaypos-homepage.html" class="logo">
+      <div class="logo-mark">Z</div>
+      <span class="logo-text">Zay<span>POS</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="zaypos-homepage.html#features">Features</a>
+      <a href="zaypos-homepage.html#pricing">Pricing</a>
+      <a href="zaypos-about.html">About</a>
+      <a href="zaypos-blog.html">Blog</a>
+      <a href="zaypos-contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="btn-ghost">Sign in</a>
+      <a href="#" class="btn-primary">Start free trial</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="zaypos-homepage.html">Home</a>
+  <a href="zaypos-homepage.html#features">Features</a>
+  <a href="zaypos-homepage.html#pricing">Pricing</a>
+  <a href="zaypos-about.html">About</a>
+  <a href="zaypos-blog.html">Blog</a>
+  <a href="zaypos-contact.html">Contact</a>
+  <div class="mobile-menu-cta">
+    <a href="#" class="m-btn-ghost">Sign in</a>
+    <a href="#" class="m-btn-primary">Start free trial →</a>
+  </div>
+</div>
+<section class="legal-hero">
+  <div class="container">
+    <div class="legal-eyebrow">Legal</div>
+    <h1>Terms of Service</h1>
+    <div class="legal-meta">Last updated: <span>1 January 2025</span> &nbsp;·&nbsp; Effective: <span>1 January 2025</span></div>
+  </div>
+</section>
+<section class="legal-body">
+  <div class="container">
+    <div class="legal-grid">
+      <aside class="legal-toc">
+        <div class="toc-title">Contents</div>
+        <a href="#acceptance" class="toc-link active">1. Acceptance</a>
+        <a href="#service" class="toc-link">2. The service</a>
+        <a href="#accounts" class="toc-link">3. Accounts</a>
+        <a href="#subscriptions" class="toc-link">4. Subscriptions & billing</a>
+        <a href="#acceptable-use" class="toc-link">5. Acceptable use</a>
+        <a href="#your-data" class="toc-link">6. Your data</a>
+        <a href="#ip" class="toc-link">7. Intellectual property</a>
+        <a href="#liability" class="toc-link">8. Limitation of liability</a>
+        <a href="#termination" class="toc-link">9. Termination</a>
+        <a href="#disputes" class="toc-link">10. Disputes</a>
+        <a href="#changes" class="toc-link">11. Changes</a>
+        <a href="#contact" class="toc-link">12. Contact</a>
+      </aside>
+      <div class="legal-content">
+        <div class="legal-callout"><p><strong>Plain English summary:</strong> By using ZayPOS, you agree to these terms. You own your data. We provide the service in good faith. You can cancel anytime. We're governed by English law.</p></div>
+
+        <h2 id="acceptance">1. Acceptance of terms</h2>
+        <p>By accessing or using ZayPOS (the "Service"), you agree to be bound by these Terms of Service ("Terms"). If you are using ZayPOS on behalf of a business, you represent that you have authority to bind that business to these Terms.</p>
+        <p>These Terms constitute a legally binding agreement between you and <strong>Zayn Productions Ltd</strong> (Company No. 16892199), registered at 1 Alvin Street, Gloucester, England, GL1 3EJ ("we", "us", "ZayPOS").</p>
+
+        <h2 id="service">2. The service</h2>
+        <p>ZayPOS provides a cloud-based point-of-sale platform designed for food and drink businesses, including order management, payment processing, staff management, inventory tracking, food safety compliance tools, and related features.</p>
+        <p>We reserve the right to modify, suspend, or discontinue any aspect of the Service at any time, with reasonable notice where possible. We will endeavour to give at least 30 days' notice of any material changes to core functionality.</p>
+        <p>We aim for 99.9% uptime but do not guarantee uninterrupted availability. Planned maintenance will be communicated in advance where possible.</p>
+
+        <h2 id="accounts">3. Accounts and access</h2>
+        <p>You are responsible for maintaining the security of your account credentials. You must not share login details or allow unauthorised access to your account. You are responsible for all activity that occurs under your account.</p>
+        <p>You must be at least 18 years old to create an account. By registering, you confirm that all information you provide is accurate and complete.</p>
+
+        <h2 id="subscriptions">4. Subscriptions and billing</h2>
+        <h3>Free trial</h3>
+        <p>ZayPOS offers a 14-day free trial with full access to features included in your chosen plan. No payment details are required during the trial. At the end of the trial, you may choose to subscribe or your account will be downgraded.</p>
+        <h3>Subscription plans</h3>
+        <p>Paid subscriptions are billed per user per month (or per year for annual plans). Prices are as displayed on our pricing page and are inclusive of VAT where applicable.</p>
+        <h3>Payment</h3>
+        <p>Payments are processed securely via Stripe. By subscribing, you authorise us to charge your payment method on a recurring basis. If payment fails, we will notify you and may suspend access until payment is resolved.</p>
+        <h3>Refunds</h3>
+        <p>We offer a 14-day money-back guarantee on first-time paid subscriptions. After this period, subscription fees are non-refundable except where required by law. Annual plan refunds are assessed on a case-by-case basis.</p>
+        <h3>Cancellation</h3>
+        <p>You may cancel your subscription at any time from your account settings. Cancellation takes effect at the end of your current billing period. You will retain access to the Service until that date.</p>
+
+        <h2 id="acceptable-use">5. Acceptable use</h2>
+        <p>You agree not to use ZayPOS to:</p>
+        <ul>
+          <li>Violate any applicable laws or regulations</li>
+          <li>Process payments fraudulently or in connection with illegal activities</li>
+          <li>Attempt to reverse-engineer, hack, or compromise the security of our systems</li>
+          <li>Use the Service in a way that disrupts or degrades performance for other users</li>
+          <li>Resell or sublicense access to the Service without written permission</li>
+          <li>Upload content that is unlawful, harmful, or infringes third-party rights</li>
+        </ul>
+        <p>We reserve the right to suspend or terminate accounts that violate these conditions without notice.</p>
+
+        <h2 id="your-data">6. Your data</h2>
+        <p>You retain ownership of all data you input into ZayPOS ("Customer Data"). By using the Service, you grant us a limited licence to process that data solely for the purpose of providing the Service to you.</p>
+        <p>We will not use your Customer Data for our own commercial purposes, share it with third parties for marketing, or claim ownership over it. Upon account termination, you may request an export of your data within 30 days.</p>
+        <p>Please see our <a href="zaypos-privacy.html">Privacy Policy</a> for full details on how we handle personal data.</p>
+
+        <h2 id="ip">7. Intellectual property</h2>
+        <p>The ZayPOS platform, including its software, design, branding, and content, is the intellectual property of Zayn Productions Ltd. Nothing in these Terms grants you ownership of or rights to ZayPOS IP beyond the limited right to use the Service as described.</p>
+        <p>You retain all rights to your own business data, branding, and content uploaded to the platform.</p>
+
+        <h2 id="liability">8. Limitation of liability</h2>
+        <p>To the fullest extent permitted by law, Zayn Productions Ltd shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, or goodwill, arising from your use of or inability to use the Service.</p>
+        <p>Our total aggregate liability to you shall not exceed the amounts you paid to us in the 12 months preceding the claim.</p>
+        <p>Nothing in these Terms limits liability for death or personal injury caused by negligence, fraud, or any other liability that cannot be excluded under English law.</p>
+
+        <h2 id="termination">9. Termination</h2>
+        <p>You may stop using ZayPOS and cancel your subscription at any time. We may suspend or terminate your account if you materially breach these Terms, fail to pay subscription fees, or if we have reason to believe your use poses a legal or security risk.</p>
+        <p>On termination, your right to access the Service ceases. We will retain your data for 30 days after termination, during which you may request an export. After this period, your data will be deleted from our systems.</p>
+
+        <h2 id="disputes">10. Governing law and disputes</h2>
+        <p>These Terms are governed by the laws of England and Wales. Any disputes arising from or relating to these Terms or your use of ZayPOS shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+        <p>We encourage you to contact us in the first instance to resolve any dispute amicably at <a href="/cdn-cgi/l/email-protection#c7afa2ababa887bda6beb7a8b4e9a4a8e9b2ac"><span class="__cf_email__" data-cfemail="d6beb3babab996acb7afa6b9a5f8b5b9f8a3bd">[email&#160;protected]</span></a>.</p>
+
+        <h2 id="changes">11. Changes to these terms</h2>
+        <p>We may update these Terms from time to time. We will provide at least 30 days' notice of material changes via email or in-app notification. Continued use of ZayPOS after the effective date constitutes acceptance of the updated Terms.</p>
+
+        <h2 id="contact">12. Contact</h2>
+        <p>Questions about these Terms? Contact us at:<br><strong>Zayn Productions Ltd</strong> · 1 Alvin Street, Gloucester, GL1 3EJ<br><a href="/cdn-cgi/l/email-protection#731b161f1f1c3309120a031c005d101c5d0618"><span class="__cf_email__" data-cfemail="1b737e7777745b617a626b7468357874356e70">[email&#160;protected]</span></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="legal-also"><div class="container">
+<p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:10px;">Related legal documents</p>
+<div class="also-grid">
+  <a href="zaypos-privacy.html" class="also-card"><div class="also-card-icon">🔒</div><div class="also-card-title">Privacy Policy</div><div class="also-card-desc">How we collect, use and protect your data.</div></a>
+  <a href="zaypos-cookies.html" class="also-card"><div class="also-card-icon">🍪</div><div class="also-card-title">Cookie Policy</div><div class="also-card-desc">How we use cookies and tracking on our website.</div></a>
+  <a href="zaypos-gdpr.html" class="also-card"><div class="also-card-icon">🇪🇺</div><div class="also-card-title">GDPR Information</div><div class="also-card-desc">Your rights under UK GDPR and data protection law.</div></a>
+</div></div></section><footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="footer-logo-mark">Z</div>
+          <span class="footer-logo-text">Zay<span>POS</span></span>
+        </div>
+        <p>The modern cloud POS for cafes, restaurants, and food businesses across the UK.</p>
+        <small>Zayn Productions Ltd · Company No. 16892199<br>1 Alvin Street, Gloucester, GL1 3EJ</small>
+      </div>
+            <div>
+        <div class="footer-col-title">Product</div>
+        <a href="zaypos-features.html" class="footer-link">Features</a>
+        <a href="zaypos-homepage.html#pricing" class="footer-link">Pricing</a>
+        <a href="zaypos-integrations.html" class="footer-link">Integrations</a>
+        <a href="zaypos-changelog.html" class="footer-link">Changelog</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <a href="zaypos-docs.html" class="footer-link">Documentation</a>
+        <a href="zaypos-getting-started.html" class="footer-link">Getting Started</a>
+        <a href="zaypos-contact.html" class="footer-link">Contact Us</a>
+        <a href="zaypos-status.html" class="footer-link">System Status</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <a href="zaypos-privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="zaypos-terms.html" class="footer-link">Terms of Service</a>
+        <a href="zaypos-cookies.html" class="footer-link">Cookie Policy</a>
+        <a href="zaypos-gdpr.html" class="footer-link">GDPR</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 Zayn Productions Ltd. All rights reserved.</div>
+      <div style="display:flex;gap:20px;">
+        <a href="zaypos-privacy.html">Privacy</a>
+        <a href="zaypos-terms.html">Terms</a>
+        <a href="zaypos-cookies.html">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function toggleMenu(){
+  const m=document.getElementById('mobileMenu');
+  const b=document.getElementById('hamburger');
+  m.classList.toggle('open');b.classList.toggle('open');
+  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.mobile-menu a').forEach(a=>{
+    a.addEventListener('click',()=>{
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+      document.body.style.overflow='';
+    });
+  });
+  // TOC active state on scroll
+  const sections=document.querySelectorAll('.legal-content h2[id]');
+  const links=document.querySelectorAll('.toc-link');
+  if(sections.length && links.length){
+    const obs=new IntersectionObserver(entries=>{
+      entries

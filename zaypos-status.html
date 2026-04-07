@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Status — ZayPOS</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#FDFAF6;color:#1A1208;overflow-x:hidden;line-height:1.6;}
+:root{
+  --cream:#FDFAF6;--cream2:#F5F0E8;--cream3:#EDE6D8;
+  --violet:#5B3EF5;--violet-light:#7C62F7;--violet-pale:#EEE9FE;--violet-mid:#C9BDFB;
+  --green:#1B8A5A;--green-pale:#E3F5EE;--amber:#C47D0E;--amber-pale:#FEF3DC;
+  --text:#1A1208;--text-mid:#4A3D2A;--text-muted:#8A7A65;--text-dim:#B0A090;
+  --border:#E5DDD0;--border-dark:#C9BBA8;
+}
+.container{max-width:1160px;margin:0 auto;padding:0 24px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--text);}
+.logo-text span{color:var(--violet);}
+.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-links a{font-size:14px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--text);}
+.nav-links a.active{color:var(--violet);font-weight:500;}
+.nav-cta{display:flex;align-items:center;gap:10px;}
+.btn-ghost{padding:9px 20px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text-mid);background:transparent;border:1px solid var(--border-dark);border-radius:8px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.btn-ghost:hover{background:var(--cream2);}
+.btn-primary{padding:9px 20px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;color:#fff;background:var(--violet);border:none;border-radius:8px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.btn-primary:hover{background:var(--violet-light);}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:transparent;border:1.5px solid var(--border-dark);border-radius:8px;cursor:pointer;padding:7px 8px;}
+.hamburger span{display:block;height:1.5px;background:var(--text-mid);border-radius:2px;transition:all 0.25s;transform-origin:center;}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:66px;left:0;right:0;background:rgba(253,250,246,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 24px 24px;z-index:99;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,0.08);}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{display:block;padding:14px 0;font-size:16px;color:var(--text-mid);text-decoration:none;border-bottom:1px solid var(--border);}
+.mobile-menu a:last-of-type{border-bottom:none;}
+.mobile-menu a:hover{color:var(--violet);}
+.mobile-menu-cta{display:flex;flex-direction:column;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);}
+.mobile-menu-cta a{display:block;text-align:center;padding:13px;border-radius:10px;font-size:15px;font-weight:500;text-decoration:none;}
+.m-btn-ghost{color:var(--text-mid);background:transparent;border:1.5px solid var(--border-dark);}
+.m-btn-primary{color:#fff;background:var(--violet);}
+.page-hero{padding:120px 0 60px;background:var(--cream2);border-bottom:1px solid var(--border);}
+.page-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--violet);background:var(--violet-pale);padding:6px 14px;border-radius:100px;margin-bottom:20px;}
+.page-hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(32px,5vw,56px);line-height:1.08;letter-spacing:-1.5px;color:var(--text);margin-bottom:16px;}
+.page-hero h1 em{font-style:italic;color:var(--violet);}
+.page-hero p{font-size:17px;color:var(--text-muted);line-height:1.75;font-weight:300;max-width:580px;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--violet);margin-bottom:14px;}
+.section-label::before{content:'';width:18px;height:2px;background:var(--violet);border-radius:1px;}
+.section-h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(24px,4vw,42px);line-height:1.1;letter-spacing:-1.2px;color:var(--text);margin-bottom:14px;}
+.section-sub{font-size:16px;color:var(--text-muted);line-height:1.7;font-weight:300;}
+footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:52px;}
+.footer-logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.footer-logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:#fff;}
+.footer-logo-text span{color:#A78BFA;}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.45);margin-top:14px;line-height:1.7;max-width:240px;}
+.footer-brand small{display:block;font-size:11px;color:rgba(255,255,255,0.28);margin-top:12px;}
+.footer-col-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.9);margin-bottom:16px;}
+.footer-link{display:block;font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:10px;transition:color 0.2s;}
+.footer-link:hover{color:rgba(255,255,255,0.9);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:32px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.28);flex-wrap:wrap;gap:12px;}
+.footer-bottom a{color:rgba(255,255,255,0.28);text-decoration:none;}
+.footer-bottom a:hover{color:rgba(255,255,255,0.6);}
+@media(max-width:900px){.hamburger{display:flex;}.nav-links{display:none!important;}.nav-cta{display:none;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr;}}
+
+.status-section{padding:60px 0 100px;}
+.status-overall{display:flex;align-items:center;gap:16px;padding:24px 28px;border-radius:14px;margin-bottom:48px;border:1px solid #A7D9C1;background:var(--green-pale);}
+.status-overall.degraded{background:var(--amber-pale);border-color:#F5C842;}
+.status-overall.down{background:#FEE2E2;border-color:#FCA5A5;}
+.so-icon{font-size:32px;}
+.so-text{}
+.so-title{font-family:'Fraunces',serif;font-weight:700;font-size:22px;color:var(--green);margin-bottom:2px;}
+.so-title.degraded{color:var(--amber);}
+.so-sub{font-size:14px;color:var(--text-muted);}
+.status-group{margin-bottom:40px;}
+.sg-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:12px;}
+.status-row{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:10px;margin-bottom:6px;}
+.sr-left{display:flex;align-items:center;gap:12px;}
+.sr-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.dot-op{background:#10B981;}
+.dot-deg{background:#F59E0B;}
+.dot-down{background:#EF4444;}
+.sr-name{font-size:15px;font-weight:500;color:var(--text-mid);}
+.sr-badge{font-size:12px;font-weight:600;padding:3px 10px;border-radius:100px;}
+.badge-op{background:var(--green-pale);color:var(--green);}
+.badge-deg{background:var(--amber-pale);color:var(--amber);}
+.badge-down{background:#FEE2E2;color:#DC2626;}
+.uptime-bar{margin-bottom:6px;}
+.uptime-label{display:flex;justify-content:space-between;font-size:12px;color:var(--text-dim);margin-bottom:6px;}
+.uptime-track{height:8px;background:var(--cream3);border-radius:4px;overflow:hidden;}
+.uptime-fill{height:100%;border-radius:4px;background:#10B981;}
+.incident-section{margin-top:60px;}
+.inc-title{font-family:'Fraunces',serif;font-weight:700;font-size:22px;color:var(--text);margin-bottom:24px;letter-spacing:-0.5px;}
+.incident{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:12px;}
+.inc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px;}
+.inc-name{font-size:15px;font-weight:600;color:var(--text);}
+.inc-date{font-size:12px;color:var(--text-dim);}
+.inc-desc{font-size:14px;color:var(--text-muted);line-height:1.6;}
+.inc-resolved{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--green);background:var(--green-pale);padding:3px 10px;border-radius:100px;margin-top:8px;}
+.subscribe-bar{background:var(--cream2);border-top:1px solid var(--border);padding:60px 0;text-align:center;}
+</style>
+</head><body>
+<nav>
+  <div class="nav-inner">
+    <a href="zaypos-homepage.html" class="logo"><div class="logo-mark">Z</div><span class="logo-text">Zay<span>POS</span></span></a>
+    <div class="nav-links">
+      <a href="zaypos-features.html">Features</a>
+      <a href="zaypos-homepage.html#pricing">Pricing</a>
+      <a href="zaypos-about.html">About</a>
+      <a href="zaypos-blog.html">Blog</a>
+      <a href="zaypos-contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="btn-ghost">Sign in</a>
+      <a href="#" class="btn-primary">Start free trial</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="zaypos-homepage.html">Home</a>
+  <a href="zaypos-features.html">Features</a>
+  <a href="zaypos-homepage.html#pricing">Pricing</a>
+  <a href="zaypos-about.html">About</a>
+  <a href="zaypos-blog.html">Blog</a>
+  <a href="zaypos-contact.html">Contact</a>
+  <div class="mobile-menu-cta">
+    <a href="#" class="m-btn-ghost">Sign in</a>
+    <a href="#" class="m-btn-primary">Start free trial →</a>
+  </div>
+</div>
+<section class="page-hero"><div class="container">
+  <div class="page-eyebrow">Live status</div>
+  <h1>System <em>status</em></h1>
+  <p>Real-time status of the ZayPOS platform, integrations, and services. We're committed to 99.9% uptime.</p>
+</div></section>
+
+<section class="status-section">
+  <div class="container" style="max-width:760px;">
+
+    <div class="status-overall">
+      <div class="so-icon">✅</div>
+      <div class="so-text">
+        <div class="so-title">All systems operational</div>
+        <div class="so-sub">Last checked: a few seconds ago &nbsp;·&nbsp; Updated automatically</div>
+      </div>
+    </div>
+
+    <div class="status-group">
+      <div class="sg-title">Core platform</div>
+      <div class="status-row"><div class="sr-left"><div class="sr-dot dot-op"></div><div class="sr-name">POS Application</div></div><span class="sr-badge badge-op">Operational</span></div>
+      <div class="status-row"><div class="sr-left"><div class="sr-dot dot-op"></div><div class="sr-name">API</div></div><span class="sr-badge badge-op">Operational</span></div>
+      <div class="status-row"><div class="sr-left"><div class="sr-dot dot-op"></div><div class="sr-name">Authentication</div></div><span class="sr-badge badge-op">Operational</span></div>
+      <div class="status-row"><div class="sr-left"><div class="sr-dot dot-op"></div><div class="sr-name">Database</div></div><span class="sr-badge badge-op">Operational</span></div>
+      <div class="status-row"><div class="sr-left"><div class="sr-dot dot-op"></div><div class="sr-name">Kitchen Display System (KDS)</div></div><span class="sr-badge badge-op">Operational</span></div>
+    </div>
+
+    <div class="status-group">
+      <div class="sg-title">Payments & integrations</div>
+      <div class="status-row"><div class="sr-left"><div class="sr-dot dot-op"></div><div class="sr-name">Stripe (billing)</div></div><span class="sr-badge badge-op">Operational</span></div>
+      <div class="status-row"><div class="sr-left"><div class="sr-dot dot-op"></div><div class="sr-name">Card payment routing</div></div><span class="sr-badge badge-op">Operational</span></div>
+      <div class="status-row"><div class="sr-left"><div class="sr-dot dot-op"></div><div class="sr-name">Receipt printing</div></div><span class="sr-badge badge-op">Operational</span></div>
+    </div>
+
+    <div class="status-group">
+      <div class="sg-title">Communication</div>
+      <div class="status-row"><div class="sr-left"><div class="sr-dot dot-op"></div><div class="sr-name">Email notifications (SendGrid)</div></div><span class="sr-badge badge-op">Operational</span></div>
+      <div class="status-row"><div class="sr-left"><div class="sr-dot dot-op"></div><div class="sr-name">SMS reminders (Twilio)</div></div><span class="sr-badge badge-op">Operational</span></div>
+    </div>
+
+    <div class="status-group">
+      <div class="sg-title">AI features</div>
+      <div class="status-row"><div class="sr-left"><div class="sr-dot dot-op"></div><div class="sr-name">AI invoice processing (OpenAI)</div></div><span class="sr-badge badge-op">Operational</span></div>
+    </div>
+
+    <div class="status-group">
+      <div class="sg-title">90-day uptime</div>
+      <div class="uptime-bar">
+        <div class="uptime-label"><span>POS Application</span><span>99.97%</span></div>
+        <div class="uptime-track"><div class="uptime-fill" style="width:99.97%"></div></div>
+      </div>
+      <div class="uptime-bar">
+        <div class="uptime-label"><span>API</span><span>99.94%</span></div>
+        <div class="uptime-track"><div class="uptime-fill" style="width:99.94%"></div></div>
+      </div>
+      <div class="uptime-bar">
+        <div class="uptime-label"><span>Database</span><span>100%</span></div>
+        <div class="uptime-track"><div class="uptime-fill" style="width:100%"></div></div>
+      </div>
+      <div class="uptime-bar">
+        <div class="uptime-label"><span>Authentication</span><span>99.99%</span></div>
+        <div class="uptime-track"><div class="uptime-fill" style="width:99.99%"></div></div>
+      </div>
+    </div>
+
+    <div class="incident-section">
+      <div class="inc-title">Recent incidents</div>
+
+      <div class="incident">
+        <div class="inc-header">
+          <div class="inc-name">Delayed email notifications</div>
+          <div class="inc-date">12 Jan 2025 · 09:14 – 10:02 GMT</div>
+        </div>
+        <div class="inc-desc">Transactional emails (payroll reports and stock alerts) were delayed by up to 45 minutes due to a SendGrid API issue. All queued emails were delivered once the issue resolved. No emails were lost.</div>
+        <div class="inc-resolved">✓ Resolved · Duration: 48 minutes</div>
+      </div>
+
+      <div class="incident">
+        <div class="inc-header">
+          <div class="inc-name">Intermittent API slowness</div>
+          <div class="inc-date">3 Dec 2024 · 14:30 – 15:10 GMT</div>
+        </div>
+        <div class="inc-desc">Some users experienced slow response times on the order submission API during peak hours. The issue was traced to a database query inefficiency introduced in v2.3.0, which was patched and deployed within 40 minutes.</div>
+        <div class="inc-resolved">✓ Resolved · Duration: 40 minutes</div>
+      </div>
+
+      <p style="font-size:14px;color:var(--text-dim);margin-top:20px;">No other incidents in the past 90 days.</p>
+    </div>
+
+  </div>
+</section>
+<div class="subscribe-bar">
+  <div class="container">
+    <div class="section-label" style="justify-content:center;">Stay informed</div>
+    <h2 class="section-h2">Subscribe to status updates</h2>
+    <p class="section-sub" style="margin:0 auto 28px;max-width:440px;">Get notified by email whenever there's an incident or scheduled maintenance.</p>
+    <div style="display:flex;gap:10px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center;">
+      <input type="email" placeholder="your@email.com" style="flex:1;min-width:200px;padding:12px 16px;border:1.5px solid var(--border-dark);border-radius:10px;font-size:14px;font-family:'DM Sans',sans-serif;background:var(--cream);outline:none;">
+      <button style="padding:12px 22px;background:var(--violet);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;">Subscribe</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="footer-logo-mark">Z</div>
+          <span class="footer-logo-text">Zay<span>POS</span></span>
+        </div>
+        <p>The modern cloud POS for cafes, restaurants, and food businesses across the UK.</p>
+        <small>Zayn Productions Ltd · Company No. 16892199<br>1 Alvin Street, Gloucester, GL1 3EJ</small>
+      </div>
+            <div>
+        <div class="footer-col-title">Product</div>
+        <a href="zaypos-features.html" class="footer-link">Features</a>
+        <a href="zaypos-homepage.html#pricing" class="footer-link">Pricing</a>
+        <a href="zaypos-integrations.html" class="footer-link">Integrations</a>
+        <a href="zaypos-changelog.html" class="footer-link">Changelog</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <a href="zaypos-docs.html" class="footer-link">Documentation</a>
+        <a href="zaypos-getting-started.html" class="footer-link">Getting Started</a>
+        <a href="zaypos-contact.html" class="footer-link">Contact Us</a>
+        <a href="zaypos-status.html" class="footer-link">System Status</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <a href="zaypos-privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="zaypos-terms.html" class="footer-link">Terms of Service</a>
+        <a href="zaypos-cookies.html" class="footer-link">Cookie Policy</a>
+        <a href="zaypos-gdpr.html" class="footer-link">GDPR</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 Zayn Productions Ltd. All rights reserved.</div>
+      <div style="display:flex;gap:20px;"><a href="zaypos-privacy.html">Privacy</a><a href="zaypos-terms.html">Terms</a><a href="zaypos-cookies.html">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+<script>
+function toggleMenu(){const m=document.getElementById('mobileMenu');const b=document.getElementById('hamburger');m.classList.toggle('open');b.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
+document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.mobile-menu a').forEach(a=>{a.addEventListener('click',()=>{document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';});});});
+</script></body></html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stop doing payroll manually — ZayPOS Blog</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="shortcut icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#FDFAF6;color:#1A1208;overflow-x:hidden;line-height:1.6;}
+:root{
+  --cream:#FDFAF6;--cream2:#F5F0E8;--cream3:#EDE6D8;
+  --violet:#5B3EF5;--violet-light:#7C62F7;--violet-pale:#EEE9FE;--violet-mid:#C9BDFB;
+  --green:#1B8A5A;--green-pale:#E3F5EE;--amber:#C47D0E;--amber-pale:#FEF3DC;
+  --text:#1A1208;--text-mid:#4A3D2A;--text-muted:#8A7A65;--text-dim:#B0A090;
+  --border:#E5DDD0;--border-dark:#C9BBA8;
+}
+.container{max-width:1160px;margin:0 auto;padding:0 24px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--text);}
+.logo-text span{color:var(--violet);}
+.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-links a{font-size:14px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--text);}
+.nav-links a.active{color:var(--violet);font-weight:500;}
+.nav-cta{display:flex;align-items:center;gap:10px;}
+.btn-ghost{padding:9px 20px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text-mid);background:transparent;border:1px solid var(--border-dark);border-radius:8px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.btn-ghost:hover{background:var(--cream2);}
+.btn-primary{padding:9px 20px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;color:#fff;background:var(--violet);border:none;border-radius:8px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.btn-primary:hover{background:var(--violet-light);}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:transparent;border:1.5px solid var(--border-dark);border-radius:8px;cursor:pointer;padding:7px 8px;}
+.hamburger span{display:block;height:1.5px;background:var(--text-mid);border-radius:2px;transition:all 0.25s;transform-origin:center;}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:66px;left:0;right:0;background:rgba(253,250,246,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 24px 24px;z-index:99;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,0.08);}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{display:block;padding:14px 0;font-size:16px;color:var(--text-mid);text-decoration:none;border-bottom:1px solid var(--border);}
+.mobile-menu a:last-of-type{border-bottom:none;}
+.mobile-menu a:hover{color:var(--violet);}
+.mobile-menu-cta{display:flex;flex-direction:column;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);}
+.mobile-menu-cta a{display:block;text-align:center;padding:13px;border-radius:10px;font-size:15px;font-weight:500;text-decoration:none;}
+.m-btn-ghost{color:var(--text-mid);background:transparent;border:1.5px solid var(--border-dark);}
+.m-btn-primary{color:#fff;background:var(--violet);}
+.page-hero{padding:120px 0 60px;background:var(--cream2);border-bottom:1px solid var(--border);}
+.page-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--violet);background:var(--violet-pale);padding:6px 14px;border-radius:100px;margin-bottom:20px;}
+.page-hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(32px,5vw,56px);line-height:1.08;letter-spacing:-1.5px;color:var(--text);margin-bottom:16px;}
+.page-hero h1 em{font-style:italic;color:var(--violet);}
+.page-hero p{font-size:17px;color:var(--text-muted);line-height:1.75;font-weight:300;max-width:580px;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--violet);margin-bottom:14px;}
+.section-label::before{content:'';width:18px;height:2px;background:var(--violet);border-radius:1px;}
+.section-h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(24px,4vw,42px);line-height:1.1;letter-spacing:-1.2px;color:var(--text);margin-bottom:14px;}
+.section-sub{font-size:16px;color:var(--text-muted);line-height:1.7;font-weight:300;}
+footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:52px;}
+.footer-logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.footer-logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:#fff;}
+.footer-logo-text span{color:#A78BFA;}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.45);margin-top:14px;line-height:1.7;max-width:240px;}
+.footer-brand small{display:block;font-size:11px;color:rgba(255,255,255,0.28);margin-top:12px;}
+.footer-col-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.9);margin-bottom:16px;}
+.footer-link{display:block;font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:10px;transition:color 0.2s;}
+.footer-link:hover{color:rgba(255,255,255,0.9);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:32px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.28);flex-wrap:wrap;gap:12px;}
+.footer-bottom a{color:rgba(255,255,255,0.28);text-decoration:none;}
+.footer-bottom a:hover{color:rgba(255,255,255,0.6);}
+@media(max-width:900px){.hamburger{display:flex;}.nav-links{display:none!important;}.nav-cta{display:none;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr;}}
+
+.post-hero{padding:120px 0 0;background:var(--cream2);border-bottom:1px solid var(--border);}
+.post-hero-inner{max-width:760px;}
+.post-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:28px;transition:color 0.2s;}
+.post-back:hover{color:var(--violet);}
+.post-hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(28px,4vw,46px);line-height:1.12;letter-spacing:-1px;color:var(--text);margin-bottom:16px;}
+.post-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-bottom:32px;}
+.post-author{display:flex;align-items:center;gap:10px;}
+.post-author-img{width:36px;height:36px;border-radius:50%;overflow:hidden;}
+.post-author-img img{width:100%;height:100%;object-fit:cover;}
+.post-author-name{font-size:14px;font-weight:500;color:var(--text-mid);}
+.post-meta-sep{color:var(--text-dim);}
+.post-meta-detail{font-size:13px;color:var(--text-dim);}
+.post-body-section{padding:60px 0 100px;}
+.post-layout{display:grid;grid-template-columns:1fr 260px;gap:60px;align-items:start;}
+.post-content{max-width:680px;}
+.post-content .post-img{width:100%;border-radius:16px;margin-bottom:36px;font-size:80px;text-align:center;padding:48px 0;display:block;}
+.post-content h2{font-family:'Fraunces',serif;font-weight:700;font-size:24px;color:var(--text);letter-spacing:-0.3px;margin:40px 0 14px;padding-top:40px;border-top:1px solid var(--border);}
+.post-content h2:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+.post-content h3{font-size:17px;font-weight:600;color:var(--text-mid);margin:24px 0 10px;}
+.post-content p{font-size:16px;color:var(--text-muted);line-height:1.85;margin-bottom:18px;font-weight:300;}
+.post-content ul,.post-content ol{margin:0 0 18px 20px;}
+.post-content li{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:6px;font-weight:300;}
+.post-content strong{font-weight:600;color:var(--text-mid);}
+.post-callout{background:var(--violet-pale);border:1px solid var(--violet-mid);border-left:3px solid var(--violet);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0;}
+.post-callout p{margin:0;font-size:14px;color:var(--text-mid);font-weight:400;}
+.post-tip{background:var(--cream2);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin:24px 0;}
+.post-tip-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:6px;}
+.post-tip p{margin:0;font-size:14px;color:var(--text-mid);}
+.post-sidebar{position:sticky;top:90px;}
+.psc{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;margin-bottom:16px;}
+.psc-title{font-family:'Fraunces',serif;font-weight:700;font-size:15px;color:var(--text);margin-bottom:14px;}
+.psc-link{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;padding:7px 0;border-bottom:1px solid var(--border);transition:color 0.2s;}
+.psc-link:last-child{border-bottom:none;}
+.psc-link:hover{color:var(--violet);}
+.psc-cta{background:var(--violet);border-radius:14px;padding:22px;text-align:center;}
+.psc-cta-title{font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:#fff;margin-bottom:8px;}
+.psc-cta-sub{font-size:13px;color:rgba(255,255,255,0.75);margin-bottom:16px;line-height:1.5;}
+.psc-cta-btn{display:block;background:#fff;color:var(--violet);border-radius:8px;padding:10px;font-size:13px;font-weight:700;text-decoration:none;}
+.blog-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:100px;margin-bottom:14px;}
+.tag-tips{background:#E3F5EE;color:var(--green);}
+.tag-ai{background:var(--violet-pale);color:var(--violet);}
+.tag-compliance{background:#FEF3DC;color:var(--amber);}
+.tag-business{background:#FEE2E2;color:#DC2626;}
+@media(max-width:900px){.post-layout{grid-template-columns:1fr;}.post-sidebar{display:none;}.nav-links{display:none!important;}.nav-cta{display:none;}.hamburger{display:flex;}.footer-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr;}}
+</style>
+</head><body>
+<nav>
+  <div class="nav-inner">
+    <a href="zaypos-homepage.html" class="logo"><div class="logo-mark">Z</div><span class="logo-text">Zay<span>POS</span></span></a>
+    <div class="nav-links">
+      <a href="zaypos-features.html">Features</a>
+      <a href="zaypos-homepage.html#pricing">Pricing</a>
+      <a href="zaypos-blog.html" class="active">Blog</a>
+      <a href="zaypos-contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="btn-ghost">Sign in</a>
+      <a href="#" class="btn-primary">Start free trial</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="zaypos-homepage.html">Home</a>
+  <a href="zaypos-features.html">Features</a>
+  <a href="zaypos-homepage.html#pricing">Pricing</a>
+  <a href="zaypos-blog.html">Blog</a>
+  <a href="zaypos-about.html">About</a>
+  <a href="zaypos-contact.html">Contact</a>
+  <div class="mobile-menu-cta">
+    <a href="#" class="m-btn-ghost">Sign in</a>
+    <a href="#" class="m-btn-primary">Start free trial →</a>
+  </div>
+</div>
+<section class="post-hero"><div class="container"><div class="post-hero-inner">
+  <a href="zaypos-blog.html" class="post-back">← Back to blog</a>
+  <span class="blog-tag tag-tips">Tips</span>
+  <h1>Stop doing payroll manually — it's costing you more than you think</h1>
+  <div class="post-meta">
+    <div class="post-author">
+      <div class="post-author-img"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&q=80&auto=format&fit=crop" alt="Zain Ahmed"></div>
+      <span class="post-author-name">Zain Ahmed</span>
+    </div>
+    <span class="post-meta-sep">·</span><span class="post-meta-detail">11 November 2024</span>
+    <span class="post-meta-sep">·</span><span class="post-meta-detail">5 min read</span>
+  </div>
+</div></div></section>
+<section class="post-body-section"><div class="container"><div class="post-layout">
+  <article class="post-content">
+    <div class="post-img" style="background:linear-gradient(135deg,#E3F5EE, #FDFAF6);">💰👥</div>
+    
+<h2>The Sunday evening tax</h2>
+<p>If you run a food business with staff, you probably know the feeling. Sunday evening, everyone's gone home, and you're at the kitchen table with a spreadsheet open, a stack of paper timesheets, and the dawning realisation that three people didn't fill in their hours properly again.</p>
+<p>This is the "Sunday evening tax" — the hidden cost of manual payroll that almost every cafe and restaurant owner pays, but rarely counts as a real business expense. Let's change that.</p>
+
+<h2>What manual payroll is actually costing you</h2>
+<h3>Your time</h3>
+<p>If you spend 3 hours on payroll every two weeks, that's 78 hours a year. At a conservative £30/hour opportunity cost — time you could be spending on the business, not in it — that's £2,340 a year. For most small food businesses, that's more than a month's ZayPOS subscription.</p>
+<h3>Errors</h3>
+<p>Manual calculations make mistakes. Overpaying staff is painful — recovering it is awkward and sometimes legally complex. Underpaying is worse — it damages trust, creates legal risk, and can lead to formal complaints. Research consistently shows that payroll errors affect around 1 in 4 small businesses annually.</p>
+<h3>Disputes</h3>
+<p>When timesheets are filled in by hand and wages calculated manually, disputes are inevitable. "I worked an extra 45 minutes on Thursday" is impossible to resolve without objective data. With digital clock-in records, the conversation is over in 30 seconds.</p>
+
+<div class="post-callout"><p>⏱️ <strong>The maths:</strong> 3 hrs/fortnight × 26 pay periods = 78 hrs/year. At £30/hr opportunity cost = £2,340/year spent on something a system can do automatically.</p></div>
+
+<h2>What automated payroll looks like in practice</h2>
+<p>In ZayPOS, payroll automation works like this: staff clock in and out using their PIN. The system records the exact time — not what they wrote on a timesheet — against their scheduled shift. At the end of the pay period, ZayPOS calculates total hours, flags overtime automatically, applies any bonuses or deductions you've entered, and generates a full payroll report.</p>
+<p>That report is emailed automatically to whoever you configure as the recipient — you, your accountant, or both. The whole process takes about 5 minutes of your time to review and approve, rather than 3 hours to calculate from scratch.</p>
+
+<h3>What it handles</h3>
+<ul>
+  <li>Regular hours from clock-in/out data — no manual entry</li>
+  <li>Overtime detection and flagging against rota hours</li>
+  <li>Bonuses and deductions (e.g. tips, uniform deductions)</li>
+  <li>Per-period reporting — weekly or monthly, your choice</li>
+  <li>Automatic email delivery to configurable recipients</li>
+</ul>
+
+<h2>The clock-in data advantage</h2>
+<p>Beyond payroll, having accurate clock-in records changes how you manage your team. You can see at a glance who's consistently late, who's doing overtime regularly (and whether that's a scheduling problem or a performance one), and whether your actual labour hours match what you planned on the rota.</p>
+<p>That's the kind of insight that used to require dedicated HR software. In ZayPOS it's a byproduct of staff simply logging in with their PIN — something they already do to use the system.</p>
+
+<div class="post-tip">
+  <div class="post-tip-label">Quick win</div>
+  <p>Even if you're not ready to automate payroll fully, switching from paper timesheets to digital clock-in data alone will significantly reduce disputes and save time on verification. Start there — the payroll report follows naturally.</p>
+</div>
+
+<h2>Getting started</h2>
+<p>Payroll automation is available on the ZayPOS <strong>Pro and Complete plans</strong>. Set it up under <strong>Staff → Payroll → Configure</strong>. Add your staff's hourly rates, set your pay period, configure your email recipients, and you're done. The first report will generate automatically at the end of your first pay period.</p>
+
+<div class="post-callout"><p>🚀 <strong>Try it free:</strong> <a href="zaypos-homepage.html#pricing" style="color:var(--violet);">Start a 14-day trial</a> on the Pro or Complete plan and run your first automated payroll report before you commit to a penny.</p></div>
+
+  </article>
+  <aside class="post-sidebar">
+    <div class="psc"><div class="psc-title">In this article</div><a href="#" class="psc-link">Overview</a>
+<a href="#" class="psc-link">The detail</a>
+<a href="#" class="psc-link">What to do</a>
+<a href="#" class="psc-link">ZayPOS features</a></div>
+    <div class="psc"><div class="psc-title">Related posts</div>
+      <a href="zaypos-blog-upselling.html" class="psc-link">How AI upselling works in a cafe</a>
+      <a href="zaypos-blog-food-safety.html" class="psc-link">What EHO inspectors look for</a>
+      <a href="zaypos-blog-payroll.html" class="psc-link">Stop doing payroll manually</a>
+      <a href="zaypos-blog.html" class="psc-link">View all posts →</a>
+    </div>
+    <div class="psc-cta"><div class="psc-cta-title">Try ZayPOS free</div>
+      <div class="psc-cta-sub">14 days. Full access. No card required.</div>
+      <a href="#" class="psc-cta-btn">Start free trial →</a>
+    </div>
+  </aside>
+</div></div></section>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="footer-logo-mark">Z</div>
+          <span class="footer-logo-text">Zay<span>POS</span></span>
+        </div>
+        <p>The modern cloud POS for cafes, restaurants, and food businesses across the UK. Simpler, smarter, built for the real world.</p>
+        <small>Zayn Productions Ltd · Company No. 16892199<br>1 Alvin Street, Gloucester, GL1 3EJ</small>
+      </div>
+      <div>
+        <div class="footer-col-title">Product</div>
+        <a href="zaypos-features.html" class="footer-link">Features</a>
+        <a href="zaypos-homepage.html#pricing" class="footer-link">Pricing</a>
+        <a href="zaypos-integrations.html" class="footer-link">Integrations</a>
+        <a href="zaypos-changelog.html" class="footer-link">Changelog</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <a href="zaypos-docs.html" class="footer-link">Documentation</a>
+        <a href="zaypos-getting-started.html" class="footer-link">Getting Started</a>
+        <a href="zaypos-contact.html" class="footer-link">Contact Us</a>
+        <a href="zaypos-status.html" class="footer-link">System Status</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <a href="zaypos-privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="zaypos-terms.html" class="footer-link">Terms of Service</a>
+        <a href="zaypos-cookies.html" class="footer-link">Cookie Policy</a>
+        <a href="zaypos-gdpr.html" class="footer-link">GDPR</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 Zayn Productions Ltd. All rights reserved.</div>
+      <div style="display:flex;gap:20px;"><a href="zaypos-privacy.html">Privacy</a><a href="zaypos-terms.html">Terms</a><a href="zaypos-cookies.html">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+<script>
+function toggleMenu(){const m=document.getElementById('mobileMenu');const b=document.getElementById('hamburger');m.classList.toggle('open');b.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':'';}
+document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.mobile-menu a').forEach(a=>{a.addEventListener('click',()=>{document.getElementById('mobileMenu').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';});});});
+</script></body></html>

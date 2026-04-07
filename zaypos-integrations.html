@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integrations — ZayPOS</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#FDFAF6;color:#1A1208;overflow-x:hidden;line-height:1.6;}
+:root{
+  --cream:#FDFAF6;--cream2:#F5F0E8;--cream3:#EDE6D8;
+  --violet:#5B3EF5;--violet-light:#7C62F7;--violet-pale:#EEE9FE;--violet-mid:#C9BDFB;
+  --green:#1B8A5A;--green-pale:#E3F5EE;--amber:#C47D0E;--amber-pale:#FEF3DC;
+  --text:#1A1208;--text-mid:#4A3D2A;--text-muted:#8A7A65;--text-dim:#B0A090;
+  --border:#E5DDD0;--border-dark:#C9BBA8;
+}
+.container{max-width:1160px;margin:0 auto;padding:0 24px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--text);}
+.logo-text span{color:var(--violet);}
+.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-links a{font-size:14px;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-links a.active{color:var(--violet);font-weight:500;}
+.nav-cta{display:flex;align-items:center;gap:10px;}
+.btn-ghost{padding:9px 20px;font-size:14px;font-family:'DM Sans',sans-serif;color:var(--text-mid);background:transparent;border:1px solid var(--border-dark);border-radius:8px;cursor:pointer;text-decoration:none;}
+.btn-ghost:hover{background:var(--cream2);}
+.btn-primary{padding:9px 20px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;color:#fff;background:var(--violet);border:none;border-radius:8px;cursor:pointer;text-decoration:none;}
+.btn-primary:hover{background:var(--violet-light);}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:38px;background:transparent;border:1.5px solid var(--border-dark);border-radius:8px;cursor:pointer;padding:7px 8px;}
+.hamburger span{display:block;height:1.5px;background:var(--text-mid);border-radius:2px;transition:all 0.25s;transform-origin:center;}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mobile-menu{display:none;position:fixed;top:66px;left:0;right:0;background:rgba(253,250,246,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:16px 24px 24px;z-index:99;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,0.08);}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{display:block;padding:14px 0;font-size:16px;color:var(--text-mid);text-decoration:none;border-bottom:1px solid var(--border);}
+.mobile-menu a:last-of-type{border-bottom:none;}
+.mobile-menu-cta{display:flex;flex-direction:column;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);}
+.mobile-menu-cta a{display:block;text-align:center;padding:13px;border-radius:10px;font-size:15px;font-weight:500;text-decoration:none;}
+.m-btn-ghost{color:var(--text-mid);background:transparent;border:1.5px solid var(--border-dark);}
+.m-btn-primary{color:#fff;background:var(--violet);}
+.page-hero{padding:120px 0 60px;background:var(--cream2);border-bottom:1px solid var(--border);}
+.page-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--violet);background:var(--violet-pale);padding:6px 14px;border-radius:100px;margin-bottom:20px;}
+.page-hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(32px,5vw,54px);line-height:1.08;letter-spacing:-1.5px;color:var(--text);margin-bottom:16px;}
+.page-hero h1 em{font-style:italic;color:var(--violet);}
+.page-hero p{font-size:17px;color:var(--text-muted);line-height:1.75;font-weight:300;max-width:580px;}
+.section-label{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--violet);margin-bottom:14px;}
+.section-label::before{content:'';width:18px;height:2px;background:var(--violet);border-radius:1px;}
+.section-h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(24px,4vw,42px);line-height:1.1;letter-spacing:-1.2px;color:var(--text);margin-bottom:14px;}
+.section-sub{font-size:16px;color:var(--text-muted);line-height:1.7;font-weight:300;}
+
+/* JUMP NAV */
+.jump-nav{background:#fff;border-bottom:1px solid var(--border);padding:0 24px;position:sticky;top:66px;z-index:90;}
+.jump-nav-inner{max-width:1160px;margin:0 auto;display:flex;gap:0;overflow-x:auto;}
+.jump-link{padding:14px 20px;font-size:13px;font-weight:500;color:var(--text-muted);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s;}
+.jump-link:hover{color:var(--violet);border-bottom-color:var(--violet-mid);}
+.jump-link.active{color:var(--violet);border-bottom-color:var(--violet);}
+
+/* INT GROUPS */
+.int-section{padding:80px 0;}
+.int-group{margin-bottom:80px;}
+.int-group:last-child{margin-bottom:0;}
+.int-group-header{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:16px;border-bottom:2px solid var(--border);}
+.int-group-icon{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.int-group-label{font-family:'Fraunces',serif;font-weight:700;font-size:21px;color:var(--text);}
+.int-group-pill{font-size:12px;font-weight:600;padding:3px 10px;background:var(--cream2);border:1px solid var(--border);color:var(--text-muted);border-radius:100px;}
+
+.int-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.int-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.int-grid-1{display:grid;grid-template-columns:1fr;gap:20px;}
+
+.int-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:32px;position:relative;overflow:hidden;transition:border-color 0.2s,transform 0.2s,box-shadow 0.2s;}
+.int-card:hover{border-color:var(--violet-mid);transform:translateY(-2px);box-shadow:0 10px 40px rgba(91,62,245,0.08);}
+.int-card-top-bar{position:absolute;top:0;left:0;right:0;height:3px;border-radius:18px 18px 0 0;}
+.int-logo-row{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.int-logo{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--border);}
+.int-name{font-family:'Fraunces',serif;font-weight:700;font-size:19px;color:var(--text);line-height:1.1;}
+.int-cat{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-top:3px;}
+.int-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px;margin-bottom:14px;}
+.badge-live{background:var(--green-pale);color:var(--green);border:1px solid #A7D9C1;}
+.badge-oauth{background:var(--violet-pale);color:var(--violet);border:1px solid var(--violet-mid);}
+.badge-ai{background:#E8FAF4;color:#0D7A5F;border:1px solid #9FE1CB;}
+.int-desc{font-size:14px;color:var(--text-muted);line-height:1.75;margin-bottom:18px;}
+.feat-list{list-style:none;}
+.feat-list li{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--text-mid);padding:7px 0;border-bottom:1px solid var(--border);line-height:1.5;}
+.feat-list li:last-child{border-bottom:none;}
+.fl-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:6px;}
+.fl-v{background:var(--violet);}
+.fl-g{background:var(--green);}
+.fl-a{background:var(--amber);}
+.tech-block{margin-top:16px;padding:12px 14px;background:var(--cream2);border-radius:10px;border:1px solid var(--border);}
+.tech-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:8px;}
+.tech-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.tech-tag{font-size:11px;font-weight:500;padding:3px 9px;background:#fff;border:1px solid var(--border);border-radius:6px;color:var(--text-mid);font-family:'Courier New',monospace;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:16px 0;}
+.mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0;}
+.mini-card{background:var(--cream2);border:1px solid var(--border);border-radius:11px;padding:15px;}
+.mini-icon{font-size:18px;margin-bottom:7px;}
+.mini-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.mini-desc{font-size:12px;color:var(--text-muted);line-height:1.5;}
+
+/* SCHEDULER */
+.sched-section{padding:80px 0;background:var(--cream2);border-top:1px solid var(--border);}
+.sched-wrap{margin-top:36px;border-radius:16px;overflow:hidden;border:1px solid var(--border);}
+.sched-table{width:100%;border-collapse:collapse;}
+.sched-table thead th{background:var(--text);color:#fff;padding:13px 18px;text-align:left;font-size:11px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;}
+.sched-table tbody tr{background:#fff;border-bottom:1px solid var(--border);}
+.sched-table tbody tr:last-child{border-bottom:none;}
+.sched-table tbody tr:nth-child(even){background:var(--cream);}
+.sched-table tbody tr:hover{background:var(--violet-pale);}
+.sched-table td{padding:15px 18px;font-size:13px;color:var(--text-mid);vertical-align:top;line-height:1.55;}
+.s-name{font-weight:700;color:var(--text);font-size:14px;margin-bottom:2px;}
+.s-cron{font-family:'Courier New',monospace;font-size:11px;background:var(--cream2);padding:2px 7px;border-radius:5px;border:1px solid var(--border);color:var(--violet);}
+.s-freq{font-size:11px;color:var(--text-dim);margin-top:4px;}
+.s-pill{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px;background:var(--amber-pale);color:var(--amber);border:1px solid #F5C842;}
+.s-int{font-size:11px;font-weight:500;padding:3px 8px;background:#fff;border:1px solid var(--border);border-radius:6px;color:var(--text-mid);}
+
+/* FOOTER */
+footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:52px;}
+.footer-logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.footer-logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:#fff;}
+.footer-logo-text span{color:#A78BFA;}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.45);margin-top:14px;line-height:1.7;max-width:240px;}
+.footer-brand small{display:block;font-size:11px;color:rgba(255,255,255,0.28);margin-top:12px;}
+.footer-col-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.9);margin-bottom:16px;}
+.footer-link{display:block;font-size:13px;color:rgba(255,255,255,0.45);text-decoration:none;margin-bottom:10px;transition:color 0.2s;}
+.footer-link:hover{color:rgba(255,255,255,0.9);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:32px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.28);flex-wrap:wrap;gap:12px;}
+.footer-bottom a{color:rgba(255,255,255,0.28);text-decoration:none;}
+.footer-bottom a:hover{color:rgba(255,255,255,0.6);}
+
+@media(max-width:900px){
+  .hamburger{display:flex;}.nav-links{display:none!important;}.nav-cta{display:none;}
+  .int-grid-2,.int-grid-3{grid-template-columns:1fr;}
+  .two-col{grid-template-columns:1fr;}
+  .mini-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){.footer-grid{grid-template-columns:1fr;}.mini-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="zaypos-homepage.html" class="logo"><div class="logo-mark">Z</div><span class="logo-text">Zay<span>POS</span></span></a>
+    <div class="nav-links">
+      <a href="zaypos-features.html">Features</a>
+      <a href="zaypos-homepage.html#pricing">Pricing</a>
+      <a href="zaypos-integrations.html" class="active">Integrations</a>
+      <a href="zaypos-blog.html">Blog</a>
+      <a href="zaypos-contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#" class="btn-ghost">Sign in</a>
+      <a href="#" class="btn-primary">Start free trial</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="zaypos-homepage.html">Home</a>
+  <a href="zaypos-features.html">Features</a>
+  <a href="zaypos-homepage.html#pricing">Pricing</a>
+  <a href="zaypos-integrations.html">Integrations</a>
+  <a href="zaypos-blog.html">Blog</a>
+  <a href="zaypos-contact.html">Contact</a>
+  <div class="mobile-menu-cta">
+    <a href="#" class="m-btn-ghost">Sign in</a>
+    <a href="#" class="m-btn-primary">Start free trial →</a>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-eyebrow">Real connections</div>
+    <h1>Integrations <em>built in</em>,<br>not bolted on</h1>
+    <p>Every integration listed here is live in the ZayPOS codebase — doing real work every day. No marketplace plugins, no third-party connectors. These are core.</p>
+  </div>
+</section>
+
+<!-- JUMP NAV -->
+<div class="jump-nav">
+  <div class="jump-nav-inner">
+    <a href="#payments" class="jump-link active">💳 Payments</a>
+    <a href="#email" class="jump-link">📧 Email (Brevo)</a>
+    <a href="#sms" class="jump-link">💬 SMS (Twilio)</a>
+    <a href="#ai" class="jump-link">🤖 AI (OpenAI)</a>
+    <a href="#hardware" class="jump-link">🖨️ Hardware</a>
+    <a href="#schedulers" class="jump-link">⏱️ Schedulers</a>
+  </div>
+</div>
+
+<section class="int-section">
+  <div class="container">
+
+    <!-- PAYMENTS -->
+    <div class="int-group" id="payments">
+      <div class="int-group-header">
+        <div class="int-group-icon" style="background:#F0EDFF;">💳</div>
+        <div class="int-group-label">Payment Processing</div>
+        <div class="int-group-pill">Clover OAuth · Smart routing across 4 providers</div>
+      </div>
+      <div class="int-grid-2">
+
+        <div class="int-card">
+          <div class="int-card-top-bar" style="background:linear-gradient(90deg,#1AA260,#0D7A47);"></div>
+          <div class="int-logo-row">
+            <div class="int-logo" style="background:#E8F8F0;"><span style="font-family:'Fraunces',serif;font-weight:800;font-size:20px;color:#1AA260;">C</span></div>
+            <div><div class="int-name">Clover</div><div class="int-cat">Card Payments · OAuth 2.0</div></div>
+          </div>
+          <span class="int-badge badge-oauth">🔐 OAuth 2.0 Connected</span>
+          <div class="int-desc">Clover is the primary card payment integration, connected via full OAuth 2.0. Staff authorise the connection once through the Clover login flow — no API keys to copy and paste. ZayPOS also syncs the Clover product catalogue bidirectionally, keeping your menu consistent across both systems.</div>
+          <ul class="feat-list">
+            <li><div class="fl-dot fl-g"></div>OAuth 2.0 authorisation — staff connect via Clover login, no manual keys</li>
+            <li><div class="fl-dot fl-g"></div>Bidirectional product catalogue sync — Clover ↔ ZayPOS</li>
+            <li><div class="fl-dot fl-g"></div>Card payment requests sent directly to connected Clover terminal</li>
+            <li><div class="fl-dot fl-g"></div>Selectable as default payment merchant per location</li>
+            <li><div class="fl-dot fl-g"></div>Transaction confirmation and receipt data returned to ZayPOS</li>
+            <li><div class="fl-dot fl-g"></div>Refund processing routed back through original Clover transaction</li>
+          </ul>
+          <div class="tech-block">
+            <div class="tech-label">Technical</div>
+            <div class="tech-tags">
+              <span class="tech-tag">OAuth 2.0</span>
+              <span class="tech-tag">REST API</span>
+              <span class="tech-tag">Product sync</span>
+              <span class="tech-tag">Webhook callbacks</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="int-card">
+          <div class="int-card-top-bar" style="background:linear-gradient(90deg,#5B3EF5,#7C62F7);"></div>
+          <div class="int-logo-row">
+            <div class="int-logo" style="background:var(--violet-pale);"><span style="font-size:22px;">⚡</span></div>
+            <div><div class="int-name">Smart Payment Routing</div><div class="int-cat">Multi-provider · Per-location config</div></div>
+          </div>
+          <span class="int-badge badge-live">✓ Live</span>
+          <div class="int-desc">ZayPOS doesn't lock you to one payment provider. The routing engine lets you configure which provider handles card transactions at each location, and switch instantly from Settings — no downtime, no re-integration.</div>
+          <ul class="feat-list">
+            <li><div class="fl-dot fl-v"></div>Supported providers: <strong>Clover, SumUp, Dojo, Square</strong></li>
+            <li><div class="fl-dot fl-v"></div>Default merchant configurable per location independently</li>
+            <li><div class="fl-dot fl-v"></div>Switch active merchant from Settings without any downtime</li>
+            <li><div class="fl-dot fl-v"></div>Split payments: route cash + card portions simultaneously</li>
+            <li><div class="fl-dot fl-v"></div>Refunds automatically routed back through original merchant</li>
+            <li><div class="fl-dot fl-v"></div>Per-merchant transaction volume tracked in payment analytics</li>
+          </ul>
+          <div class="tech-block">
+            <div class="tech-label">Technical</div>
+            <div class="tech-tags">
+              <span class="tech-tag">Multi-merchant</span>
+              <span class="tech-tag">Per-location config</span>
+              <span class="tech-tag">Split payment routing</span>
+              <span class="tech-tag">Refund routing</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="int-group" id="email">
+      <div class="int-group-header">
+        <div class="int-group-icon" style="background:#E8F4FF;">📧</div>
+        <div class="int-group-label">Email — Brevo</div>
+        <div class="int-group-pill">6 transactional email types · Event-triggered</div>
+      </div>
+      <div class="int-grid-1">
+        <div class="int-card">
+          <div class="int-card-top-bar" style="background:linear-gradient(90deg,#0092FF,#0056CC);"></div>
+          <div class="int-logo-row">
+            <div class="int-logo" style="background:#E8F4FF;"><span style="font-size:22px;">✉️</span></div>
+            <div><div class="int-name">Brevo</div><div class="int-cat">Transactional Email · formerly Sendinblue</div></div>
+          </div>
+          <span class="int-badge badge-live">✓ Live</span>
+          <div class="int-desc">All transactional emails in ZayPOS are sent via Brevo. Six distinct email types fire automatically based on events across the platform — from a completed sale to a missed food safety checklist. Recipients are configurable per organisation.</div>
+
+          <div class="mini-grid">
+            <div class="mini-card">
+              <div class="mini-icon">🧾</div>
+              <div class="mini-title">Digital Receipts</div>
+              <div class="mini-desc">Sent to customers after payment when an email address is provided at checkout.</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-icon">💰</div>
+              <div class="mini-title">Payroll Reports</div>
+              <div class="mini-desc">Monthly payroll summaries auto-sent to all configured payroll email recipients.</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-icon">📦</div>
+              <div class="mini-title">Low Stock Alerts</div>
+              <div class="mini-desc">Triggered the moment any product drops below its configured par level.</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-icon">📋</div>
+              <div class="mini-title">Missed Checklist Alerts</div>
+              <div class="mini-desc">Emailed to managers when a food safety checklist passes its deadline uncompleted.</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-icon">⭐</div>
+              <div class="mini-title">Review Requests</div>
+              <div class="mini-desc">Post-order review invitations sent automatically to takeaway and delivery customers.</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-icon">🔐</div>
+              <div class="mini-title">Account & Auth</div>
+              <div class="mini-desc">Welcome emails, password resets, email verification, and trial expiry notices.</div>
+            </div>
+          </div>
+
+          <div class="tech-block">
+            <div class="tech-label">Technical</div>
+            <div class="tech-tags">
+              <span class="tech-tag">Brevo SMTP API</span>
+              <span class="tech-tag">Template engine</span>
+              <span class="tech-tag">Event-triggered</span>
+              <span class="tech-tag">Configurable recipients</span>
+              <span class="tech-tag">6 email types</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SMS -->
+    <div class="int-group" id="sms">
+      <div class="int-group-header">
+        <div class="int-group-icon" style="background:#FFF0F1;">💬</div>
+        <div class="int-group-label">SMS — Twilio</div>
+        <div class="int-group-pill">Opt-out compliance built in · PECR compliant</div>
+      </div>
+      <div class="int-grid-1">
+        <div class="int-card">
+          <div class="int-card-top-bar" style="background:linear-gradient(90deg,#F22F46,#C41A30);"></div>
+          <div class="int-logo-row">
+            <div class="int-logo" style="background:#FFF0F1;"><span style="font-size:22px;">💬</span></div>
+            <div><div class="int-name">Twilio</div><div class="int-cat">SMS · With opt-out handling via webhook</div></div>
+          </div>
+          <span class="int-badge badge-live">✓ Live</span>
+          <div class="int-desc">Twilio powers all outbound SMS — safety reminders, customer review requests, and staff notifications. Opt-out is handled properly: when a recipient replies STOP, Twilio fires a webhook to ZayPOS which records the opt-out in the database and permanently suppresses that number from all future sends.</div>
+
+          <div class="two-col">
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);">SMS use cases</div>
+              <ul class="feat-list">
+                <li><div class="fl-dot fl-a"></div>Food safety checklist reminders to on-shift staff</li>
+                <li><div class="fl-dot fl-a"></div>Temperature probe reminders at configurable intervals</li>
+                <li><div class="fl-dot fl-a"></div>Missed checklist alerts to on-duty manager</li>
+                <li><div class="fl-dot fl-a"></div>Customer review requests after takeaway orders</li>
+                <li><div class="fl-dot fl-a"></div>Staff clock-in confirmation and shift reminders</li>
+              </ul>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);">Opt-out compliance</div>
+              <ul class="feat-list">
+                <li><div class="fl-dot fl-g"></div>STOP keyword handled via Twilio inbound webhook</li>
+                <li><div class="fl-dot fl-g"></div>Opt-out recorded per number in the database immediately</li>
+                <li><div class="fl-dot fl-g"></div>Opted-out numbers suppressed from all future SMS sends</li>
+                <li><div class="fl-dot fl-g"></div>Opt-out status visible in the customer profile</li>
+                <li><div class="fl-dot fl-g"></div>Compliant with UK PECR messaging regulations</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tech-block">
+            <div class="tech-label">Technical</div>
+            <div class="tech-tags">
+              <span class="tech-tag">Twilio REST API</span>
+              <span class="tech-tag">Inbound webhook (STOP)</span>
+              <span class="tech-tag">PECR compliant</span>
+              <span class="tech-tag">Per-number opt-out DB</span>
+              <span class="tech-tag">Suppression list</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI -->
+    <div class="int-group" id="ai">
+      <div class="int-group-header">
+        <div class="int-group-icon" style="background:#E8FAF4;">🤖</div>
+        <div class="int-group-label">AI — OpenAI</div>
+        <div class="int-group-pill">3 use cases · GPT-4o Vision + GPT-4o + GPT-3.5 Turbo</div>
+      </div>
+      <div class="int-grid-3">
+
+        <div class="int-card">
+          <div class="int-card-top-bar" style="background:linear-gradient(90deg,#10A37F,#0D7A5F);"></div>
+          <div class="int-logo-row">
+            <div class="int-logo" style="background:#E8FAF4;"><span style="font-size:22px;">📄</span></div>
+            <div><div class="int-name">Invoice Processing</div><div class="int-cat">GPT-4o Vision</div></div>
+          </div>
+          <span class="int-badge badge-ai">GPT-4o · Vision API</span>
+          <div class="int-desc">Staff photograph or upload a supplier invoice. GPT-4o Vision reads the image or PDF, extracts every line item — name, quantity, unit price, supplier — and updates stock levels automatically on confirmation.</div>
+          <ul class="feat-list">
+            <li><div class="fl-dot fl-g"></div>Accepts JPEG, PNG photo or PDF upload</li>
+            <li><div class="fl-dot fl-g"></div>Extracts line items, quantities, unit prices</li>
+            <li><div class="fl-dot fl-g"></div>Maps to existing products in catalogue</li>
+            <li><div class="fl-dot fl-g"></div>Updates stock levels on staff confirmation</li>
+            <li><div class="fl-dot fl-g"></div>Full invoice audit trail retained</li>
+          </ul>
+          <div class="tech-block">
+            <div class="tech-label">Model</div>
+            <div class="tech-tags"><span class="tech-tag">gpt-4o</span><span class="tech-tag">Vision API</span><span class="tech-tag">JSON mode</span></div>
+          </div>
+        </div>
+
+        <div class="int-card">
+          <div class="int-card-top-bar" style="background:linear-gradient(90deg,#10A37F,#0D7A5F);"></div>
+          <div class="int-logo-row">
+            <div class="int-logo" style="background:#E8FAF4;"><span style="font-size:22px;">🎁</span></div>
+            <div><div class="int-name">Meal Deal Suggestions</div><div class="int-cat">GPT-4o · Sales data context</div></div>
+          </div>
+          <span class="int-badge badge-ai">GPT-4o · Structured output</span>
+          <div class="int-desc">ZayPOS feeds your top-selling product combinations into GPT-4o, which analyses what sells together and suggests optimal meal deal bundles with recommended pricing — giving you data-driven promotions automatically.</div>
+          <ul class="feat-list">
+            <li><div class="fl-dot fl-g"></div>Analyses real sales history from your business</li>
+            <li><div class="fl-dot fl-g"></div>Identifies best-performing product combinations</li>
+            <li><div class="fl-dot fl-g"></div>Suggests bundle name, contents, and pricing</li>
+            <li><div class="fl-dot fl-g"></div>One click to create the suggested deal</li>
+            <li><div class="fl-dot fl-g"></div>Re-runs automatically as sales data grows</li>
+          </ul>
+          <div class="tech-block">
+            <div class="tech-label">Model</div>
+            <div class="tech-tags"><span class="tech-tag">gpt-4o</span><span class="tech-tag">Chat completions</span><span class="tech-tag">Structured output</span></div>
+          </div>
+        </div>
+
+        <div class="int-card">
+          <div class="int-card-top-bar" style="background:linear-gradient(90deg,#10A37F,#0D7A5F);"></div>
+          <div class="int-logo-row">
+            <div class="int-logo" style="background:#E8FAF4;"><span style="font-size:22px;">💡</span></div>
+            <div><div class="int-name">Upsell Recommendations</div><div class="int-cat">GPT-3.5 Turbo · Real-time at till</div></div>
+          </div>
+          <span class="int-badge badge-ai">GPT-3.5 Turbo · Low latency</span>
+          <div class="int-desc">At the point of ordering, GPT-3.5 Turbo analyses the current cart contents and individual customer order history to suggest relevant add-ons — shown as prompts to staff before they complete the sale.</div>
+          <ul class="feat-list">
+            <li><div class="fl-dot fl-g"></div>Cart-aware — analyses current order in real time</li>
+            <li><div class="fl-dot fl-g"></div>Uses individual customer purchase history</li>
+            <li><div class="fl-dot fl-g"></div>Suggestions shown as prompts on order screen</li>
+            <li><div class="fl-dot fl-g"></div>GPT-3.5 Turbo chosen for low latency at the till</li>
+            <li><div class="fl-dot fl-g"></div>Tracks add-on attach rate in analytics</li>
+          </ul>
+          <div class="tech-block">
+            <div class="tech-label">Model</div>
+            <div class="tech-tags"><span class="tech-tag">gpt-3.5-turbo</span><span class="tech-tag">Low latency</span><span class="tech-tag">Chat completions</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- HARDWARE -->
+    <div class="int-group" id="hardware">
+      <div class="int-group-header">
+        <div class="int-group-icon" style="background:#FFF8E8;">🖨️</div>
+        <div class="int-group-label">Hardware — ESC/POS Receipt Printing</div>
+        <div class="int-group-pill">Network thermal printers · No drivers needed</div>
+      </div>
+      <div class="int-grid-1">
+        <div class="int-card">
+          <div class="int-card-top-bar" style="background:linear-gradient(90deg,#C47D0E,#9A600A);"></div>
+          <div class="int-logo-row">
+            <div class="int-logo" style="background:#FEF3DC;"><span style="font-size:26px;">🖨️</span></div>
+            <div><div class="int-name">ESC/POS Network Printing</div><div class="int-cat">Thermal receipt printers · TCP/IP socket connection</div></div>
+          </div>
+          <span class="int-badge badge-live">✓ Live</span>
+          <div class="int-desc">ZayPOS connects to any network thermal receipt printer that speaks ESC/POS — the industry standard protocol used by Epson, Star Micronics, and most modern receipt printers. No drivers, no software installation. Configure by IP address and port number, run a test print, and you're done.</div>
+          <div class="two-col">
+            <ul class="feat-list">
+              <li><div class="fl-dot fl-a"></div>Connects via TCP/IP — IP address and port</li>
+              <li><div class="fl-dot fl-a"></div>No printer drivers or software needed</li>
+              <li><div class="fl-dot fl-a"></div>Test print button in Settings → Printer</li>
+              <li><div class="fl-dot fl-a"></div>Prints order receipts and kitchen dockets</li>
+            </ul>
+            <ul class="feat-list">
+              <li><div class="fl-dot fl-a"></div>Works with Epson, Star Micronics, and generic ESC/POS</li>
+              <li><div class="fl-dot fl-a"></div>Configurable receipt header, footer, and logo</li>
+              <li><div class="fl-dot fl-a"></div>Digital receipt (email) available as alternative</li>
+              <li><div class="fl-dot fl-a"></div>Multiple printers configurable per location</li>
+            </ul>
+          </div>
+          <div class="tech-block">
+            <div class="tech-label">Technical</div>
+            <div class="tech-tags">
+              <span class="tech-tag">ESC/POS protocol</span>
+              <span class="tech-tag">TCP/IP socket</span>
+              <span class="tech-tag">No drivers</span>
+              <span class="tech-tag">Epson / Star / Generic</span>
+              <span class="tech-tag">Per-location config</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SCHEDULERS -->
+<section class="sched-section" id="schedulers">
+  <div class="container">
+    <div class="section-label">Background automation</div>
+    <h2 class="section-h2">6 automated schedulers</h2>
+    <p class="section-sub">ZayPOS runs six cron-based background jobs — keeping your business running automatically without anyone needing to trigger them manually.</p>
+
+    <div class="sched-wrap">
+      <table class="sched-table">
+        <thead>
+          <tr>
+            <th style="width:20%;">Job</th>
+            <th style="width:18%;">Schedule</th>
+            <th style="width:10%;">Type</th>
+            <th>What it does</th>
+            <th style="width:16%;">Sends via</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="s-name">💰 Monthly Payroll</div></td>
+            <td><span class="s-cron">0 9 1 * *</span><div class="s-freq">1st of month, 9am</div></td>
+            <td><span class="s-pill">Auto</span></td>
+            <td style="font-size:13px;color:var(--text-muted);">Calculates total hours, overtime, and gross wages for all staff from clock-in/out data. Generates the payroll summary and emails it to all configured payroll recipients. No manual action required.</td>
+            <td><span class="s-int">Brevo email</span></td>
+          </tr>
+          <tr>
+            <td><div class="s-name">📦 Stock Check Reminder</div></td>
+            <td><span class="s-cron">0 8 * * 1</span><div class="s-freq">Every Monday, 8am</div></td>
+            <td><span class="s-pill">Auto</span></td>
+            <td style="font-size:13px;color:var(--text-muted);">Sends a scheduled reminder to the manager to perform a manual stock count. Frequency is configurable per organisation (weekly / fortnightly / monthly). Helps maintain accurate inventory records between AI invoice updates.</td>
+            <td><span class="s-int">Brevo email</span></td>
+          </tr>
+          <tr>
+            <td><div class="s-name">🌡️ Temperature Probe Reminder</div></td>
+            <td><span class="s-cron">0 8,12,16 * * *</span><div class="s-freq">3× daily (configurable)</div></td>
+            <td><span class="s-pill">Auto</span></td>
+            <td style="font-size:13px;color:var(--text-muted);">Sends SMS reminders to on-shift staff to complete temperature checks — fridges, freezers, hot holding. Intervals are configurable per organisation. Checks opt-out status before every send. Never messages opted-out numbers.</td>
+            <td><span class="s-int">Twilio SMS</span></td>
+          </tr>
+          <tr>
+            <td><div class="s-name">📋 Missed Checklist Alert</div></td>
+            <td><span class="s-cron">*/30 * * * *</span><div class="s-freq">Every 30 minutes</div></td>
+            <td><span class="s-pill">Auto</span></td>
+            <td style="font-size:13px;color:var(--text-muted);">Runs every 30 minutes to check whether any scheduled safety checklist (opening, cleaning, closing) has passed its deadline without completion. If overdue: SMS sent to on-shift staff and email alert sent to manager.</td>
+            <td><span class="s-int">Twilio SMS<br>+ Brevo email</span></td>
+          </tr>
+          <tr>
+            <td><div class="s-name">⭐ Review Request</div></td>
+            <td><span class="s-cron">0 * * * *</span><div class="s-freq">Hourly · ~1hr post-order delay</div></td>
+            <td><span class="s-pill">Auto</span></td>
+            <td style="font-size:13px;color:var(--text-muted);">Hourly job that finds completed takeaway/delivery orders where the customer provided contact details, and the review request window has elapsed (~1hr). Checks opt-out status and whether a request was already sent for that order before sending. Prevents duplicates.</td>
+            <td><span class="s-int">Brevo email<br>+ Twilio SMS</span></td>
+          </tr>
+          <tr>
+            <td><div class="s-name">🏥 System Health Check</div></td>
+            <td><span class="s-cron">0 6 * * *</span><div class="s-freq">Daily, 6am</div></td>
+            <td><span class="s-pill">Auto</span></td>
+            <td style="font-size:13px;color:var(--text-muted);">Daily automated health check — tests database connectivity, API responsiveness, authentication service, printer reachability, and storage capacity. Results logged internally. If any check fails, an alert is sent to the ZayPOS engineering team immediately.</td>
+            <td><span class="s-int">Internal<br>monitoring</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="footer-logo-mark">Z</div>
+          <span class="footer-logo-text">Zay<span>POS</span></span>
+        </div>
+        <p>The modern cloud POS for cafes, restaurants, and food businesses across the UK.</p>
+        <small>Zayn Productions Ltd · Company No. 16892199<br>1 Alvin Street, Gloucester, GL1 3EJ</small>
+      </div>
+      <div>
+        <div class="footer-col-title">Product</div>
+        <a href="zaypos-features.html" class="footer-link">Features</a>
+        <a href="zaypos-homepage.html#pricing" class="footer-link">Pricing</a>
+        <a href="zaypos-integrations.html" class="footer-link">Integrations</a>
+        <a href="zaypos-changelog.html" class="footer-link">Changelog</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Support</div>
+        <a href="zaypos-docs.html" class="footer-link">Documentation</a>
+        <a href="zaypos-getting-started.html" class="footer-link">Getting Started</a>
+        <a href="zaypos-contact.html" class="footer-link">Contact Us</a>
+        <a href="zaypos-status.html" class="footer-link">System Status</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Legal</div>
+        <a href="zaypos-privacy.html" class="footer-link">Privacy Policy</a>
+        <a href="zaypos-terms.html" class="footer-link">Terms of Service</a>
+        <a href="zaypos-cookies.html" class="footer-link">Cookie Policy</a>
+        <a href="zaypos-gdpr.html" class="footer-link">GDPR</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 Zayn Productions Ltd. All rights reserved.</div>
+      <div style="display:flex;gap:20px;"><a href="zaypos-privacy.html">Privacy</a><a href="zaypos-terms.html">Terms</a><a href="zaypos-cookies.html">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  const m=document.getElementById('mobileMenu');
+  const b=document.getElementById('hamburger');
+  m.classList.toggle('open');b.classList.toggle('open');
+  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.mobile-menu a').forEach(a=>{
+    a.addEventListener('click',()=>{
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+      document.body.style.overflow='';
+    });
+  });
+
+  // Jump nav active state
+  const sections=['payments','email','sms','ai','hardware','schedulers'];
+  const links=document.querySelectorAll('.jump-link');
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(l=>l.classList.remove('active'));
+        const a=document.querySelector('.jump-link[href="#'+e.target.id+'"]');
+        if(a)a.classList.add('active');
+      }
+    });
+  },{rootMargin:'-10% 0px -80% 0px'});
+  sections.forEach(id=>{const el=document.getElementById(id);if(el)obs.observe(el);});
+
+  // Fade in cards
+  const cardObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
+  },{threshold:0.05});
+  document.querySelectorAll('.int-card').forEach(el=>{
+    el.style.opacity='0';el.style.transform='translateY(16px)';
+    el.style.transition='opacity 0.4s ease,transform 0.4s ease';
+    cardObs.observe(el);
+  });
+});
+</script>
+</body>
+</html>
