@@ -1,9 +1,8 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "routes": [
-    { "src": "/", "dest": "/zaypos-homepage.html" },
-    { "src": "/home", "dest": "/zaypos-homepage.html" }
+  "redirects": [
+    { "source": "/", "destination": "/zaypos-homepage", "permanent": false }
   ],
   "headers": [
     {
