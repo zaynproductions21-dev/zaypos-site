@@ -339,11 +339,12 @@ footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px
 }
 .hamburger:hover { background: var(--cream2); }
 .hamburger span {
-  display: block; height: 1.5px;
-  background: var(--text-mid);
+  display: block; width: 20px; height: 2px;
+  background: #4A3D2A;
   border-radius: 2px;
   transition: all 0.25s;
   transform-origin: center;
+  flex-shrink: 0;
 }
 .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
