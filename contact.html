@@ -270,6 +270,20 @@ footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px
   .logo-mark { width: 30px; height: 30px; font-size: 14px; }
 }
 
+
+/* ── COOKIE BANNER ── */
+#cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1A1208;color:rgba(255,255,255,0.85);padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;box-shadow:0 -4px 32px rgba(0,0,0,0.25);transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);}
+#cookie-banner.show{transform:translateY(0);}
+.cb-text{font-size:13px;line-height:1.6;flex:1;min-width:200px;}
+.cb-text a{color:#A78BFA;text-decoration:none;}
+.cb-text a:hover{text-decoration:underline;}
+.cb-actions{display:flex;gap:10px;flex-shrink:0;}
+.cb-accept{padding:9px 20px;background:#5B3EF5;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background 0.2s;}
+.cb-accept:hover{background:#7C62F7;}
+.cb-decline{padding:9px 16px;background:transparent;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);border-radius:8px;font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
+.cb-decline:hover{border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.75);}
+@media(max-width:600px){#cookie-banner{flex-direction:column;align-items:flex-start;}.cb-actions{width:100%;}.cb-accept,.cb-decline{flex:1;text-align:center;}}
+
 </style>
 </head>
 <body>
@@ -599,7 +613,70 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script><script>
+// ── Cookie consent ──
+(function(){
+  var consent = localStorage.getItem('zaypos_cookie_consent');
+  if(!consent){
+    setTimeout(function(){
+      var b = document.getElementById('cookie-banner');
+      if(b) b.classList.add('show');
+    }, 800);
+  }
+})();
+function cookieChoice(accepted){
+  localStorage.setItem('zaypos_cookie_consent', accepted ? 'accepted' : 'declined');
+  var b = document.getElementById('cookie-banner');
+  if(b){ b.style.transition='transform 0.3s ease'; b.style.transform='translateY(100%)'; }
+}
+
 function handleSubmit() {
+  const fname = document.getElementById('fname').value.trim();
+  const lname = document.getElementById('lname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const biz = document.getElementById('biz').value.trim();
+  const biztype = document.getElementById('biztype').value;
+  const subject = document.getElementById('subject').value;
+  const message = document.getElementById('message').value.trim();
+  const consent = document.getElementById('consent').checked;
+
+  if (!fname || !email || !subject || !message) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+  if (!consent) {
+    alert('Please confirm you are happy for us to use your information to respond.');
+    return;
+  }
+
+  // Disable button to prevent double submit
+  const btn = document.querySelector('.submit-btn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  fetch('/api/enquiry', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ fname, lname, email, phone, biz, biztype, subject, message, consent })
+  })
+  .then(function(res){ return res.json(); })
+  .then(function(data){
+    if (data.ok) {
+      // Store ref for thank-you page
+      sessionStorage.setItem('zaypos_enquiry_ref', data.ref);
+      window.location.href = 'thank-you.html';
+    } else {
+      alert('Something went wrong. Please try again or email us directly at hello@zaypos.co.uk');
+      btn.textContent = 'Send message →';
+      btn.disabled = false;
+    }
+  })
+  .catch(function(){
+    alert('Something went wrong. Please try again or email us directly at hello@zaypos.co.uk');
+    btn.textContent = 'Send message →';
+    btn.disabled = false;
+  });
+}function handleSubmit() {
   const fname = document.getElementById('fname').value.trim();
   const email = document.getElementById('email').value.trim();
   const subject = document.getElementById('subject').value;
