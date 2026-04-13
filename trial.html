@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Start Free Trial — ZaynPOS</title>
-  <meta name="description" content="Start your 14-day free trial of ZaynPOS. The smarter till for UK retailers. No credit card required." />
+  <meta name="description" content="Start your 14-day free trial of ZaynPOS. The smarter till for UK food & drink businesses. No credit card required." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
   <style>
@@ -32,7 +32,9 @@
     .fine-print a { color: #059669; }
     .error { padding: 10px 14px; background: #fef2f2; border-radius: 8px; border: 1px solid #fecaca; font-size: 12px; color: #dc2626; }
     .success-card { text-align: center; }
-    .success-tip { padding: 16px; background: #f0fdf4; border-radius: 12px; border: 1px solid #bbf7d0; font-size: 13px; color: #059669; font-weight: 500; }
+    .success-box { padding: 16px 20px; background: #f0fdf4; border-radius: 12px; border: 1px solid #bbf7d0; font-size: 13px; color: #059669; font-weight: 600; margin-bottom: 12px; }
+    .success-detail { font-size: 13px; color: #64748b; line-height: 1.7; margin-bottom: 20px; }
+    .login-btn { display: inline-block; padding: 12px 28px; border-radius: 10px; background: linear-gradient(135deg,#059669,#10b981); color: #fff; font-size: 14px; font-weight: 700; text-decoration: none; font-family: inherit; }
     @media (max-width: 480px) { .grid2 { grid-template-columns: 1fr; } .card { padding: 28px 20px; } }
   </style>
 </head>
@@ -45,28 +47,28 @@
   <div class="card" id="formCard">
     <div style="text-align:center;margin-bottom:24px;">
       <span class="pill">14-Day Free Trial</span>
-      <h1>The smarter till for UK retailers</h1>
-      <p class="subtitle">AI-powered inventory, payments and analytics. No credit card required.</p>
+      <h1>The smarter till for UK food & drink</h1>
+      <p class="subtitle">Full access from day one. No credit card required.</p>
     </div>
     <div class="badge-row">
-      <span class="badge">✓ AI inventory management</span>
-      <span class="badge">✓ Integrated payments</span>
-      <span class="badge">✓ UK-built for UK retail</span>
+      <span class="badge">✓ Full access from day one</span>
+      <span class="badge">✓ No credit card needed</span>
+      <span class="badge">✓ UK data residency</span>
     </div>
     <form id="trialForm" class="form-stack">
       <div class="grid2">
         <div>
-          <label>Full Name *</label>
+          <label>Your Name *</label>
           <input type="text" id="name" placeholder="Tom Williams" required />
         </div>
         <div>
           <label>Email *</label>
-          <input type="email" id="email" placeholder="tom@myshop.co.uk" required />
+          <input type="email" id="email" placeholder="tom@mycafe.co.uk" required />
         </div>
       </div>
       <div>
         <label>Business Name *</label>
-        <input type="text" id="company" placeholder="Williams Deli" required />
+        <input type="text" id="company" placeholder="The Morning Cup" required />
       </div>
       <div class="grid2">
         <div>
@@ -75,22 +77,22 @@
         </div>
         <div>
           <label>Business Type</label>
-          <select id="jobTitle">
+          <select id="businessType">
             <option value="">Select type...</option>
-            <option>Independent Retailer</option>
-            <option>Restaurant / Café</option>
-            <option>Pub / Bar</option>
-            <option>Takeaway</option>
-            <option>Market Stall</option>
-            <option>Hair / Beauty Salon</option>
-            <option>Multi-site Chain</option>
-            <option>Other</option>
+            <option value="cafe">Café / Coffee Shop</option>
+            <option value="restaurant">Restaurant / Bistro</option>
+            <option value="bakery">Bakery / Patisserie</option>
+            <option value="pub">Pub / Bar</option>
+            <option value="takeaway">Takeaway / Fast Food</option>
+            <option value="food-truck">Food Truck / Pop-up</option>
+            <option value="deli">Deli / Sandwich Shop</option>
+            <option value="other">Other</option>
           </select>
         </div>
       </div>
       <div>
         <label>Current POS system (if any)</label>
-        <select id="source">
+        <select id="currentPos">
           <option value="">Select...</option>
           <option value="square">Square</option>
           <option value="izettle">iZettle / SumUp</option>
@@ -104,51 +106,126 @@
       </div>
       <div id="errorMsg" class="error" style="display:none;"></div>
       <button type="submit" class="btn" id="submitBtn">Start Free Trial →</button>
-      <p class="fine-print">By starting a trial you agree to our <a href="/terms.html">Terms</a> and <a href="/privacy.html">Privacy Policy</a>. UK data residency. GDPR compliant.</p>
+      <p class="fine-print">By starting a trial you agree to our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>. UK data residency. GDPR compliant.</p>
     </form>
   </div>
 
+  <!-- Success screen -->
   <div class="card success-card" id="successCard" style="display:none;max-width:480px;">
     <div style="font-size:56px;margin-bottom:16px;">🎉</div>
-    <h2 style="font-size:26px;font-weight:800;color:#1e293b;margin-bottom:12px;">Welcome to ZaynPOS!</h2>
-    <p style="font-size:14px;color:#64748b;line-height:1.7;margin-bottom:24px;">We'll send your trial access to <strong id="successEmail"></strong> within 24 hours. Our team will reach out to help you get your first product scanning.</p>
-    <div class="success-tip">💡 Have a list of your top products ready — we'll help you import them in minutes.</div>
+    <h2 style="font-size:24px;font-weight:800;color:#1e293b;margin-bottom:12px;">Your ZaynPOS account is ready!</h2>
+    <p class="success-detail">We've sent your login details to <strong id="successEmail"></strong>. Your 14-day free trial starts now — full access, no credit card needed.</p>
+    <div class="success-box" id="trialInfo">✓ Trial active — expires <span id="trialExpiry"></span></div>
+    <p class="success-detail" style="margin-bottom:20px;">Check your email for your login link and temporary PIN. Setup takes less than 10 minutes.</p>
+    <a href="https://chai-pos--chaiandcrumbs.replit.app" class="login-btn" id="loginLink">Go to ZaynPOS →</a>
   </div>
 
   <div style="margin-top:28px;text-align:center;max-width:480px;">
-    <p style="font-size:12px;color:#94a3b8;margin-bottom:10px;">Trusted by UK independent retailers</p>
+    <p style="font-size:12px;color:#94a3b8;margin-bottom:10px;">Trusted by UK food & drink businesses</p>
     <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
-      <span style="font-size:11px;color:#64748b;font-weight:600;">✓ AI inventory</span>
-      <span style="font-size:11px;color:#64748b;font-weight:600;">✓ 14-day free trial</span>
-      <span style="font-size:11px;color:#64748b;font-weight:600;">✓ No credit card</span>
-      <span style="font-size:11px;color:#64748b;font-weight:600;">✓ UK data storage</span>
+      <span style="font-size:11px;color:#64748b;font-weight:600;">✓ Orders & payments</span>
+      <span style="font-size:11px;color:#64748b;font-weight:600;">✓ Kitchen display</span>
+      <span style="font-size:11px;color:#64748b;font-weight:600;">✓ Staff & rota</span>
+      <span style="font-size:11px;color:#64748b;font-weight:600;">✓ Food safety</span>
     </div>
   </div>
 
   <script>
-    const INTAKE_URL = 'https://publishos-eosin.vercel.app/api/pipeline/intake';
+    const PUBLISHOS_URL  = 'https://publishos-eosin.vercel.app/api/pipeline/intake';
+    const PUBLISHOS_CONFIRM = 'https://publishos-eosin.vercel.app/api/pipeline/confirm';
+    const ZAYPOS_APP_URL = 'https://chai-pos--chaiandcrumbs.replit.app';
+    const ZAYPOS_SIGNUP  = ZAYPOS_APP_URL + '/api/signup';
+
+    // Generate a random 6-digit PIN for the new account
+    function generatePin() {
+      return String(Math.floor(100000 + Math.random() * 900000));
+    }
+
     document.getElementById('trialForm').addEventListener('submit', async (e) => {
       e.preventDefault();
-      const btn = document.getElementById('submitBtn');
-      const errEl = document.getElementById('errorMsg');
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const company = document.getElementById('company').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const jobTitle = document.getElementById('jobTitle').value;
-      const source = document.getElementById('source').value;
+      const btn    = document.getElementById('submitBtn');
+      const errEl  = document.getElementById('errorMsg');
+
+      const name         = document.getElementById('name').value.trim();
+      const email        = document.getElementById('email').value.trim();
+      const company      = document.getElementById('company').value.trim();
+      const phone        = document.getElementById('phone').value.trim();
+      const businessType = document.getElementById('businessType').value;
+      const currentPos   = document.getElementById('currentPos').value;
+
       if (!name || !email || !company) return;
-      btn.disabled = true; btn.textContent = 'Starting your trial...'; errEl.style.display = 'none';
+
+      btn.disabled = true;
+      btn.textContent = 'Creating your account...';
+      errEl.style.display = 'none';
+
+      const pin = generatePin();
+
       try {
-        const res = await fetch(INTAKE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, email, company, phone, jobTitle, source, product: 'zaypos' }) });
-        if (res.ok || res.status === 409) {
-          document.getElementById('successEmail').textContent = email;
-          document.getElementById('formCard').style.display = 'none';
-          document.getElementById('successCard').style.display = 'block';
-        } else { throw new Error('Failed'); }
-      } catch {
-        errEl.textContent = 'Something went wrong. Please email hello@zaypos.co.uk';
-        errEl.style.display = 'block'; btn.disabled = false; btn.textContent = 'Start Free Trial →';
+        // ── Step 1: POST to PublishOS pipeline ──────────────────────────────
+        const intakeRes = await fetch(PUBLISHOS_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name, email, company, phone,
+            jobTitle: businessType || 'Food & Drink Business',
+            source: currentPos || 'direct',
+            product: 'zaypos',
+          }),
+        });
+        // 409 = already exists, that's fine — continue
+
+        // ── Step 2: POST to ZaynPOS app to create real account ──────────────
+        const appRes = await fetch(ZAYPOS_SIGNUP, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            businessName: company,
+            email,
+            adminName: name,
+            adminPin: pin,
+            phone: phone || undefined,
+            businessType: businessType || undefined,
+          }),
+        });
+
+        const appData = appRes.ok ? await appRes.json() : null;
+
+        // ── Step 3: Confirm account back to PublishOS ───────────────────────
+        if (appData && appData.success) {
+          await fetch(PUBLISHOS_CONFIRM, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email, product: 'zaypos',
+              trialEndsAt: appData.trialEndsAt,
+              appLoginUrl: ZAYPOS_APP_URL,
+              organisationId: String(appData.organisation?.id || ''),
+            }),
+          }).catch(() => {}); // non-blocking — don't fail signup if this fails
+        }
+
+        // ── Step 4: Show success screen ─────────────────────────────────────
+        document.getElementById('successEmail').textContent = email;
+
+        // Show trial expiry date if we got it
+        if (appData && appData.trialEndsAt) {
+          const expiry = new Date(appData.trialEndsAt).toLocaleDateString('en-GB', {
+            day: 'numeric', month: 'long', year: 'numeric'
+          });
+          document.getElementById('trialExpiry').textContent = expiry;
+        } else {
+          document.getElementById('trialInfo').textContent = '✓ 14-day trial started — check your email for login details';
+        }
+
+        document.getElementById('formCard').style.display  = 'none';
+        document.getElementById('successCard').style.display = 'block';
+
+      } catch (err) {
+        errEl.textContent = 'Something went wrong. Please try again or email hello@zaypos.co.uk';
+        errEl.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Start Free Trial →';
       }
     });
   </script>
