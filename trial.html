@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start Free Trial — ZaynPOS</title>
+  <meta name="description" content="Start your 14-day free trial of ZaynPOS. The smarter till for UK retailers. No credit card required." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #ecfdf5 100%); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; }
+    .card { background: #fff; border-radius: 20px; padding: 40px; max-width: 520px; width: 100%; box-shadow: 0 20px 60px rgba(5,150,105,0.12); }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 32px; justify-content: center; }
+    .logo-icon { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg,#059669,#10b981); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 16px; font-weight: 800; }
+    .logo-text { font-size: 18px; font-weight: 700; color: #1e293b; }
+    h1 { font-size: 26px; font-weight: 800; color: #1e293b; margin-bottom: 8px; text-align: center; letter-spacing: -0.5px; }
+    .subtitle { font-size: 14px; color: #64748b; text-align: center; margin-bottom: 24px; line-height: 1.6; }
+    .badge-row { display: flex; gap: 8px; justify-content: center; margin-bottom: 28px; flex-wrap: wrap; }
+    .badge { font-size: 11px; font-weight: 600; color: #059669; background: #f0fdf4; padding: 4px 10px; border-radius: 20px; border: 1px solid #bbf7d0; }
+    .pill { display: inline-block; padding: 4px 14px; border-radius: 20px; background: #f0fdf4; border: 1px solid #bbf7d0; font-size: 11px; font-weight: 700; color: #059669; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    label { font-size: 11px; font-weight: 700; color: #475569; display: block; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+    input, select { width: 100%; padding: 12px 16px; border-radius: 10px; border: 1.5px solid #e2e8f0; font-size: 14px; font-family: inherit; color: #1e293b; background: #fff; transition: all 0.15s; }
+    input:hover, select:hover { border-color: #bbf7d0; }
+    input:focus, select:focus { border-color: #059669; box-shadow: 0 0 0 3px rgba(5,150,105,0.12); outline: none; }
+    .form-stack { display: flex; flex-direction: column; gap: 16px; }
+    .btn { width: 100%; padding: 15px; border-radius: 12px; border: none; background: linear-gradient(135deg,#059669,#10b981); color: #fff; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.15s; box-shadow: 0 6px 20px rgba(5,150,105,0.3); }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(5,150,105,0.4); }
+    .btn:disabled { background: #cbd5e1; box-shadow: none; cursor: not-allowed; transform: none; }
+    .fine-print { font-size: 11px; color: #94a3b8; text-align: center; line-height: 1.6; }
+    .fine-print a { color: #059669; }
+    .error { padding: 10px 14px; background: #fef2f2; border-radius: 8px; border: 1px solid #fecaca; font-size: 12px; color: #dc2626; }
+    .success-card { text-align: center; }
+    .success-tip { padding: 16px; background: #f0fdf4; border-radius: 12px; border: 1px solid #bbf7d0; font-size: 13px; color: #059669; font-weight: 500; }
+    @media (max-width: 480px) { .grid2 { grid-template-columns: 1fr; } .card { padding: 28px 20px; } }
+  </style>
+</head>
+<body>
+  <a href="/" class="logo">
+    <div class="logo-icon">Z</div>
+    <span class="logo-text">ZaynPOS</span>
+  </a>
+
+  <div class="card" id="formCard">
+    <div style="text-align:center;margin-bottom:24px;">
+      <span class="pill">14-Day Free Trial</span>
+      <h1>The smarter till for UK retailers</h1>
+      <p class="subtitle">AI-powered inventory, payments and analytics. No credit card required.</p>
+    </div>
+    <div class="badge-row">
+      <span class="badge">✓ AI inventory management</span>
+      <span class="badge">✓ Integrated payments</span>
+      <span class="badge">✓ UK-built for UK retail</span>
+    </div>
+    <form id="trialForm" class="form-stack">
+      <div class="grid2">
+        <div>
+          <label>Full Name *</label>
+          <input type="text" id="name" placeholder="Tom Williams" required />
+        </div>
+        <div>
+          <label>Email *</label>
+          <input type="email" id="email" placeholder="tom@myshop.co.uk" required />
+        </div>
+      </div>
+      <div>
+        <label>Business Name *</label>
+        <input type="text" id="company" placeholder="Williams Deli" required />
+      </div>
+      <div class="grid2">
+        <div>
+          <label>Phone</label>
+          <input type="tel" id="phone" placeholder="+44 7700 900000" />
+        </div>
+        <div>
+          <label>Business Type</label>
+          <select id="jobTitle">
+            <option value="">Select type...</option>
+            <option>Independent Retailer</option>
+            <option>Restaurant / Café</option>
+            <option>Pub / Bar</option>
+            <option>Takeaway</option>
+            <option>Market Stall</option>
+            <option>Hair / Beauty Salon</option>
+            <option>Multi-site Chain</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label>Current POS system (if any)</label>
+        <select id="source">
+          <option value="">Select...</option>
+          <option value="square">Square</option>
+          <option value="izettle">iZettle / SumUp</option>
+          <option value="eposnow">Epos Now</option>
+          <option value="lightspeed">Lightspeed</option>
+          <option value="clover">Clover</option>
+          <option value="paper">Paper / manual</option>
+          <option value="none">None — just starting out</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div id="errorMsg" class="error" style="display:none;"></div>
+      <button type="submit" class="btn" id="submitBtn">Start Free Trial →</button>
+      <p class="fine-print">By starting a trial you agree to our <a href="/terms.html">Terms</a> and <a href="/privacy.html">Privacy Policy</a>. UK data residency. GDPR compliant.</p>
+    </form>
+  </div>
+
+  <div class="card success-card" id="successCard" style="display:none;max-width:480px;">
+    <div style="font-size:56px;margin-bottom:16px;">🎉</div>
+    <h2 style="font-size:26px;font-weight:800;color:#1e293b;margin-bottom:12px;">Welcome to ZaynPOS!</h2>
+    <p style="font-size:14px;color:#64748b;line-height:1.7;margin-bottom:24px;">We'll send your trial access to <strong id="successEmail"></strong> within 24 hours. Our team will reach out to help you get your first product scanning.</p>
+    <div class="success-tip">💡 Have a list of your top products ready — we'll help you import them in minutes.</div>
+  </div>
+
+  <div style="margin-top:28px;text-align:center;max-width:480px;">
+    <p style="font-size:12px;color:#94a3b8;margin-bottom:10px;">Trusted by UK independent retailers</p>
+    <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+      <span style="font-size:11px;color:#64748b;font-weight:600;">✓ AI inventory</span>
+      <span style="font-size:11px;color:#64748b;font-weight:600;">✓ 14-day free trial</span>
+      <span style="font-size:11px;color:#64748b;font-weight:600;">✓ No credit card</span>
+      <span style="font-size:11px;color:#64748b;font-weight:600;">✓ UK data storage</span>
+    </div>
+  </div>
+
+  <script>
+    const INTAKE_URL = 'https://publishos-eosin.vercel.app/api/pipeline/intake';
+    document.getElementById('trialForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const errEl = document.getElementById('errorMsg');
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const jobTitle = document.getElementById('jobTitle').value;
+      const source = document.getElementById('source').value;
+      if (!name || !email || !company) return;
+      btn.disabled = true; btn.textContent = 'Starting your trial...'; errEl.style.display = 'none';
+      try {
+        const res = await fetch(INTAKE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, email, company, phone, jobTitle, source, product: 'zaypos' }) });
+        if (res.ok || res.status === 409) {
+          document.getElementById('successEmail').textContent = email;
+          document.getElementById('formCard').style.display = 'none';
+          document.getElementById('successCard').style.display = 'block';
+        } else { throw new Error('Failed'); }
+      } catch {
+        errEl.textContent = 'Something went wrong. Please email hello@zaypos.co.uk';
+        errEl.style.display = 'block'; btn.disabled = false; btn.textContent = 'Start Free Trial →';
+      }
+    });
+  </script>
+</body>
+</html>
