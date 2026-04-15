@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refund Policy — ZayPOS</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#FDFAF6;color:#1A1208;overflow-x:hidden;line-height:1.6;}
+:root{--cream:#FDFAF6;--cream2:#F5F0E8;--violet:#5B3EF5;--violet-light:#7C62F7;--violet-pale:#EEE9FE;--violet-mid:#C9BDFB;--text:#1A1208;--text-mid:#4A3D2A;--text-muted:#8A7A65;--text-dim:#B0A090;--border:#E5DDD0;}
+.container{max-width:1160px;margin:0 auto;padding:0 24px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--text);}
+.logo-text span{color:var(--violet);}
+.btn-primary{padding:9px 20px;font-size:14px;font-weight:500;color:#fff;background:var(--violet);border:none;border-radius:8px;cursor:pointer;text-decoration:none;}
+.legal-hero{padding:120px 0 56px;background:var(--cream2);border-bottom:1px solid var(--border);}
+.legal-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--violet);background:var(--violet-pale);padding:5px 12px;border-radius:100px;margin-bottom:18px;}
+.legal-hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(30px,5vw,50px);line-height:1.1;letter-spacing:-1.2px;color:var(--text);margin-bottom:14px;}
+.legal-meta{font-size:13px;color:var(--text-dim);}
+.legal-body{padding:70px 0 100px;}
+.legal-grid{display:grid;grid-template-columns:220px 1fr;gap:60px;align-items:start;}
+.legal-toc{position:sticky;top:90px;}
+.toc-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:14px;}
+.toc-link{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;padding:7px 10px;border-left:2px solid var(--border);margin-bottom:2px;transition:all 0.2s;}
+.toc-link:hover{color:var(--violet);border-left-color:var(--violet);font-weight:500;background:var(--violet-pale);border-radius:0 6px 6px 0;}
+.legal-content h2{font-family:'Fraunces',serif;font-weight:700;font-size:22px;color:var(--text);letter-spacing:-0.5px;margin:48px 0 14px;padding-top:48px;border-top:1px solid var(--border);}
+.legal-content h2:first-child{margin-top:0;padding-top:0;border-top:none;}
+.legal-content h3{font-size:16px;font-weight:600;color:var(--text-mid);margin:24px 0 10px;}
+.legal-content p{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:16px;font-weight:300;}
+.legal-content ul,.legal-content ol{margin:0 0 16px 20px;}
+.legal-content li{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:6px;font-weight:300;}
+.legal-content a{color:var(--violet);}
+.legal-callout{background:var(--violet-pale);border:1px solid var(--violet-mid);border-radius:12px;padding:20px 24px;margin:24px 0;}
+.legal-callout p{margin-bottom:0;color:var(--text-mid);font-weight:400;}
+.legal-also{background:var(--cream2);border-top:1px solid var(--border);padding:60px 0;}
+.also-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
+.also-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px;text-decoration:none;transition:all 0.2s;display:block;}
+.also-card:hover{border-color:var(--violet-mid);transform:translateY(-2px);}
+.also-card-icon{font-size:24px;margin-bottom:10px;}
+.also-card-title{font-family:'Fraunces',serif;font-weight:600;font-size:16px;color:var(--text);margin-bottom:4px;}
+.also-card-desc{font-size:13px;color:var(--text-muted);}
+footer{background:#1A1208;padding:28px 24px;}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.3);}
+.footer-bottom a{color:rgba(255,255,255,0.3);text-decoration:none;margin-left:20px;}
+@media(max-width:768px){.legal-grid{grid-template-columns:1fr;}.legal-toc{display:none;}.also-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+  <a href="index.html" class="logo"><div class="logo-mark">Z</div><span class="logo-text">Zay<span>POS</span></span></a>
+  <a href="trial.html" class="btn-primary">Start Free Trial</a>
+</div></nav>
+
+<section class="legal-hero"><div class="container">
+  <div class="legal-eyebrow">Legal</div>
+  <h1>Refund Policy</h1>
+  <div class="legal-meta">Last updated: 15 April 2026 &nbsp;&middot;&nbsp; Zayn Productions Ltd &nbsp;&middot;&nbsp; Company No. 16892199</div>
+</div></section>
+
+<section class="legal-body"><div class="container"><div class="legal-grid">
+  <aside class="legal-toc">
+    <div class="toc-title">Contents</div>
+    <a href="#subscription" class="toc-link">1. Subscription service</a>
+    <a href="#window" class="toc-link">2. 14-day refund window</a>
+    <a href="#no-refund" class="toc-link">3. When refunds don't apply</a>
+    <a href="#renewal" class="toc-link">4. Renewal charges</a>
+    <a href="#annual" class="toc-link">5. Annual plans</a>
+    <a href="#cancel" class="toc-link">6. How to cancel</a>
+    <a href="#request" class="toc-link">7. Requesting a refund</a>
+    <a href="#technical" class="toc-link">8. Technical issues</a>
+    <a href="#disputes" class="toc-link">9. Dispute resolution</a>
+    <a href="#contact" class="toc-link">10. Contact</a>
+  </aside>
+  <div class="legal-content">
+    <div class="legal-callout"><p><strong>ZayPOS is a subscription-based SaaS product.</strong> ZayPOS software does not process payments or hold funds &mdash; all payment processing is handled by independent third-party providers. This policy covers your ZayPOS software subscription only.</p></div>
+
+    <h2 id="subscription">1. Subscription-based service</h2>
+    <p>ZayPOS is provided by Zayn Productions Ltd on a recurring subscription basis. Access to the software begins immediately upon successful payment. Because access is granted immediately, refunds are subject to the conditions below.</p>
+
+    <h2 id="window">2. 14-day refund window</h2>
+    <p>We offer a <strong>14-day refund period</strong> from the date of your initial subscription purchase. If you are unsatisfied with ZayPOS for any reason, you may request a full refund within 14 calendar days of your first payment, provided your account has not been used significantly.</p>
+
+    <h2 id="no-refund">3. When refunds don't apply</h2>
+    <ul>
+      <li>The 14-day refund window has passed</li>
+      <li>The account has been used substantially (transactions recorded, menus configured, staff accounts created)</li>
+      <li>A free trial was used prior to the paid subscription</li>
+      <li>The refund relates to a renewal charge where cancellation was not made before the renewal date</li>
+      <li>The account has been suspended or terminated for breach of our Terms of Service</li>
+    </ul>
+
+    <h2 id="renewal">4. Renewal charges</h2>
+    <p>Subscriptions renew automatically unless cancelled before the renewal date. We do not offer refunds for renewal charges where cancellation was not made in advance. We send renewal reminders by email before each billing date.</p>
+
+    <h2 id="annual">5. Annual plans</h2>
+    <p>Annual subscriptions are eligible for the standard 14-day refund window from the date of purchase. After this window, annual subscriptions are non-refundable. Cancellation of an annual plan after the 14-day window grants continued access until the end of the paid period &mdash; no partial refunds for unused months.</p>
+
+    <h2 id="cancel">6. How to cancel</h2>
+    <p>Cancel at any time via your account settings or by emailing <a href="mailto:hello@zaypos.co.uk">hello@zaypos.co.uk</a>. Cancellation stops future billing only and does not entitle you to a refund for the current period unless within the 14-day window.</p>
+
+    <h2 id="request">7. Requesting a refund</h2>
+    <ol>
+      <li>Email <a href="mailto:hello@zaypos.co.uk">hello@zaypos.co.uk</a> with subject: <strong>"Refund Request &mdash; ZayPOS"</strong></li>
+      <li>Include your full name, registered email address, and subscription date</li>
+      <li>Briefly explain your reason</li>
+    </ol>
+    <p>We respond within 5 business days. Approved refunds are processed to your original payment method within 5&ndash;10 business days.</p>
+
+    <h2 id="technical">8. Technical issues</h2>
+    <p>If a significant platform failure prevents you from using ZayPOS, contact us at <a href="mailto:hello@zaypos.co.uk">hello@zaypos.co.uk</a>. Where the issue is attributable to our platform and causes substantial disruption, we may offer a pro-rated credit or partial refund at our discretion.</p>
+
+    <h2 id="disputes">9. Dispute resolution</h2>
+    <p>Please contact us directly before raising a dispute with your bank or card provider. Raising a chargeback without first contacting us may result in suspension of your account. These Terms are governed by the laws of England and Wales.</p>
+
+    <h2 id="contact">10. Contact</h2>
+    <p><strong>Zayn Productions Ltd</strong> &middot; 1 Alvin Street, Gloucester, GL1 3EJ<br>
+    Email: <a href="mailto:hello@zaypos.co.uk">hello@zaypos.co.uk</a> &middot; Phone: +44 1452 938906</p>
+  </div>
+</div></div></section>
+
+<section class="legal-also"><div class="container">
+  <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:16px;">Related legal documents</p>
+  <div class="also-grid">
+    <a href="terms.html" class="also-card"><div class="also-card-icon">&#x1F4CB;</div><div class="also-card-title">Terms of Service</div><div class="also-card-desc">Our full terms governing use of ZayPOS.</div></a>
+    <a href="privacy.html" class="also-card"><div class="also-card-icon">&#x1F512;</div><div class="also-card-title">Privacy Policy</div><div class="also-card-desc">How we collect, use and protect your data.</div></a>
+    <a href="cookies.html" class="also-card"><div class="also-card-icon">&#x1F36A;</div><div class="also-card-title">Cookie Policy</div><div class="also-card-desc">How we use cookies on our website.</div></a>
+  </div>
+</div></section>
+
+<footer><div class="container">
+  <div class="footer-bottom">
+    <div>&copy; 2026 Zayn Productions Ltd. Company No. 16892199</div>
+    <div><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refunds</a><a href="cookies.html">Cookies</a></div>
+  </div>
+</div></footer>
+</body></html>
