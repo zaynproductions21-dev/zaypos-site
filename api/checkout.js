@@ -26,7 +26,7 @@ module.exports = async function handler(req, res) {
       mode: 'subscription',
       payment_method_types: ['card'],
       line_items: [{ price: priceId, quantity: qty }],
-      success_url: 'https://app.zaypos.co.uk/billing/success?session_id={CHECKOUT_SESSION_ID}',
+      success_url: 'https://www.zaypos.co.uk/success?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: 'https://www.zaypos.co.uk/#pricing',
     });
 
