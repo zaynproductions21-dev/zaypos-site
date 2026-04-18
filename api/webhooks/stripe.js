@@ -28,6 +28,16 @@ async function deactivateSubscription(email) {
   }
 }
 
+async function triggerEmailSequence(email, name, event) {
+  try {
+    await fetch('https://www.zaypos.co.uk/api/email-sequence', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, name, event, product: 'zaypos' }),
+    });
+  } catch (err) { console.error('email-sequence trigger failed:', err); }
+}
+
 // Stripe sends raw body — we need to disable Vercel's body parser
 module.exports.config = { api: { bodyParser: false } };
 
@@ -75,6 +85,7 @@ module.exports = async function handler(req, res) {
     case 'invoice.payment_failed': {
       const invoice = event.data.object;
       console.error(`Payment failed for ${invoice.customer_email}, invoice ${invoice.id}`);
+      await triggerEmailSequence(invoice.customer_email, invoice.customer_email.split('@')[0], 'payment_failed');
       break;
     }
 
@@ -83,6 +94,7 @@ module.exports = async function handler(req, res) {
       const customer = await stripe.customers.retrieve(sub.customer);
       if (customer.email) {
         await deactivateSubscription(customer.email);
+        await triggerEmailSequence(customer.email, customer.name || customer.email.split('@')[0], 'cancelled');
         console.log(`Subscription cancelled: ${customer.email}`);
       }
       break;
