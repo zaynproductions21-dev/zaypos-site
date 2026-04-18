@@ -6,30 +6,39 @@ const ALLOWED_PRICES = new Set([
   'price_1TMvyF8rk99sE9j0mvnv1JyQ', // Complete
 ]);
 
+const PRICE_TO_PLAN = {
+  'price_1TMvyD8rk99sE9j0aUq5Lb6F': 'Starter',
+  'price_1TMvyE8rk99sE9j0g6tvgA5w': 'Pro',
+  'price_1TMvyF8rk99sE9j0mvnv1JyQ': 'Complete',
+};
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const { priceId, quantity } = req.body;
+    const { priceId, quantity, email } = req.body;
 
     if (!priceId || !ALLOWED_PRICES.has(priceId)) {
       return res.status(400).json({ error: 'Invalid price' });
     }
 
     const qty = Math.max(1, Math.min(100, parseInt(quantity) || 1));
-
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-    const session = await stripe.checkout.sessions.create({
+    const params = {
       mode: 'subscription',
       payment_method_types: ['card'],
       line_items: [{ price: priceId, quantity: qty }],
       success_url: 'https://www.zaypos.co.uk/success?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: 'https://www.zaypos.co.uk/#pricing',
-    });
+      metadata: { plan: PRICE_TO_PLAN[priceId] || 'Starter' },
+    };
 
+    if (email) params.customer_email = email;
+
+    const session = await stripe.checkout.sessions.create(params);
     return res.status(200).json({ url: session.url });
   } catch (err) {
     console.error('Checkout error:', err.message);
