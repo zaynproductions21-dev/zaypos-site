@@ -90,19 +90,26 @@
           </select>
         </div>
       </div>
-      <div>
-        <label>Current POS system (if any)</label>
-        <select id="currentPos">
-          <option value="">Select...</option>
-          <option value="square">Square</option>
-          <option value="izettle">iZettle / SumUp</option>
-          <option value="eposnow">Epos Now</option>
-          <option value="lightspeed">Lightspeed</option>
-          <option value="clover">Clover</option>
-          <option value="paper">Paper / manual</option>
-          <option value="none">None — just starting out</option>
-          <option value="other">Other</option>
-        </select>
+      <div class="grid2">
+        <div>
+          <label>Current POS system (if any)</label>
+          <select id="currentPos">
+            <option value="">Select...</option>
+            <option value="square">Square</option>
+            <option value="izettle">iZettle / SumUp</option>
+            <option value="eposnow">Epos Now</option>
+            <option value="lightspeed">Lightspeed</option>
+            <option value="clover">Clover</option>
+            <option value="paper">Paper / manual</option>
+            <option value="none">None — just starting out</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label>Choose your admin PIN (6 digits) *</label>
+          <input type="text" id="pin" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" minlength="6" placeholder="6-digit PIN" required />
+          <p style="font-size:11px;color:#94a3b8;margin-top:4px;">You'll use this PIN + your store code to log in. Memorise it.</p>
+        </div>
       </div>
       <div id="errorMsg" class="error" style="display:none;"></div>
       <button type="submit" class="btn" id="submitBtn">Start Free Trial →</button>
@@ -111,13 +118,21 @@
   </div>
 
   <!-- Success screen -->
-  <div class="card success-card" id="successCard" style="display:none;max-width:480px;">
+  <div class="card success-card" id="successCard" style="display:none;max-width:520px;">
     <div style="font-size:56px;margin-bottom:16px;">🎉</div>
     <h2 style="font-size:24px;font-weight:800;color:#1e293b;margin-bottom:12px;">Your ZaynPOS account is ready!</h2>
-    <p class="success-detail">We've sent your login details to <strong id="successEmail"></strong>. Your 14-day free trial starts now — full access, no credit card needed.</p>
+    <p class="success-detail" style="margin-bottom:18px;">Your 14-day free trial starts now — full access, no credit card needed.</p>
+    <div style="background:#fef3c7;border:1.5px solid #f59e0b;border-radius:10px;padding:16px;margin-bottom:18px;text-align:left;">
+      <p style="font-size:13px;color:#92400e;font-weight:700;margin:0 0 12px 0;">⚡ Save these to log in:</p>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:14px;color:#1e293b;">
+        <strong>Store code:</strong><span id="successStoreCode" style="font-family:ui-monospace,monospace;font-weight:700;letter-spacing:0.05em;"></span>
+        <strong>PIN:</strong><span id="successPin" style="font-family:ui-monospace,monospace;font-weight:700;letter-spacing:0.05em;"></span>
+        <strong>Email:</strong><span id="successEmail"></span>
+      </div>
+      <p style="font-size:11px;color:#92400e;margin:10px 0 0 0;">We've also emailed these to you, but save them now just in case.</p>
+    </div>
     <div class="success-box" id="trialInfo">✓ Trial active — expires <span id="trialExpiry"></span></div>
-    <p class="success-detail" style="margin-bottom:20px;">Check your email for your login link and temporary PIN. Setup takes less than 10 minutes.</p>
-    <a href="https://app.zaypos.co.uk" class="login-btn" id="loginLink">Go to ZaynPOS →</a>
+    <a href="https://app.zaypos.co.uk" class="login-btn" id="loginLink" style="margin-top:14px;">Go to ZaynPOS →</a>
   </div>
 
   <div style="margin-top:28px;text-align:center;max-width:480px;">
@@ -136,7 +151,7 @@
     const ZAYPOS_APP_URL = 'https://app.zaypos.co.uk';
     const ZAYPOS_SIGNUP  = ZAYPOS_APP_URL + '/api/signup';
 
-    // Generate a random 6-digit PIN for the new account
+    // Fallback if user leaves PIN blank (input is required, but defensive)
     function generatePin() {
       return String(Math.floor(100000 + Math.random() * 900000));
     }
@@ -152,14 +167,20 @@
       const phone        = document.getElementById('phone').value.trim();
       const businessType = document.getElementById('businessType').value;
       const currentPos   = document.getElementById('currentPos').value;
+      const pinInput     = document.getElementById('pin').value.trim();
 
       if (!name || !email || !company) return;
+      if (!/^[0-9]{6}$/.test(pinInput)) {
+        errEl.textContent = 'PIN must be exactly 6 digits.';
+        errEl.style.display = 'block';
+        return;
+      }
 
       btn.disabled = true;
       btn.textContent = 'Creating your account...';
       errEl.style.display = 'none';
 
-      const pin = generatePin();
+      const pin = pinInput;
 
       try {
         // ── Step 1: POST to PublishOS pipeline ──────────────────────────────
@@ -207,6 +228,11 @@
 
         // ── Step 4: Show success screen ─────────────────────────────────────
         document.getElementById('successEmail').textContent = email;
+        document.getElementById('successPin').textContent = pin;
+        const storeCode = appData && appData.organisation && appData.organisation.storeCode
+          ? appData.organisation.storeCode
+          : '(check your welcome email)';
+        document.getElementById('successStoreCode').textContent = storeCode;
 
         // Show trial expiry date if we got it
         if (appData && appData.trialEndsAt) {
