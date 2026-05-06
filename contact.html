@@ -444,6 +444,7 @@ footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px
               <label for="consent">I'm happy for ZayPOS to use this information to respond to my enquiry. See our <a href="#">Privacy Policy</a> for details.</label>
             </div>
 
+            <div id="turnstile-widget" style="margin-bottom: 20px;"></div>
             <button class="submit-btn" onclick="handleSubmit()">Send message →</button>
           </div>
 
@@ -629,6 +630,25 @@ function cookieChoice(accepted){
   if(b){ b.style.transition='transform 0.3s ease'; b.style.transform='translateY(100%)'; }
 }
 
+var turnstileToken = '';
+function onTurnstileCallback(token) { turnstileToken = token; }
+function onTurnstileExpired() { turnstileToken = ''; }
+
+(function() {
+  var s = document.createElement('script');
+  s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad';
+  s.async = true;
+  s.defer = true;
+  document.head.appendChild(s);
+  window.onTurnstileLoad = function() {
+    turnstile.render('#turnstile-widget', {
+      sitekey: '0x4AAAAAADKI5BaseSCYFE9P',
+      callback: onTurnstileCallback,
+      'expired-callback': onTurnstileExpired
+    });
+  };
+})();
+
 function handleSubmit() {
   const fname = document.getElementById('fname').value.trim();
   const lname = document.getElementById('lname').value.trim();
@@ -648,6 +668,10 @@ function handleSubmit() {
     alert('Please confirm you are happy for us to use your information to respond.');
     return;
   }
+  if (!turnstileToken) {
+    alert('Please complete the CAPTCHA verification.');
+    return;
+  }
 
   // Disable button to prevent double submit
   const btn = document.querySelector('.submit-btn');
@@ -657,7 +681,7 @@ function handleSubmit() {
   fetch('/api/enquiry', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ fname, lname, email, phone, biz, biztype, subject, message, consent })
+    body: JSON.stringify({ fname, lname, email, phone, biz, biztype, subject, message, consent, 'cf-turnstile-response': turnstileToken })
   })
   .then(function(res){ return res.json(); })
   .then(function(data){
@@ -669,15 +693,15 @@ function handleSubmit() {
       alert('Something went wrong. Please try again or email us directly at hello@zaypos.co.uk');
       btn.textContent = 'Send message →';
       btn.disabled = false;
+      if (typeof turnstile !== 'undefined') turnstile.reset('#turnstile-widget');
+      turnstileToken = '';
     }
   })
   .catch(function(){
     alert('Something went wrong. Please try again or email us directly at hello@zaypos.co.uk');
     btn.textContent = 'Send message →';
     btn.disabled = false;
+    if (typeof turnstile !== 'undefined') turnstile.reset('#turnstile-widget');
+    turnstileToken = '';
   });
-}function handleSubmit() {
-  const fname = document.getElementById('fname').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const subject = document.getElementById('subject').value;
-  const message = document.getElementById('me
+}
