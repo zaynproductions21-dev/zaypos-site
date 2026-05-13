@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WGMSQ38P');</script>
-<!-- End Google Tag Manager -->
+<!-- Google Tag Manager (consent-gated) -->
+<script>
+(function(){
+  function loadGTM(){
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WGMSQ38P');
+  }
+  if (localStorage.getItem('zp_cookie_consent') === 'accepted') loadGTM();
+  window.__loadGTMOnAccept = function(){ localStorage.setItem('zp_cookie_consent','accepted'); loadGTM(); };
+  window.__declineGTMConsent = function(){ localStorage.setItem('zp_cookie_consent','declined'); };
+})();
+</script>
+<!-- End Google Tag Manager (consent-gated) -->
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How AI upselling works in a real cafe — ZayPOS Blog</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
@@ -181,10 +190,6 @@ footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
 
 </style>
 </head><body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGMSQ38P"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <nav>
   <div class="nav-inner">
     <a href="index.html" class="logo"><div class="logo-mark">Z</div><span class="logo-text">Zay<span>POS</span></span></a>
@@ -381,4 +386,24 @@ document.addEventListener('DOMContentLoaded',function(){document.querySelectorAl
   </div>
 </div>
 
+<!-- Cookie consent banner -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:20px;left:20px;right:20px;max-width:520px;margin:0 auto;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:18px 22px;box-shadow:0 10px 30px rgba(0,0,0,0.18);z-index:9999;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:13.5px;color:#1a1a1a;line-height:1.5;">
+  <div style="margin-bottom:12px;">We use cookies to understand site traffic. Accept to allow analytics. No marketing or third-party trackers. <a href="/privacy.html" style="color:#5B3EF5;text-decoration:underline;">Privacy policy</a>.</div>
+  <div style="display:flex;gap:8px;justify-content:flex-end;">
+    <button onclick="__cookieDecline()" style="padding:8px 16px;background:#fff;border:1px solid #d1d5db;color:#374151;border-radius:8px;cursor:pointer;font-size:13px;font-family:inherit;">Decline</button>
+    <button onclick="__cookieAccept()" style="padding:8px 16px;background:#5B3EF5;border:none;color:#fff;border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;font-family:inherit;">Accept</button>
+  </div>
+</div>
+<script>
+(function(){
+  var key='zp_cookie_consent';
+  function showBanner(){ var el=document.getElementById('cookie-banner'); if(el) el.style.display='block'; }
+  if(localStorage.getItem(key)===null){
+    if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', showBanner); } else { showBanner(); }
+  }
+  window.__cookieAccept=function(){ var el=document.getElementById('cookie-banner'); if(el)el.style.display='none'; if(typeof __loadGTMOnAccept==='function')__loadGTMOnAccept(); };
+  window.__cookieDecline=function(){ var el=document.getElementById('cookie-banner'); if(el)el.style.display='none'; if(typeof __declineGTMConsent==='function')__declineGTMConsent(); };
+})();
+</script>
+<!-- End Cookie consent banner -->
 </body></html>
