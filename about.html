@@ -533,7 +533,7 @@ footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px
 function cookieChoice(accepted){
   localStorage.setItem('zaypos_cookie_consent', accepted ? 'accepted' : 'declined');
   
-  if (accepted && typeof loadGTM === 'function') loadGTM();
+  if (accepted && typeof window.__loadGTMOnAccept === 'function') window.__loadGTMOnAccept();
   if (!accepted && typeof window.__declineGTMConsent === 'function') window.__declineGTMConsent();var b = document.getElementById('cookie-banner');
   if(b){ b.style.transition='transform 0.3s ease'; b.style.transform='translateY(100%)'; }
 }

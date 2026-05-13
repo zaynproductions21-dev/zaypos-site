@@ -12,7 +12,7 @@
 function cookieChoice(accepted){
   localStorage.setItem('zaypos_cookie_consent', accepted ? 'accepted' : 'declined');
   
-  if (accepted && typeof loadGTM === 'function') loadGTM();
+  if (accepted && typeof window.__loadGTMOnAccept === 'function') window.__loadGTMOnAccept();
   if (!accepted && typeof window.__declineGTMConsent === 'function') window.__declineGTMConsent();var b = document.getElementById('cookie-banner');
   if(b){ b.style.transition='transform 0.3s ease'; b.style.transform='translateY(100%)'; }
 }
