@@ -198,6 +198,30 @@ footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
 <!-- schema.org JSON-LD injected by PublishOS audit -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ZayPOS","url":"https://www.zaypos.co.uk","description":"AI-powered point-of-sale for UK hospitality and retail. Smart inventory, integrated payments, and customer analytics.","areaServed":"GB","contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"hello@zaypos.co.uk","areaServed":"GB"},"sameAs":["https://twitter.com/ZayPOS"],"parentOrganization":{"@type":"Organization","name":"Zayn Productions Ltd","url":"https://www.zaynit.com"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ZayPOS","url":"https://www.zaypos.co.uk","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"The only POS built for UK retail and hospitality that uses AI to manage inventory, predict demand and grow margins.","offers":[{"@type":"Offer","name":"Starter","priceCurrency":"GBP","price":"10.00"},{"@type":"Offer","name":"Growth","priceCurrency":"GBP","price":"24.00"},{"@type":"Offer","name":"Pro","priceCurrency":"GBP","price":"39.00"}]}</script>
+<!-- PostHog product analytics (consent-gated) -->
+<script>
+(function(){
+  function loadPostHog(){
+    if (window.__posthogLoaded) return; window.__posthogLoaded = true;
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://eu-assets.i.posthog.com/static/array.js';
+    document.head.appendChild(s);
+    s.onload = function(){
+      try {
+        window.posthog.init('phc_rJmyyFtKADpwEYUz9ufrd9cREaaoDq37ZeUrAyek5fnM', {
+          api_host: 'https://eu.i.posthog.com',
+          capture_pageview: true, autocapture: true,
+          person_profiles: 'identified_only',
+        });
+        window.posthog.register({ site: 'zaypos', site_name: 'ZayPOS', site_domain: 'zaypos.co.uk' });
+      } catch(e) {}
+    };
+  }
+  if (localStorage.getItem('zp_cookie_consent') === 'accepted' || localStorage.getItem('zaypos_cookie_consent') === 'accepted') loadPostHog();
+  var prev = window.__loadGTMOnAccept;
+  window.__loadGTMOnAccept = function(){ if (prev) prev(); loadPostHog(); };
+})();
+</script>
 </head><body>
 <nav>
   <div class="nav-inner">
