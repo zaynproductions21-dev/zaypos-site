@@ -464,7 +464,7 @@ footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px
 </style>
 <!-- schema.org JSON-LD injected by PublishOS audit -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ZayPOS","url":"https://www.zaypos.co.uk","description":"AI-powered point-of-sale for UK hospitality and retail. Smart inventory, integrated payments, and customer analytics.","areaServed":"GB","contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"hello@zaypos.co.uk","areaServed":"GB"},"sameAs":["https://twitter.com/ZayPOS"],"parentOrganization":{"@type":"Organization","name":"Zayn Productions Ltd","url":"https://www.zaynit.com"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ZayPOS","url":"https://www.zaypos.co.uk","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"The only POS built for UK retail and hospitality that uses AI to manage inventory, predict demand and grow margins.","offers":[{"@type":"Offer","name":"Starter","priceCurrency":"GBP","price":"10.00"},{"@type":"Offer","name":"Growth","priceCurrency":"GBP","price":"24.00"},{"@type":"Offer","name":"Pro","priceCurrency":"GBP","price":"39.00"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ZayPOS","url":"https://www.zaypos.co.uk","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"The only POS built for UK retail and hospitality that uses AI to manage inventory, predict demand and grow margins.","offers":[{"@type":"Offer","name":"Starter","priceCurrency":"GBP","price":"29.00","priceSpecification":{"@type":"UnitPriceSpecification","price":"29.00","priceCurrency":"GBP","unitText":"per till per month"}},{"@type":"Offer","name":"Growth","priceCurrency":"GBP","price":"69.00","priceSpecification":{"@type":"UnitPriceSpecification","price":"69.00","priceCurrency":"GBP","unitText":"per till per month"}},{"@type":"Offer","name":"Complete","priceCurrency":"GBP","price":"99.00","priceSpecification":{"@type":"UnitPriceSpecification","price":"99.00","priceCurrency":"GBP","unitText":"per till per month"}}]}</script>
 <!-- PostHog product analytics (consent-gated) -->
 <script>
 (function(){
@@ -1005,7 +1005,7 @@ footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px
     <div class="pricing-intro">
       <div class="section-label" style="justify-content:center;">Pricing</div>
       <h2 class="section-h2">Simple pricing. Built for British hospitality.</h2>
-      <p class="section-sub">Per user, per month. Example: 4 staff × £24 Pro = £96/mo total. Full access on every trial — no credit card needed.</p>
+      <p class="section-sub">Per till, per month. Unlimited staff included. Example: a 2-till café on Growth = £138/mo, however many people you employ. Full access on every trial — no credit card needed.</p>
     </div>
     <div class="billing-toggle">
       <span class="toggle-label">Monthly</span>
@@ -1017,7 +1017,7 @@ footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px
       <div class="plan-card">
         <div class="plan-name">Starter</div>
         <div class="plan-desc">For small cafes and single-location shops just getting started.</div>
-        <div><span class="plan-num" id="p-starter">£10</span><span class="plan-per"> / user / mo</span></div>
+        <div><span class="plan-num" id="p-starter">£29</span><span class="plan-per"> / till / mo</span></div>
         <div class="plan-billed" id="b-starter">Billed monthly</div>
         <button onclick="handleCheckout('price_1TMvyD8rk99sE9j0aUq5Lb6F', this)" class="plan-btn plan-btn-outline">Subscribe now</button>
         <a href="/trial.html" style="display:block;text-align:center;margin-top:8px;font-size:12px;color:var(--text-dim);text-decoration:underline">or start free trial</a>
@@ -1037,10 +1037,10 @@ footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px
       </div>
       <div class="plan-card featured">
         <div class="plan-badge">Most Popular</div>
-        <div class="plan-name">Pro</div>
-        <div class="plan-desc">Everything growing restaurants and busy cafes need, day to day.</div>
-        <div><span class="plan-num" id="p-pro">£24</span><span class="plan-per"> / user / mo</span></div>
-        <div class="plan-billed" id="b-pro">Billed monthly</div>
+        <div class="plan-name">Growth</div>
+        <div class="plan-desc">Everything growing restaurants and busy cafes need, day to day. Matches Square's mid-tier — beats it on features.</div>
+        <div><span class="plan-num" id="p-growth">£69</span><span class="plan-per"> / till / mo</span></div>
+        <div class="plan-billed" id="b-growth">Billed monthly</div>
         <button onclick="handleCheckout('price_1TMvyE8rk99sE9j0g6tvgA5w', this)" class="plan-btn plan-btn-filled">Subscribe now</button>
         <a href="/trial.html" style="display:block;text-align:center;margin-top:8px;font-size:12px;color:rgba(255,255,255,0.7);text-decoration:underline">or start free trial</a>
         <div class="plan-divider"></div>
@@ -1063,12 +1063,12 @@ footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px
       <div class="plan-card">
         <div class="plan-name">Complete</div>
         <div class="plan-desc">For UK food businesses that need EHO-ready compliance, allergen labelling and AI-first kitchen tools.</div>
-        <div><span class="plan-num" id="p-complete">£39</span><span class="plan-per"> / user / mo</span></div>
+        <div><span class="plan-num" id="p-complete">£99</span><span class="plan-per"> / till / mo</span></div>
         <div class="plan-billed" id="b-complete">Billed monthly</div>
         <button onclick="handleCheckout('price_1TMvyF8rk99sE9j0mvnv1JyQ', this)" class="plan-btn plan-btn-outline">Subscribe now</button>
         <a href="/trial.html" style="display:block;text-align:center;margin-top:8px;font-size:12px;color:var(--text-dim);text-decoration:underline">or start free trial</a>
         <div class="plan-divider"></div>
-        <div class="plan-inc">Everything in Pro, plus</div>
+        <div class="plan-inc">Everything in Growth, plus</div>
         <div class="plan-feat"><span class="pf-yes">✓</span> Food safety & SFBB compliance</div>
         <div class="plan-feat"><span class="pf-yes">✓</span> Temperature logging & alerts</div>
         <div class="plan-feat"><span class="pf-yes">✓</span> One-click EHO compliance report</div>
@@ -1205,12 +1205,13 @@ function cookieChoice(accepted){
 }
 
 let yearly = false;
-const prices = { starter: [10, 8], pro: [24, 19], complete: [39, 31] };
+// Monthly headline / "monthly equivalent when paying yearly" (≈20% off — 2 months free)
+const prices = { starter: [29, 24], growth: [69, 55], complete: [99, 79] };
 function toggleBilling() {
   yearly = !yearly;
   document.getElementById('toggleTrack').classList.toggle('yearly', yearly);
   const label = yearly ? 'Billed annually' : 'Billed monthly';
-  ['starter','pro','complete'].forEach(p => {
+  ['starter','growth','complete'].forEach(p => {
     document.getElementById('p-' + p).textContent = '£' + prices[p][yearly ? 1 : 0];
     document.getElementById('b-' + p).textContent = label;
   });
