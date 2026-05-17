@@ -1019,7 +1019,7 @@ footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px
         <div class="plan-desc">For small cafes and single-location shops just getting started.</div>
         <div><span class="plan-num" id="p-starter">£29</span><span class="plan-per"> / till / mo</span></div>
         <div class="plan-billed" id="b-starter">Billed monthly</div>
-        <button onclick="handleCheckout('price_1TMvyD8rk99sE9j0aUq5Lb6F', this)" class="plan-btn plan-btn-outline">Subscribe now</button>
+        <button onclick="handleCheckout('price_1TY1Mz8rk99sE9j08a13UrPs', this)" class="plan-btn plan-btn-outline">Subscribe now</button>
         <a href="/trial.html" style="display:block;text-align:center;margin-top:8px;font-size:12px;color:var(--text-dim);text-decoration:underline">or start free trial</a>
         <div class="plan-divider"></div>
         <div class="plan-inc">What's included</div>
@@ -1041,7 +1041,7 @@ footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px
         <div class="plan-desc">Everything growing restaurants and busy cafes need, day to day. Matches Square's mid-tier — beats it on features.</div>
         <div><span class="plan-num" id="p-growth">£69</span><span class="plan-per"> / till / mo</span></div>
         <div class="plan-billed" id="b-growth">Billed monthly</div>
-        <button onclick="handleCheckout('price_1TMvyE8rk99sE9j0g6tvgA5w', this)" class="plan-btn plan-btn-filled">Subscribe now</button>
+        <button onclick="handleCheckout('price_1TY1Nu8rk99sE9j0axWGZSVo', this)" class="plan-btn plan-btn-filled">Subscribe now</button>
         <a href="/trial.html" style="display:block;text-align:center;margin-top:8px;font-size:12px;color:rgba(255,255,255,0.7);text-decoration:underline">or start free trial</a>
         <div class="plan-divider"></div>
         <div class="plan-inc">Everything in Starter, plus</div>
@@ -1065,7 +1065,7 @@ footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px
         <div class="plan-desc">For UK food businesses that need EHO-ready compliance, allergen labelling and AI-first kitchen tools.</div>
         <div><span class="plan-num" id="p-complete">£99</span><span class="plan-per"> / till / mo</span></div>
         <div class="plan-billed" id="b-complete">Billed monthly</div>
-        <button onclick="handleCheckout('price_1TMvyF8rk99sE9j0mvnv1JyQ', this)" class="plan-btn plan-btn-outline">Subscribe now</button>
+        <button onclick="handleCheckout('price_1TY1Op8rk99sE9j0I3G6lptb', this)" class="plan-btn plan-btn-outline">Subscribe now</button>
         <a href="/trial.html" style="display:block;text-align:center;margin-top:8px;font-size:12px;color:var(--text-dim);text-decoration:underline">or start free trial</a>
         <div class="plan-divider"></div>
         <div class="plan-inc">Everything in Growth, plus</div>
@@ -1161,10 +1161,20 @@ footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px
 
 <script>
 // ── Stripe checkout ──
+// Monthly → yearly Stripe price ID map (kept in sync with `yearly` toggle)
+const MONTHLY_TO_YEARLY = {
+  'price_1TY1Mz8rk99sE9j08a13UrPs': 'price_1TY1NX8rk99sE9j0xhCqtUpa', // Starter £29/m → £290/y
+  'price_1TY1Nu8rk99sE9j0axWGZSVo': 'price_1TY1OP8rk99sE9j0pYPmOhKx', // Growth  £69/m → £690/y
+  'price_1TY1Op8rk99sE9j0I3G6lptb': 'price_1TY1PB8rk99sE9j0t2wl1wQF'  // Complete £99/m → £990/y
+};
 async function handleCheckout(priceId, btn) {
   var orig = btn.textContent;
   btn.disabled = true;
   btn.textContent = 'Redirecting...';
+  // If the yearly toggle is active, swap the monthly ID for its yearly counterpart
+  if (typeof yearly !== 'undefined' && yearly && MONTHLY_TO_YEARLY[priceId]) {
+    priceId = MONTHLY_TO_YEARLY[priceId];
+  }
   try {
     var res = await fetch('/api/checkout', {
       method: 'POST',
