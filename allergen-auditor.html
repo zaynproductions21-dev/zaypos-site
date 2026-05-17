@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager (consent-gated) -->
+<script>
+(function(){
+  function loadGTM(){
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WGMSQ38P');
+  }
+  if (localStorage.getItem('zp_cookie_consent') === 'accepted' || localStorage.getItem('zaypos_cookie_consent') === 'accepted') loadGTM();
+  window.__loadGTMOnAccept = function(){ localStorage.setItem('zp_cookie_consent','accepted'); loadGTM(); };
+  window.__declineGTMConsent = function(){ localStorage.setItem('zp_cookie_consent','declined'); };
+})();
+</script>
+<!-- End Google Tag Manager (consent-gated) -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Natasha's Law Allergen Auditor for UK Cafés &amp; Restaurants — ZayPOS</title>
+<meta name="description" content="Upload your menu — get back a UK 14-allergen matrix in 30 seconds. Free. Helps cafés and restaurants check Natasha's Law / PPDS compliance before the EHO turns up.">
+<link rel="canonical" href="https://www.zaypos.co.uk/allergen-auditor">
+<meta property="og:title" content="Free Natasha's Law Allergen Auditor — ZayPOS">
+<meta property="og:description" content="Paste your menu or upload a CSV — get the 14-allergen matrix back in 30 seconds. Free. EHO-ready format.">
+<meta property="og:url" content="https://www.zaypos.co.uk/allergen-auditor">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Natasha's Law Allergen Auditor","url":"https://www.zaypos.co.uk/allergen-auditor","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0.00","priceCurrency":"GBP"},"description":"Free tool for UK cafés and restaurants — upload or paste a menu and receive a 14-allergen matrix formatted for Natasha's Law / PPDS compliance.","provider":{"@type":"Organization","name":"ZayPOS","url":"https://www.zaypos.co.uk"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+  {"@type":"Question","name":"What is Natasha's Law?","acceptedAnswer":{"@type":"Answer","text":"The UK Food Information (Amendment) Regulations 2019 — in force since October 2021. Any food prepacked for direct sale (PPDS) on the same site it is made must carry a full ingredients list with the 14 regulated allergens clearly emphasised. Failure to comply can carry unlimited fines under the Food Information Regulations 2014."}},
+  {"@type":"Question","name":"Is the auditor really free?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully free, no card required. We log the email so we can email you the matrix and follow up with a Natasha's Law guidance email, but you can opt out at any time. The full auditor logic ships inside ZayPOS Complete for ongoing menu changes."}},
+  {"@type":"Question","name":"Is this a legal compliance audit?","acceptedAnswer":{"@type":"Answer","text":"No. It is an informational tool that helps you identify likely allergens in each menu item using AI. Final responsibility for allergen accuracy rests with the food business and is enforced by your local Environmental Health Officer. Always cross-check with your supplier specifications and printed PPDS labels."}},
+  {"@type":"Question","name":"What if my menu has 'low confidence' items?","acceptedAnswer":{"@type":"Answer","text":"Items flagged 'low' or 'unknown' confidence usually have generic names (e.g. 'House salad', 'Chef's special') where ingredients can vary widely. For those, you'll want to fill in the allergen row manually based on your actual recipe — the report leaves the row editable on print."}}
+]}</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#FDFAF6;color:#1A1208;overflow-x:hidden;line-height:1.6;}
+:root{--cream:#FDFAF6;--cream2:#F5F0E8;--violet:#5B3EF5;--violet-light:#7C62F7;--violet-pale:#EEE9FE;--violet-mid:#C9BDFB;--green:#1B8A5A;--green-pale:#E3F5EE;--green-dark:#065f46;--amber:#C47D0E;--amber-pale:#FEF3DC;--red:#B22;--red-pale:#fee2e2;--text:#1A1208;--text-mid:#4A3D2A;--text-muted:#8A7A65;--text-dim:#B0A090;--border:#E5DDD0;}
+.container{max-width:1160px;margin:0 auto;padding:0 24px;}
+.container-narrow{max-width:880px;margin:0 auto;padding:0 24px;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--text);}
+.logo-text span{color:var(--violet);}
+.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-links a{font-size:14px;color:var(--text-muted);text-decoration:none;}
+.btn-primary{padding:9px 20px;background:var(--violet);color:#fff;font-size:14px;font-weight:500;border:none;border-radius:8px;text-decoration:none;}
+
+.hero{padding:120px 0 40px;background:linear-gradient(180deg,var(--cream2) 0%,var(--cream) 100%);border-bottom:1px solid var(--border);text-align:center;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--green-dark);background:var(--green-pale);padding:6px 14px;border-radius:100px;margin-bottom:20px;}
+.hero h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(34px,5vw,52px);line-height:1.08;letter-spacing:-1.2px;color:var(--text);margin:0 auto 18px;max-width:780px;}
+.hero h1 em{font-style:italic;color:var(--violet);}
+.hero .lede{font-size:17px;color:var(--text-mid);max-width:660px;margin:0 auto 28px;font-weight:300;line-height:1.6;}
+.hero-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.hero-pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;background:#fff;border:1px solid var(--border);padding:7px 14px;border-radius:100px;color:var(--text-mid);}
+.hero-pill .dot{width:6px;height:6px;border-radius:50%;background:var(--green);}
+
+.tool-section{padding:50px 0 80px;}
+.tool-card{background:#fff;border:1px solid var(--border);border-radius:18px;box-shadow:0 8px 36px rgba(26,18,8,0.06);padding:36px 38px;max-width:760px;margin:0 auto;}
+.tool-card h2{font-family:'Fraunces',serif;font-weight:600;font-size:22px;color:var(--text);margin-bottom:6px;letter-spacing:-0.3px;}
+.tool-card .tc-sub{font-size:14px;color:var(--text-muted);margin-bottom:22px;font-weight:300;}
+.mode-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px;}
+.mode-tab{padding:10px 8px;background:#fff;border:1.5px solid var(--border);border-radius:10px;font-size:12px;font-weight:600;color:var(--text-muted);cursor:pointer;text-align:center;transition:all .12s;font-family:inherit;}
+.mode-tab.active{background:var(--violet-pale);border-color:var(--violet);color:var(--violet);}
+.mode-tab .mt-hint{display:block;font-size:10px;font-weight:400;color:var(--text-dim);margin-top:2px;}
+.mode-tab.active .mt-hint{color:var(--violet);opacity:0.8;}
+.input-area{display:none;margin-bottom:16px;}
+.input-area.active{display:block;}
+.input-area label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:6px;}
+.input-area input[type="text"],.input-area input[type="url"],.input-area input[type="email"],.input-area textarea,.input-area input[type="file"]{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;color:var(--text);background:#fff;}
+.input-area textarea{min-height:160px;resize:vertical;line-height:1.5;font-family:'SF Mono',monospace;font-size:13px;}
+.input-area .hint{font-size:12px;color:var(--text-dim);margin-top:6px;font-weight:300;}
+.email-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+@media(max-width:580px){.email-row{grid-template-columns:1fr;}.mode-tabs{grid-template-columns:1fr 1fr;}}
+.submit-row{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:8px;flex-wrap:wrap;}
+.submit-btn{padding:13px 28px;background:var(--violet);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;}
+.submit-btn:disabled{opacity:0.5;cursor:not-allowed;}
+.privacy-line{font-size:11px;color:var(--text-dim);max-width:330px;font-weight:300;}
+.privacy-line a{color:var(--text-muted);}
+.err{background:var(--red-pale);border:1px solid var(--red);color:#7f1d1d;padding:12px 14px;border-radius:10px;font-size:13px;margin-top:14px;display:none;}
+
+/* Results */
+.results-section{padding:30px 0 50px;display:none;}
+.results-section.show{display:block;}
+.results-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px;}
+.rs-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px 22px;}
+.rs-card .rs-val{font-family:'Fraunces',serif;font-weight:700;font-size:32px;line-height:1;color:var(--violet);margin-bottom:4px;letter-spacing:-0.8px;}
+.rs-card .rs-label{font-size:13px;color:var(--text-mid);font-weight:500;}
+.rs-card.warn .rs-val{color:var(--amber);}
+@media(max-width:680px){.results-summary{grid-template-columns:1fr;}}
+
+.matrix-wrap{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:18px;}
+.matrix-head{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;}
+.matrix-head h3{font-family:'Fraunces',serif;font-weight:600;font-size:16px;color:var(--text);}
+.matrix-head .biz{font-size:13px;color:var(--text-muted);font-weight:300;}
+.matrix-actions{display:flex;gap:10px;}
+.matrix-btn{padding:8px 14px;background:#fff;border:1px solid var(--border);border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;color:var(--text-mid);}
+.matrix-btn:hover{background:var(--cream2);}
+.matrix-table-wrap{overflow-x:auto;}
+.matrix{width:100%;border-collapse:collapse;font-size:11px;min-width:880px;}
+.matrix th,.matrix td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--border);}
+.matrix thead{background:var(--cream2);}
+.matrix th{font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.04em;color:var(--text-mid);}
+.matrix th.allergen{text-align:center;writing-mode:vertical-rl;transform:rotate(180deg);min-height:80px;padding:8px 6px;font-size:10px;}
+.matrix td.allergen{text-align:center;padding:6px;}
+.matrix td.allergen.yes{background:var(--red-pale);color:var(--red);font-weight:700;}
+.matrix td.allergen.no{background:transparent;color:#cbd5e1;}
+.matrix td.name{font-weight:600;color:var(--text);min-width:140px;}
+.matrix td.notes{color:var(--text-dim);font-size:10px;font-style:italic;max-width:200px;}
+.conf{display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;border-radius:6px;margin-left:6px;text-transform:uppercase;letter-spacing:0.04em;}
+.conf.high{background:var(--green-pale);color:var(--green-dark);}
+.conf.medium{background:var(--violet-pale);color:var(--violet);}
+.conf.low{background:var(--amber-pale);color:var(--amber);}
+.conf.unknown{background:#f1f5f9;color:#64748b;}
+
+.disclaimer{background:var(--amber-pale);border:1px solid var(--amber);border-radius:12px;padding:16px 20px;margin-bottom:24px;font-size:13px;color:#78350f;font-weight:300;line-height:1.6;}
+.disclaimer strong{font-weight:600;}
+
+.bait-card{background:linear-gradient(135deg,var(--violet) 0%,var(--violet-light) 100%);color:#fff;border-radius:16px;padding:32px 36px;text-align:center;margin-top:32px;}
+.bait-card h3{font-family:'Fraunces',serif;font-weight:700;font-size:22px;margin-bottom:10px;letter-spacing:-0.3px;}
+.bait-card p{font-size:15px;color:rgba(255,255,255,0.9);margin-bottom:18px;font-weight:300;max-width:520px;margin-left:auto;margin-right:auto;}
+.bait-cta{display:inline-block;padding:12px 26px;background:#fff;color:var(--violet);border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;}
+
+.section{padding:70px 0;}
+.section-alt{background:var(--cream2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.section h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(24px,3.4vw,32px);line-height:1.2;color:var(--text);margin-bottom:14px;text-align:center;letter-spacing:-0.5px;}
+.section .lede2{font-size:15px;color:var(--text-muted);text-align:center;max-width:580px;margin:0 auto 32px;font-weight:300;}
+.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:920px;margin:0 auto;}
+.step-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px 22px;position:relative;}
+.step-card .step-n{position:absolute;top:-12px;left:20px;background:var(--violet);color:#fff;font-family:'Fraunces',serif;font-weight:700;font-size:14px;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.step-card h4{font-family:'Fraunces',serif;font-weight:600;font-size:16px;color:var(--text);margin:8px 0 8px;}
+.step-card p{font-size:13.5px;color:var(--text-muted);font-weight:300;line-height:1.55;}
+.allergen-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px;max-width:780px;margin:0 auto;}
+.al-chip{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--text);}
+.al-chip strong{font-weight:600;display:block;margin-bottom:2px;}
+.al-chip .al-sub{font-size:11px;color:var(--text-muted);font-weight:300;}
+.faq-list{max-width:780px;margin:0 auto;}
+.faq-item{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:10px;}
+.faq-item summary{font-family:'Fraunces',serif;font-weight:600;font-size:15px;color:var(--text);cursor:pointer;outline:none;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:'+';font-size:22px;font-weight:300;color:var(--text-muted);}
+.faq-item[open] summary::after{content:'\2212';}
+.faq-item p{font-size:14px;color:var(--text-muted);font-weight:300;line-height:1.7;margin-top:12px;}
+@media(max-width:780px){.step-grid{grid-template-columns:1fr;}}
+
+footer{background:var(--text);color:#fff;padding:50px 0 24px;}
+.foot-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:1160px;margin:0 auto 30px;padding:0 24px;}
+.foot-col h4{font-family:'Fraunces',serif;font-weight:600;font-size:14px;color:#fff;margin-bottom:14px;}
+.foot-col a{display:block;font-size:13px;color:#bbb;text-decoration:none;margin-bottom:8px;}
+.foot-col a:hover{color:#fff;}
+.foot-bottom{border-top:1px solid #333;padding:20px 24px 0;font-size:12px;color:#888;text-align:center;max-width:1160px;margin:0 auto;}
+@media(max-width:680px){.foot-cols{grid-template-columns:1fr 1fr;}}
+
+/* PRINT STYLES — clean PDF when user hits print */
+@media print {
+  body{background:#fff;}
+  nav,.hero,.tool-section,.section,.bait-card,footer,.matrix-actions,#cookie-banner{display:none !important;}
+  .results-section{display:block !important;padding:0;}
+  .container,.container-narrow{max-width:none;padding:0;}
+  .matrix-wrap{border:1px solid #000;page-break-inside:avoid;}
+  .matrix{font-size:9px;}
+  .matrix th.allergen{font-size:8px;}
+  .disclaimer{background:#fff;border:1px solid #999;color:#333;page-break-inside:avoid;}
+  .results-summary{display:none;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-mark">Z</div><div class="logo-text">Zay<span>POS</span></div></a>
+    <div class="nav-links">
+      <a href="/features.html">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/trial.html" class="btn-primary">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container-narrow">
+    <div class="eyebrow">🇬🇧 Free tool · Natasha's Law</div>
+    <h1>Check your menu against <em>Natasha's Law</em> in 30 seconds.</h1>
+    <p class="lede">Paste your menu, upload a CSV, snap a photo or share a URL. We return the 14-allergen matrix every UK PPDS item must show &mdash; in a format your EHO will recognise.</p>
+    <div class="hero-pills">
+      <span class="hero-pill"><span class="dot"></span>Free, no card</span>
+      <span class="hero-pill"><span class="dot"></span>Email required</span>
+      <span class="hero-pill"><span class="dot"></span>~30 seconds</span>
+      <span class="hero-pill"><span class="dot"></span>Print to PDF for EHO</span>
+    </div>
+  </div>
+</section>
+
+<section class="tool-section">
+  <div class="container-narrow">
+    <div class="tool-card" id="toolCard">
+      <h2>Allergen auditor</h2>
+      <div class="tc-sub">Drop your menu in &mdash; we'll cross-reference each item against the 14 UK regulated allergens (FIR 2014 + Natasha's Law amendment 2019).</div>
+
+      <div class="email-row">
+        <div>
+          <label for="auditEmail">Your email *</label>
+          <input type="email" id="auditEmail" required placeholder="you@yourcafe.co.uk" autocomplete="email">
+        </div>
+        <div>
+          <label for="auditBusiness">Business name (optional)</label>
+          <input type="text" id="auditBusiness" placeholder="The Chai &amp; Crumbs" autocomplete="organization">
+        </div>
+      </div>
+
+      <div class="mode-tabs" role="tablist">
+        <button type="button" class="mode-tab active" data-mode="text">Paste menu<span class="mt-hint">Type or paste</span></button>
+        <button type="button" class="mode-tab" data-mode="csv">Upload CSV<span class="mt-hint">Square/Toast export</span></button>
+        <button type="button" class="mode-tab" data-mode="image">Upload image<span class="mt-hint">Photo of menu</span></button>
+        <button type="button" class="mode-tab" data-mode="url">Menu URL<span class="mt-hint">Your website</span></button>
+      </div>
+
+      <div class="input-area active" data-mode="text">
+        <label for="inText">Paste menu (one item per line is easiest)</label>
+        <textarea id="inText" placeholder="Cheese &amp; onion sandwich&#10;Carrot cake&#10;Prawn cocktail&#10;Vegan brownie&#10;..."></textarea>
+      </div>
+      <div class="input-area" data-mode="csv">
+        <label for="inCsv">Upload CSV file</label>
+        <input type="file" id="inCsv" accept=".csv,text/csv">
+        <div class="hint">Most Square / Toast / Clover menu exports work directly &mdash; we look at name + description + category columns.</div>
+      </div>
+      <div class="input-area" data-mode="image">
+        <label for="inImage">Upload a photo of your menu</label>
+        <input type="file" id="inImage" accept="image/png,image/jpeg,image/webp">
+        <div class="hint">Phone photo of a printed menu is fine. Max ~5MB.</div>
+      </div>
+      <div class="input-area" data-mode="url">
+        <label for="inUrl">Menu page URL on your website</label>
+        <input type="url" id="inUrl" placeholder="https://yourcafe.co.uk/menu">
+        <div class="hint">We'll fetch the page and parse menu items from the visible text.</div>
+      </div>
+
+      <div class="submit-row">
+        <button type="button" class="submit-btn" id="submitBtn">Run allergen audit</button>
+        <div class="privacy-line">By submitting you agree to ZayPOS storing your email + audit summary. Opt out anytime. <a href="/privacy.html">Privacy</a>.</div>
+      </div>
+      <div class="err" id="errBox"></div>
+    </div>
+  </div>
+</section>
+
+<section class="results-section" id="resultsSection">
+  <div class="container">
+    <div class="disclaimer" id="disclaimer">
+      <strong>This is an informational tool, not a legal compliance audit.</strong> Final responsibility for allergen accuracy rests with the food business and is enforced by your local EHO. Always cross-check with your supplier specifications and printed PPDS labels.
+    </div>
+
+    <div class="results-summary" id="summary"></div>
+
+    <div class="matrix-wrap">
+      <div class="matrix-head">
+        <div>
+          <h3>Allergen matrix</h3>
+          <div class="biz" id="matrixBiz"></div>
+        </div>
+        <div class="matrix-actions">
+          <button class="matrix-btn" onclick="window.print()">🖨️ Print / Save PDF</button>
+          <button class="matrix-btn" onclick="document.getElementById('toolCard').scrollIntoView({behavior:'smooth'})">Run another</button>
+        </div>
+      </div>
+      <div class="matrix-table-wrap">
+        <table class="matrix" id="matrixTable"></table>
+      </div>
+    </div>
+
+    <div class="bait-card">
+      <h3>This auditor ships inside ZayPOS Complete.</h3>
+      <p>One-off audits are great. But every menu change re-creates the work. ZayPOS Complete keeps your allergen matrix in sync with your menu automatically, prints PPDS labels on demand, and adds a one-click EHO/SFBB compliance report.</p>
+      <a href="/trial.html" class="bait-cta">Start 14-day free trial →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-narrow">
+    <h2>How it works</h2>
+    <p class="lede2">Three steps. Roughly 30 seconds.</p>
+    <div class="step-grid">
+      <div class="step-card">
+        <div class="step-n">1</div>
+        <h4>Drop your menu in</h4>
+        <p>Paste text, upload a CSV from Square / Toast / Clover, snap a phone photo of a printed menu, or just paste your website's menu page URL.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-n">2</div>
+        <h4>Claude reads it</h4>
+        <p>The AI extracts every item and cross-references against typical UK recipes &mdash; flagging which of the 14 allergens each item likely contains, with a confidence rating.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-n">3</div>
+        <h4>Print the matrix</h4>
+        <p>The result is an EHO-style allergen matrix. Hit print, save as PDF, file it with your SFBB documents, ready for inspection.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container-narrow">
+    <h2>The 14 UK regulated allergens</h2>
+    <p class="lede2">Per Food Information Regulations 2014, schedule 2 &mdash; emphasised on PPDS items since Natasha's Law (Oct 2021).</p>
+    <div class="allergen-list">
+      <div class="al-chip"><strong>Celery</strong><span class="al-sub">incl. celeriac</span></div>
+      <div class="al-chip"><strong>Cereals containing gluten</strong><span class="al-sub">wheat, rye, barley, oats, spelt, kamut</span></div>
+      <div class="al-chip"><strong>Crustaceans</strong><span class="al-sub">crab, lobster, prawns</span></div>
+      <div class="al-chip"><strong>Eggs</strong><span class="al-sub">all eggs</span></div>
+      <div class="al-chip"><strong>Fish</strong><span class="al-sub">all fish species</span></div>
+      <div class="al-chip"><strong>Lupin</strong><span class="al-sub">seeds + flour</span></div>
+      <div class="al-chip"><strong>Milk</strong><span class="al-sub">incl. lactose</span></div>
+      <div class="al-chip"><strong>Molluscs</strong><span class="al-sub">mussels, oysters, squid, snails</span></div>
+      <div class="al-chip"><strong>Mustard</strong><span class="al-sub">seeds + flour + paste</span></div>
+      <div class="al-chip"><strong>Tree nuts</strong><span class="al-sub">almond, hazelnut, walnut, cashew, pecan, brazil, pistachio, macadamia</span></div>
+      <div class="al-chip"><strong>Peanuts</strong><span class="al-sub">incl. groundnut oil</span></div>
+      <div class="al-chip"><strong>Sesame</strong><span class="al-sub">seeds + oil + tahini</span></div>
+      <div class="al-chip"><strong>Soya</strong><span class="al-sub">incl. tofu, soy sauce</span></div>
+      <div class="al-chip"><strong>Sulphites (SO₂)</strong><span class="al-sub">if &gt; 10mg/kg or 10mg/L</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container-narrow">
+    <h2>Common questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What is Natasha's Law?</summary>
+        <p>The UK Food Information (Amendment) Regulations 2019 &mdash; in force since October 2021. Any food prepacked for direct sale (PPDS) on the same site it is made must carry a full ingredients list with the 14 regulated allergens clearly emphasised. Failure to comply can carry unlimited fines under the Food Information Regulations 2014.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is the auditor really free?</summary>
+        <p>Yes &mdash; fully free, no card required. We log the email so we can email you the matrix and follow up with a Natasha's Law guidance email, but you can opt out at any time. The full auditor logic ships inside ZayPOS Complete for ongoing menu changes.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is this a legal compliance audit?</summary>
+        <p>No. It is an informational tool that helps you identify likely allergens in each menu item using AI. Final responsibility for allergen accuracy rests with the food business and is enforced by your local Environmental Health Officer. Always cross-check with your supplier specifications and printed PPDS labels.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What if my menu has "low confidence" items?</summary>
+        <p>Items flagged "low" or "unknown" confidence usually have generic names (e.g. "House salad", "Chef's special") where ingredients can vary widely. For those, you'll want to fill in the allergen row manually based on your actual recipe &mdash; the printed matrix leaves the row editable.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Where does my data go?</summary>
+        <p>Your email + a summary of the audit (item count + allergen count) is stored on UK-residency Upstash Redis. The full menu text and AI response are NOT stored. We may use the email for a Natasha's Law guidance follow-up (you can opt out at any time, one-click in any of our emails).</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-cols">
+    <div class="foot-col">
+      <h4>Product</h4>
+      <a href="/features.html">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/guarantee.html">60-Day Guarantee</a>
+      <a href="/integrations.html">Integrations</a>
+      <a href="/trial.html">Start free trial</a>
+    </div>
+    <div class="foot-col">
+      <h4>Free tools</h4>
+      <a href="/allergen-auditor">Natasha's Law auditor</a>
+      <a href="/profit-calculator.html">POS profit calculator</a>
+    </div>
+    <div class="foot-col">
+      <h4>Compare</h4>
+      <a href="/square-vs-zaypos">Square vs ZayPOS</a>
+      <a href="/vs-toast">Toast vs ZayPOS</a>
+      <a href="/vs-clover">Clover vs ZayPOS</a>
+      <a href="/chai-and-crumbs">Chai &amp; Crumbs case study</a>
+    </div>
+    <div class="foot-col">
+      <h4>Legal</h4>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/cookies.html">Cookies</a>
+      <a href="/refund.html">Refund policy</a>
+    </div>
+  </div>
+  <div class="foot-bottom">© 2026 Zayn Productions Ltd · Company No. 16892199 · 1 Alvin Street, Gloucester, GL1 3EJ</div>
+</footer>
+
+<script>
+const ENDPOINT = 'https://publishos-eosin.vercel.app/api/allergen-audit';
+
+// 14 allergens in display order — must match the API (lowercase keys)
+const ALLERGENS = [
+  { key: 'celery',       label: 'Celery' },
+  { key: 'gluten',       label: 'Gluten' },
+  { key: 'crustaceans',  label: 'Crustaceans' },
+  { key: 'eggs',         label: 'Eggs' },
+  { key: 'fish',         label: 'Fish' },
+  { key: 'lupin',        label: 'Lupin' },
+  { key: 'milk',         label: 'Milk' },
+  { key: 'molluscs',     label: 'Molluscs' },
+  { key: 'mustard',      label: 'Mustard' },
+  { key: 'tree nuts',    label: 'Tree nuts' },
+  { key: 'peanuts',      label: 'Peanuts' },
+  { key: 'sesame',       label: 'Sesame' },
+  { key: 'soya',         label: 'Soya' },
+  { key: 'sulphites',    label: 'Sulphites' },
+];
+
+// --- mode tab switching -----------------------------------------------
+let currentMode = 'text';
+document.querySelectorAll('.mode-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    currentMode = tab.dataset.mode;
+    document.querySelectorAll('.mode-tab').forEach(t => t.classList.toggle('active', t === tab));
+    document.querySelectorAll('.input-area').forEach(a => a.classList.toggle('active', a.dataset.mode === currentMode));
+  });
+});
+
+// --- file to base64 ---------------------------------------------------
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => {
+      const result = r.result || '';
+      const comma = String(result).indexOf(',');
+      resolve(comma >= 0 ? String(result).slice(comma + 1) : String(result));
+    };
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+}
+
+function fileToText(file) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(String(r.result || ''));
+    r.onerror = reject;
+    r.readAsText(file);
+  });
+}
+
+// --- submit handler ---------------------------------------------------
+const submitBtn = document.getElementById('submitBtn');
+const errBox = document.getElementById('errBox');
+
+function showError(msg) {
+  errBox.textContent = msg;
+  errBox.style.display = 'block';
+}
+function hideError() {
+  errBox.style.display = 'none';
+}
+
+submitBtn.addEventListener('click', async () => {
+  hideError();
+
+  const email = document.getElementById('auditEmail').value.trim();
+  const businessName = document.getElementById('auditBusiness').value.trim();
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    showError('Enter a valid email.');
+    return;
+  }
+
+  const payload = { email, businessName, menuMode: currentMode, menuData: '' };
+
+  try {
+    if (currentMode === 'text') {
+      payload.menuData = document.getElementById('inText').value.trim();
+      if (payload.menuData.length < 5) { showError('Paste a few menu items first.'); return; }
+    } else if (currentMode === 'csv') {
+      const f = document.getElementById('inCsv').files[0];
+      if (!f) { showError('Choose a CSV file.'); return; }
+      payload.menuData = await fileToText(f);
+    } else if (currentMode === 'image') {
+      const f = document.getElementById('inImage').files[0];
+      if (!f) { showError('Choose an image file.'); return; }
+      if (f.size > 5 * 1024 * 1024) { showError('Image must be under 5MB.'); return; }
+      payload.menuData = await fileToBase64(f);
+      payload.imageMediaType = f.type === 'image/jpg' ? 'image/jpeg' : f.type;
+    } else if (currentMode === 'url') {
+      payload.menuData = document.getElementById('inUrl').value.trim();
+      if (!/^https?:\/\//.test(payload.menuData)) { showError('URL must start with http:// or https://'); return; }
+    }
+  } catch (e) {
+    showError('Could not read input: ' + (e.message || e));
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Auditing menu…';
+
+  try {
+    const r = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const data = await r.json();
+    if (!r.ok || !data.ok) {
+      throw new Error(data.error || data.detail || 'Audit failed');
+    }
+    renderResults(data, businessName);
+  } catch (e) {
+    showError('Audit failed: ' + (e.message || e));
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Run allergen audit';
+  }
+});
+
+function renderResults(data, businessName) {
+  // Summary
+  const sumEl = document.getElementById('summary');
+  sumEl.innerHTML =
+    '<div class="rs-card"><div class="rs-val">' + data.summary.totalItems + '</div><div class="rs-label">menu items</div></div>' +
+    '<div class="rs-card"><div class="rs-val">' + data.summary.itemsWithAllergens + '</div><div class="rs-label">items with at least one allergen</div></div>' +
+    '<div class="rs-card' + (data.summary.lowConfidenceItems > 0 ? ' warn' : '') + '"><div class="rs-val">' + data.summary.lowConfidenceItems + '</div><div class="rs-label">need manual review (low confidence)</div></div>';
+
+  // Disclaimer (server-supplied)
+  if (data.disclaimer) {
+    document.getElementById('disclaimer').innerHTML = '<strong>This is an informational tool, not a legal compliance audit.</strong> ' + data.disclaimer.replace(/^.*?\. ?/, '');
+  }
+
+  // Header
+  document.getElementById('matrixBiz').textContent =
+    (businessName || '') +
+    (businessName ? ' · ' : '') +
+    'Generated ' + new Date().toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+
+  // Matrix table
+  const table = document.getElementById('matrixTable');
+  let html = '<thead><tr><th>Item</th>';
+  for (const a of ALLERGENS) html += '<th class="allergen">' + a.label + '</th>';
+  html += '<th>Notes</th></tr></thead><tbody>';
+
+  for (const item of data.items) {
+    const allergenSet = new Set(item.allergens || []);
+    html += '<tr><td class="name">' + escapeHtml(item.name) + '<span class="conf ' + item.confidence + '">' + item.confidence + '</span></td>';
+    for (const a of ALLERGENS) {
+      const has = allergenSet.has(a.key);
+      html += '<td class="allergen ' + (has ? 'yes' : 'no') + '">' + (has ? '●' : '·') + '</td>';
+    }
+    html += '<td class="notes">' + (item.notes ? escapeHtml(item.notes) : '') + '</td></tr>';
+  }
+  html += '</tbody>';
+  table.innerHTML = html;
+
+  document.getElementById('resultsSection').classList.add('show');
+  setTimeout(() => document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' }), 100);
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+</script>
+
+<!-- Cookie consent banner -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:20px;left:20px;right:20px;max-width:520px;margin:0 auto;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:18px 22px;box-shadow:0 10px 30px rgba(0,0,0,0.18);z-index:9999;font-family:system-ui,sans-serif;font-size:13.5px;color:#1a1a1a;line-height:1.5;">
+  <div style="margin-bottom:12px;">We use cookies to understand site traffic. Accept to allow analytics. <a href="/privacy.html" style="color:#5B3EF5;text-decoration:underline;">Privacy policy</a>.</div>
+  <div style="display:flex;gap:8px;justify-content:flex-end;">
+    <button onclick="__cookieDecline()" style="padding:8px 16px;background:#fff;border:1px solid #d1d5db;color:#374151;border-radius:8px;cursor:pointer;font-size:13px;">Decline</button>
+    <button onclick="__cookieAccept()" style="padding:8px 16px;background:#5B3EF5;border:none;color:#fff;border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;">Accept</button>
+  </div>
+</div>
+<script>
+(function(){
+  var key='zp_cookie_consent';
+  function showBanner(){ var el=document.getElementById('cookie-banner'); if(el) el.style.display='block'; }
+  if(localStorage.getItem(key)===null){
+    if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', showBanner); } else { showBanner(); }
+  }
+  window.__cookieAccept=function(){ var el=document.getElementById('cookie-banner'); if(el)el.style.display='none'; if(typeof __loadGTMOnAccept==='function')__loadGTMOnAccept(); };
+  window.__cookieDecline=function(){ var el=document.getElementById('cookie-banner'); if(el)el.style.display='none'; if(typeof __declineGTMConsent==='function')__declineGTMConsent(); };
+})();
+</script>
+</body></html>
