@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager (consent-gated) -->
+<script>
+(function(){
+  function loadGTM(){
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WGMSQ38P');
+  }
+  if (localStorage.getItem('zp_cookie_consent') === 'accepted' || localStorage.getItem('zaypos_cookie_consent') === 'accepted') loadGTM();
+  window.__loadGTMOnAccept = function(){ localStorage.setItem('zp_cookie_consent','accepted'); loadGTM(); };
+  window.__declineGTMConsent = function(){ localStorage.setItem('zp_cookie_consent','declined'); };
+})();
+</script>
+<!-- End Google Tag Manager (consent-gated) -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toast vs ZayPOS for UK Cafés & Restaurants — Honest 2026 Comparison</title>
+<meta name="description" content="Toast is excellent in the US, but built for US restaurants. Honest UK-specific comparison covering Toast Payroll (US-only), pricing, Natasha's Law, EHO compliance and hardware lock-in.">
+<link rel="canonical" href="https://www.zaypos.co.uk/vs-toast">
+<meta property="og:title" content="Toast vs ZayPOS for UK Cafés & Restaurants — Honest Comparison">
+<meta property="og:description" content="Toast IQ tells you what to do. ZayPOS does it. Honest UK comparison: pricing, payroll gaps, Natasha's Law, hardware lock-in.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.zaypos.co.uk/vs-toast">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Toast vs ZayPOS for UK Cafés & Restaurants — Honest 2026 Comparison",
+  "description": "UK-specific comparison of Toast and ZayPOS for cafés and restaurants. Covers pricing, Toast Payroll's UK gap, Natasha's Law, EHO compliance, app marketplace and hardware lock-in.",
+  "author": { "@type": "Organization", "name": "ZayPOS", "url": "https://www.zaypos.co.uk" },
+  "publisher": {
+    "@type": "Organization", "name": "Zayn Productions Ltd", "url": "https://www.zaypos.co.uk",
+    "address": { "@type": "PostalAddress", "streetAddress": "1 Alvin Street", "addressLocality": "Gloucester", "postalCode": "GL1 3EJ", "addressCountry": "GB" }
+  },
+  "datePublished": "2026-05-17",
+  "dateModified": "2026-05-17",
+  "mainEntityOfPage": "https://www.zaypos.co.uk/vs-toast"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is Toast available in the UK?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, Toast launched in the UK in 2022. The core POS works fine, but several Toast modules — most notably Toast Payroll — are US-only and unavailable to UK businesses. For UK rota and payroll you'll need a separate tool on top of Toast." } },
+    { "@type": "Question", "name": "Does Toast support Natasha's Law allergen labelling?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Toast does not include a built-in Natasha's Law allergen matrix or PPDS label printer. UK food businesses using Toast typically need a separate compliance tool such as Navitas Safe Food Pro on top, at around £25–60/month." } },
+    { "@type": "Question", "name": "How much does Toast cost in the UK?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Toast's UK pricing for an equivalent feature stack — Core POS plus online ordering, KDS, gift cards and reporting — typically lands around £235/month per location, before card-processing fees and before any third-party UK payroll or compliance tool. ZayPOS Growth covers the same ground for £69/till/month, unlimited staff included." } },
+    { "@type": "Question", "name": "Is Toast hardware required, or can I use my own iPad?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Toast strongly encourages, and in some configurations requires, Toast-branded hardware (Toast Flex terminals, Toast Tap card readers). ZayPOS runs in any modern browser on any iPad, Android tablet or computer — no hardware purchase needed to switch." } },
+    { "@type": "Question", "name": "Can I switch from Toast to ZayPOS?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. ZayPOS offers free menu migration — export your Toast menu CSV, send it to hello@zaypos.co.uk, and we'll have a preview ready overnight. Most cafés are live in under an afternoon. You can keep your existing card reader or move to Clover, Dojo or SumUp." } }
+  ]
+}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#FDFAF6;color:#1A1208;overflow-x:hidden;line-height:1.65;}
+:root{
+  --cream:#FDFAF6;--cream2:#F5F0E8;--cream3:#EDE6D8;
+  --violet:#5B3EF5;--violet-light:#7C62F7;--violet-pale:#EEE9FE;
+  --green:#1B8A5A;--green-pale:#E3F5EE;
+  --amber:#C47D0E;--amber-pale:#FEF3DC;
+  --text:#1A1208;--text-mid:#4A3D2A;--text-muted:#8A7A65;--text-dim:#B0A090;
+  --border:#E5DDD0;--border-dark:#C9BBA8;
+}
+.container{max-width:880px;margin:0 auto;padding:0 24px;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;}
+.nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-mark{width:38px;height:38px;border-radius:11px;background:var(--violet);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:18px;color:#fff;}
+.logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--text);}
+.logo-text span{color:var(--violet);}
+.nav-links{display:flex;align-items:center;gap:30px;}
+.nav-links a{font-size:14px;color:var(--text-muted);text-decoration:none;}
+.nav-links a:hover{color:var(--text);}
+.btn-primary{padding:10px 22px;background:var(--violet);color:#fff;font-size:14px;font-weight:500;border:none;border-radius:10px;text-decoration:none;}
+.btn-primary:hover{background:var(--violet-light);}
+.article{padding:130px 0 80px;}
+.crumb{font-size:13px;color:var(--text-muted);margin-bottom:24px;}
+.crumb a{color:var(--violet);text-decoration:none;}
+.crumb a:hover{text-decoration:underline;}
+h1{font-family:'Fraunces',serif;font-weight:700;font-size:42px;line-height:1.15;letter-spacing:-0.02em;color:var(--text);margin-bottom:18px;}
+.lede{font-size:18px;color:var(--text-mid);margin-bottom:14px;}
+.meta{font-size:13px;color:var(--text-dim);margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+h2{font-family:'Fraunces',serif;font-weight:700;font-size:28px;line-height:1.25;letter-spacing:-0.01em;color:var(--text);margin:48px 0 18px;}
+h3{font-family:'Fraunces',serif;font-weight:600;font-size:20px;color:var(--text);margin:32px 0 12px;}
+p{font-size:16px;color:var(--text-mid);margin-bottom:18px;}
+ul,ol{margin:0 0 22px 22px;color:var(--text-mid);}
+li{margin-bottom:8px;font-size:16px;}
+a.inline{color:var(--violet);text-decoration:underline;}
+.tldr{background:var(--violet-pale);border:1px solid #C9BDFB;border-radius:14px;padding:24px 28px;margin:36px 0;}
+.tldr-title{font-family:'Fraunces',serif;font-weight:600;font-size:14px;color:var(--violet);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;}
+.comparison-table{width:100%;border-collapse:collapse;margin:24px 0;background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+.comparison-table th,.comparison-table td{padding:14px 18px;text-align:left;font-size:14px;border-bottom:1px solid var(--border);vertical-align:top;}
+.comparison-table th{background:var(--cream2);font-weight:600;color:var(--text);font-size:13px;text-transform:uppercase;letter-spacing:0.04em;}
+.comparison-table td:not(:first-child){text-align:center;}
+.yes{color:var(--green);font-weight:600;}
+.no{color:#B22;font-weight:500;}
+.partial{color:var(--amber);font-weight:500;}
+.cta-box{background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px;margin:48px 0;text-align:center;}
+.cta-box h3{margin-top:0;margin-bottom:10px;font-size:24px;}
+.cta-box p{margin-bottom:20px;}
+.cta-btn{display:inline-block;padding:14px 28px;background:var(--violet);color:#fff;font-size:15px;font-weight:500;border:none;border-radius:10px;text-decoration:none;}
+.cta-btn:hover{background:var(--violet-light);}
+.related-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:32px 0 16px;}
+.related-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px;text-decoration:none;display:block;transition:border-color .15s;}
+.related-card:hover{border-color:var(--violet);}
+.related-card .rk-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);margin-bottom:6px;}
+.related-card .rk-title{font-family:'Fraunces',serif;font-weight:600;font-size:16px;color:var(--text);}
+footer{background:var(--text);color:#fff;padding:60px 0 30px;margin-top:80px;}
+footer .container{max-width:1160px;}
+.foot-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-bottom:40px;}
+.foot-col h4{font-family:'Fraunces',serif;font-weight:600;font-size:14px;color:#fff;margin-bottom:14px;}
+.foot-col a{display:block;font-size:13px;color:#bbb;text-decoration:none;margin-bottom:8px;}
+.foot-col a:hover{color:#fff;}
+.foot-bottom{border-top:1px solid #333;padding-top:24px;font-size:12px;color:#888;text-align:center;}
+@media(max-width:720px){h1{font-size:32px;}h2{font-size:24px;}.foot-cols{grid-template-columns:1fr 1fr;}.related-row{grid-template-columns:1fr;}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ZayPOS","url":"https://www.zaypos.co.uk","description":"AI-powered point-of-sale for UK hospitality and retail.","areaServed":"GB","contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"hello@zaypos.co.uk","areaServed":"GB"},"parentOrganization":{"@type":"Organization","name":"Zayn Productions Ltd","url":"https://www.zaynit.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ZayPOS","url":"https://www.zaypos.co.uk","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":[{"@type":"Offer","name":"Starter","priceCurrency":"GBP","price":"29.00","priceSpecification":{"@type":"UnitPriceSpecification","price":"29.00","priceCurrency":"GBP","unitText":"per till per month"}},{"@type":"Offer","name":"Growth","priceCurrency":"GBP","price":"69.00","priceSpecification":{"@type":"UnitPriceSpecification","price":"69.00","priceCurrency":"GBP","unitText":"per till per month"}},{"@type":"Offer","name":"Complete","priceCurrency":"GBP","price":"99.00","priceSpecification":{"@type":"UnitPriceSpecification","price":"99.00","priceCurrency":"GBP","unitText":"per till per month"}}]}</script>
+<script>
+(function(){
+  function loadPostHog(){
+    if (window.__posthogLoaded) return; window.__posthogLoaded = true;
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://eu-assets.i.posthog.com/static/array.js';
+    document.head.appendChild(s);
+    s.onload = function(){
+      try {
+        window.posthog.init('phc_rJmyyFtKADpwEYUz9ufrd9cREaaoDq37ZeUrAyek5fnM', {
+          api_host: 'https://eu.i.posthog.com', capture_pageview: true, autocapture: true, person_profiles: 'identified_only',
+        });
+        window.posthog.register({ site: 'zaypos', site_name: 'ZayPOS', site_domain: 'zaypos.co.uk' });
+      } catch(e) {}
+    };
+  }
+  if (localStorage.getItem('zp_cookie_consent') === 'accepted' || localStorage.getItem('zaypos_cookie_consent') === 'accepted') loadPostHog();
+  var prev = window.__loadGTMOnAccept;
+  window.__loadGTMOnAccept = function(){ if (prev) prev(); loadPostHog(); };
+})();
+</script>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="/"><div class="logo-mark">Z</div><div class="logo-text">Zay<span>POS</span></div></a>
+    <div class="nav-links">
+      <a href="/features.html">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/trial.html" class="btn-primary">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<main class="article">
+  <div class="container">
+    <div class="crumb"><a href="/">Home</a> / <a href="/blog.html">Resources</a> / Toast vs ZayPOS</div>
+    <h1>Toast vs ZayPOS for UK cafés &amp; restaurants &mdash; honest 2026 comparison</h1>
+    <p class="lede">Toast is the dominant restaurant POS in the United States. It launched in the UK in 2022, and the core product works well &mdash; but it was built for US restaurants, and several gaps show up the moment you try to run UK payroll, comply with Natasha's Law or pass a Food Hygiene Rating inspection.</p>
+    <div class="meta">Published 17 May 2026 &middot; 9 min read &middot; By the ZayPOS team, Gloucester</div>
+
+    <div class="tldr">
+      <div class="tldr-title">TL;DR</div>
+      <p style="margin-bottom:8px;">Toast is excellent for sit-down restaurants with a full kitchen brigade, table service and a culture of US-style tipping. Its kitchen display and online ordering modules are genuinely best-in-class.</p>
+      <p style="margin-bottom:8px;">But: <strong>Toast Payroll is US-only</strong> &mdash; UK businesses have to bolt on a separate UK payroll provider. Toast doesn't ship a Natasha's Law allergen matrix, doesn't have an EHO/SFBB compliance pack, and pushes you toward Toast-branded hardware that isn't required by ZayPOS.</p>
+      <p style="margin-bottom:0;">ZayPOS Growth covers the same ground for <strong>£69/till/month with unlimited staff</strong> &mdash; about £166/month less than the equivalent Toast stack &mdash; and adds the UK compliance and AI features Toast doesn't have.</p>
+    </div>
+
+    <h2>The 30-second comparison table</h2>
+    <table class="comparison-table">
+      <thead>
+        <tr><th>What you get</th><th>Toast (UK)</th><th>ZayPOS Growth</th><th>ZayPOS Complete</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Monthly subscription (equivalent stack)</td><td>~£235/mo</td><td>£69/till · unlimited staff</td><td>£99/till · unlimited staff</td></tr>
+        <tr><td>Card processing</td><td>Toast Payments (locked in)</td><td>Your choice (Clover, Dojo, SumUp, Square)</td><td>Same</td></tr>
+        <tr><td>UK Payroll</td><td class="no">Toast Payroll is US-only</td><td class="yes">Built in</td><td class="yes">Built in + AI reconciliation</td></tr>
+        <tr><td>Kitchen Display System (KDS)</td><td class="yes">Excellent (Toast strength)</td><td class="yes">Included</td><td class="yes">Included</td></tr>
+        <tr><td>Online ordering</td><td class="yes">Strong</td><td class="yes">QR table ordering included</td><td class="yes">Same</td></tr>
+        <tr><td>Staff rota</td><td class="partial">Toast Sling (extra cost)</td><td class="yes">AI auto-generated</td><td class="yes">Same</td></tr>
+        <tr><td>Natasha's Law allergen matrix</td><td class="no">Not built in</td><td class="no">&mdash;</td><td class="yes">Included + AI detection</td></tr>
+        <tr><td>EHO/SFBB compliance pack</td><td class="no">Not built in</td><td class="no">&mdash;</td><td class="yes">One-click report</td></tr>
+        <tr><td>AI invoice processing</td><td class="no">No</td><td class="no">&mdash;</td><td class="yes">Photo-to-stock</td></tr>
+        <tr><td>App marketplace</td><td class="yes">200+ apps (Toast strength)</td><td class="partial">Native integrations only</td><td class="partial">Same</td></tr>
+        <tr><td>Hardware</td><td class="partial">Toast hardware encouraged</td><td class="yes">Any iPad / Android / browser</td><td class="yes">Same</td></tr>
+        <tr><td>UK-based support</td><td class="partial">US head office, UK office in London</td><td class="yes">Direct, 4h response, UK hours</td><td class="yes">Priority, named contact</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Pricing &mdash; head to head</h2>
+    <p>Toast doesn't publish a transparent UK price list. The number you pay depends on which modules you bundle, which payment processor you sign up for, and how hard you negotiate. Public Toast UK pricing pages list Core POS from around <strong>£69/mo</strong> per terminal, but Core POS alone isn't usable for a real restaurant &mdash; you need at minimum the kitchen display, online ordering and reporting modules on top. By the time you've added the equivalent of ZayPOS Growth's feature set, most independent UK operators we've talked to are paying somewhere around <strong>£200&ndash;£275/month</strong> per location.</p>
+    <p>ZayPOS Growth is <strong>£69/till/month flat &mdash; unlimited staff included</strong>. The Complete tier (£99/till/month) adds Natasha's Law, EHO compliance pack and AI invoice processing. There are no per-staff fees, no per-module add-ons, no add-on for online ordering. The card processor is your choice, not ZayPOS's.</p>
+    <p>The often-missed cost on Toast: <strong>Toast Payments</strong>. Because Toast Payroll is US-only, you'll typically be steered toward Toast Payments (their in-house card processor) to keep the payroll-to-payments reporting clean &mdash; except the UK payroll piece doesn't actually exist. Toast Payments rates in the UK are typically 1.45%&ndash;1.99% per card-present transaction, which on a £15,000/month card-volume café is £218&ndash;£298 in fees alone. With ZayPOS you pick the cheapest UK processor (SumUp from 0.99%, Dojo negotiable below 1%) and route through them directly.</p>
+
+    <h2>The Toast Payroll gap &mdash; the single biggest UK problem</h2>
+    <p>This is the issue we hear about most often from indie UK operators on Toast: <strong>Toast Payroll is unavailable in the UK</strong>. It's a US-only product, tied to US tax filing (W-2, 1099, ACA reporting) that doesn't apply here.</p>
+    <p>That means if you're a UK café or restaurant on Toast, your weekly workflow looks like this:</p>
+    <ol>
+      <li>Schedule staff in Toast Sling (paid add-on, ~£3&ndash;5/user/month).</li>
+      <li>Export hours worked to CSV.</li>
+      <li>Import that CSV into a separate UK payroll provider (Xero Payroll, BrightPay, Sage 50 Payroll &mdash; typically £15&ndash;40/month plus per-employee fees).</li>
+      <li>Run payroll in the second system.</li>
+      <li>Reconcile tips manually &mdash; Toast doesn't know what your UK payroll system did.</li>
+    </ol>
+    <p>ZayPOS Growth ships UK payroll as a first-class feature. Rotas auto-generate from sales forecasts, staff hours flow into payroll automatically, tips reconcile, HMRC RTI submissions go out on payday. One tool, one workflow, no CSV juggling.</p>
+
+    <h2>"Toast IQ tells you what to do. ZayPOS does it."</h2>
+    <p>Toast has a feature called <strong>Toast IQ</strong> &mdash; AI-powered analytics that flag patterns in your sales and suggest actions ("your soup of the day attaches well with the chicken sandwich; consider a meal deal").</p>
+    <p>That's useful. It's also a long way from doing the work. You still have to build the meal deal in the menu editor, write the description, set the price, push it to the till and to online ordering.</p>
+    <p>ZayPOS's AI features take the next step:</p>
+    <ul>
+      <li><strong>AI meal deal builder</strong> &mdash; analyses your basket data, proposes the deal, writes the name and description, sets pricing, and publishes to till + QR ordering in one click.</li>
+      <li><strong>AI invoice processing</strong> &mdash; photograph the supplier's invoice, stock and prices update automatically. Toast has nothing equivalent.</li>
+      <li><strong>AI rota generation</strong> &mdash; given a sales forecast, ZayPOS proposes a rota you can approve or tweak. Toast Sling is still manual drag-drop.</li>
+      <li><strong>AI allergen detection</strong> &mdash; ZayPOS Complete reads your product names + supplier invoices and flags likely allergen content for Natasha's Law labelling. Toast has no equivalent.</li>
+    </ul>
+    <p>The principle: Toast IQ surfaces insights. ZayPOS automates the action that follows.</p>
+
+    <h2>UK-specific compliance &mdash; where the gap shows up</h2>
+    <h3>Natasha's Law (UK food info amendment, 2021)</h3>
+    <p>Any UK food business selling prepacked-for-direct-sale (PPDS) items &mdash; sandwiches, cakes, salad boxes prepared on site &mdash; must label each item with a full ingredients list and clearly emphasise the 14 UK allergens. Fines under the Food Information Regulations 2014 can be unlimited per offence.</p>
+    <p>Toast has no native Natasha's Law allergen matrix or PPDS label printer. UK Toast users typically pay for a separate tool (Navitas Safe Food Pro, Trail, or Erudus &mdash; £25&ndash;60/month) to fill the gap. ZayPOS Complete includes the allergen matrix, AI-assisted detection, and a printable label format as standard.</p>
+    <h3>EHO inspections + SFBB</h3>
+    <p>UK Environmental Health Officers will ask for temperature logs, daily cleaning checklists, allergen records, supplier records and corrective-action logs as part of a Food Hygiene Rating Scheme inspection. The Safer Food, Better Business (SFBB) pack from the Food Standards Agency outlines the minimum.</p>
+    <p>Toast doesn't track any of this in-app. ZayPOS Complete has temperature logging, daily checklists, delivery records, and a one-click Food Inspector Pack that consolidates everything into a printable report.</p>
+    <h3>UK VAT</h3>
+    <p>Hot food at 20%, cold takeaway at 0%, mixed orders apportioned. Toast's reporting is geared toward US sales tax; getting clean VAT summaries out is a manual reconciliation. ZayPOS Complete includes weekly and monthly VAT summaries (gross-to-net, with input VAT tracked from supplier invoices) ready for your accountant.</p>
+
+    <h2>Hardware &mdash; Toast pushes its own, ZayPOS doesn't care</h2>
+    <p>Toast strongly encourages its own hardware: Toast Flex terminals, Toast Tap card readers, Toast Hub. The hardware is well-built; it's also a meaningful capex up front (typically £600&ndash;£1,500 per terminal in the UK), and it locks you into Toast's payment processor.</p>
+    <p>ZayPOS is hardware-agnostic. Any iPad, Android tablet or computer with a modern browser runs the POS. Card processing routes through whichever processor you choose &mdash; Clover, Dojo, SumUp, Square, or bank transfer. If you've already got iPads behind the counter today, ZayPOS works on them this afternoon.</p>
+
+    <h2>Where Toast genuinely wins</h2>
+    <p>We've been straight about ZayPOS's edges. Here's where Toast is the better pick:</p>
+    <ul>
+      <li><strong>Multi-site full-service restaurants with US-style operations</strong> &mdash; if the workflow you're running is essentially what Toast was built for in Boston, the polish shows.</li>
+      <li><strong>Heavy use of third-party apps</strong> &mdash; Toast's 200+ app marketplace covers gift cards, loyalty, accounting integrations, online ordering aggregators, kitchen automation. ZayPOS's ecosystem is smaller and grows by direct integration rather than open marketplace.</li>
+      <li><strong>You need self-order kiosks</strong> &mdash; Toast Kiosk is a mature product. ZayPOS doesn't ship a kiosk SKU yet.</li>
+      <li><strong>You're 50+ locations and need enterprise-grade reporting</strong> &mdash; Toast is battle-tested at that scale, ZayPOS is proven at independent and small-multi-site.</li>
+    </ul>
+
+    <h2>Where ZayPOS is the right choice over Toast</h2>
+    <ul>
+      <li><strong>Any UK café or restaurant that does its own payroll</strong> (because Toast Payroll isn't an option here).</li>
+      <li><strong>Any UK food business that makes PPDS items</strong> &mdash; Natasha's Law applies, and Toast doesn't help.</li>
+      <li><strong>You're EHO-inspected</strong> and want compliance records always ready.</li>
+      <li><strong>You don't want to buy proprietary hardware</strong> &mdash; ZayPOS runs on what you already have.</li>
+      <li><strong>You want flat per-till pricing</strong> with unlimited staff, no per-module add-ons, no per-staff fees.</li>
+      <li><strong>You want AI that does the work</strong> (build the meal deal, key the invoice, generate the rota), not just suggest it.</li>
+    </ul>
+
+    <h2>How to switch from Toast in 24 hours</h2>
+    <ol>
+      <li><strong>Export your Toast menu.</strong> In Toast Web → Menus → Export. Choose CSV.</li>
+      <li><strong>Email it to hello@zaypos.co.uk.</strong> Mention you're switching from Toast. Send a screenshot of your current price plan if you have it (helps us match modifiers).</li>
+      <li><strong>We import overnight.</strong> Menu items, modifiers, prices, descriptions, allergen flags &mdash; all migrated. Preview ready next morning.</li>
+      <li><strong>You confirm.</strong> Usually 15&ndash;30 minutes of review.</li>
+      <li><strong>Pick your UK card processor.</strong> Keep Toast Payments if you really want, or move to SumUp / Dojo / Clover for typically 30&ndash;50% lower fees. Smart routing handles it.</li>
+      <li><strong>Go live.</strong> Same iPad or Toast Flex terminal (via browser), same staff workflow &mdash; just with UK payroll and Natasha's Law built in.</li>
+    </ol>
+    <p>Migration is free. There's no commitment. You can run both systems in parallel for a week if you want a soft transition.</p>
+
+    <h2>The switching risk &mdash; reversed</h2>
+    <p>Switching POS feels risky. We've taken it off the table:</p>
+    <div style="background:#dcfce7;border:1px solid #059669;border-radius:14px;padding:24px 28px;margin:20px 0;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#059669;color:#fff;font-weight:700;font-size:16px;">&#10003;</span>
+        <strong style="font-size:18px;color:#065f46;">60-day save-5-hours guarantee</strong>
+      </div>
+      <p style="margin-bottom:10px;color:#065f46;">Try ZayPOS for 60 days from your first paid charge. If you don't save at least <strong>5 hours a week</strong> on rotas, supplier-invoice keying, EHO logbooks and Natasha's Law allergen updates &mdash; combined &mdash; we refund every penny. No interrogation, no retention call.</p>
+      <p style="margin-bottom:0;color:#065f46;"><a href="/guarantee.html" style="color:#059669;font-weight:600;">Read the full terms &rarr;</a></p>
+    </div>
+    <p>Combined with the <strong>14-day free trial</strong> (no card needed) and our <strong>free menu migration</strong>, the worst case is: you keep Toast, you're out zero pounds, and you've spent 20 minutes finding out ZayPOS isn't for you. That's the risk.</p>
+
+    <h2>Frequently asked questions</h2>
+    <h3>Is Toast available in the UK?</h3>
+    <p>Yes, Toast launched in the UK in 2022. The core POS, kitchen display and online ordering modules work fine. The notable gap is Toast Payroll &mdash; US-only, unavailable to UK businesses.</p>
+    <h3>How much does Toast cost in the UK?</h3>
+    <p>Toast doesn't publish UK pricing transparently. Public-facing pages quote Core POS from ~£69/mo per terminal, but a usable real-restaurant stack (with KDS, online ordering, reporting, payments) typically lands at £200&ndash;£275/month per location, before card-processing fees and before any UK payroll or compliance bolt-ons.</p>
+    <h3>Can I use my Toast Flex terminal with ZayPOS?</h3>
+    <p>Yes, in browser mode. ZayPOS runs in any modern browser, and Toast Flex terminals have one. You wouldn't get the deep hardware integration Toast offers, but the POS, payments and KDS will all work.</p>
+    <h3>Does ZayPOS have a kitchen display system?</h3>
+    <p>Yes &mdash; ZayPOS KDS is included on Growth and Complete. It's not as feature-rich as Toast KDS yet (we don't have prep-time prediction or course pacing), but for most independent cafés and restaurants it covers the workflow.</p>
+    <h3>What about online ordering?</h3>
+    <p>ZayPOS Growth includes QR-code table ordering with customer allergen flagging. We don't yet have a delivery-aggregator integration (Deliveroo / Uber Eats / Just Eat as native sources) the way Toast does &mdash; that's on the roadmap.</p>
+    <h3>What about Toast IQ &mdash; the AI features?</h3>
+    <p>Toast IQ is genuinely good at surfacing insights and trends. ZayPOS's AI focuses on doing the next step rather than suggesting it &mdash; building the meal deal, keying the supplier invoice, generating the rota. They're complementary; ZayPOS just leans further into automation.</p>
+
+    <div class="cta-box">
+      <h3>14-day free trial. No card needed.</h3>
+      <p>Try ZayPOS with your full menu, your existing iPad (or Toast Flex in browser mode), and your real staff workflow. Free menu migration from Toast.</p>
+      <a class="cta-btn" href="/trial.html">Start free trial</a>
+    </div>
+
+    <div class="related-row">
+      <a href="/square-vs-zaypos" class="related-card">
+        <div class="rk-label">Compare also</div>
+        <div class="rk-title">Square vs ZayPOS &rarr;</div>
+      </a>
+      <a href="/vs-clover" class="related-card">
+        <div class="rk-label">Compare also</div>
+        <div class="rk-title">Clover vs ZayPOS &rarr;</div>
+      </a>
+    </div>
+
+    <p style="font-size:13px;color:var(--text-dim);margin-top:32px;padding-top:24px;border-top:1px solid var(--border);">This article is informational and reflects the authors' understanding of UK food and tax regulations at the time of writing. It is not legal, food-safety or tax advice. Always check current guidance at <a class="inline" href="https://www.food.gov.uk">food.gov.uk</a> and <a class="inline" href="https://www.gov.uk/topic/business-tax/vat">gov.uk/business-tax/vat</a>. The author team has no affiliation with Toast Inc.; product descriptions reflect Toast's UK offering as documented on pos.toasttab.com/uk at the time of writing. Toast® and Toast IQ® are trademarks of Toast Inc.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-cols">
+      <div class="foot-col">
+        <h4>Product</h4>
+        <a href="/features.html">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/guarantee.html">60-Day Guarantee</a>
+        <a href="/integrations.html">Integrations</a>
+        <a href="/trial.html">Start free trial</a>
+      </div>
+      <div class="foot-col">
+        <h4>Compare</h4>
+        <a href="/square-vs-zaypos">Square vs ZayPOS</a>
+        <a href="/vs-toast">Toast vs ZayPOS</a>
+        <a href="/vs-clover">Clover vs ZayPOS</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/blog.html">Blog</a>
+        <a href="/chai-and-crumbs">Chai &amp; Crumbs case study</a>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/cookies.html">Cookies</a>
+        <a href="/refund.html">Refund policy</a>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 Zayn Productions Ltd · Company No. 16892199 · 1 Alvin Street, Gloucester, GL1 3EJ</div>
+  </div>
+</footer>
+
+<div id="cookie-banner" style="display:none;position:fixed;bottom:20px;left:20px;right:20px;max-width:520px;margin:0 auto;background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:18px 22px;box-shadow:0 10px 30px rgba(0,0,0,0.18);z-index:9999;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:13.5px;color:#1a1a1a;line-height:1.5;">
+  <div style="margin-bottom:12px;">We use cookies to understand site traffic. Accept to allow analytics. No marketing or third-party trackers. <a href="/privacy.html" style="color:#5B3EF5;text-decoration:underline;">Privacy policy</a>.</div>
+  <div style="display:flex;gap:8px;justify-content:flex-end;">
+    <button onclick="__cookieDecline()" style="padding:8px 16px;background:#fff;border:1px solid #d1d5db;color:#374151;border-radius:8px;cursor:pointer;font-size:13px;font-family:inherit;">Decline</button>
+    <button onclick="__cookieAccept()" style="padding:8px 16px;background:#5B3EF5;border:none;color:#fff;border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;font-family:inherit;">Accept</button>
+  </div>
+</div>
+<script>
+(function(){
+  var key='zp_cookie_consent';
+  function showBanner(){ var el=document.getElementById('cookie-banner'); if(el) el.style.display='block'; }
+  if(localStorage.getItem(key)===null){
+    if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', showBanner); } else { showBanner(); }
+  }
+  window.__cookieAccept=function(){ var el=document.getElementById('cookie-banner'); if(el)el.style.display='none'; if(typeof __loadGTMOnAccept==='function')__loadGTMOnAccept(); };
+  window.__cookieDecline=function(){ var el=document.getElementById('cookie-banner'); if(el)el.style.display='none'; if(typeof __declineGTMConsent==='function')__declineGTMConsent(); };
+})();
+</script>
+</body></html>
