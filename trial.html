@@ -19,8 +19,8 @@
 <!-- End Google Tag Manager (consent-gated) -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Start Free Trial — ZaynPOS</title>
-  <meta name="description" content="Start your 14-day free trial of ZaynPOS. The smarter till for UK food & drink businesses. No credit card required." />
+  <title>Start Free Trial — ZayPOS</title>
+  <meta name="description" content="Start your 14-day free trial of ZayPOS. The smarter till for UK food & drink businesses. No credit card required." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" />
   <style>
@@ -84,7 +84,7 @@
 <body>
 <a href="/" class="logo">
     <div class="logo-icon">Z</div>
-    <span class="logo-text">ZaynPOS</span>
+    <span class="logo-text">ZayPOS</span>
   </a>
 
   <div class="card" id="formCard">
@@ -164,7 +164,7 @@
   <!-- Success screen -->
   <div class="card success-card" id="successCard" style="display:none;max-width:520px;">
     <div style="font-size:56px;margin-bottom:16px;">🎉</div>
-    <h2 style="font-size:24px;font-weight:800;color:#1e293b;margin-bottom:12px;">Your ZaynPOS account is ready!</h2>
+    <h2 style="font-size:24px;font-weight:800;color:#1e293b;margin-bottom:12px;">Your ZayPOS account is ready!</h2>
     <p class="success-detail" style="margin-bottom:18px;">Your 14-day free trial starts now — full access, no credit card needed.</p>
     <div style="background:#fef3c7;border:1.5px solid #f59e0b;border-radius:10px;padding:16px;margin-bottom:18px;text-align:left;">
       <p style="font-size:13px;color:#92400e;font-weight:700;margin:0 0 12px 0;">⚡ Save these to log in:</p>
@@ -176,7 +176,7 @@
       <p style="font-size:11px;color:#92400e;margin:10px 0 0 0;">We've also emailed these to you, but save them now just in case.</p>
     </div>
     <div class="success-box" id="trialInfo">✓ Trial active — expires <span id="trialExpiry"></span></div>
-    <a href="https://app.zaypos.co.uk" class="login-btn" id="loginLink" style="margin-top:14px;">Go to ZaynPOS →</a>
+    <a href="https://app.zaypos.co.uk" class="login-btn" id="loginLink" style="margin-top:14px;">Go to ZayPOS →</a>
   </div>
 
   <div style="margin-top:28px;text-align:center;max-width:480px;">
@@ -240,7 +240,7 @@
         });
         // 409 = already exists, that's fine — continue
 
-        // ── Step 2: POST to ZaynPOS app to create real account ──────────────
+        // ── Step 2: POST to ZayPOS app to create real account ──────────────
         const appRes = await fetch(ZAYPOS_SIGNUP, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
