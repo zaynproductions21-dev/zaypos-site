@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Tag Manager (consent-gated) -->
+<script>
+(function(){
+  function loadGTM(){
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WGMSQ38P');
+  }
+  if (localStorage.getItem('zp_cookie_consent') === 'accepted' || localStorage.getItem('zaypos_cookie_consent') === 'accepted') loadGTM();
+  window.__loadGTMOnAccept = function(){ localStorage.setItem('zp_cookie_consent','accepted'); loadGTM(); };
+  window.__declineGTMConsent = function(){ localStorage.setItem('zp_cookie_consent','declined'); };
+})();
+</script>
+<!-- End Google Tag Manager (consent-gated) -->
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0iIzVCM0VGNSIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5aPC90ZXh0Pgo8L3N2Zz4K">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How much is your café losing? — Profit Leak Calculator · ZayPOS</title>
+<meta name="description" content="Free 30-second calculator for UK café and restaurant owners. See how much your current till setup is leaking each week — and what ZayPOS would recover.">
+<link rel="canonical" href="https://www.zaypos.co.uk/profit-calculator">
+<meta property="og:title" content="How much is your café losing each week?">
+<meta property="og:description" content="Free 30-second calculator. Three questions, instant £ figure. See what slow tills and end-of-day variance are costing your UK food business.">
+<meta property="og:url" content="https://www.zaypos.co.uk/profit-calculator">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: #FDFAF6; color: #1A1208; overflow-x: hidden; line-height: 1.6; }
+:root {
+  --cream: #FDFAF6; --cream2: #F5F0E8; --cream3: #EDE6D8;
+  --sand: #D4C5A9; --violet: #5B3EF5; --violet-light: #7C62F7; --violet-pale: #EEE9FE;
+  --green: #1B8A5A; --coral: #E17055;
+  --text: #1A1208; --text-mid: #4A3D2A; --text-muted: #8A7A65; --text-dim: #B0A090;
+  --border: #E5DDD0; --border-dark: #C9BBA8;
+}
+.container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV (matches index.html) */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(253,250,246,0.93); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-inner { display: flex; align-items: center; gap: 32px; padding: 18px 24px; max-width: 1160px; margin: 0 auto; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+.logo-mark { width: 32px; height: 32px; background: var(--violet); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Fraunces', serif; font-weight: 700; font-size: 18px; }
+.logo-text { font-family: 'Fraunces', serif; font-weight: 700; font-size: 19px; }
+.logo-text span { color: var(--violet); }
+.nav-links { display: flex; gap: 26px; }
+.nav-links a { color: var(--text-mid); text-decoration: none; font-size: 14px; font-weight: 500; }
+.nav-links a:hover { color: var(--violet); }
+.nav-cta { display: flex; gap: 8px; margin-left: auto; }
+.btn-ghost { padding: 9px 16px; font-size: 13px; font-weight: 500; color: var(--text-mid); text-decoration: none; background: transparent; border-radius: 8px; }
+.btn-ghost:hover { background: var(--cream2); }
+.btn-primary { padding: 10px 18px; font-size: 13px; font-weight: 600; color: #fff; background: var(--violet); border-radius: 8px; text-decoration: none; transition: background 0.2s; }
+.btn-primary:hover { background: var(--violet-light); }
+.hamburger { display: none; background: none; border: none; padding: 8px; cursor: pointer; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text); margin: 4px 0; }
+.mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--cream); border-bottom: 1px solid var(--border); padding: 20px 24px; z-index: 99; }
+.mobile-menu.show { display: block; }
+.mobile-menu a { display: block; padding: 10px 0; color: var(--text); text-decoration: none; font-size: 15px; }
+.mobile-menu-cta { display: flex; gap: 8px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+.m-btn-ghost, .m-btn-primary { flex: 1; text-align: center; padding: 11px; font-size: 14px; font-weight: 600; border-radius: 8px; text-decoration: none; }
+.m-btn-ghost { color: var(--text-mid); background: var(--cream2); }
+.m-btn-primary { color: #fff; background: var(--violet); }
+@media(max-width: 880px) { .nav-links { display: none; } .nav-cta { display: none; } .hamburger { display: block; margin-left: auto; } }
+
+/* PAGE HERO */
+.page-hero { padding: 140px 0 60px; background: linear-gradient(180deg, var(--cream) 0%, #F4EDFE 100%); position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; top: 100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(91,62,245,0.12), transparent 70%); border-radius: 50%; pointer-events: none; }
+.page-hero::after { content: ''; position: absolute; bottom: -100px; left: -150px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(253,203,110,0.18), transparent 70%); border-radius: 50%; pointer-events: none; }
+.page-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 540px); gap: 56px; align-items: start; position: relative; z-index: 1; }
+.eyebrow-pill { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--violet); background: var(--violet-pale); border: 1px solid rgba(91,62,245,0.2); padding: 6px 14px; border-radius: 20px; margin-bottom: 22px; }
+.eyebrow-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--violet); display: block; }
+.page-hero h1 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(36px, 5vw, 54px); line-height: 1.05; letter-spacing: -0.03em; color: var(--text); margin: 0 0 22px; font-weight: 700; }
+.page-hero h1 em { font-style: italic; color: var(--violet); }
+.page-hero .lead { font-size: 17px; color: var(--text-mid); line-height: 1.65; max-width: 480px; margin: 0 0 28px; }
+.leak-list { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 14px; }
+.leak-list li { display: flex; gap: 12px; font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+.leak-list .li-num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 9px; background: rgba(225,112,85,0.14); color: var(--coral); display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; font-family: 'Fraunces', serif; }
+.leak-list .li-text strong { color: var(--text); display: block; margin-bottom: 2px; }
+
+/* CALCULATOR WIDGET */
+.zp-calc { background: #fff; border-radius: 20px; border: 1px solid var(--border-dark); padding: 30px 30px 32px; box-shadow: 0 20px 60px rgba(91,62,245,0.14); position: relative; z-index: 1; }
+.zp-calc h2 { font-family: 'Fraunces', Georgia, serif; font-size: 24px; color: var(--text); letter-spacing: -0.4px; margin: 0 0 6px; font-weight: 700; }
+.zp-calc .calc-sub { font-size: 13.5px; color: var(--text-muted); margin: 0 0 22px; line-height: 1.55; }
+.zp-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.zp-field label { font-size: 12px; font-weight: 600; color: var(--text-mid); letter-spacing: 0.01em; }
+.zp-field select, .zp-field input { width: 100%; padding: 12px 14px; border-radius: 9px; border: 1.5px solid var(--border-dark); background: var(--cream); font-size: 14px; color: var(--text); outline: none; font-family: 'DM Sans', sans-serif; appearance: none; -webkit-appearance: none; }
+.zp-field select:focus, .zp-field input:focus { border-color: var(--violet); background: #fff; }
+.zp-submit { width: 100%; padding: 14px 22px; background: linear-gradient(135deg, var(--violet), var(--violet-light)); color: #fff; border: none; border-radius: 10px; font-size: 15px; font-weight: 700; font-family: 'DM Sans', sans-serif; cursor: pointer; box-shadow: 0 8px 22px rgba(91,62,245,0.32); transition: transform 0.15s; margin-top: 6px; }
+.zp-submit:hover:not(:disabled) { transform: translateY(-1px); }
+.zp-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+.zp-disclaimer { font-size: 11px; color: var(--text-muted); text-align: center; margin: 10px 0 0; line-height: 1.5; }
+.zp-error { font-size: 12.5px; color: var(--coral); margin: 8px 0 0; }
+
+/* RESULT STATE */
+.zp-result { display: none; }
+.zp-result.show { display: block; }
+.zp-calc.result-shown .zp-form { display: none; }
+.zp-result-banner { background: linear-gradient(135deg, rgba(91,62,245,0.08), rgba(225,112,85,0.10)); border: 1px solid rgba(91,62,245,0.18); border-radius: 14px; padding: 22px 22px 24px; text-align: center; margin-bottom: 18px; }
+.zp-result-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+.zp-result-big { font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 52px; color: var(--violet); letter-spacing: -1.5px; line-height: 1; margin-bottom: 8px; }
+.zp-result-sub { font-size: 14px; color: var(--text-mid); }
+.zp-result-detail { background: var(--cream2); border-radius: 10px; padding: 14px 16px; font-size: 13px; color: var(--text-mid); line-height: 1.7; margin-bottom: 18px; }
+.zp-result-detail strong { color: var(--text); }
+.zp-result-cta { display: block; text-align: center; background: linear-gradient(135deg, var(--violet), var(--violet-light)); color: #fff; text-decoration: none; border-radius: 10px; padding: 14px 22px; font-size: 15px; font-weight: 700; box-shadow: 0 8px 22px rgba(91,62,245,0.32); }
+.zp-result-cta:hover { transform: translateY(-1px); }
+.zp-result-note { font-size: 11px; color: var(--text-muted); text-align: center; margin: 10px 0 0; line-height: 1.5; }
+
+/* FAQ */
+.faq-section { padding: 70px 0 90px; background: var(--cream); }
+.faq-section h2 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(26px, 3vw, 34px); letter-spacing: -0.025em; color: var(--text); margin: 0 0 28px; text-align: center; font-weight: 700; }
+.faq-wrap { max-width: 720px; margin: 0 auto; display: grid; gap: 12px; }
+.faq-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; }
+.faq-card .q { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.faq-card .a { font-size: 14px; color: var(--text-mid); line-height: 1.65; }
+
+/* FOOTER (slim, matches index.html aesthetic) */
+footer { background: var(--text); color: rgba(255,255,255,0.65); padding: 60px 0 30px; }
+footer .container { display: grid; gap: 24px; }
+.footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 12.5px; }
+.footer-row a { color: rgba(255,255,255,0.55); text-decoration: none; margin-left: 18px; }
+.footer-row a:first-of-type { margin-left: 0; }
+.footer-row a:hover { color: #fff; }
+.footer-brand-row { display: flex; align-items: center; gap: 12px; font-family: 'Fraunces', serif; font-weight: 700; color: #fff; font-size: 18px; }
+.footer-brand-row .logo-mark { width: 30px; height: 30px; font-size: 16px; }
+.footer-brand-row span { color: var(--violet-light); }
+
+/* COOKIE BANNER (matches index.html) */
+#cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: #1A1208; color: rgba(255,255,255,0.85); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; box-shadow: 0 -4px 32px rgba(0,0,0,0.25); transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); font-size: 13.5px; }
+#cookie-banner.show { transform: translateY(0); }
+.cb-actions { display: flex; gap: 10px; }
+.cb-accept { padding: 9px 20px; background: var(--violet); color: #fff; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+.cb-decline { padding: 9px 16px; background: transparent; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; font-size: 13px; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+
+@media(max-width: 880px) {
+  .page-hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  .page-hero { padding: 110px 0 50px; }
+  .zp-result-big { font-size: 42px; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-mark">Z</div>
+      <span class="logo-text">Zay<span>POS</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#industries">Industries</a>
+      <a href="/about.html">About</a>
+      <a href="/blog.html">Blog</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="https://app.zaypos.co.uk" target="_blank" rel="noopener" class="btn-ghost">Sign in</a>
+      <a href="/trial.html" class="btn-primary">Start free trial</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/features.html">Features</a>
+  <a href="/#pricing">Pricing</a>
+  <a href="/about.html">About</a>
+  <a href="/blog.html">Blog</a>
+  <a href="/contact.html">Contact</a>
+  <div class="mobile-menu-cta">
+    <a href="https://app.zaypos.co.uk" target="_blank" rel="noopener" class="m-btn-ghost">Sign in</a>
+    <a href="/trial.html" class="m-btn-primary">Start free trial</a>
+  </div>
+</div>
+
+<!-- HERO + CALCULATOR -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-grid">
+      <div>
+        <div class="eyebrow-pill"><span class="dot"></span>Free tool · 30 seconds</div>
+        <h1>How much is your café <em>losing</em> each week?</h1>
+        <p class="lead">The average UK café leaks <strong>£312 a month</strong> to slow tills, voided orders and end-of-day cash variance. That's a barista's weekly wage — gone. Three quick questions and you'll know what your setup is costing you.</p>
+        <ul class="leak-list">
+          <li><span class="li-num">£</span><span class="li-text"><strong>Cash &amp; till variance</strong>Unreconciled drawer ≠ honest staff. Most owners discover it after months.</span></li>
+          <li><span class="li-num">⏱</span><span class="li-text"><strong>Slow checkout</strong>Every 5 seconds of card delay costs a missed upsell during busy service.</span></li>
+          <li><span class="li-num">📋</span><span class="li-text"><strong>Tablet hell</strong>Deliveroo, Uber Eats and JustEat on separate tablets eats 3+ hours a week.</span></li>
+          <li><span class="li-num">📉</span><span class="li-text"><strong>No margin visibility</strong>You can't fix food cost on lines you don't measure.</span></li>
+        </ul>
+      </div>
+
+      <div class="zp-calc" id="zpCalc">
+        <h2>Profit Leak Calculator</h2>
+        <p class="calc-sub">No signup to see your result. Three questions, instant £ figure.</p>
+
+        <form class="zp-form" id="zpForm" autocomplete="off">
+          <div class="zp-field">
+            <label for="zp-covers">Average covers per day</label>
+            <select id="zp-covers" name="covers" required>
+              <option value="">Select…</option>
+              <option value="<50">Under 50</option>
+              <option value="50-150">50 – 150</option>
+              <option value="150-300">150 – 300</option>
+              <option value="300+">300+</option>
+            </select>
+          </div>
+          <div class="zp-field">
+            <label for="zp-ticket">Average ticket value</label>
+            <select id="zp-ticket" name="ticket" required>
+              <option value="">Select…</option>
+              <option value="5-10">£5 – £10</option>
+              <option value="10-20">£10 – £20</option>
+              <option value="20-35">£20 – £35</option>
+              <option value="35+">£35+</option>
+            </select>
+          </div>
+          <div class="zp-field">
+            <label for="zp-variance">How often does end-of-day cash mismatch the till?</label>
+            <select id="zp-variance" name="variance" required>
+              <option value="">Select…</option>
+              <option value="never">Never</option>
+              <option value="monthly">Once a month</option>
+              <option value="weekly">Weekly</option>
+              <option value="daily">Most days</option>
+            </select>
+          </div>
+          <div class="zp-field">
+            <label for="zp-email">Email — we'll send your full breakdown</label>
+            <input id="zp-email" name="email" type="email" placeholder="you@yourcafe.co.uk" required>
+          </div>
+          <button class="zp-submit" type="submit" id="zpSubmit">See what your café's losing</button>
+          <p class="zp-error" id="zpError" style="display:none"></p>
+          <p class="zp-disclaimer">30-second estimate based on UK hospitality benchmarks. No card needed.</p>
+        </form>
+
+        <div class="zp-result" id="zpResult" aria-live="polite">
+          <div class="zp-result-banner">
+            <div class="zp-result-label">Your café is leaking around</div>
+            <div class="zp-result-big" id="zpBig">£0</div>
+            <div class="zp-result-sub" id="zpSub">a week</div>
+          </div>
+          <div class="zp-result-detail" id="zpDetail">
+            That's <strong id="zpMonth">£0</strong>/month, or <strong id="zpYear">£0</strong>/year. Most of it is recoverable — ZayPOS catches end-of-day variance automatically, integrates cash + card receipts, and shows your food cost margin per item.
+          </div>
+          <a href="/trial.html?source=profit-calculator" class="zp-result-cta">Start your 14-day free trial →</a>
+          <p class="zp-result-note">No card required. We move your menu, staff and stock over for you. Live in 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <h2>About this calculator</h2>
+    <div class="faq-wrap">
+      <div class="faq-card">
+        <div class="q">How is the figure calculated?</div>
+        <div class="a">We multiply your covers × average ticket × an industry leak rate that scales with cash-vs-till variance frequency. The leak rate sits between 0.4% (never any variance — best in class) and 4.5% (most days — typical of unreconciled environments). It's a conservative estimate based on UK hospitality benchmarks.</div>
+      </div>
+      <div class="faq-card">
+        <div class="q">Will my email get spammed?</div>
+        <div class="a">No. We send one report with your figures, then one trial nudge. You can unsubscribe with one click. We never sell your data.</div>
+      </div>
+      <div class="faq-card">
+        <div class="q">What if my variance is "Never"?</div>
+        <div class="a">Brilliant — you've got tight controls. The calculator will still show a small baseline leak from rounding, refunds and missed upsells during peak. ZayPOS still pays back through speed and reporting, but your urgency is lower.</div>
+      </div>
+      <div class="faq-card">
+        <div class="q">How accurate is this for my specific venue?</div>
+        <div class="a">It's a 30-second estimate, not an audit. For a proper diagnostic — including item-level food cost analysis on your existing menu — start the 14-day free trial and we'll run it for you during onboarding.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div class="footer-brand-row">
+        <div class="logo-mark">Z</div>
+        <span>Zay<span>POS</span></span>
+      </div>
+      <div>© 2026 Zayn Productions Ltd · Co. No. 16892199</div>
+    </div>
+    <div class="footer-row">
+      <div>The smarter till for UK food &amp; drink businesses.</div>
+      <div>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/cookies.html">Cookies</a>
+        <a href="/gdpr.html">GDPR</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" role="dialog" aria-label="Cookie consent">
+  <div style="flex:1;min-width:240px;">We use essential cookies to keep the site running. Optional analytics cookies help us improve. <a href="/cookies.html" style="color:#7C62F7;">Cookie policy</a></div>
+  <div class="cb-actions">
+    <button class="cb-decline" onclick="cookieChoice(false)">Decline</button>
+    <button class="cb-accept" onclick="cookieChoice(true)">Accept cookies</button>
+  </div>
+</div>
+
+<script>
+// ── Mobile menu ──
+document.getElementById('hamburger').addEventListener('click', function(){
+  document.getElementById('mobileMenu').classList.toggle('show');
+});
+
+// ── Cookie banner ──
+(function(){
+  var saved = localStorage.getItem('zp_cookie_consent');
+  if (!saved) setTimeout(function(){ document.getElementById('cookie-banner').classList.add('show'); }, 1200);
+})();
+function cookieChoice(accept) {
+  var b = document.getElementById('cookie-banner');
+  b.classList.remove('show');
+  if (accept && typeof window.__loadGTMOnAccept === 'function') window.__loadGTMOnAccept();
+  if (!accept && typeof window.__declineGTMConsent === 'function') window.__declineGTMConsent();
+}
+
+// ── Calculator ──
+(function(){
+  var COVERS_MID = { '<50': 30, '50-150': 100, '150-300': 225, '300+': 400 };
+  var TICKET_MID = { '5-10': 7.5, '10-20': 15, '20-35': 27.5, '35+': 45 };
+  var VARIANCE_RATE = { 'never': 0.004, 'monthly': 0.012, 'weekly': 0.025, 'daily': 0.045 };
+
+  function fmt(n){ return '£' + Math.round(n).toLocaleString('en-GB'); }
+
+  function calcLeak(covers, ticket, variance) {
+    var c = COVERS_MID[covers], t = TICKET_MID[ticket], r = VARIANCE_RATE[variance];
+    if (!c || !t || !r) return null;
+    var daily = c * t;
+    var weekly = daily * 7;
+    return { week: Math.round(weekly * r), month: Math.round(weekly * r * 4.33), year: Math.round(weekly * r * 52) };
+  }
+
+  var form = document.getElementById('zpForm');
+  var calc = document.getElementById('zpCalc');
+  var error = document.getElementById('zpError');
+  var submitBtn = document.getElementById('zpSubmit');
+  var result = document.getElementById('zpResult');
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    error.style.display = 'none';
+    var covers = document.getElementById('zp-covers').value;
+    var ticket = document.getElementById('zp-ticket').value;
+    var variance = document.getElementById('zp-variance').value;
+    var email = document.getElementById('zp-email').value.trim();
+    if (!covers || !ticket || !variance || !email) return;
+
+    var leak = calcLeak(covers, ticket, variance);
+    if (!leak) return;
+
+    // Show result immediately (client-side computation)
+    document.getElementById('zpBig').textContent = fmt(leak.week);
+    document.getElementById('zpMonth').textContent = fmt(leak.month);
+    document.getElementById('zpYear').textContent = fmt(leak.year);
+    calc.classList.add('result-shown');
+    result.classList.add('show');
+    result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    submitBtn.disabled = true;
+
+    // Background POST — capture lead, send email
+    try {
+      await fetch('/api/profit-leak', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          covers: covers,
+          ticket: ticket,
+          variance: variance,
+          weeklyLeak: leak.week,
+          monthlyLeak: leak.month,
+          source: 'profit-calculator-page'
+        })
+      });
+    } catch(err) {
+      // result is already shown; silent fail on capture
+      console.log('Capture failed:', err);
+    }
+  });
+})();
+</script>
+</body>
+</html>
