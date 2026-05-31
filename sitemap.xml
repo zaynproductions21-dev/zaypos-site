@@ -126,4 +126,34 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://zaypos.co.uk/news.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://zaypos.co.uk/news-uk-cafes-get-square-alternative-with-50-features-and-24-hour-migration.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://zaypos.co.uk/news-zaypos-hospitality-pos-uk-platform-launches-ai-invoice-processing-and.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://zaypos.co.uk/news-zaypos-launches-food-safety-pos-system-with-built-in-eho-compliance-fo.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://zaypos.co.uk/news-zaypos-restaurant-pos-uk-platform-launches-enhanced-kitchen-display-sy.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://zaypos.co.uk/news-zaypos-hospitality-pos-uk-system-preps-venues-for-summer-2026-trading.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>
