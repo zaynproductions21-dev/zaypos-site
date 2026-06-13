@@ -27,6 +27,7 @@
 <meta property="og:description" content="Free 30-second calculator. Three questions, instant £ figure. See what slow tills and end-of-day variance are costing your UK food business.">
 <meta property="og:url" content="https://www.zaypos.co.uk/profit-calculator">
 <meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the figure calculated?","acceptedAnswer":{"@type":"Answer","text":"We multiply your covers × average ticket × an industry leak rate that scales with cash-vs-till variance frequency. The leak rate sits between 0.4% (never any variance — best in class) and 4.5% (most days — typical of unreconciled environments). It's a conservative estimate based on UK hospitality benchmarks."}},{"@type":"Question","name":"Will my email get spammed?","acceptedAnswer":{"@type":"Answer","text":"No. We send one report with your figures, then one trial nudge. You can unsubscribe with one click. We never sell your data."}},{"@type":"Question","name":"What if my variance is \"Never\"?","acceptedAnswer":{"@type":"Answer","text":"Brilliant — you've got tight controls. The calculator will still show a small baseline leak from rounding, refunds and missed upsells during peak. ZayPOS still pays back through speed and reporting, but your urgency is lower."}},{"@type":"Question","name":"How accurate is this for my specific venue?","acceptedAnswer":{"@type":"Answer","text":"It's a 30-second estimate, not an audit. For a proper diagnostic — including item-level food cost analysis on your existing menu — start the 14-day free trial and we'll run it for you during onboarding."}},{"@type":"Question","name":"What data do I need to use it?","acceptedAnswer":{"@type":"Answer","text":"Just three rough figures: how many covers you do in a typical week, your average spend per cover, and how often your end-of-day cash count differs from your till. You don't need exact accounts — sensible estimates are enough for a ballpark result."}},{"@type":"Question","name":"How does ZayPOS actually reduce leakage?","acceptedAnswer":{"@type":"Answer","text":"ZayPOS reconciles cash and card receipts against every sale automatically, flags end-of-day variance instead of letting it disappear, shows your margin per item so you can fix underpriced lines, and uses AI to keep stock and supplier invoices accurate. Faster tills and fewer voided orders close the gaps the calculator estimates."}},{"@type":"Question","name":"Are these figures a guarantee?","acceptedAnswer":{"@type":"Answer","text":"No. The figures are illustrative estimates based on conservative UK hospitality benchmarks, not a promise of savings or a measurement of your specific venue. Your real numbers depend on your menu, controls and trading patterns. The separate 60-day money-back guarantee is about saving you admin time, and is set out in full on the guarantee page."}}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -256,6 +257,20 @@ footer .container { display: grid; gap: 24px; }
   </div>
 </section>
 
+<!-- EXPLAINER -->
+<section style="padding:70px 0 10px;background:var(--cream);">
+  <div class="container" style="max-width:760px;">
+    <h2 style="font-family:'Fraunces',Georgia,serif;font-size:clamp(24px,3vw,32px);letter-spacing:-0.025em;color:var(--text);margin:0 0 14px;font-weight:700;">How the calculator works</h2>
+    <p style="font-size:15px;color:var(--text-mid);line-height:1.75;margin:0 0 26px;">The calculator takes three quick inputs — roughly how many covers you do, your average ticket, and how often your cash count and till disagree at the end of the day. It multiplies covers by average ticket to estimate your weekly takings, then applies a small percentage "leak rate" to that figure. The more often you see end-of-day variance, the higher the leak rate it assumes. The result is a 30-second estimate of money that quietly slips away through slow service, voided orders, refunds, missed upsells and unreconciled cash — not an audit of your accounts.</p>
+
+    <h2 style="font-family:'Fraunces',Georgia,serif;font-size:clamp(24px,3vw,32px);letter-spacing:-0.025em;color:var(--text);margin:0 0 14px;font-weight:700;">What the leak-rate basis means</h2>
+    <p style="font-size:15px;color:var(--text-mid);line-height:1.75;margin:0 0 26px;">The leak rate is grounded in a stock-and-cash variance band of roughly 1.5% to 4.5% of takings, which is a commonly cited range for how much value an unreconciled hospitality business loses to shrinkage, wastage and till discrepancies. A venue that reconciles tightly sits near the bottom of that band; one where the drawer rarely matches the till sits near the top. These percentages are an illustrative planning basis, not a measurement of your specific site — every venue's real number depends on its menu, controls and staff. We deliberately keep the assumptions conservative so the figure is a floor to think about, not a scary headline.</p>
+
+    <h2 style="font-family:'Fraunces',Georgia,serif;font-size:clamp(24px,3vw,32px);letter-spacing:-0.025em;color:var(--text);margin:0 0 14px;font-weight:700;">How to read your result</h2>
+    <p style="font-size:15px;color:var(--text-mid);line-height:1.75;margin:0 0 8px;">Treat the weekly, monthly and yearly figures as an order-of-magnitude prompt rather than an exact invoice. The point is the scale: if the calculator suggests you are leaking the equivalent of a part-time wage each month, that is worth investigating, even if your true number is somewhat higher or lower. Much of that leak is recoverable with better reconciliation, faster service and item-level reporting — which is exactly what ZayPOS is built to provide. For a precise picture of your own venue, the 14-day free trial includes a proper diagnostic during onboarding.</p>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="faq-section">
   <div class="container">
@@ -276,6 +291,18 @@ footer .container { display: grid; gap: 24px; }
       <div class="faq-card">
         <div class="q">How accurate is this for my specific venue?</div>
         <div class="a">It's a 30-second estimate, not an audit. For a proper diagnostic — including item-level food cost analysis on your existing menu — start the 14-day free trial and we'll run it for you during onboarding.</div>
+      </div>
+      <div class="faq-card">
+        <div class="q">What data do I need to use it?</div>
+        <div class="a">Just three rough figures: how many covers you do in a typical week, your average spend per cover, and how often your end-of-day cash count differs from your till. You don't need exact accounts — sensible estimates are enough for a ballpark result.</div>
+      </div>
+      <div class="faq-card">
+        <div class="q">How does ZayPOS actually reduce leakage?</div>
+        <div class="a">ZayPOS reconciles cash and card receipts against every sale automatically, flags end-of-day variance instead of letting it disappear, shows your margin per item so you can fix underpriced lines, and uses AI to keep stock and supplier invoices accurate. Faster tills and fewer voided orders close the gaps the calculator estimates.</div>
+      </div>
+      <div class="faq-card">
+        <div class="q">Are these figures a guarantee?</div>
+        <div class="a">No. The figures are illustrative estimates based on conservative UK hospitality benchmarks, not a promise of savings or a measurement of your specific venue. Your real numbers depend on your menu, controls and trading patterns. The separate 60-day money-back guarantee is about saving you admin time, and is set out in full on the guarantee page.</div>
       </div>
     </div>
   </div>

@@ -212,6 +212,7 @@ footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
 <!-- schema.org JSON-LD injected by PublishOS audit -->
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ZayPOS","url":"https://www.zaypos.co.uk","description":"AI-powered point-of-sale for UK hospitality and retail. Smart inventory, integrated payments, and customer analytics.","areaServed":"GB","contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"hello@zaypos.co.uk","areaServed":"GB"},"sameAs":["https://twitter.com/ZayPOS"],"parentOrganization":{"@type":"Organization","name":"Zayn Productions Ltd","url":"https://www.zaynit.com"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"ZayPOS","url":"https://www.zaypos.co.uk","applicationCategory":"BusinessApplication","operatingSystem":"Web","description":"The only POS built for UK retail and hospitality that uses AI to manage inventory, predict demand and grow margins.","offers":[{"@type":"Offer","name":"Starter","priceCurrency":"GBP","price":"29.00","priceSpecification":{"@type":"UnitPriceSpecification","price":"29.00","priceCurrency":"GBP","unitText":"per till per month"}},{"@type":"Offer","name":"Growth","priceCurrency":"GBP","price":"69.00","priceSpecification":{"@type":"UnitPriceSpecification","price":"69.00","priceCurrency":"GBP","unitText":"per till per month"}},{"@type":"Offer","name":"Complete","priceCurrency":"GBP","price":"99.00","priceSpecification":{"@type":"UnitPriceSpecification","price":"99.00","priceCurrency":"GBP","unitText":"per till per month"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do ZayPOS integrations connect?","acceptedAnswer":{"@type":"Answer","text":"Most connections are built directly into the ZayPOS platform rather than added through a marketplace. Card payments use OAuth where the provider supports it — for example Clover, where staff authorise once through the Clover login with no API keys to copy. Other services connect through official APIs configured in Settings, so there is no separate connector software to install or maintain."}},{"@type":"Question","name":"Is there an API I can build against?","acceptedAnswer":{"@type":"Answer","text":"Yes. ZayPOS exposes REST APIs and webhook callbacks used by its own payment, email, SMS and catalogue integrations, and these can be made available for your own tooling. If you have a developer or an existing system you want to connect, contact us at hello@zaypos.co.uk and we will share the relevant endpoints and authentication details."}},{"@type":"Question","name":"Can you add an integration I need?","acceptedAnswer":{"@type":"Answer","text":"Often, yes. Because integrations are part of the core product, we add new payment providers, accounting tools, delivery platforms and hardware based on customer demand. Tell us which service you use and we will let you know whether it is already supported or can be added to the roadmap."}},{"@type":"Question","name":"Do integrations cost extra?","acceptedAnswer":{"@type":"Answer","text":"The integrations themselves are included in your ZayPOS plan — there are no per-connection fees from us. You only pay any charges from the third-party service itself, such as a payment provider's transaction fees or your existing accounting or delivery platform subscription."}}]}</script>
 <!-- PostHog product analytics (consent-gated) -->
 <script>
 (function(){
@@ -664,6 +665,57 @@ footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
     </div>
   </div>
 </section>
+
+<!-- INTEGRATIONS DEPTH -->
+<section class="int-section" style="border-top:1px solid var(--border);">
+  <div class="container" style="max-width:880px;">
+    <div class="section-label">How it fits together</div>
+    <h2 class="section-h2">How ZayPOS connects to the rest of your business</h2>
+    <p class="section-sub" style="margin-bottom:36px;">A till is only as useful as the tools around it. ZayPOS is designed so payments, accounts, delivery, rotas, food safety and hardware all talk to the same till data — instead of leaving you to re-key figures between half a dozen apps. Here is how each category works, and where the connections are already live.</p>
+
+    <h2 class="section-h2" style="font-size:clamp(20px,3vw,28px);margin-top:8px;">Payments</h2>
+    <p class="section-sub" style="margin-bottom:28px;">Card payments are the most important connection a POS makes, so ZayPOS does not lock you to a single provider. Clover is integrated through full OAuth 2.0 — staff authorise once via the Clover login and the product catalogue syncs both ways — while the smart routing engine lets you choose Clover, SumUp, Dojo or Square per location and switch from Settings with no downtime. Refunds are routed back through the original merchant automatically, and every transaction reconciles against the matching sale, so your card takings and your till never drift apart at the end of the day.</p>
+
+    <h2 class="section-h2" style="font-size:clamp(20px,3vw,28px);">Accounting</h2>
+    <p class="section-sub" style="margin-bottom:28px;">ZayPOS produces the numbers your accountant actually needs — daily takings, VAT summaries, wages and tips — in a format ready to flow into tools like Xero and QuickBooks. Instead of exporting a Z-report and typing totals into a spreadsheet, your sales and tax figures are captured as they happen, so month-end becomes a review rather than a rebuild. If you use an accountant or bookkeeper, they can work from clean, consistent ZayPOS data rather than a shoebox of receipts.</p>
+
+    <h2 class="section-h2" style="font-size:clamp(20px,3vw,28px);">Delivery</h2>
+    <p class="section-sub" style="margin-bottom:28px;">For takeaways and restaurants running third-party delivery, ZayPOS is built to sit alongside platforms like Deliveroo, Uber Eats and Just Eat so orders and menus stay consistent with your in-house till. That keeps one menu, one set of prices and one stock count across counter, online and delivery — rather than a tablet farm where each platform tracks its own version of the truth. Completed delivery orders also feed the review-request automation, prompting happy customers to leave feedback after the food has arrived.</p>
+
+    <h2 class="section-h2" style="font-size:clamp(20px,3vw,28px);">Rotas &amp; payroll</h2>
+    <p class="section-sub" style="margin-bottom:28px;">Because staff clock in and out on ZayPOS, the same data drives both scheduling and pay. The monthly payroll job calculates total hours, overtime and gross wages from real clock-in records and emails the summary to your configured payroll recipients automatically — no manual timesheet tallying. AI-generated rotas use your sales patterns to suggest cover that matches demand, and tips and wages roll into the same reporting your accounts integration draws from.</p>
+
+    <h2 class="section-h2" style="font-size:clamp(20px,3vw,28px);">EHO &amp; food safety</h2>
+    <p class="section-sub" style="margin-bottom:28px;">Compliance is treated as a connected workflow, not a separate app. Temperature-probe reminders go out by SMS to on-shift staff, opening, cleaning and closing checklists are logged digitally, and a missed-checklist job runs every 30 minutes — escalating to managers by email if a safety task passes its deadline. With the allergen matrix kept Natasha's Law ready and a one-click EHO/SFBB report, the records an inspector asks for are already in one place rather than scattered across paper folders and standalone compliance tools.</p>
+
+    <h2 class="section-h2" style="font-size:clamp(20px,3vw,28px);">Hardware</h2>
+    <p class="section-sub" style="margin-bottom:0;">ZayPOS runs in the browser on tablets, phones and desktops you already own, so you are not buying proprietary terminals to get started. Receipt and kitchen printing use the standard ESC/POS protocol over a TCP/IP socket — no drivers — and work with Epson, Star Micronics and generic printers, with multiple printers configurable per location. Card terminals connect through your chosen payment provider, and a digital email receipt is always available as an alternative to paper.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<style>
+.zp-faq{padding:80px 0;background:var(--cream2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.zp-faq h2.zp-faq-h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(24px,4vw,42px);line-height:1.1;letter-spacing:-1.2px;color:var(--text);text-align:center;margin-bottom:14px;}
+.zp-faq .zp-faq-lede{font-size:16px;color:var(--text-muted);text-align:center;max-width:620px;margin:0 auto 48px;font-weight:300;line-height:1.7;}
+.zp-faq .faq-list{max-width:780px;margin:0 auto;}
+.zp-faq .faq-item{background:#fff;border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin-bottom:10px;}
+.zp-faq .faq-item summary{font-family:'Fraunces',serif;font-weight:600;font-size:16px;color:var(--text);cursor:pointer;letter-spacing:-0.2px;outline:none;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;}
+.zp-faq .faq-item summary::-webkit-details-marker{display:none;}
+.zp-faq .faq-item summary::after{content:'+';font-family:inherit;font-size:22px;font-weight:300;color:var(--text-muted);transition:transform 0.2s;}
+.zp-faq .faq-item[open] summary::after{content:'\2212';}
+.zp-faq .faq-item p{font-size:15px;color:var(--text-muted);font-weight:300;line-height:1.7;margin-top:14px;}
+</style>
+<section class="zp-faq"><div class="container">
+  <h2 class="zp-faq-h2">Integrations FAQ</h2>
+  <p class="zp-faq-lede">Common questions about connecting ZayPOS to the tools you already run.</p>
+  <div class="faq-list">
+    <details class="faq-item"><summary>How do ZayPOS integrations connect?</summary><p>Most connections are built directly into the ZayPOS platform rather than added through a marketplace. Card payments use OAuth where the provider supports it — for example Clover, where staff authorise once through the Clover login with no API keys to copy. Other services connect through official APIs configured in Settings, so there is no separate connector software to install or maintain.</p></details>
+    <details class="faq-item"><summary>Is there an API I can build against?</summary><p>Yes. ZayPOS exposes REST APIs and webhook callbacks used by its own payment, email, SMS and catalogue integrations, and these can be made available for your own tooling. If you have a developer or an existing system you want to connect, contact us at <a href="mailto:hello@zaypos.co.uk" style="color:var(--violet);">hello@zaypos.co.uk</a> and we will share the relevant endpoints and authentication details.</p></details>
+    <details class="faq-item"><summary>Can you add an integration I need?</summary><p>Often, yes. Because integrations are part of the core product, we add new payment providers, accounting tools, delivery platforms and hardware based on customer demand. Tell us which service you use and we will let you know whether it is already supported or can be added to the roadmap.</p></details>
+    <details class="faq-item"><summary>Do integrations cost extra?</summary><p>The integrations themselves are included in your ZayPOS plan — there are no per-connection fees from us. You only pay any charges from the third-party service itself, such as a payment provider's transaction fees or your existing accounting or delivery platform subscription.</p></details>
+  </div>
+</div></section>
 
 <footer>
   <div class="container">
