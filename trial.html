@@ -116,8 +116,8 @@
       </div>
       <div class="grid2">
         <div>
-          <label>Phone</label>
-          <input type="tel" id="phone" placeholder="+44 7700 900000" />
+          <label>Phone <span aria-hidden="true" style="color:#dc2626">*</span></label>
+          <input type="tel" id="phone" placeholder="+44 7700 900000" required />
         </div>
         <div>
           <label>Business Type</label>
@@ -214,6 +214,11 @@
       const pinInput     = document.getElementById('pin').value.trim();
 
       if (!name || !email || !company) return;
+      if (!phone || phone.replace(/\D/g, '').length < 7) {
+        errEl.textContent = 'Please enter a valid phone number.';
+        errEl.style.display = 'block';
+        return;
+      }
       if (!/^[0-9]{6}$/.test(pinInput)) {
         errEl.textContent = 'PIN must be exactly 6 digits.';
         errEl.style.display = 'block';
@@ -249,7 +254,7 @@
             email,
             adminName: name,
             adminPin: pin,
-            phone: phone || undefined,
+            phone,
             businessType: businessType || undefined,
           }),
         });
