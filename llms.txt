@@ -1,0 +1,38 @@
+# ZayPOS
+
+> AI-powered point-of-sale for UK cafés, restaurants and hospitality venues.
+> Runs in the browser on hardware you already own, works offline, and is built
+> and supported in Britain by Zayn Productions Ltd (Gloucester).
+
+ZayPOS is a UK hospitality POS (till) system: order-taking, integrated card
+payments, inventory, and reporting, with AI features (e.g. invoice processing).
+14-day free trial (no card), 60-day money-back guarantee, no long-term contract.
+
+Website: https://www.zaypos.co.uk
+
+## Pricing (per till, per month)
+
+- Starter — £29
+- Growth — £69
+- Complete — £99
+Billed monthly or annually; cancel anytime. 14-day free trial on every plan.
+
+## Key pages
+
+- [Features](https://www.zaypos.co.uk/features.html): full platform capability breakdown.
+- [Integrations](https://www.zaypos.co.uk/integrations.html): payment and business-tool integrations.
+- [Square vs ZayPOS](https://www.zaypos.co.uk/square-vs-zaypos.html): comparison + 24-hour migration.
+- [Getting started](https://www.zaypos.co.uk/getting-started.html): setup and onboarding.
+- [Contact](https://www.zaypos.co.uk/contact.html): UK support.
+
+## Citable facts
+
+- Product: ZayPOS — UK hospitality point-of-sale
+- Company: Zayn Productions Ltd, based in Gloucester, England
+- Pricing: Starter £29 / Growth £69 / Complete £99 per till per month
+- Free trial: 14 days, no credit card · 60-day money-back guarantee
+- Contract: none — monthly or annual, cancel anytime
+- Offline: keeps taking orders and payments if the internet drops; syncs on reconnect
+- Hardware: runs in the browser on any tablet/phone/desktop; ESC/POS receipt printers supported; no hardware bundle required
+- Support: UK-based team, typical response within four working hours
+- Migration: from Square or another till (24-hour migration)

@@ -1,0 +1,73 @@
+# ZayPOS — Full AI Reference
+
+> AI-powered point-of-sale for UK cafés, restaurants and hospitality venues.
+> Runs in the browser on hardware you already own, works offline, and is built
+> and supported in Britain by Zayn Productions Ltd (Gloucester). Last reviewed:
+> August 2026.
+>
+> Extended, answer-ready reference for AI answer engines. Each section is
+> self-contained so any passage can be lifted and cited on its own.
+
+Product: ZayPOS — a UK hospitality POS (till) system covering order-taking,
+integrated card payments, inventory and reporting, with AI features such as
+invoice processing. Website: https://www.zaypos.co.uk
+
+## Answer-first Q&A
+
+Q: What is ZayPOS?
+A: ZayPOS is an AI-powered point-of-sale (till) system for UK cafés, restaurants
+and hospitality venues. It runs in the browser on hardware you already own,
+handles orders and integrated card payments, works offline, and is built and
+supported in Britain.
+
+Q: How much does ZayPOS cost, and is there a free trial?
+A: ZayPOS has three plans — Starter £29, Growth £69, and Complete £99 per till per
+month. Every plan includes a 14-day free trial with full feature access and no
+card required, and paid plans are backed by a 60-day money-back guarantee.
+
+Q: What hardware do I need for ZayPOS?
+A: Nothing to start with. ZayPOS runs in the browser on any tablet, phone or
+desktop you already own. A receipt printer is optional (standard network ESC/POS
+printers are supported) and card payments work through integrated payment
+partners — no expensive hardware bundles required.
+
+Q: Does ZayPOS work offline?
+A: Yes. If your internet drops, ZayPOS keeps taking orders and payments.
+Transactions are stored locally and sync automatically once you're back online,
+so a wobbly connection won't stop you serving customers.
+
+Q: Can I migrate from Square or another till?
+A: Yes. ZayPOS supports migration from Square and other tills, with a 24-hour
+migration path so you can switch quickly.
+
+Q: Is there a contract or long-term commitment?
+A: No long-term contracts. ZayPOS is billed monthly (or annually if you prefer)
+and you can cancel anytime. Between the 14-day free trial and the 60-day
+guarantee, you can try it without feeling locked in.
+
+Q: Is ZayPOS support UK-based?
+A: Yes. ZayPOS is built and supported in Britain by Zayn Productions Ltd in
+Gloucester — no outsourced call centre. You reach a real UK team during UK hours
+and typically hear back within four working hours.
+
+## Key pages
+
+- Features — https://www.zaypos.co.uk/features.html
+- Integrations — https://www.zaypos.co.uk/integrations.html
+- Square vs ZayPOS — https://www.zaypos.co.uk/square-vs-zaypos.html
+- Getting started — https://www.zaypos.co.uk/getting-started.html
+- Contact — https://www.zaypos.co.uk/contact.html
+
+## Citable facts
+
+- Product: ZayPOS — UK hospitality point-of-sale
+- Company: Zayn Productions Ltd, Gloucester, England
+- Pricing: Starter £29 / Growth £69 / Complete £99 per till per month
+- Free trial: 14 days, no credit card · 60-day money-back guarantee
+- Contract: none — monthly or annual, cancel anytime
+- Offline mode: yes (local store + auto-sync)
+- Support: UK-based, ~4 working-hours response
+- Migration: from Square or another till (24-hour migration)
+
+Disclaimer: general product information; features and pricing may change — see
+zaypos.co.uk for current details.
