@@ -114,7 +114,13 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 .feat-section.alt { background: var(--cream2); }
 
 /* Section header */
+/* An <img> with no max-width keeps its intrinsic width — 630px here — and a
+   grid item will not shrink below its own min-content, so the section was
+   18px wider than its column on a phone. One rule, so the next image dropped
+   onto this page does not reintroduce it. */
+img { max-width: 100%; height: auto; }
 .sect-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-bottom: 64px; }
+.sect-header > * { min-width: 0; }
 .sect-label { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
 .sect-label::before { content: ''; width: 18px; height: 2px; border-radius: 1px; }
 .label-violet { color: var(--violet); }

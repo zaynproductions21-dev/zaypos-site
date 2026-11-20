@@ -62,8 +62,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,
 .also-card-title{font-family:'Fraunces',serif;font-weight:600;font-size:16px;color:var(--text);margin-bottom:4px;}
 .also-card-desc{font-size:13px;color:var(--text-muted);}
 footer{background:#1A1208;padding:28px 24px;}
-.footer-bottom{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.3);}
-.footer-bottom a{color:rgba(255,255,255,0.3);text-decoration:none;margin-left:20px;}
+/* flex-wrap and gap: the other thirteen legal pages have had these since the
+   footer was written; these two did not. Without them the copyright line and
+   the five policy links were one nowrap row with a 389px floor, so the page
+   was 47px wider than a 390px phone (117px at 320px) and could be dragged
+   sideways. body{overflow-x:hidden} further down does not stop that, because
+   <html> is the scroll container. */
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.3);flex-wrap:wrap;gap:12px;}
+.footer-bottom a{color:rgba(255,255,255,0.3);text-decoration:none;}
 @media(max-width:768px){.legal-grid{grid-template-columns:1fr;}.legal-toc{display:none;}.also-grid{grid-template-columns:1fr;}}
 </style>
 <!-- schema.org JSON-LD injected by PublishOS audit -->
@@ -180,7 +186,7 @@ footer{background:#1A1208;padding:28px 24px;}
 <footer><div class="container">
   <div class="footer-bottom">
     <div>&copy; 2026 Zayn Productions Ltd. Company No. 16892199</div>
-    <div><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="guarantee.html">Guarantee</a><a href="refund.html">Refunds</a><a href="cookies.html">Cookies</a></div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="guarantee.html">Guarantee</a><a href="refund.html">Refunds</a><a href="cookies.html">Cookies</a></div>
   </div>
 </div>  <div class="w3w-locator" style="text-align:center;font-size:13px;opacity:0.8;padding-top:14px;line-height:1.6;">Find us: <a href="https://what3words.com/pretty.needed.chill" target="_blank" rel="noopener noreferrer" title="Our location on what3words" style="color:inherit;text-decoration:underline;">📍 ///pretty.needed.chill</a></div>
 </footer>

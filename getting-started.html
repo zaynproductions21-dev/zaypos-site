@@ -89,7 +89,9 @@ footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
 
 /* GETTING STARTED */
 .gs-hero-strip{background:var(--violet);padding:0;}
-.gs-progress{display:flex;max-width:1160px;margin:0 auto;padding:0 24px;}
+/* The step strip was a nowrap row with a 480px floor — 90px past a 390px
+   phone, and the page could be dragged sideways because of it. */
+.gs-progress{display:flex;flex-wrap:wrap;max-width:1160px;margin:0 auto;padding:0 24px;}
 .gs-progress-step{flex:1;padding:18px 16px;text-align:center;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);border-bottom:3px solid transparent;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
 .gs-progress-step.done{color:rgba(255,255,255,0.8);border-bottom-color:rgba(255,255,255,0.4);}
 .gs-progress-step.active{color:#fff;border-bottom-color:#fff;}
@@ -102,6 +104,12 @@ footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
 .steps-timeline{position:relative;}
 .steps-timeline::before{content:'';position:absolute;left:36px;top:0;bottom:0;width:2px;background:var(--border);}
 .gs-step{display:flex;gap:28px;margin-bottom:52px;position:relative;}
+/* A flex item will not shrink below its own min-content unless told to, so one
+   long word in a step body pushed the card 12px wider than its column.
+   The steps also quote app.zaypos.co.uk, which has nothing to break on;
+   overflow-wrap:anywhere rather than break-word, because only anywhere
+   reduces min-content, and min-content is the number doing the damage. */
+.gs-step > *{min-width:0;overflow-wrap:anywhere;}
 .gs-step:last-child{margin-bottom:0;}
 .gs-step-left{flex-shrink:0;width:72px;display:flex;flex-direction:column;align-items:center;gap:8px;}
 .gs-step-num{width:44px;height:44px;border-radius:50%;background:#fff;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:var(--text-dim);transition:all 0.3s;flex-shrink:0;z-index:1;}
@@ -113,7 +121,7 @@ footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
 .gs-step-card:hover{border-color:var(--violet-mid);box-shadow:0 4px 24px rgba(91,62,245,0.08);}
 .gs-step.active .gs-step-card{border-color:var(--violet);box-shadow:0 6px 32px rgba(91,62,245,0.12);}
 .gs-step.complete .gs-step-card{border-color:#A7D9C1;background:#FDFFFE;}
-.gs-step-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px;}
+.gs-step-header{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px;}
 .gs-step-tag{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--violet);background:var(--violet-pale);padding:3px 10px;border-radius:100px;white-space:nowrap;flex-shrink:0;}
 .gs-step.complete .gs-step-tag{color:var(--green);background:var(--green-pale);}
 .gs-step-title{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--text);margin-bottom:8px;letter-spacing:-0.3px;}
@@ -134,6 +142,8 @@ footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
 
 /* SIDEBAR */
 .gs-layout{display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:start;}
+/* A grid item will not shrink below its own min-content unless told to. */
+.gs-layout > *{min-width:0;}
 .gs-sidebar{position:sticky;top:90px;}
 .gs-sidebar-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;}
 .gs-sc-title{font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:var(--text);margin-bottom:14px;}
@@ -519,7 +529,9 @@ footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
     <div class="section-label">After setup</div>
     <h2 class="section-h2" style="margin-bottom:12px;">Explore more of ZayPOS</h2>
     <p class="section-sub" style="margin-bottom:48px;">Once you're taking orders, here's what to set up next.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+    <!-- auto-fit with a min() floor, not repeat(3,1fr): three fixed columns
+         needed 501px inside a 342px container on a phone. -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:20px;">
       <a href="docs.html#qr" style="background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px;text-decoration:none;display:block;transition:all 0.2s;" onmouseover="this.style.borderColor='#C9BDFB';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='#E5DDD0';this.style.transform='none'">
         <div style="font-size:28px;margin-bottom:14px;">📱</div>
         <div style="font-family:'Fraunces',serif;font-weight:600;font-size:17px;color:#1A1208;margin-bottom:8px;">QR Table Ordering</div>

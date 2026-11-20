@@ -92,7 +92,10 @@ footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
 .blog-hero h1 em{font-style:italic;color:var(--violet);}
 .blog-hero p{font-size:17px;color:var(--text-muted);line-height:1.75;font-weight:300;max-width:520px;}
 .blog-section{padding:80px 0 100px;}
+/* A grid item will not shrink below its own min-content unless told to, so at
+   320px the track stretched and the page could be dragged sideways. */
 .blog-layout{display:grid;grid-template-columns:1fr 280px;gap:60px;align-items:start;}
+.blog-layout > *{min-width:0;}
 .blog-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--violet);background:var(--violet-pale);padding:6px 14px;border-radius:100px;margin-bottom:20px;}
 
 /* FEATURED POST */

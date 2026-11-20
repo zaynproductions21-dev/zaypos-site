@@ -58,6 +58,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,
 
 .legal-body{padding:70px 0 100px;}
 .legal-grid{display:grid;grid-template-columns:220px 1fr;gap:60px;align-items:start;}
+/* Without this the content column's automatic minimum is its own min-content,
+   which includes a 451px data table — so the track stretched to 451px inside a
+   342px container and the page could be dragged sideways. Holding the track at
+   0 lets the table scroll in its own box (see .legal-table above) instead. */
+.legal-grid > *{min-width:0;}
 
 /* STICKY TOC */
 .legal-toc{position:sticky;top:90px;}
@@ -78,7 +83,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,
 .legal-callout{background:var(--violet-pale);border:1px solid var(--violet-mid);border-radius:12px;padding:20px 24px;margin:24px 0;}
 .legal-callout p{margin-bottom:0;color:var(--text-mid);font-weight:400;}
 .legal-callout strong{color:var(--violet);}
+/* A data table's min-content is the sum of its columns' — up to 503px here,
+   wider than any phone. The surrounding grid track's automatic minimum is its
+   content's min-content, so the table did not overflow: it stretched the track
+   and the document, and the whole page could then be dragged sideways. Let the
+   table scroll inside its own box instead of taking the page with it. */
 .legal-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;}
+/* The wrapper, not the table itself, is the scroller. Making the <table>
+   display:block;overflow-x:auto looks like it works — the table box measures
+   272px wide with a 358px scrollWidth — but Chromium still lets the row boxes
+   inside the anonymous table contribute to the document's scrollable area, so
+   the page went on being draggable by 35px. A plain block wrapper does not
+   have that problem.
+
+   Why it is needed at all: a data table's min-content is the sum of its
+   columns', up to 503px here, which is wider than any phone. The grid track
+   around it takes its automatic minimum from that, so the table did not
+   overflow — it stretched the track and the document with it. */
+.table-scroll{overflow-x:auto;}
 .legal-table th{background:var(--cream2);padding:10px 14px;text-align:left;font-weight:600;color:var(--text-mid);border:1px solid var(--border);font-size:13px;}
 .legal-table td{padding:10px 14px;color:var(--text-muted);border:1px solid var(--border);vertical-align:top;line-height:1.6;}
 .legal-table tr:nth-child(even) td{background:var(--cream);}
@@ -268,7 +290,7 @@ footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
         <p>We use cookies on our marketing website (zaypos.co.uk) and within the ZayPOS application itself. Some cookies are essential for the platform to function; others help us understand how people use our product so we can improve it.</p>
 
         <h2 id="cookies-we-use">2. Cookies we use</h2>
-        <table class="legal-table">
+        <div class="table-scroll"><table class="legal-table">
           <tr><th>Cookie name</th><th>Type</th><th>Purpose</th><th>Duration</th></tr>
           <tr><td><code>zaypos_session</code></td><td>Essential</td><td>Maintains your logged-in session</td><td>Session</td></tr>
           <tr><td><code>zaypos_auth</code></td><td>Essential</td><td>Secure authentication token</td><td>30 days</td></tr>
@@ -279,7 +301,7 @@ footer{background:#1A1208;color:rgba(255,255,255,0.6);padding:70px 0 40px;}
           <tr><td><code>_ga_*</code></td><td>Analytics</td><td>Google Analytics — session state</td><td>2 years</td></tr>
           <tr><td><code>_stripe_mid</code></td><td>Functional</td><td>Stripe — fraud prevention during payment</td><td>1 year</td></tr>
           <tr><td><code>_stripe_sid</code></td><td>Functional</td><td>Stripe — payment session identifier</td><td>Session</td></tr>
-        </table>
+        </table></div>
 
         <h3>Essential cookies</h3>
         <p>These cookies are necessary for ZayPOS to function and cannot be switched off. They are usually only set in response to actions you take, such as logging in or setting preferences. You can set your browser to block these cookies, but parts of the Service will not work.</p>

@@ -85,6 +85,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,
 .logo-text{font-family:'Fraunces',serif;font-weight:700;font-size:20px;color:var(--text);}
 .logo-text span{color:var(--violet);}
 .nav-links{display:flex;align-items:center;gap:30px;}
+/* This page has no hamburger, so hiding the links on mobile would leave no
+   navigation at all. The row is only three or four links — let it wrap. Without
+   this the nav was 484px wide inside a 342px container, which on the comparison
+   pages took the whole document with it.
+
+   The nav is position:fixed and the pages below it clear a fixed amount of
+   space, so a wrapped nav must stay short: tighter type and a smaller CTA keep
+   it at roughly 95px, inside the smallest allowance on these pages (120px).
+   Loosen these and content starts disappearing under the nav. */
+/* The nav CTA is an <a> inside .nav-links, so `.nav-links a{color:var(--text-muted)}`
+   beats `.btn-primary{color:#fff}` on specificity and the button's label rendered
+   #8A7A65 on #5B3EF5 — about 2.2:1, well under the 4.5:1 floor. Broken at every
+   width, not just on mobile, which is why this sits outside the media query. */
+.nav-links .btn-primary{color:#fff;}
+@media(max-width:720px){
+  .nav-inner{flex-wrap:wrap;height:auto;padding:8px 0;row-gap:6px;}
+  .nav-links{flex-wrap:wrap;gap:6px 14px;font-size:13.5px;}
+  .nav-links .btn-primary,.nav-cta{padding:7px 14px;font-size:13px;}
+  .zp-logo{height:22px;width:auto;}
+}
 .nav-links a{font-size:14px;color:var(--text-muted);text-decoration:none;}
 .nav-links a:hover{color:var(--text);}
 .btn-primary{padding:10px 22px;background:var(--violet);color:#fff;font-size:14px;font-weight:500;border:none;border-radius:10px;text-decoration:none;}
@@ -104,7 +124,24 @@ li{margin-bottom:8px;font-size:16px;}
 a.inline{color:var(--violet);text-decoration:underline;}
 .tldr{background:var(--violet-pale);border:1px solid #C9BDFB;border-radius:14px;padding:24px 28px;margin:36px 0;}
 .tldr-title{font-family:'Fraunces',serif;font-weight:600;font-size:14px;color:var(--violet);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;}
+/* A data table's min-content is the sum of its columns' — up to 503px here,
+   wider than any phone. The surrounding grid track's automatic minimum is its
+   content's min-content, so the table did not overflow: it stretched the track
+   and the document, and the whole page could then be dragged sideways. Let the
+   table scroll inside its own box instead of taking the page with it. */
 .comparison-table{width:100%;border-collapse:collapse;margin:24px 0;background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+/* The wrapper, not the table itself, is the scroller. Making the <table>
+   display:block;overflow-x:auto looks like it works — the table box measures
+   272px wide with a 358px scrollWidth — but Chromium still lets the row boxes
+   inside the anonymous table contribute to the document's scrollable area, so
+   the page went on being draggable by 35px. A plain block wrapper does not
+   have that problem.
+
+   Why it is needed at all: a data table's min-content is the sum of its
+   columns', up to 503px here, which is wider than any phone. The grid track
+   around it takes its automatic minimum from that, so the table did not
+   overflow — it stretched the track and the document with it. */
+.table-scroll{overflow-x:auto;}
 .comparison-table th,.comparison-table td{padding:14px 18px;text-align:left;font-size:14px;border-bottom:1px solid var(--border);vertical-align:top;}
 .comparison-table th{background:var(--cream2);font-weight:600;color:var(--text);font-size:13px;text-transform:uppercase;letter-spacing:0.04em;}
 .comparison-table td:not(:first-child){text-align:center;}
@@ -184,7 +221,7 @@ footer .container{max-width:1160px;}
     </div>
 
     <h2>The 30-second comparison table</h2>
-    <table class="comparison-table">
+    <div class="table-scroll"><table class="comparison-table">
       <thead>
         <tr><th>What you get</th><th>Toast (UK)</th><th>ZayPOS Growth</th><th>ZayPOS Complete</th></tr>
       </thead>
@@ -202,7 +239,7 @@ footer .container{max-width:1160px;}
         <tr><td>Hardware</td><td class="partial">Toast hardware encouraged</td><td class="yes">Any iPad / Android / browser</td><td class="yes">Same</td></tr>
         <tr><td>UK-based support</td><td class="partial">US head office, UK office in London</td><td class="yes">Direct, 4h response, UK hours</td><td class="yes">Priority, named contact</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
     <h2>Pricing &mdash; head to head</h2>
     <p>Toast doesn't publish a transparent UK price list. The number you pay depends on which modules you bundle, which payment processor you sign up for, and how hard you negotiate. Public Toast UK pricing pages list Core POS from around <strong>£69/mo</strong> per terminal, but Core POS alone isn't usable for a real restaurant &mdash; you need at minimum the kitchen display, online ordering and reporting modules on top. By the time you've added the equivalent of ZayPOS Growth's feature set, most independent UK operators we've talked to are paying somewhere around <strong>£200&ndash;£275/month</strong> per location.</p>
