@@ -98,7 +98,10 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba
 
 /* STATS */
 .about-stats { background: var(--violet); padding: 80px 0; }
+/* A grid item will not shrink below its own min-content unless told to, so at
+   320px the track stretched and the page could be dragged sideways. */
 .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; }
+.stats-grid > * { min-width: 0; }
 .stat-item { text-align: center; padding: 20px; }
 .stat-num { font-family: 'Fraunces', serif; font-weight: 700; font-size: 46px; letter-spacing: -2px; color: #fff; margin-bottom: 6px; }
 .stat-label { font-size: 14px; color: rgba(255,255,255,0.7); }
@@ -140,6 +143,8 @@ footer { background: #1A1208; color: rgba(255,255,255,0.6); padding: 70px 0 40px
   .values-grid { grid-template-columns: 1fr 1fr; }
   .team-grid { grid-template-columns: 1fr 1fr; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
+  /* Two tracks still needed 276px inside 272px on the smallest phones. */
+  @media (max-width: 360px) { .stats-grid { grid-template-columns: 1fr; } }
   .mission-inner { grid-template-columns: 1fr; padding: 48px 32px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .nav-links { display: none; }

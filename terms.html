@@ -58,6 +58,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,
 
 .legal-body{padding:70px 0 100px;}
 .legal-grid{display:grid;grid-template-columns:220px 1fr;gap:60px;align-items:start;}
+/* Without this the content column's automatic minimum is its own min-content,
+   which includes a 451px data table — so the track stretched to 451px inside a
+   342px container and the page could be dragged sideways. Holding the track at
+   0 lets the table scroll in its own box (see .legal-table above) instead. */
+.legal-grid > *{min-width:0;}
 
 /* STICKY TOC */
 .legal-toc{position:sticky;top:90px;}
@@ -78,7 +83,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(253,250,246,
 .legal-callout{background:var(--violet-pale);border:1px solid var(--violet-mid);border-radius:12px;padding:20px 24px;margin:24px 0;}
 .legal-callout p{margin-bottom:0;color:var(--text-mid);font-weight:400;}
 .legal-callout strong{color:var(--violet);}
+/* A data table's min-content is the sum of its columns' — up to 503px here,
+   wider than any phone. The surrounding grid track's automatic minimum is its
+   content's min-content, so the table did not overflow: it stretched the track
+   and the document, and the whole page could then be dragged sideways. Let the
+   table scroll inside its own box instead of taking the page with it. */
 .legal-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14px;}
+/* The wrapper, not the table itself, is the scroller. Making the <table>
+   display:block;overflow-x:auto looks like it works — the table box measures
+   272px wide with a 358px scrollWidth — but Chromium still lets the row boxes
+   inside the anonymous table contribute to the document's scrollable area, so
+   the page went on being draggable by 35px. A plain block wrapper does not
+   have that problem.
+
+   Why it is needed at all: a data table's min-content is the sum of its
+   columns', up to 503px here, which is wider than any phone. The grid track
+   around it takes its automatic minimum from that, so the table did not
+   overflow — it stretched the track and the document with it. */
+.table-scroll{overflow-x:auto;}
 .legal-table th{background:var(--cream2);padding:10px 14px;text-align:left;font-weight:600;color:var(--text-mid);border:1px solid var(--border);font-size:13px;}
 .legal-table td{padding:10px 14px;color:var(--text-muted);border:1px solid var(--border);vertical-align:top;line-height:1.6;}
 .legal-table tr:nth-child(even) td{background:var(--cream);}
